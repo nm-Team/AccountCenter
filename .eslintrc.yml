@@ -20,3 +20,9 @@ rules:
   import/extensions: 0
   simple-import-sort/imports: ['warn']
   import/no-unresolved: 0
+  max-classes-per-file: 0
+  no-underscore-dangle: 0
+  no-plusplus: 0
+  '@typescript-eslint/no-unused-vars': 3
+  '@typescript-eslint/no-shadow': 3
+  max-len: 0
