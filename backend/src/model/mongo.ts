@@ -1,11 +1,15 @@
 import { Db, MongoClient } from 'mongodb';
-import { bus } from './bus';
+
 import { mongo } from '../config';
+import bus from './bus';
 
 class MongoModel {
     public client!: MongoClient;
+
     public db!: Db;
+
     private mongourl: string;
+
     private mongodb: string;
 
     constructor(mongourl: string, mongodb: string) {
@@ -26,4 +30,4 @@ class MongoModel {
 
 const db = new MongoModel(mongo.url, mongo.db);
 db.init();
-export { db };
+export default db;

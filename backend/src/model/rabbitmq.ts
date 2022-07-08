@@ -1,9 +1,11 @@
-const amqp = require('amqplib');
-import { bus } from './bus';
 import { rabbitmq } from '../config';
+import bus from './bus';
+
+const amqp = require('amqplib');
 
 class RabbitMQModel {
     public connection: any;
+
     private rabbiturl: string;
 
     constructor(rabbiturl: string) {
@@ -15,11 +17,11 @@ class RabbitMQModel {
         bus.emit('mongo/connected');
     }
 
-    public async createChannel() {
-        return await this.connection.createChannel();
+    public createChannel() {
+        return this.connection.createChannel();
     }
 }
 
 const queue = new RabbitMQModel(rabbitmq.url);
 queue.init();
-export { queue };
+export default { queue };

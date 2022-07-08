@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events';
+
 const bus = new EventEmitter();
 
-export { bus };
+export default bus;
