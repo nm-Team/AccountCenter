@@ -2,7 +2,7 @@
     <h1>{{ $t("log.register_page.title") }}</h1>
     <p class="h1then">{{ $t('log.register_page.tip') }}</p>
     <div class="form">
-        <label-input v-for="item in form" :model="item.id" :type="item.type" :label="item.label" @getdata="setData">
+        <label-input v-for="item in form" :model="item.id" :type="item.type" :label="item.label" :autofocus="item.autofocus" @getdata="setData">
         </label-input>
         <label :for="keepLog" class="checkbox">
             <input v-model="agreeTerms" type="checkbox">
@@ -22,7 +22,7 @@ export default {
     data() {
         return {
             form: [
-                { id: 'email', type: 'text', label: 'log.email' },
+                { id: 'email', type: 'text', label: 'log.email', autofocus: true, },
                 { id: 'username', type: 'text', label: 'log.username' },
                 { id: 'password', type: 'password', label: 'log.password' },
                 { id: 'confirmpassword', type: 'password', label: 'log.confirm_password' },
