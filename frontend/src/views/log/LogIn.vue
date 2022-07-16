@@ -17,35 +17,45 @@
     </div>
 </template>
 <script>
+import { gql } from 'apollo-boost';
+
 import LabelInput from '../../components/LabelInput.vue';
+
 export default {
-    name: "LogIn",
+    name: 'LogIn',
     data() {
         return {
             keepLog: true,
             related: [
                 {
-                    name: "register",
-                    path: "/register",
+                    name: 'register',
+                    path: '/register',
                 },
                 {
-                    name: "forget_password",
-                    path: "/forget-password",
-                }
+                    name: 'forget_password',
+                    path: '/forget-password',
+                },
             ],
             oauth: {
-                name: "3rd Party"
-            }
+                name: '3rd Party',
+            },
         };
     },
     methods: {
         login() {
-            alert(this.username + " " + this.password);
+            // alert(`${this.username} ${this.password}`);
+            const req = gql`query {
+  User {
+    register(user: "${this.username}", pass: "${this.password}", mail: "wtf")
+  }
+}
+`;
+            console.log(req);
         },
         setData(name, data) {
             this[name] = data;
-        }
+        },
     },
-    components: { LabelInput }
-}
+    components: { LabelInput },
+};
 </script>
