@@ -1,7 +1,7 @@
 import '../public/css/common.css';
 import '../public/css/log.css';
 
-import { ApolloComposable } from '@vue/apollo-composable';
+import { DefaultApolloClient } from '@vue/apollo-composable';
 import ApolloClient from 'apollo-boost';
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
@@ -31,6 +31,8 @@ const apolloClient = new ApolloClient({
 });
 
 createApp(Log).use(i18n).use(router)
-    .provide(ApolloComposable.DefaultApolloClient, apolloClient)
+    .provide(DefaultApolloClient.DefaultApolloClient, apolloClient)
     .component('LabelInput', LabelInput)
     .mount('#app');
+
+export default { apolloClient };

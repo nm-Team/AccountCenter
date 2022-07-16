@@ -46,13 +46,6 @@ export default {
     methods: {
         login() {
             // alert(`${this.username} ${this.password}`);
-            const req = gql`query {
-  User {
-    register(user: "${this.username}", pass: "${this.password}", mail: "wtf")
-  }
-}
-`;
-            console.log(req);
         },
         setData(name, data) {
             this[name] = data;
