@@ -35,4 +35,5 @@ createApp(Log).use(i18n).use(router)
     .component('LabelInput', LabelInput)
     .mount('#app');
 
-export default { apolloClient };
+// eslint-disable-next-line import/prefer-default-export
+export { apolloClient };

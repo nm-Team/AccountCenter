@@ -24,6 +24,8 @@
 import { gql } from 'apollo-boost';
 
 import LabelInput from '../../components/LabelInput.vue';
+// eslint-disable-next-line import/no-cycle
+import { apolloClient } from '../../log';
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
