@@ -1,10 +1,11 @@
-import bus from './bus';
-import db from './mongo';
-import { sha1 } from './crypto';
 import { Collection } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
-import { TokenModel, TokenType } from './token';
+
 import { checkUser, isMail } from '../utils';
+import bus from './bus';
+import { sha1 } from './crypto';
+import db from './mongo';
+import { TokenModel, TokenType } from './token';
 
 /* eslint-disable lines-between-class-members */
 
@@ -12,7 +13,7 @@ let coll: Collection;
 
 bus.once('mongo/connected', () => {
     coll = db.collection('user');
-})
+});
 
 export interface UserDoc extends Object {
     uuid: string;
@@ -55,7 +56,7 @@ export class UserModel {
             return UserModel.defaultUdoc;
         }
         return {
-            uuid: uuid,
+            uuid,
             _pass: doc.pass,
 
             user: doc.user,
@@ -68,7 +69,7 @@ export class UserModel {
             regat: doc.regat,
             loginat: doc.logat,
             loginip: doc.loginip,
-        }
+        };
     }
 
     static async getByUser(user: string): Promise<UserDoc> {
@@ -82,7 +83,7 @@ export class UserModel {
             uuid: doc.uuid,
             _pass: doc.pass,
 
-            user: user,
+            user,
             mail: doc.mail,
             nick: doc.nick,
             avatar: doc.avatar,
@@ -92,7 +93,7 @@ export class UserModel {
             regat: doc.regat,
             loginat: doc.logat,
             loginip: doc.loginip,
-        }
+        };
     }
 
     static async getByMail(mail: string): Promise<UserDoc> {
@@ -107,7 +108,7 @@ export class UserModel {
             _pass: doc.pass,
 
             user: doc.user,
-            mail: mail,
+            mail,
             nick: doc.nick,
             avatar: doc.avatar,
             mood: doc.mood,
@@ -116,13 +117,13 @@ export class UserModel {
             regat: doc.regat,
             loginat: doc.logat,
             loginip: doc.loginip,
-        }
+        };
     }
 
     static async register(
         user: string,
         pass: string,
-        mail: string
+        mail: string,
     ) {
         if (!isMail(mail)) {
             throw new Error('Not a valid email');
@@ -140,17 +141,17 @@ export class UserModel {
         const uuid = uuidv4();
         const mailId = uuidv4();
         bus.emit('mail/send', mail, mailId);
-        const tok = new TokenModel();
-        const tokenId = tok.add(TokenType.REGISTER, 1800, { uuid, user, pass, mail, mailId });
+        const tokenId = TokenModel.add(TokenType.REGISTER, 1800, {
+            uuid, user, pass, mail, mailId,
+        });
         return tokenId;
     }
 
     static async active(mailId: string, tokenId: string) {
-        const tok = new TokenModel();
-        const token: any = await tok.get(tokenId, TokenType.REGISTER);
+        const token: any = await TokenModel.get(tokenId, TokenType.REGISTER);
 
         if (token === null) {
-            throw new Error('Token expired')
+            throw new Error('Token expired');
         }
         if (token.mailId !== mailId) {
             throw new Error('Verification failed');
@@ -169,6 +170,6 @@ export class UserModel {
             regat: time,
             loginat: time,
         });
-        tok.delete(tokenId, TokenType.REGISTER);
+        TokenModel.delete(tokenId, TokenType.REGISTER);
     }
 }

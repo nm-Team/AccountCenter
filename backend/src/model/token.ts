@@ -1,6 +1,7 @@
+import { Collection, Filter, ObjectId } from 'mongodb';
+
 import bus from './bus';
 import db from './mongo';
-import { Collection, ObjectId, Filter } from 'mongodb';
 
 enum TokenType {
     SESSION,
@@ -11,7 +12,7 @@ enum TokenType {
 class TokenModel {
     static coll: Collection;
 
-    add(tokenType: TokenType, expire: number, data: Object): string {
+    static add(tokenType: TokenType, expire: number, data: Object): string {
         const time = new Date();
         const _id = new ObjectId();
         const id = _id.toString();
@@ -27,7 +28,7 @@ class TokenModel {
         return id;
     }
 
-    get(tokenId: string, tokenType: TokenType): Promise<Object | null> {
+    static get(tokenId: string, tokenType: TokenType): Promise<Object | null> {
         bus.emit('token/get', tokenId, tokenType);
         return TokenModel.coll.findOne({
             _id: new ObjectId(tokenId),
@@ -35,7 +36,7 @@ class TokenModel {
         });
     }
 
-    query(tokenType: TokenType, query: Filter<Object>) {
+    static query(tokenType: TokenType, query: Filter<Object>) {
         bus.emit('token/query', tokenType, query);
         return TokenModel.coll.find({
             tokenType,
@@ -43,7 +44,7 @@ class TokenModel {
         }).toArray();
     }
 
-    async update(tokenId: string, tokenType: TokenType, expire: number, data: Object) {
+    static async update(tokenId: string, tokenType: TokenType, expire: number, data: Object) {
         bus.emit('token/update', tokenId, tokenType);
         const time = new Date();
         const res = await TokenModel.coll.findOneAndUpdate(
@@ -59,11 +60,11 @@ class TokenModel {
         return res.value;
     }
 
-    async delete(tokenId: string, tokenType: TokenType) {
+    static delete(tokenId: string, tokenType: TokenType) {
         bus.emit('token/delete', tokenId, tokenType);
-        await TokenModel.coll.deleteOne({
+        return TokenModel.coll.deleteOne({
             _id: new ObjectId(tokenId),
-            tokenType: tokenType,
+            tokenType,
         });
     }
 }

@@ -1,15 +1,12 @@
+import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
 
-import bus from './model/bus';
-import db from './model/mongo';
-import { UserDoc, UserModel } from './model/user';
-import { TokenModel, TokenType } from './model/token';
 import { port } from './config';
-import typeDefs from './schema';
+import bus from './model/bus';
 import resolvers from './resolvers';
+import typeDefs from './schema';
 import { isMail } from './utils';
-// Provide resolver functions for your schema fields
+
 const app = express();
 const apollo = new ApolloServer({
     typeDefs,
@@ -24,7 +21,6 @@ async function main() {
         });
     });
     bus.emit('app/prepared');
-
 }
 
 bus.on('app/prepared', async () => {
