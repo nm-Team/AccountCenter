@@ -172,4 +172,30 @@ export class UserModel {
         });
         TokenModel.delete(tokenId, TokenType.REGISTER);
     }
+
+    static async login(user: string, pass: string, ua: string, ip: string): Promise<string> {
+        const doc = await UserModel.getByUser(user);
+        if (doc === UserModel.defaultUdoc) {
+            throw new Error('User not found');
+        }
+        if (sha1(doc.uuid + pass) !== doc._pass) {
+            throw new Error('Password is not correct');
+        }
+        const token = TokenModel.add(TokenType.SESSION, 24 * 60 * 60, {
+            uuid: doc.uuid,
+            user: doc.user,
+            ua,
+            ip,
+        });
+        coll.updateOne(
+            { uuid: doc.uuid },
+            {
+                $set: {
+                    loginat: new Date(),
+                    loginip: ip,
+                },
+            },
+        );
+        return token;
+    }
 }
