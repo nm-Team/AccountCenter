@@ -5,4 +5,5 @@ const mongo = {
 const rabbitmq = {
     url: 'amqp://localhost',
 };
-export { mongo, rabbitmq };
+const port = 4000;
+export { mongo, rabbitmq, port };

@@ -30,7 +30,7 @@ class TokenModel {
     get(tokenId: string, tokenType: TokenType): Promise<Object | null> {
         bus.emit('token/get', tokenId, tokenType);
         return TokenModel.coll.findOne({
-            id: new ObjectId(tokenId),
+            _id: new ObjectId(tokenId),
             tokenType,
         });
     }
@@ -47,7 +47,7 @@ class TokenModel {
         bus.emit('token/update', tokenId, tokenType);
         const time = new Date();
         const res = await TokenModel.coll.findOneAndUpdate(
-            { id: new ObjectId(tokenId), tokenType },
+            { _id: new ObjectId(tokenId), tokenType },
             {
                 $set: {
                     ...data,
@@ -58,10 +58,18 @@ class TokenModel {
         );
         return res.value;
     }
+
+    async delete(tokenId: string, tokenType: TokenType) {
+        bus.emit('token/delete', tokenId, tokenType);
+        await TokenModel.coll.deleteOne({
+            _id: new ObjectId(tokenId),
+            tokenType: tokenType,
+        });
+    }
 }
 bus.once('mongo/connected', () => {
     TokenModel.coll = db.collection('token');
-    TokenModel.coll.createIndex({ "expireAt": 1 }, { expireAfterSeconds: 0 });
+    TokenModel.coll.createIndex({ expireAt: 1 }, { expireAfterSeconds: 0 });
     bus.emit('token/inited');
 });
 

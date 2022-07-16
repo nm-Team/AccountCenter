@@ -1,8 +1,14 @@
-const randomStr = (digit = 32, dict = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890') => {
-    let str = '';
+const isMail = (mail: string) => {
+    const reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    return reg.test(mail);
+}
 
-    for (let i = 1; i <= digit; i++) str += dict[Math.floor(Math.random() * dict.length)];
-    return str;
-};
+const checkUser = (user: string) => {
+    if (user.length < 4 || user.length > 16) {
+        return false;
+    }
+    const reg = /^\w+$/;
+    return reg.test(user);
+}
 
-export { randomStr };
+export { isMail, checkUser };
