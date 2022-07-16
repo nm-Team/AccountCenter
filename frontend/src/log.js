@@ -12,12 +12,14 @@ import LabelInput from './components/LabelInput.vue';
 import LogIn from './views/log/LogIn.vue';
 import Register from './views/log/Register.vue';
 import ForgetPassword from './views/log/ForgetPassword.vue';
+import NotFound from './views/log/NotFound.vue';
 
 // import routes
 const routes = [
     { path: '/', component: LogIn },
     { path: '/register', component: Register },
     { path: '/forget-password', component: ForgetPassword },
+    { path: '/:pathMatch(.*)*', component: NotFound },
 ];
 
 const router = createRouter({
