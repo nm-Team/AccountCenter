@@ -32,6 +32,10 @@ export default {
             },
             submit: "注册"
         },
+        not_found_page: {
+            title: "找不到页面",
+            tip: "此页面不存在。请确认您的 URL 是否正确，或继续以下操作。"
+        },
         footer: {
             copyright: "版权所有 © {year} nmTeam。保留所有权利。",
         }
