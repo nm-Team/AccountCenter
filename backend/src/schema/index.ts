@@ -15,12 +15,13 @@ type User {
     loginat: Int,
     loginip: String,
 }
+
 type UserResolvers {
     "Register a account"
     register(user: String, pass: String, mail: String): String,
     "Activate a account"
     active(mailId: String, token: String): Boolean,
-    login(user: String, mail: String, token: String): String,
+    login(user: String, pass: String): String,
 
 }
 

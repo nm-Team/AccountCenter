@@ -11,6 +11,10 @@ const app = express();
 const apollo = new ApolloServer({
     typeDefs,
     resolvers,
+    context: (expressContext) => ({
+        ip: expressContext.req.ip,
+        ua: expressContext.req.headers['user-agent'],
+    }),
 });
 
 async function main() {
