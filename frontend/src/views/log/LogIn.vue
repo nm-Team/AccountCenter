@@ -6,7 +6,7 @@
         </label-input>
         <label-input model="password" type="password" label="log.password" enablescale=false @getdata="setData">
         </label-input>
-        <label :for="keepLog" class="checkbox">
+        <label class="checkbox">
             <input v-model="keepLog" type="checkbox">
             <span>{{ $t("log.login_page.keep_me_logged_in") }}</span>
         </label>
