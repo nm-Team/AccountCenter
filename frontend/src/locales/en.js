@@ -32,6 +32,10 @@ export default {
             },
             submit: "Register"
         },
+        not_found_page: {
+            title: "Page Not Found",
+            tip: "The page you are looking for does not exist. Please check your URL or continue the following operations."
+        },
         footer: {
             copyright: "Copyright © {year} nmTeam. All rights reserved.",
         }
