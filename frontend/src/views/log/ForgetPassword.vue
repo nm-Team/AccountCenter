@@ -1,6 +1,18 @@
 <template>
-    <h1>{{ $t("log.forget_password_page.title") }}</h1>
-    <p class="h1then">{{ $t('log.forget_password_page.tip') }}</p>
+    <div v-if="step == 0">
+        <h1>{{ $t("log.forget_password_page.step0.title") }}</h1>
+        <p class="h1then">{{ $t('log.forget_password_page.step0.tip') }}</p>
+        <div class="form">
+            <label-input v-for="item in form" :model="item.id" :type="item.type" :label="item.label"
+                :autofocus="item.autofocus" @getdata="setData">
+            </label-input>
+            <button @click="step0submit">{{ $t("log.forget_password_page.nextstep") }}</button>
+        </div>
+    </div>
+    <div v-if="step == 1">
+        <h1>{{ $t("log.forget_password_page.step1.title") }}</h1>
+        <p class="h1then">{{ $t('log.forget_password_page.step1.tip') }}</p>
+    </div>
     <div class="related">
         <router-link v-for="item in related" :to="item.path">{{ $t('log.link.' + item.name) }}</router-link>
     </div>
@@ -11,6 +23,10 @@ export default {
     name: "LogIn",
     data() {
         return {
+            form: [
+                { id: 'email', type: 'text', label: 'log.email', autofocus: true, },
+            ],
+            step: 0,
             related: [
                 {
                     name: "login",
@@ -28,6 +44,9 @@ export default {
         };
     },
     methods: {
+        step0submit() {
+            this.step = 1;
+        },
     },
     components: { LabelInput }
 }

@@ -32,6 +32,16 @@ export default {
             },
             submit: "注册"
         },
+        forget_password_page: {
+            step0: {
+                title: "重置 nmTeam 账号密码",
+                tip: "若您忘记了您的 nmTeam 账号密码，则可以在此通过验证电子邮箱重新设置密码。若无法使用电子邮箱，请联系 nmTeam 支持获取帮助。"
+            },
+            step1: {
+                title: "确认电子邮箱",
+                tip: "请确认您注册 nmTeam 账号时使用的电子邮箱，那里有关于找回 nmTeam 账号的进一步措施。"
+            }, nextstep: "下一步",
+        },
         not_found_page: {
             title: "找不到页面",
             tip: "此页面不存在。请确认您的 URL 是否正确，或继续以下操作。"
