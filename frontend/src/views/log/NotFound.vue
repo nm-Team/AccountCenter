@@ -30,7 +30,8 @@ export default {
     },
     methods: {
         login() {
-            alert(`${this.username} ${this.password}`); // eslint-disable-line
+            // eslint-disable-next-line no-alert
+            alert(`${this.username} ${this.password}`);
         },
     },
     // components: { LabelInput },

@@ -6,8 +6,10 @@
         </label-input>
         <label class="checkbox">
             <input v-model="agreeTerms" type="checkbox">
-            <span
-                v-html="$t('log.register_page.accept_terms.text', { terms: `<a href='https://nmteam.xyz/legal/network-service-protocol' target='_blank'>${$t('log.register_page.accept_terms.terms')}</a>`, privacy: `<a href='https://nmteam.xyz/legal/privacy_policy' target='_blank'>${$t('log.register_page.accept_terms.privacy')}</a>` })"></span>
+            <span v-html="$t('log.register_page.accept_terms.text', {
+                  terms: `<a href='https://nmteam.xyz/legal/network-service-protocol' target='_blank'>${$t('log.register_page.accept_terms.terms')}</a>`,
+                  privacy: `<a href='https://nmteam.xyz/legal/privacy_policy' target='_blank'>${$t('log.register_page.accept_terms.privacy')}</a>` })">
+            </span>
         </label>
         <button @click="register">{{ $t("log.register_page.submit") }}</button>
     </div>
@@ -19,7 +21,8 @@
 import LabelInput from '../../components/LabelInput.vue';
 
 export default {
-    name: 'Register', // eslint-disable-line
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: 'Register',
     data() {
         return {
             form: [
@@ -47,7 +50,8 @@ export default {
     },
     methods: {
         login() {
-            alert(`${this.username} ${this.password}`); // eslint-disable-line
+            // eslint-disable-next-line no-alert
+            alert(`${this.username} ${this.password}`);
         },
         setData(name, data) {
             this[name] = data;
