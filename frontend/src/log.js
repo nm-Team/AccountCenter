@@ -1,7 +1,7 @@
 import '../public/css/common.css';
 import '../public/css/log.css';
 
-import ApolloComposable from '@vue/apollo-composable';
+import { ApolloComposable } from '@vue/apollo-composable';
 import ApolloClient from 'apollo-boost';
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
