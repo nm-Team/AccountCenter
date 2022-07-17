@@ -3,4 +3,10 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [vue()],
+    base: './',
+    server: {
+        watch: {
+            usePolling: true,
+        },
+    },
 });

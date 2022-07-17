@@ -5,6 +5,7 @@
     --input-border: #ccc;
     --button-background: #ebc000;
     --button-text: #000;
+    --warn: #f44;
 }
 
 [data-theme=dark] {}
@@ -85,7 +86,7 @@ h1 {
 
 .form label.checkbox {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     font-size: 16px;
     margin: 6px 0;
 }
@@ -94,6 +95,16 @@ h1 {
     width: 14px;
     height: 14px;
     margin-right: 6px;
+    margin-top: 7px;
+}
+
+.serviceMsg {
+    font-size: 16px;
+    padding: 0 0 8px 0;
+}
+
+.serviceMsg.error{
+    color: var(--warn);
 }
 
 .form button {
@@ -129,4 +140,10 @@ h1 {
     text-align: center;
     font-size: 14px;
     opacity: .85;
+}
+
+.seleteLang{
+    font-size: 14px;
+    margin-top: 7px;
+    padding: 3px 0;
 }

@@ -10,11 +10,20 @@
         <router-view></router-view>
         <div class="footer">
             <p><span>{{ $t('log.footer.copyright', { year: new Date().getFullYear() }) }}</span></p>
+            <select v-model="language" class="seleteLang" @change="changeLang" :title="$t('selete_language')">
+                <option v-for="lang in languages" :key="lang"
+                    :value="(lang.code.indexOf(language) > -1 ? language = lang.code[0] : true) && lang.code[0]">{{ lang.name
+                    }}
+                </option>
+            </select>
         </div>
     </div>
 </template>
 
 <script>
+import { languages } from './i18n';
+
+const langs = languages;
 
 export default {
     name: 'Log', // eslint-disable-line
@@ -27,6 +36,8 @@ export default {
                 dark: 'https://websiteres.nmteam.xyz/background/street/dark.png',
             },
             eEggCount: 0,
+            languages: langs,
+            language: this.$i18n.locale,
         };
     },
     methods: {
@@ -39,6 +50,12 @@ export default {
                 this.icon = '/';
                 this.exploded = true;
             }
+        },
+        changeLang() {
+            // eslint-disable-next-line prefer-destructuring
+            this.$i18n.locale = this.language;
+            // eslint-disable-next-line prefer-destructuring
+            localStorage.locale = this.language;
         },
     },
 };

@@ -13,7 +13,7 @@ export default {
         return {
             focus: false,
             inputVal: '',
-        }
+        };
     },
     props: {
         label: {
@@ -41,6 +41,6 @@ export default {
         push() {
             this.$emit('getdata', this.model, this.inputVal);
         },
-    }
-}
+    },
+};
 </script>

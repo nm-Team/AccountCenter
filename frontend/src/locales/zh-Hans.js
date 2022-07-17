@@ -1,12 +1,11 @@
 export default {
     app_name: 'nmTeam 账号中心',
-    ok: '好',
-    cancel: '取消',
     log: {
         link: {
             register: '注册',
             login: '登录',
             forget_password: '忘记密码',
+            support: 'nmTeam 支持',
         },
         username: '用户名',
         password: '密码',
@@ -20,6 +19,7 @@ export default {
             continue: '并授权 {app} 账号权限',
             keep_me_logged_in: '使我保持登录',
             submit: '登录',
+            processing: '正在登录...',
         },
         please_fill_blank: '请填写{name}',
         register_page: {
@@ -31,6 +31,9 @@ export default {
                 privacy: '隐私政策',
             },
             submit: '注册',
+            processing: '正在注册...',
+            success_title: '注册成功',
+            success_tip: '您应当查看您的电子邮箱，那里有关于注册的下一步信息。',
         },
         forget_password_page: {
             step0: {
@@ -50,5 +53,27 @@ export default {
         footer: {
             copyright: '版权所有 © {year} nmTeam。保留所有权利。',
         },
+        error: {
+            username_empty: '请输入用户名。',
+            username_invalid: '用户名格式不正确。',
+            password_empty: '请输入密码。',
+            password_invalid: '密码格式不正确。',
+            confirm_password_empty: '请输入确认密码。',
+            password_not_match: '确认密码错误。',
+            email_empty: '请输入电子邮箱。',
+            email_invalid: '电子邮箱格式不正确。',
+            captcha_empty: '请输入验证码。',
+            captcha_invalid: '验证码格式不正确。',
+            register_failed: '注册失败。',
+            login_failed: '登录失败。',
+            forget_password_failed: '重置密码失败。',
+            email_not_found: '电子邮箱未找到。',
+            email_not_verified: '电子邮箱未验证。',
+            agree_terms: '请阅读并同意 nmTeam 服务协议和隐私政策。',
+            unknown_error: '未知错误。',
+        },
     },
+    ok: '好',
+    cancel: '取消',
+    selete_language: '选择语言',
 };
