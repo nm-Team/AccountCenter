@@ -1,9 +1,11 @@
 import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
+scalar BigInt
+
 "User Document type"
 type User {
-    id: Int!,
+    uuid: String!,
     user: String!,
     mail: String,
     nick: String,
@@ -11,9 +13,16 @@ type User {
     mood: String,
     role: String,
 
-    regat: Int,
-    loginat: Int,
+    regat: BigInt,
+    loginat: BigInt,
     loginip: String,
+}
+
+type Session {
+    createAt: BigInt,
+    updateAt: BigInt,
+    ua: String,
+    ip: String,
 }
 
 type UserResolvers {
@@ -21,12 +30,16 @@ type UserResolvers {
     register(user: String, pass: String, mail: String): String,
     "Activate a account"
     active(mailId: String, token: String): Boolean,
+    "Login"
     login(user: String, pass: String): String,
-
+    "Get user information by uuid, user, mail or token"
+    getUser: User,
+    "Get online sessions"
+    getSession: [Session],
 }
 
 type Query {
-    User: UserResolvers,
+    User(uuid: String, user: String, mail: String, token: String): UserResolvers,
 }
 `;
 

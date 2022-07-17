@@ -1,4 +1,5 @@
 import { ApolloServer } from 'apollo-server-express';
+import cookieParser from 'cookie-parser';
 import express from 'express';
 
 import { port } from './config';
@@ -8,12 +9,15 @@ import typeDefs from './schema';
 import { isMail } from './utils';
 
 const app = express();
+app.use(cookieParser());
+
 const apollo = new ApolloServer({
     typeDefs,
     resolvers,
     context: (expressContext) => ({
         ip: expressContext.req.ip,
         ua: expressContext.req.headers['user-agent'],
+        cookies: expressContext.req.cookies,
     }),
 });
 

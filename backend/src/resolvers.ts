@@ -1,9 +1,11 @@
-import { UserModel } from './model/user';
+import { SessionDoc, SessionModel } from './model/session';
+import { TokenModel, TokenType } from './model/token';
+import { UserDoc, UserModel } from './model/user';
 
 const resolvers = {
     Query: {
-        User(): number {
-            return 0;
+        User(_: any, args: any): any {
+            return args;
         },
     },
     UserResolvers: {
@@ -28,7 +30,42 @@ const resolvers = {
             const ret = await UserModel.login(args.user, args.pass, context.ua, context.ip);
             return ret;
         },
+        async getUser(parent: any): Promise<UserDoc> {
+            if (parent.uuid === undefined
+                && parent.user === undefined
+                && parent.mail === undefined
+                && parent.token === undefined) {
+                return UserModel.defaultUdoc;
+            }
+            if (parent.uuid !== undefined) {
+                return UserModel.getByUUID(parent.uuid);
+            }
+            if (parent.user !== undefined) {
+                return UserModel.getByUser(parent.user);
+            }
+            if (parent.mail !== undefined) {
+                return UserModel.getByUUID(parent.mail);
+            }
+            if (parent.token !== undefined) {
+                const token: any = TokenModel.get(parent.token, TokenType.SESSION);
+                if (token === null) {
+                    return UserModel.defaultUdoc;
+                }
+                return UserModel.getByUUID(token.uuid);
+            }
+            return UserModel.defaultUdoc;
+        },
+        async getSession(parent: any): Promise<SessionDoc[]> {
+            if (parent.token === undefined) {
+                throw new Error('Invalid parameters');
+            }
+            // const token: any = TokenModel.get(parent.token, TokenType.SESSION);
+            // if (token === null) {
+            //     throw new Error('Token is expired');
+            // }
+            const ret: any = await SessionModel.getSesions(parent.token);
+            return ret;
+        },
     },
 };
-
 export default resolvers;
