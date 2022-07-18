@@ -161,7 +161,7 @@ export class UserModel {
             mail: token.mail,
             nick: token.user,
             avatar: 'mail:guest@nmnm.fun',
-            moon: 'Welcome to nmTeam',
+            mood: 'Welcome to nmTeam',
             role: 'user',
             regat: time,
             loginat: time,
