@@ -2,13 +2,19 @@
     --text: #000;
     --a: #e5bb00;
     --related-border: #bcbcbc;
-    --input-border: #ccc;
     --button-background: #ebc000;
     --button-text: #000;
     --warn: #f44;
 }
 
-[data-theme=dark] {}
+[data-theme=dark] {
+    --text: #fff;
+    --a: #e5bb00;
+    --related-border: #525252;
+    --button-background: #ebc000;
+    --button-text: #000;
+    --warn: #f44;
+}
 
 * {
     margin: 0;
@@ -21,15 +27,32 @@ a {
     color: var(--a);
 }
 
-@media (min-width: 700px) {
+.background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--frame-background);
+    background-size: cover;
+    z-index: -1;
+}
+
+.frameContainer {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 30px 20px 30px;
+    background-color: var(--frame-background);
+    line-height: 1.7;
+}
+
+@media (max-width: 700px) {
     .background {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-size: cover;
+        background-image: none !important;
     }
+}
+
+@media (min-width: 700px) {
 
     .frameContainer {
         position: absolute;
@@ -43,14 +66,6 @@ a {
         border-radius: 13px;
         box-shadow: #33333333 0 0 10px;
     }
-}
-
-.frameContainer {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 0 30px 20px 30px;
-    background-color: var(--frame-background);
-    line-height: 1.7;
 }
 
 .frameContainer .logo {
@@ -101,9 +116,10 @@ h1 {
 .serviceMsg {
     font-size: 16px;
     padding: 0 0 8px 0;
+    text-align: center;
 }
 
-.serviceMsg.error{
+.serviceMsg.error {
     color: var(--warn);
 }
 
@@ -116,6 +132,16 @@ h1 {
     background-color: var(--button-background);
     color: var(--button-text);
     cursor: pointer;
+}
+
+.form button.processing {
+    cursor: default;
+    pointer-events: none;
+    color: #00000000;
+    background-image: url(../public/loading.gif);
+    background-position: center;
+    background-size: 23px;
+    background-repeat: no-repeat;
 }
 
 .related {
@@ -142,8 +168,9 @@ h1 {
     opacity: .85;
 }
 
-.seleteLang{
+.seleteLang {
     font-size: 14px;
     margin-top: 7px;
     padding: 3px 0;
+    background: var(--frame-background);
 }

@@ -3,7 +3,9 @@ import { createI18n } from 'vue-i18n';
 
 // import zh_Hant from './locales/zh-Hant'
 import en from './locales/en.js';
-import zh_CN from './locales/zh-Hans.js';
+import zh_Hans from './locales/zh-Hans.js';
+import zh_Hant from './locales/zh-Hant.js';
+import ja from './locales/ja.js';
 
 const languages = [
     {
@@ -13,8 +15,18 @@ const languages = [
     },
     {
         code: ['zh', 'zh-Hans', 'zh-CN'],
-        object: zh_CN,
+        object: zh_Hans,
         name: '简体中文',
+    },
+    {
+        code: ['zh-Hant', 'zh-HK', 'zh-TW', 'zh-MO'],
+        object: zh_Hant,
+        name: '繁體中文',
+    },
+    {
+        code: ['ja'],
+        object: ja,
+        name: '日本語',
     },
 ];
 

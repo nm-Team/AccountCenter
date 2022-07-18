@@ -1,10 +1,23 @@
-*{
+[data-theme=light] {
     --outline: 3px solid #fabb00cc;
+    --page-background: #eee;
     --frame-background: #fff;
     --label-input-label-inactive: #767676cc;
     --label-input-label-active: #fabb00cc;
+    --input-border: #ccc;
     --input-border-focus: #fabb00cc;
 }
+
+[data-theme=dark] {
+    --outline: 3px solid #fabb00cc;
+    --page-background: #000;
+    --frame-background: #202020;
+    --label-input-label-inactive: #c8c8c8;
+    --label-input-label-active: #fabb00cc;
+    --input-border: #5d5d5d;
+    --input-border-focus: #fabb00cc;
+}
+
 body {
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
@@ -40,13 +53,13 @@ a {
     outline-offset: 0px;
 }
 
-.labelInput{
+.labelInput {
     width: 100%;
     position: relative;
     display: flex;
 }
 
-.labelInput label{
+.labelInput label {
     position: absolute;
     top: 17px;
     left: 11px;
@@ -65,7 +78,8 @@ a {
     -moz-user-select: none;
 }
 
-.labelInput label.isFocus.enableScale.isEmpty, .labelInput label.enableScale:not(.isEmpty){
+.labelInput label.isFocus.enableScale.isEmpty,
+.labelInput label.enableScale:not(.isEmpty) {
     top: -2px;
     left: 7px;
     font-size: 13.6px;
@@ -76,7 +90,7 @@ a {
     flex-grow: 1;
 }
 
-.labelInput label.isFocus.enableScale{
+.labelInput label.isFocus.enableScale {
     color: var(--label-input-label-active);
 }
 

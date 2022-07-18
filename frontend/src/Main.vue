@@ -1,22 +1,27 @@
 <template>
-    <i class="background"
-        :style="{ backgroundImage: 'url(' + backgroundImage[theme] + ')', backgroundColor: theme == 'light' ? '\#eee' : '\#000' }"></i>
-    <div class="frameContainer" :data-theme="theme">
-        <div class="header">
-            <div class="logo" alt="nmTeam Logo" @click="easterEgg" :style="{ '--icon': 'url(' + icon + ')' }">{{
-                    exploded ? "💥💦😢💦🧃" : ""
-            }}</div>
-        </div>
-        <router-view></router-view>
-        <div class="footer">
-            <p><span>{{ $t('log.footer.copyright', { year: new Date().getFullYear() }) }}</span></p>
-            <select v-model="language" class="seleteLang" @change="changeLang" :title="$t('selete_language')">
-                <option v-for="lang in languages" :key="lang"
-                    :value="(lang.code.indexOf(language) > -1 ? language = lang.code[0] : true) && lang.code[0]">{{ lang.name
-                    }}
-                </option>
-            </select>
-        </div>
+    <i class="background" :data-theme="theme" :style="{ backgroundImage: 'url(' + backgroundImage[theme] + ')' }"></i>
+    <div class="frameContainer" :data-theme="theme" :data-manage-page="logStatus">
+        <transition>
+            <div v-if="logStatus == false">
+                <div class="header">
+                    <div class="logo" alt="nmTeam Logo" @click="easterEgg" :style="{ '--icon': 'url(' + icon + ')' }">{{
+                            exploded ? "💥💦😢💦🧃" : ""
+                    }}</div>
+                </div>
+                <router-view></router-view>
+                <div class="footer">
+                    <p><span>{{ $t('log.footer.copyright', { year: new Date().getFullYear() }) }}</span></p>
+                    <select v-model="language" class="seleteLang" @change="changeLang" :title="$t('selete_language')">
+                        <option v-for="lang in languages" :key="lang"
+                            :value="(lang.code.indexOf(language) > -1 ? language = lang.code[0] : true) && lang.code[0]">
+                            {{
+                                    lang.name
+                            }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -38,6 +43,7 @@ export default {
             eEggCount: 0,
             languages: langs,
             language: this.$i18n.locale,
+            logStatus: false,
         };
     },
     methods: {
