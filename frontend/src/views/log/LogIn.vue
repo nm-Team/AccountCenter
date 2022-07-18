@@ -1,7 +1,7 @@
 <template>
     <h1>{{ $t("log.login_page.title") }}</h1>
     <p class="h1then" v-if="oauth.name">{{ $t('log.login_page.continue', { app: oauth.name }) }}</p>
-    <div class="form">
+    <form class="form" @submit.prevent="login">
         <label-input model="username" type="text" label="log.username" enablescale=false autofocus="true"
             @getdata="setData">
         </label-input>
@@ -12,8 +12,8 @@
             <span>{{ $t("log.login_page.keep_me_logged_in") }}</span>
         </label>
         <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
-        <button v-if="!processing" @click="login">{{ $t("log.login_page.submit") }}</button>
-    </div>
+        <button :class="{ processing: processing }">{{ $t("log.login_page.submit") }}</button>
+    </form>
     <div class="related">
         <router-link v-for="item in related" :to="item.path" :key="item.name">{{ $t('log.link.' + item.name) }}
         </router-link>
@@ -24,7 +24,7 @@ import { gql } from 'apollo-boost';
 
 import LabelInput from '../../components/LabelInput.vue';
 // eslint-disable-next-line import/no-cycle
-import { apolloClient } from '../../log';
+import { apolloClient } from '../../main';
 
 export default {
     name: 'LogIn',
@@ -50,8 +50,6 @@ export default {
     },
     methods: {
         login() {
-            // eslint-disable-next-line no-alert
-            // alert(`${this.username} ${this.password}`);
             this.isError = true;
             if (!this.username || this.username === '') {
                 this.serviceMsg = this.$t('log.error.username_empty');
@@ -61,7 +59,7 @@ export default {
                 this.serviceMsg = this.$t('log.error.password_empty');
                 return;
             }
-            this.serviceMsg = this.$t('log.login_page.processing');
+            this.serviceMsg = '';
             this.isError = false;
             this.processing = true;
 
@@ -79,7 +77,7 @@ export default {
                 console.log(data);
             }, (error) => {
                 console.log(error);
-                this.serviceMsg = this.$t(`log.error.${error.graphQLErrors ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                this.serviceMsg = this.$t(`log.error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
                 this.isError = true;
             }).then(() => {
                 this.processing = false;

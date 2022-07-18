@@ -2,7 +2,7 @@
     <div v-if="!regSuccess">
         <h1>{{ $t("log.register_page.title") }}</h1>
         <p class="h1then">{{ $t('log.register_page.tip') }}</p>
-        <div class="form">
+        <form class="form" @submit.prevent="register">
             <label-input v-for="item in form" :key="item.id" :model="item.id" :type="item.type" :label="item.label"
                 :autofocus="item.autofocus" @getdata="setData">
             </label-input>
@@ -15,8 +15,8 @@
                 </span>
             </label>
             <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
-            <button v-if="!processing" @click="register">{{ $t("log.register_page.submit") }}</button>
-        </div>
+            <button :class="{ processing: processing }">{{ $t("log.register_page.submit") }}</button>
+        </form>
     </div>
     <div v-else>
         <h1>{{ $t("log.register_page.success_title") }}</h1>
@@ -32,7 +32,7 @@ import { gql } from 'apollo-boost';
 
 import LabelInput from '../../components/LabelInput.vue';
 // eslint-disable-next-line import/no-cycle
-import { apolloClient } from '../../log';
+import { apolloClient } from '../../main';
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
@@ -57,9 +57,6 @@ export default {
                     path: '/forget-password',
                 },
             ],
-            oauth: {
-                name: '3rd Party',
-            },
             serviceMsg: '',
             regSuccess: false,
             processing: false,
@@ -67,8 +64,6 @@ export default {
     },
     methods: {
         register() {
-            // eslint-disable-next-line no-alert
-            // alert(`${this.username} ${this.password}`);
             this.isError = true;
             if (!this.username || this.username === '') {
                 this.serviceMsg = this.$t('log.error.username_empty');
@@ -94,7 +89,7 @@ export default {
                 this.serviceMsg = this.$t('log.error.agree_terms');
                 return;
             }
-            this.serviceMsg = this.$t('log.register_page.processing');
+            this.serviceMsg = '';
             this.isError = false;
             this.processing = true;
 
@@ -114,7 +109,7 @@ export default {
                 this.regSuccess = true;
             }, (error) => {
                 console.log(error);
-                this.serviceMsg = this.$t(`log.error.${error.graphQLErrors ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                this.serviceMsg = this.$t(`log.error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
                 this.isError = true;
             }).then(() => {
                 this.processing = false;
