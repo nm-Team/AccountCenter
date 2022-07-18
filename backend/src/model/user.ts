@@ -50,7 +50,7 @@ export class UserModel {
 
     static async getByUUID(uuid: string): Promise<UserDoc> {
         const doc = await coll.findOne({
-            _id: uuid,
+            uuid,
         });
         if (doc === null) {
             return UserModel.defaultUdoc;

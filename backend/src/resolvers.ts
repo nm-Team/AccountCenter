@@ -38,20 +38,25 @@ const resolvers = {
                 return UserModel.defaultUdoc;
             }
             if (parent.uuid !== undefined) {
-                return UserModel.getByUUID(parent.uuid);
+                const ret = await UserModel.getByUUID(parent.uuid);
+                return ret;
             }
             if (parent.user !== undefined) {
-                return UserModel.getByUser(parent.user);
+                const ret = await UserModel.getByUser(parent.user);
+                return ret;
             }
             if (parent.mail !== undefined) {
-                return UserModel.getByUUID(parent.mail);
+                const ret = await UserModel.getByMail(parent.mail);
+                return ret;
             }
             if (parent.token !== undefined) {
-                const token: any = TokenModel.get(parent.token, TokenType.SESSION);
+                const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
                 if (token === null) {
                     return UserModel.defaultUdoc;
                 }
-                return UserModel.getByUUID(token.uuid);
+                console.log(token);
+                const ret = await UserModel.getByUUID(token.uuid);
+                return ret;
             }
             return UserModel.defaultUdoc;
         },
