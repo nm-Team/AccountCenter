@@ -21,15 +21,15 @@ const apollo = new ApolloServer({
     }),
 });
 
-async function main() {
-    console.log('[INFO] Server starting...');
+(async () => {
+    console.log('[INFO] Server starting.');
     await new Promise((resolve) => {
         bus.on('mongo/connected', () => {
             resolve(undefined);
         });
     });
     bus.emit('app/prepared');
-}
+})();
 
 bus.on('app/prepared', async () => {
     await apollo.start();
