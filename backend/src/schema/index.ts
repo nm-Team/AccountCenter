@@ -27,9 +27,9 @@ type Session {
 
 type UserResolvers {
     "Register a account"
-    register(user: String, pass: String, mail: String): String,
+    register(user: String, pass: String, mail: String): Boolean,
     "Activate a account"
-    active(mailId: String, token: String): Boolean,
+    active(token: String): Boolean,
     "Login"
     login(user: String, pass: String): String,
     "Get user information by uuid, user, mail or token"

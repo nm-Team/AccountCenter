@@ -9,7 +9,7 @@ const resolvers = {
         },
     },
     UserResolvers: {
-        async register(_: any, args: any): Promise<string> {
+        async register(_: any, args: any): Promise<boolean> {
             if (args.user === undefined || args.mail === undefined || args.pass === undefined) {
                 throw new Error('Invalid parameters');
             }
@@ -17,10 +17,10 @@ const resolvers = {
             return ret;
         },
         async active(_: any, args: any): Promise<boolean> {
-            if (args.mailId === undefined || args.token === undefined) {
+            if (args.token === undefined) {
                 throw new Error('Invalid parameters');
             }
-            await UserModel.active(args.mailId, args.token);
+            await UserModel.active(args.token);
             return true;
         },
         async login(_: any, args: any, context: any): Promise<string> {

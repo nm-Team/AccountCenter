@@ -139,22 +139,18 @@ export class UserModel {
         }
 
         const uuid = uuidv4();
-        const mailId = uuidv4();
-        bus.emit('mail/send', mail, mailId);
         const tokenId = TokenModel.add(TokenType.REGISTER, 1800, {
-            uuid, user, pass, mail, mailId,
+            uuid, user, pass, mail,
         });
-        return tokenId;
+        bus.emit('mail/send', mail, tokenId);
+        return true;
     }
 
-    static async active(mailId: string, tokenId: string) {
+    static async active(tokenId: string) {
         const token: any = await TokenModel.get(tokenId, TokenType.REGISTER);
 
         if (token === null) {
             throw new Error('Token expired');
-        }
-        if (token.mailId !== mailId) {
-            throw new Error('Verification failed');
         }
 
         const time = new Date();
