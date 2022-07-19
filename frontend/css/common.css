@@ -1,4 +1,7 @@
 [data-theme=light] {
+    --text: #000;
+    --a: #e5bb00;
+    --warn: #f44;
     --outline: 3px solid #fabb00cc;
     --page-background: #eee;
     --frame-background: #fff;
@@ -6,9 +9,14 @@
     --label-input-label-active: #fabb00cc;
     --input-border: #ccc;
     --input-border-focus: #fabb00cc;
+    --avatar-skection: #cecece89;
+    --icon: url(https://websiteres.nmteam.xyz/producticon/nmTeam/logo@64.png);
 }
 
 [data-theme=dark] {
+    --text: #fff;
+    --a: #e5bb00;
+    --warn: #f44;
     --outline: 3px solid #fabb00cc;
     --page-background: #000;
     --frame-background: #202020;
@@ -33,6 +41,8 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     scrollbar-width: thin;
     font-family: PingFang SC, Microsoft Yahei, HanHei SC, Arial;
+    color: var(--text);
+    text-decoration: none;
 }
 
 * {
@@ -40,7 +50,7 @@ body {
 }
 
 a {
-    color: inherit;
+    color: var(--a);
     text-decoration: none;
 }
 
