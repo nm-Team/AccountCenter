@@ -7,7 +7,8 @@
         </label-input>
         <label-input model="password" type="password" label="log.password" enablescale=false @getdata="setData">
         </label-input>
-        <label class="checkbox">
+        <!-- I'm not sure if it's useful -->
+        <label class="checkbox" style="display: none;">
             <input v-model="keepLog" type="checkbox">
             <span>{{ $t("log.login_page.keep_me_logged_in") }}</span>
         </label>
@@ -25,6 +26,7 @@ import { gql } from 'apollo-boost';
 import LabelInput from '../../components/LabelInput.vue';
 // eslint-disable-next-line import/no-cycle
 import { apolloClient } from '../../main';
+import { addSession } from '../../sessions';
 
 export default {
     name: 'LogIn',
@@ -75,11 +77,53 @@ export default {
                 },
             }).then(({ data }) => {
                 console.log(data);
+                // get user detail
+                // eslint-disable-next-line prefer-const
+                let logToken = data.User.login;
+                apolloClient.query({
+                    query: gql`query Query($token: String) {
+  User(token: $token) {
+    getUser {
+      uuid
+      user
+      mail
+      nick
+      avatar
+      mood
+      role
+      regat
+    }
+  }
+}`,
+                    variables: {
+                        token: data.User.login,
+                    },
+                    // eslint-disable-next-line @typescript-eslint/no-shadow
+                }).then(({ data }) => {
+                    // eslint-disable-next-line prefer-const
+                    let userInfoData = data.User.getUser;
+                    console.log(data);
+                    // eslint-disable-next-line prefer-const
+                    let newSession = userInfoData;
+                    newSession.token = logToken;
+                    addSession(newSession);
+                    this.processing = false;
+                    // oauth in the near future
+                    if (true) {
+                        // go to manage page
+                        this.$router.push('/manage');
+                        this.$emit('getdata', 'inManagePage', true);
+                    }
+                }, (error) => {
+                    console.log(error);
+                    this.serviceMsg = this.$t('log.error.userinfo_get_failed') + this.$t(`log.error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                    this.isError = true;
+                    this.processing = false;
+                });
             }, (error) => {
                 console.log(error);
                 this.serviceMsg = this.$t(`log.error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
                 this.isError = true;
-            }).then(() => {
                 this.processing = false;
             });
         },

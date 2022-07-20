@@ -1,41 +1,42 @@
 <template>
-    <i class="background" :data-theme="theme" :style="{ backgroundImage: 'url(' + backgroundImage[theme] + ')' }"></i>
-    <div class="frameContainer" :data-theme="theme" :data-manage-page="logStatus">
-        <transition>
-            <div v-if="logStatus == false">
+    <div :data-theme="theme" :data-manage-page="inManagePage">
+        <div v-if="inManagePage == false">
+            <i class="background" :style="{ backgroundImage: 'url(' + backgroundImage[theme] + ')' }"></i>
+            <div class="frameContainer">
                 <div class="header">
-                    <div class="logo" alt="nmTeam Logo" @click="easterEgg" :style="{ '--icon': 'url(' + icon + ')' }">{{
+                    <div class="logo" alt="nmTeam Logo" @click="easterEgg">{{
                             exploded ? "💥💦😢💦🧃" : ""
                     }}</div>
                 </div>
-                <router-view></router-view>
+                <router-view @getdata="setData"></router-view>
                 <div class="footer">
                     <p><span>{{ $t('log.footer.copyright', { year: new Date().getFullYear() }) }}</span></p>
                     <select v-model="language" class="seleteLang" @change="changeLang" :title="$t('selete_language')">
                         <option v-for="lang in languages" :key="lang"
                             :value="(lang.code.indexOf(language) > -1 ? language = lang.code[0] : true) && lang.code[0]">
-                            {{
-                                    lang.name
-                            }}
+                            {{ lang.name }}
                         </option>
                     </select>
                 </div>
             </div>
-        </transition>
+        </div>
+        <div v-else>
+            <router-view @getdata="setData"></router-view>
+        </div>
     </div>
 </template>
 
 <script>
 import { languages } from './i18n';
+// import { router } from './main';
 
 const langs = languages;
 
 export default {
-    name: 'Log', // eslint-disable-line
+    name: 'Main', // eslint-disable-line
     data() {
         return {
             theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-            icon: 'https://websiteres.nmteam.xyz/producticon/nmTeam/logo@64.png',
             backgroundImage: {
                 light: 'https://websiteres.nmteam.xyz/background/street/light.png',
                 dark: 'https://websiteres.nmteam.xyz/background/street/dark.png',
@@ -43,7 +44,7 @@ export default {
             eEggCount: 0,
             languages: langs,
             language: this.$i18n.locale,
-            logStatus: false,
+            inManagePage: false,
         };
     },
     methods: {
@@ -63,6 +64,20 @@ export default {
             // eslint-disable-next-line prefer-destructuring
             localStorage.locale = this.language;
         },
+        setData(name, data) {
+            this[name] = data;
+        },
+        isInManagePage() {
+            this.inManagePage = this.$router.currentRoute.path.indexOf('/manage') > -1;
+        },
+    },
+    watch: {
+        $route(to, from) {
+            // this.isInManagePage();
+            console.log(to, from);
+            this.inManagePage = to.path.indexOf('/manage') > -1;
+        },
     },
 };
+
 </script>

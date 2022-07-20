@@ -1,31 +1,15 @@
 [data-theme=light] {
-    --text: #000;
-    --a: #e5bb00;
     --related-border: #bcbcbc;
     --button-background: #ebc000;
     --button-text: #000;
-    --warn: #f44;
 }
 
 [data-theme=dark] {
-    --text: #fff;
-    --a: #e5bb00;
     --related-border: #525252;
     --button-background: #ebc000;
     --button-text: #000;
-    --warn: #f44;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    color: var(--text);
-    text-decoration: none;
-}
-
-a {
-    color: var(--a);
-}
 
 .background {
     position: fixed;
@@ -79,6 +63,7 @@ a {
     text-align: center;
     font-size: 30px;
 }
+
 
 h1 {
     font-size: 24px;
