@@ -1,29 +1,37 @@
 <template v-if="!pageLoading">
-    <div class="header">
-        <button class="icon" :title="$t('manage.header_icon_button_title')" :alt="$t('manage.header_icon_button_alt')"
-            @click="mobileSideBarOpen = !mobileSideBarOpen"></button>
-        <p class="title">{{ $t('manage.header_title') }}</p>
-        <div class="user">
-            <p>{{ user.nick }}</p>
-            <button class="avatar" :title="$t('manage.header_account_icon_title')"
-                :style="{ backgroundImage: 'url(' + user.avatar + ')' }"
-                :alt="$t('manage.header_account_icon_title')"></button>
+    <div class="manageContainer">
+        <div class="header">
+            <button class="icon" :title="$t('manage.header_icon_button_title')"
+                :alt="$t('manage.header_icon_button_alt')" @click="mobileSideBarOpen = !mobileSideBarOpen"></button>
+            <p class="title"><span>{{ $t('manage.header_title') }}</span></p>
+            <div class="user">
+                <p>{{ user.nick }}</p>
+                <button class="avatar" :title="$t('manage.header_account_icon_title')"
+                    :style="{ backgroundImage: 'url(' + user.avatarURL + ')' }"
+                    :alt="$t('manage.header_account_icon_title')"></button>
+            </div>
+        </div>
+        <div class="main">
+            <div :class="{ sideBar: true, opened: mobileSideBarOpen }">
+                <router-link v-for="item in sideBar" :to="'/manage/' + item.path" @click="mobileSideBarOpen = false"
+                    :key="item.name">
+                    <menu-icon />
+                    <span>{{ $t('manage.pages.' + item.name) }}</span>
+                </router-link>
+            </div>
+            <div class="pcSplitLine"></div>
+            <div :class="{ sideBarCover: true, opened: mobileSideBarOpen }" @click="mobileSideBarOpen = false"></div>
+            <div class="pageContent">
+                <router-view :user="user"></router-view>
+            </div>
+            <div class="pcSplitLine"></div>
+            <div class="relatedFrame">
+                <div class="block">
+                    <h2 class="title">Example</h2>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="main">
-        <div :class="{ sideBar: true, opened: mobileSideBarOpen }">
-            <router-link v-for="item in sideBar" :to="'/manage/' + item.path" @click="mobileSideBarOpen = false"
-                :key="item.name">
-                <menu-icon />
-                <span>{{ $t('manage.pages.' + item.name) }}</span>
-            </router-link>
-        </div>
-        <div :class="{ sideBarCover: true, opened: mobileSideBarOpen }" @click="mobileSideBarOpen = false"></div>
-        <div class="pageContent">
-            <router-view :user="user"></router-view>
-        </div>
-    </div>
-
 </template>
 <script>
 import { gql } from 'apollo-boost';
@@ -31,6 +39,7 @@ import { gql } from 'apollo-boost';
 // eslint-disable-next-line import/no-cycle
 import { apolloClient } from '../../main';
 import { deleteSession, getSessions } from '../../sessions';
+import { getAvatar } from '../../user';
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
@@ -62,8 +71,9 @@ export default {
                 uuid: '',
                 user: '',
                 mail: '',
-                nick: '',
+                nick: this.$t('manage.fake_account_name'),
                 avatar: '',
+                avatarURL: '',
                 mood: '',
                 role: '',
                 regat: '',
@@ -99,11 +109,11 @@ export default {
                     },
                 }).then(({ data }) => {
                     console.log(data);
-                    // eslint-disable-next-line no-param-reassign
-                    data = data.User.getUser;
-                    // eslint-disable-next-line no-param-reassign
-                    data.token = session.token;
-                    this.avaliableSession[index] = data;
+                    // eslint-disable-next-line prefer-const
+                    let uData = data.User.getUser;
+                    uData.token = session.token;
+                    uData.avatarURL = getAvatar(uData.avatar);
+                    this.avaliableSession[index] = uData;
                 }, (error) => {
                     console.log(error);
                     deleteSession(session);

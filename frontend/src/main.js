@@ -1,5 +1,5 @@
 import '../css/common.css';
-import '../css/log.css';
+import '../css/log.scss';
 import '../css/manage.scss';
 
 import { DefaultApolloClient } from '@vue/apollo-composable';

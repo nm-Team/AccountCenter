@@ -16,7 +16,7 @@ function addSession(session) {
             sessions.splice(sessions.indexOf(element), 1);
         }
     });
-    sessions.push(session);
+    sessions.unshift(session);
     localStorage.setItem('sessions', JSON.stringify(sessions));
     return sessions;
 }
