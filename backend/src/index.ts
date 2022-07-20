@@ -45,5 +45,3 @@ bus.on('mail/send', async (mail, context) => {
     }
     console.log(`[MAIL] ${mail} ${context}`);
 });
-
-main();
