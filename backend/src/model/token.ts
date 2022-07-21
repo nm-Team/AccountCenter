@@ -1,4 +1,4 @@
-import { Collection, Filter, ObjectId } from 'mongodb';
+import { Collection, Filter } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
 
 import bus from './bus';
@@ -31,7 +31,7 @@ class TokenModel {
     static get(tokenId: string, tokenType: TokenType): Promise<Object | null> {
         bus.emit('token/get', tokenId, tokenType);
         return TokenModel.coll.findOne({
-            uuid: new ObjectId(tokenId),
+            uuid: tokenId,
             tokenType,
         });
     }
