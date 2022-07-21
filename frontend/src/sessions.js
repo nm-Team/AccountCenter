@@ -21,9 +21,20 @@ function addSession(session) {
 
 function deleteSession(session) {
     const sessions = getSessions();
-    sessions.splice(sessions.indexOf(session), 1);
+    sessions.forEach((element, index) => {
+        if (element.uuid === session.uuid) {
+            sessions.splice(index, 1);
+        }
+    });
     localStorage.setItem('sessions', JSON.stringify(sessions));
     return sessions;
 }
 
-export { getSessions, addSession, deleteSession };
+function useSession(session) {
+    deleteSession(session);
+    return addSession(session);
+}
+
+export {
+    getSessions, addSession, deleteSession, useSession,
+};

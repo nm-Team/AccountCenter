@@ -9,6 +9,7 @@ import MenuIcon from 'vue-material-design-icons/Menu.vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 import LabelInput from './components/LabelInput.vue';
+import SafetyChecker from './components/SafetyChecker.vue';
 import UserButton from './components/UserButton.vue';
 import { i18n, languages } from './i18n';
 import Main from './Main.vue';
@@ -57,6 +58,7 @@ createApp(Main).use(i18n).use(router)
     .component('LabelInput', LabelInput)
     .component('menu-icon', MenuIcon)
     .component('UserButton', UserButton)
+    .component('SafetyChecker', SafetyChecker)
     .mount('#app');
 
 // eslint-disable-next-line import/prefer-default-export

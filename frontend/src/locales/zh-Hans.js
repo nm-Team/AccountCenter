@@ -108,7 +108,7 @@ export default {
         infos: {
             title: '管理个人信息',
             changeable: {
-                title: '可修改信息',
+                title: '修改个人信息',
                 editing: '正在编辑',
                 nick: '昵称',
                 email: '电子邮箱',
@@ -127,6 +127,9 @@ export default {
         },
         account_safety_block: {
             title: '账号安全',
+            stay_safe: '确保您的账号安全无虞',
+            stay_safe_text: '采取措施，确保您的 nmTeam 账号始终安全。',
+            stay_safe_img_alt: '保护 nmTeam 账号安全',
             level: {
                 high: '您的账号非常安全。',
                 medium: '您的账号比较安全，但我们能让它更好。',

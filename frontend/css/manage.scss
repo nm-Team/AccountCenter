@@ -258,6 +258,10 @@
                 font-weight: bold;
                 margin: 0px 0px 10px 0px;
             }
+            
+            .title.bigger {
+                font-size: 130%;
+            }
 
             .table {
                 // width: calc(100% + 6px);
@@ -388,6 +392,7 @@
                 overflow: overlay;
                 flex-grow: 0;
                 flex-shrink: 0;
+                transition: width .2s;
 
                 .block {
                     padding: 0px 0;
@@ -404,12 +409,8 @@
             }
         }
 
-        .block.indexWelcomeBlock {
+        .block.specialBlockA {
             align-items: center;
-
-            .title {
-                font-size: 130%;
-            }
 
             .texts {
                 width: -webkit-fill-available;
@@ -423,7 +424,6 @@
                 padding-bottom: 30%;
 
                 background: {
-                    image: url(/account_main.png);
                     size: contain;
                     repeat: no-repeat;
                     position: top center;
