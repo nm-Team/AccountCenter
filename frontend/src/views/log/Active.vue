@@ -1,16 +1,16 @@
 <template>
     <div v-if="regSuccess == undefined">
-        <h1>{{ $t("log.account_active_page.title") }}</h1>
-        <p class="h1then">{{ $t('log.account_active_page.tip') }}</p>
+        <h1>{{ $t("log.ActiveAccount.title") }}</h1>
+        <p class="h1then">{{ $t('log.ActiveAccount.tip') }}</p>
     </div>
     <div v-else-if="regSuccess == true">
-        <h1>{{ $t("log.account_active_page.success_title") }}</h1>
-        <p class="h1then">{{ $t('log.account_active_page.success_tip') }}</p>
+        <h1>{{ $t("log.ActiveAccount.success_title") }}</h1>
+        <p class="h1then">{{ $t('log.ActiveAccount.success_tip') }}</p>
     </div>
     <div v-else>
-        <h1>{{ $t("log.account_active_page.error_title") }}</h1>
-        <p class="h1then">{{ $t('log.account_active_page.error_tip') }}</p>
-        <p class="h1then">{{ $t('log.account_active_page.error_code') }}{{ serviceMsg }}</p>
+        <h1>{{ $t("log.ActiveAccount.error_title") }}</h1>
+        <p class="h1then">{{ $t('log.ActiveAccount.error_tip') }}</p>
+        <p class="h1then">{{ $t('log.ActiveAccount.error_code') }}{{ serviceMsg }}</p>
     </div>
     <div class="related">
         <router-link v-for="item in related" :to="item.path" :key="item.name">{{ $t('log.link.' + item.name) }}
@@ -25,7 +25,7 @@ import { apolloClient } from '../../main';
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
-    name: 'account_active',
+    name: 'ActiveAccount',
     data() {
         return {
             related: [
@@ -39,10 +39,10 @@ export default {
         };
     },
     mounted() {
-        this.account_active();
+        this.activeAcount();
     },
     methods: {
-        account_active() {
+        activeAcount() {
             if (!this.$route.query.token || this.$route.query.token === '') {
                 this.serviceMsg = this.$t('log.error.email_verify_param_invalid');
                 this.regSuccess = false;

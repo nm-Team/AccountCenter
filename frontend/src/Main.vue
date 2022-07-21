@@ -28,12 +28,12 @@
 
 <script>
 import { languages } from './i18n';
-// import { router } from './main';
 
 const langs = languages;
 
 export default {
-    name: 'Main', // eslint-disable-line
+    // eslint-disable-next-line vue/multi-word-component-names, vue/no-reserved-component-names
+    name: 'Main',
     data() {
         return {
             theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
@@ -51,17 +51,15 @@ export default {
         easterEgg() {
             this.eEggCount++;
             if (this.eEggCount === 7) {
-                alert("Please do not click me anymore. I'm just a lemon and will boom and explode if you click me and click me and click me. This is not funny. You will be 😣😫😭🤮. Trust me."); // eslint-disable-line
+                alert("Please do not click me anymore. I'm just a lemon and will boom and explode if you click me and click me and click me. This is not funny. You will be 😣😫😭🤮. Trust me.");
             } else if (this.eEggCount === 14) {
-                alert("Note: I'm going to explode now. EAT your own fruit."); // eslint-disable-line
+                alert("Note: I'm going to explode now. EAT your own fruit.");
                 this.icon = '/';
                 this.exploded = true;
             }
         },
         changeLang() {
-            // eslint-disable-next-line prefer-destructuring
             this.$i18n.locale = this.language;
-            // eslint-disable-next-line prefer-destructuring
             localStorage.locale = this.language;
         },
         setData(name, data) {

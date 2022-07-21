@@ -109,8 +109,7 @@ export default {
                     },
                 }).then(({ data }) => {
                     console.log(data);
-                    // eslint-disable-next-line prefer-const
-                    let uData = data.User.getUser;
+                    const uData = data.User.getUser;
                     uData.token = session.token;
                     uData.avatarURL = getAvatar(uData.avatar);
                     this.avaliableSession[index] = uData;
@@ -130,8 +129,7 @@ export default {
                         if (this.avaliableSession.length === 0) {
                             this.$router.push('/');
                         } else {
-                            // eslint-disable-next-line prefer-destructuring
-                            this.user = this.avaliableSession[0];
+                            this.user = [this.avaliableSession];
                         }
                     }
                 });

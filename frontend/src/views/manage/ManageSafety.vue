@@ -47,7 +47,6 @@ import { gql } from 'apollo-boost';
 import { apolloClient } from '../../main';
 
 export default {
-    // eslint-disable-next-line vue/multi-word-component-names
     name: 'ManageSafety',
     data() {
         return {

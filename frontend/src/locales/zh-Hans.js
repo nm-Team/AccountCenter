@@ -46,7 +46,7 @@ export default {
             },
             nextstep: '下一步',
         },
-        account_active_page: {
+        ActiveAccount: {
             title: '正在激活 nmTeam 账号',
             tip: '感谢您注册 nmTeam 账号。我们正在做最后的工作，您将很快完成注册流程。请稍候，我们正在为您激活账号...',
             success_title: 'nmTeam 账号激活成功',
