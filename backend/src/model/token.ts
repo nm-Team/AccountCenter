@@ -13,19 +13,27 @@ enum TokenType {
 class TokenModel {
     static coll: Collection;
 
-    static add(tokenType: TokenType, expire: number, data: Object): string {
+    static async add(tokenType: TokenType, expire: number, data: Object): Promise<string> {
         const time = new Date();
-        const uuid = uuidv4();
-        TokenModel.coll.insertOne({
-            uuid,
+        const uuid_ = uuidv4();
+        console.log({
+            uuid_,
             tokenType,
             createAt: time,
             updateAt: time,
             expireAt: new Date(time.getTime() + expire * 1000),
             ...data,
         });
-        bus.emit('token/add', uuid, tokenType);
-        return uuid;
+        console.log(await TokenModel.coll.insertOne({
+            uuid_,
+            tokenType,
+            createAt: time,
+            updateAt: time,
+            expireAt: new Date(time.getTime() + expire * 1000),
+            ...data,
+        }));
+        bus.emit('token/add', uuid_, tokenType);
+        return uuid_;
     }
 
     static get(tokenId: string, tokenType: TokenType): Promise<Object | null> {
