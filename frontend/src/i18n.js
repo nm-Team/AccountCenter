@@ -8,7 +8,7 @@ import zh_Hant from './locales/zh-Hant';
 
 const languages = [
     {
-        code: ['en'],
+        code: ['en', 'en-AU', 'en-BZ', 'en-CA', 'en-CB', 'en-GB', 'en-IE', 'en-JM', 'en-NZ', 'en-PH', 'en-TT', 'en-US', 'en-ZA', 'en-ZW'],
         object: en,
         name: 'English',
     },

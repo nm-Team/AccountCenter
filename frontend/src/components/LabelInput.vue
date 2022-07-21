@@ -1,9 +1,11 @@
 <template>
-    <div class="labelInput">
+    <div class="labelInput" :autofocus="autofocus" :readonly="readonly" :disabled="disabled">
         <label :class="{ isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true }">
             {{ $t(label) }}</label>
-        <input v-model="inputVal" :type="type" :autofocus="autofocus" @focus="this.focus = true"
-            @blur="this.focus = false" @change="push()" />
+        <textarea v-if="type == 'textarea'" v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly" :disabled="disabled"
+            @focus="this.focus = true" @blur="this.focus = false" @change="push()" ></textarea>
+        <input v-else v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly" :disabled="disabled"
+            @focus="this.focus = true" @blur="this.focus = false" @change="push()" />
     </div>
 </template>
 
@@ -37,6 +39,21 @@ export default {
             type: Boolean,
             default: false,
         },
+        readonly: {
+            type: Boolean,
+            default: false,
+        },
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
+        value: {
+            type: String,
+            default: '',
+        },
+    },
+    mounted() {
+        this.inputVal = this.value;
     },
     methods: {
         push() {
