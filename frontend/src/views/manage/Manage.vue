@@ -39,7 +39,7 @@ import { gql } from 'apollo-boost';
 // eslint-disable-next-line import/no-cycle
 import { apolloClient } from '../../main';
 import { deleteSession, getSessions } from '../../sessions';
-import { getAvatar } from '../../user';
+import { getAvatar } from '../../utils';
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
