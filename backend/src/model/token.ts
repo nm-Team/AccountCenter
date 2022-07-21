@@ -1,4 +1,5 @@
 import { Collection, Filter, ObjectId } from 'mongodb';
+import { v4 as uuidv4 } from 'uuid';
 
 import bus from './bus';
 import db from './mongo';
@@ -14,24 +15,23 @@ class TokenModel {
 
     static add(tokenType: TokenType, expire: number, data: Object): string {
         const time = new Date();
-        const _id = new ObjectId();
-        const id = _id.toString();
+        const uuid = uuidv4();
         TokenModel.coll.insertOne({
-            _id,
+            uuid,
             tokenType,
             createAt: time,
             updateAt: time,
             expireAt: new Date(time.getTime() + expire * 1000),
             ...data,
         });
-        bus.emit('token/add', id, tokenType);
-        return id;
+        bus.emit('token/add', uuid, tokenType);
+        return uuid;
     }
 
     static get(tokenId: string, tokenType: TokenType): Promise<Object | null> {
         bus.emit('token/get', tokenId, tokenType);
         return TokenModel.coll.findOne({
-            _id: new ObjectId(tokenId),
+            uuid: new ObjectId(tokenId),
             tokenType,
         });
     }
@@ -48,7 +48,7 @@ class TokenModel {
         bus.emit('token/update', tokenId, tokenType);
         const time = new Date();
         const res = await TokenModel.coll.findOneAndUpdate(
-            { _id: new ObjectId(tokenId), tokenType },
+            { uuid: tokenId, tokenType },
             {
                 $set: {
                     ...data,
@@ -63,7 +63,7 @@ class TokenModel {
     static delete(tokenId: string, tokenType: TokenType) {
         bus.emit('token/delete', tokenId, tokenType);
         return TokenModel.coll.deleteOne({
-            _id: new ObjectId(tokenId),
+            uuid: tokenId,
             tokenType,
         });
     }
