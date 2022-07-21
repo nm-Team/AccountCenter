@@ -41,7 +41,7 @@ bus.on('app/prepared', async () => {
 
 bus.on('mail/send', async (mail, context) => {
     if (!isMail(mail)) {
-        throw new Error('Not a valid email');
+        throw new Error('invalid_email');
     }
     console.log(`[MAIL] ${mail} ${context}`);
 });

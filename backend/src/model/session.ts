@@ -21,7 +21,7 @@ export class SessionModel {
     static async getSesions(tokenId: string) {
         const token: any = await TokenModel.get(tokenId, TokenType.SESSION);
         if (token === null) {
-            throw new Error('Token is expired');
+            throw new Error('invalid_token');
         }
         const { uuid } = token;
         const sessions = await coll.find({ uuid }).toArray();
@@ -31,11 +31,11 @@ export class SessionModel {
     static async deleteSession(tokenId: string, sessionId: string) {
         const token: any = await TokenModel.get(tokenId, TokenType.SESSION);
         if (token === null) {
-            throw new Error('Token is expired');
+            throw new Error('invalid_token');
         }
         const session: any = await TokenModel.get(sessionId, TokenType.SESSION);
         if (session === null) {
-            throw new Error('Session is expired');
+            throw new Error('invalid_session');
         }
         if (token.uuid === session.uuid) {
             await TokenModel.delete(sessionId, TokenType.SESSION);

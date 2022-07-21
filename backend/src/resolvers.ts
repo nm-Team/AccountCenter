@@ -11,35 +11,35 @@ const resolvers = {
     UserResolvers: {
         async register(_: any, args: any): Promise<boolean> {
             if (args.user === undefined || args.mail === undefined || args.pass === undefined) {
-                throw new Error('Invalid parameters');
+                throw new Error('invalid_parameters');
             }
             const ret = await UserModel.register(args.user, args.pass, args.mail);
             return ret;
         },
         async active(_: any, args: any): Promise<boolean> {
             if (args.token === undefined) {
-                throw new Error('Invalid parameters');
+                throw new Error('invalid_parameters');
             }
             await UserModel.active(args.token);
             return true;
         },
         async login(_: any, args: any, context: any): Promise<string> {
             if (args.user === undefined || args.pass === undefined) {
-                throw new Error('Invalid parameters');
+                throw new Error('invalid_parameters');
             }
             const ret = await UserModel.login(args.user, args.pass, context.ua, context.ip);
             return ret;
         },
         async logout(parent: any): Promise<boolean> {
             if (parent.token === undefined) {
-                throw new Error('Invalid parameters');
+                throw new Error('invalid_parameters');
             }
             await TokenModel.delete(parent.token, TokenType.SESSION);
             return true;
         },
         async logoutAll(parent: any): Promise<boolean> {
             if (parent.token === undefined) {
-                throw new Error('Invalid parameters');
+                throw new Error('invalid_parameters');
             }
             await SessionModel.deleteAll(parent.token);
             return true;
@@ -76,7 +76,7 @@ const resolvers = {
         },
         async getSession(parent: any): Promise<SessionDoc[]> {
             if (parent.token === undefined) {
-                throw new Error('Invalid parameters');
+                throw new Error('invalid_parameters');
             }
             // const token: any = TokenModel.get(parent.token, TokenType.SESSION);
             // if (token === null) {

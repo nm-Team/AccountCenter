@@ -126,16 +126,16 @@ export class UserModel {
         mail: string,
     ) {
         if (!isMail(mail)) {
-            throw new Error('Not a valid email');
+            throw new Error('invalid_mail');
         }
         if (!checkUser(user)) {
-            throw new Error('Not a valid user');
+            throw new Error('invalid user');
         }
         if (await this.getByMail(mail) !== UserModel.defaultUdoc) {
-            throw new Error('Mail already be used');
+            throw new Error('used_mail');
         }
         if (await this.getByUser(user) !== UserModel.defaultUdoc) {
-            throw new Error('Username already be used');
+            throw new Error('used_user');
         }
 
         const uuid = uuidv4();
@@ -150,7 +150,7 @@ export class UserModel {
         const token: any = await TokenModel.get(tokenId, TokenType.REGISTER);
 
         if (token === null) {
-            throw new Error('Token expired');
+            throw new Error('invalid_token');
         }
 
         const time = new Date();
@@ -172,10 +172,10 @@ export class UserModel {
     static async login(user: string, pass: string, ua: string, ip: string): Promise<string> {
         const doc = await UserModel.getByUser(user);
         if (doc === UserModel.defaultUdoc) {
-            throw new Error('User not found');
+            throw new Error('wrong_user');
         }
         if (sha1(doc.uuid + pass) !== doc._pass) {
-            throw new Error('Password is not correct');
+            throw new Error('wrong_pass');
         }
         const token = TokenModel.add(TokenType.SESSION, 24 * 60 * 60, {
             uuid: doc.uuid,
