@@ -12,13 +12,13 @@
                 </thead>
                 <tbody>
                     <tr v-for="session in onlineSessions" :key="session">
-                        <td style="min-width: 5em;">{{ $t('manage.recent_sessions.table.time_word', {
+                        <td style="min-width: 15em;">{{ $t('manage.recent_sessions.table.time_word', {
                                 last_active:
                                     session.updateAt, login_time: session.createAt
                             })
                         }}
                         </td>
-                        <td style="min-width: 5em;">{{ $t('manage.recent_sessions.table.ip_word', {
+                        <td style="min-width: 8em;">{{ $t('manage.recent_sessions.table.ip_word', {
                                 ip: session.ip, city:
                                     '下北泽'
                             })
@@ -26,13 +26,18 @@
                         </td>
                         <td style="min-width: 15em;">{{ session.ua }}
                         </td>
-                        <td style="min-width: 3em;"><a @click="kickSession" href="javascript:">{{
+                        <td style="min-width: 2em;">
+                            <!-- <a @click="kickSession" href="javascript:">{{
                                 $t('manage.recent_sessions.operates.logout')
-                        }}</a>
+                        }}</a> -->
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="btns">
+            <button class="blockButton" @click="logOutAllSessions()">
+                {{ $t('manage.recent_sessions.operates.logout_all') }}</button>
         </div>
     </div>
     <div class="block">
@@ -93,6 +98,26 @@ export default {
             }, (error) => {
                 console.log(error);
             });
+        },
+        logOutAllSessions() {
+            if (window.confirm(this.$t('manage.recent_sessions.operates.logout_all_confirm'))) {
+                apolloClient.query({
+                    query: gql`query GetSession($token: String) {
+  User(token: $token) {
+    logout
+  }
+}`,
+                    variables: {
+                        token: this.user.token,
+                    },
+                }).then(({ data }) => {
+                    console.log(data);
+                    this.$router.push('/');
+                }, (error) => {
+                    console.log(error);
+                    alert(this.$t('manage.recent_sessions.operates.logout_fail'));
+                });
+            }
         },
     },
     components: {},

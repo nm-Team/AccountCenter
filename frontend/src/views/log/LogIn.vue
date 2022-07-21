@@ -106,7 +106,6 @@ export default {
                     addSession(newSession);
                     this.processing = false;
                     // oauth in the near future
-
                     // go to manage page
                     this.$router.push('/manage');
                     this.$emit('getdata', 'inManagePage', true);

@@ -8,14 +8,25 @@
                 <p>{{ user.nick }}</p>
                 <button class="avatar" :title="$t('manage.header_account_icon_title')"
                     :style="{ backgroundImage: 'url(' + user.avatarURL + ')' }"
-                    :alt="$t('manage.header_account_icon_title')"></button>
+                    :alt="$t('manage.header_account_icon_title')"
+                    @click="accountSwitcherOpen = !accountSwitcherOpen"></button>
             </div>
         </div>
         <div class="main">
+            <div class="accountSwitcher" v-if="accountSwitcherOpen == true">
+                <p class="title"><span>{{ $t('manage.account_switcher.title') }}</span>
+                    <button class="blockButton" @click="logOutAllSessions()">
+                        {{ $t('manage.account_switcher.new') }}</button>
+                </p>
+                <div class="uList">
+                    <UserButton v-for="user in avaliableSession" :key="user.uuid" :user="user"
+                        @click="switchAccount(user)"></UserButton>
+                </div>
+
+            </div>
             <div :class="{ sideBar: true, opened: mobileSideBarOpen }">
                 <router-link v-for="item in sideBar" :to="'/manage/' + item.path" @click="mobileSideBarOpen = false"
                     :key="item.name">
-                    <menu-icon />
                     <span>{{ $t('manage.pages.' + item.name) }}</span>
                 </router-link>
             </div>
@@ -36,6 +47,7 @@
 <script>
 import { gql } from 'apollo-boost';
 
+import UserButton from '../../components/UserButton.vue';
 // eslint-disable-next-line import/no-cycle
 import { apolloClient } from '../../main';
 import { deleteSession, getSessions } from '../../sessions';
@@ -52,18 +64,22 @@ export default {
                 {
                     name: 'index',
                     path: '',
+                    icon: 'home',
                 },
                 {
                     name: 'safety',
                     path: 'safety',
+                    icon: 'shield-unlocked',
                 },
                 {
                     name: 'infos',
                     path: 'infos',
+                    icon: 'info',
                 },
                 {
                     name: 'preference',
                     path: 'preference',
+                    icon: 'cog',
                 },
             ],
             mobileSideBarOpen: false,
@@ -78,6 +94,7 @@ export default {
                 role: '',
                 regat: '',
             },
+            accountSwitcherOpen: false,
         };
     },
     mounted() {
@@ -87,6 +104,9 @@ export default {
         linkSessions() {
             // eslint-disable-next-line prefer-const
             let sessions = getSessions();
+            if (sessions.length === 0) {
+                this.$router.push('/');
+            }
             let sessionsCheckedCount = 0;
             sessions.forEach((session, index) => {
                 apolloClient.query({
@@ -110,9 +130,14 @@ export default {
                 }).then(({ data }) => {
                     console.log(data);
                     const uData = data.User.getUser;
-                    uData.token = session.token;
-                    uData.avatarURL = getAvatar(uData.avatar);
-                    this.avaliableSession[index] = uData;
+                    if (uData.user === 'guest') {
+                        deleteSession(session);
+                        this.avaliableSession[index] = false;
+                    } else {
+                        uData.token = session.token;
+                        uData.avatarURL = getAvatar(uData.avatar);
+                        this.avaliableSession[index] = uData;
+                    }
                 }, (error) => {
                     console.log(error);
                     deleteSession(session);
@@ -129,13 +154,13 @@ export default {
                         if (this.avaliableSession.length === 0) {
                             this.$router.push('/');
                         } else {
-                            this.user = [this.avaliableSession];
+                            this.user = this.avaliableSession[0];
                         }
                     }
                 });
             });
         },
     },
-    components: {},
+    components: { UserButton },
 };
 </script>

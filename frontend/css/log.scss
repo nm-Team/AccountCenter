@@ -16,8 +16,13 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--frame-background);
-    background-size: cover;
+
+    background: {
+        color: var(--frame-background);
+        size: cover;
+        position: center;
+    }
+
     z-index: -1;
 }
 
@@ -85,10 +90,11 @@
     }
 
     .form button {
-        padding: 12px 21px;
+        padding: 12px 24px;
         margin: 6px 0;
         border: none;
         border-radius: 3px;
+        font-weight: bold;
         font-size: 16px;
         background-color: var(--button-background);
         color: var(--button-text);
@@ -108,19 +114,19 @@
     .related {
         text-align: center;
         margin: 10px 0;
-    }
 
-    .related a {
-        font-size: 15.4px;
-    }
+        a {
+            font-size: 15.4px;
+        }
 
-    .related a:not(:first-child) {
-        padding-left: 7px;
-    }
+        a:not(:first-child) {
+            padding-left: 7px;
+        }
 
-    .related a:not(:last-child) {
-        padding-right: 7px;
-        border-right: var(--related-border) 1px solid;
+        a:not(:last-child) {
+            padding-right: 7px;
+            border-right: var(--related-border) 1px solid;
+        }
     }
 
     .footer {

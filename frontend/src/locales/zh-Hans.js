@@ -96,10 +96,53 @@ export default {
             infos: '个人信息',
             preference: '偏好设置',
         },
+        account_switcher: {
+            title: '切换账号',
+            new: '登录新账号',
+        },
         index: {
             title: '{name}，你好',
             welcome_text: '欢迎使用 nmTeam 账号。<br>nmTeam 账号不仅为您在 nmTeam 服务中验证身份，更可用于登录第三方网站。',
             welcome_photo_alt: 'nmTeam 账号',
+        },
+        infos: {
+            title: '管理个人信息',
+            changeable: {
+                title: '可修改信息',
+                editing: '正在编辑',
+                nick: '昵称',
+                email: '电子邮箱',
+                mood: 'Mood',
+            },
+            readonly: {
+                title: '更多账号信息',
+                user: '用户名',
+                uuid: 'UUID',
+                role: '用户组',
+            },
+            roles: {
+                user: '用户',
+                admin: '管理员',
+            },
+        },
+        account_safety_block: {
+            title: '账号安全',
+            level: {
+                high: '您的账号非常安全。',
+                medium: '您的账号比较安全，但我们能让它更好。',
+                low: '您的账号非常不安全。',
+            },
+            improve: '提高账号安全性',
+            improve_ways: {
+                change_password: {
+                    title: '修改密码',
+                    tip: '您的密码越长、越复杂，就越不容易被猜到。您还应当定期修改密码，进一步增强安全性。',
+                },
+                enable_2fa: {
+                    title: '启用两步验证',
+                    tip: '启用两步验证来提高您的账号安全性。',
+                },
+            },
         },
         recent_sessions: {
             title: '最近登录的会话',
@@ -113,12 +156,27 @@ export default {
             },
             operates: {
                 logout: '下线',
+                logout_all: '全部注销',
+                logout_all_confirm: '确定要注销全部会话吗？',
+            },
+        },
+        auth: {
+            title: '密码',
+            change_button: '修改密码',
+            '2fa': {
+                title: '两步验证',
+                enable_button: '启用两步验证',
+                disable_button: '禁用两步验证',
+                disable_confirm: '确定要禁用两步验证吗？',
             },
         },
         fake_account_name: '加载中',
         not_found_alt: '找不到此页面。',
     },
+    avatar_alt: '用户头像',
     ok: '好',
     cancel: '取消',
+    save: '保存',
+    loading: '加载中',
     selete_language: '选择语言',
 };
