@@ -41,4 +41,12 @@ export class SessionModel {
             await TokenModel.delete(sessionId, TokenType.SESSION);
         }
     }
+
+    static async deleteAll(tokenId: string) {
+        const sessionList = await SessionModel.getSesions(tokenId);
+        // eslint-disable-next-line no-restricted-syntax
+        for (const session of sessionList) {
+            TokenModel.delete(session._id.toString(), TokenType.SESSION);
+        }
+    }
 }

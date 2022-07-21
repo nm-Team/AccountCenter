@@ -31,7 +31,11 @@ const resolvers = {
             return true;
         },
         async logoutAll(parent: any): Promise<boolean> {
-
+            if (parent.token === undefined) {
+                throw new Error('Invalid parameters');
+            }
+            await SessionModel.deleteAll(parent.token);
+            return true;
         },
         async getUser(parent: any): Promise<UserDoc> {
             if (parent.uuid === undefined
