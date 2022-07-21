@@ -23,12 +23,15 @@ const resolvers = {
             await UserModel.active(args.token);
             return true;
         },
-        async login(_: any, args: any, context: any): Promise<string> {
-            if (args.user === undefined || args.pass === undefined) {
+        async logout(parent: any): Promise<boolean> {
+            if (parent.token === undefined) {
                 throw new Error('Invalid parameters');
             }
-            const ret = await UserModel.login(args.user, args.pass, context.ua, context.ip);
-            return ret;
+            await TokenModel.delete(parent.token, TokenType.SESSION);
+            return true;
+        },
+        async logoutAll(parent: any): Promise<boolean> {
+
         },
         async getUser(parent: any): Promise<UserDoc> {
             if (parent.uuid === undefined
