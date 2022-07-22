@@ -24,6 +24,8 @@ import LogIn from './views/log/LogIn.vue';
 import NotFound from './views/log/NotFound.vue';
 import Register from './views/log/Register.vue';
 import Manage from './views/manage/Manage.vue';
+import Manage2FA from './views/manage/Manage2FA.vue';
+import ManageChangePassword from './views/manage/ManageChangePassword.vue';
 import ManageIndex from './views/manage/ManageIndex.vue';
 import ManageInfos from './views/manage/ManageInfos.vue';
 import ManageNotFound from './views/manage/ManageNotFound.vue';
@@ -46,6 +48,8 @@ const routes = [
             { path: '', name: 'manage_index', component: ManageIndex },
             { path: 'safety', name: 'manage_safety', component: ManageSafety },
             { path: 'infos', name: 'manage_infos', component: ManageInfos },
+            { path: 'two-factor-authentication-setup', name: 'setup_2fa', component: Manage2FA },
+            { path: 'change-password', name: 'change_password', component: ManageChangePassword },
             { path: ':pathMatch(.*)*', name: 'manage_notfound', component: ManageNotFound },
         ],
     },

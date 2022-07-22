@@ -18,7 +18,6 @@
     </div>
 </template>
 <script>
-import LabelInput from '../../components/LabelInput.vue';
 
 export default {
     name: 'ForgetPassword',
@@ -51,6 +50,5 @@ export default {
             this.step = 1;
         },
     },
-    components: { LabelInput },
 };
 </script>

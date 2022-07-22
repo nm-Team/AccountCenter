@@ -19,35 +19,30 @@
                         }}
                         </td>
                         <td style="min-width: 8em;">{{ $t('manage.recent_sessions.table.ip_word', {
-                                ip: session.ip, city:
-                                    '下北泽'
+                                ip: session.ip, city: $t('loading')
                             })
                         }}
                         </td>
                         <td style="min-width: 15em;">{{ session.ua }}
                         </td>
                         <td style="min-width: 2em;">
-                            <!-- <a @click="kickSession" href="javascript:">{{
+                            <a @click="kickSession()" href="javascript:">{{
                                 $t('manage.recent_sessions.operates.logout')
-                        }}</a> -->
+                        }}</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <p v-else>{{ $t('loading') }}...</p>
-        <p>{{$t('manage.recent_sessions.tip.manage_here')}}</p>
-        <p>{{$t('manage.recent_sessions.tip.logout_unrecognized')}}</p>
+        <p>{{ $t('manage.recent_sessions.tip.manage_here') }}</p>
+        <p>{{ $t('manage.recent_sessions.tip.logout_unrecognized') }}</p>
         <div class="btns">
             <button class="blockButton" @click="logOutAllSessions()">
                 {{ $t('manage.recent_sessions.operates.logout_all') }}</button>
         </div>
     </div>
-    <SafetyChecker :user="user"></SafetyChecker>
-    <div class="block">
-        <h2 class="title">Debug</h2>
-        <code>{{ JSON.stringify(onlineSessions, null, 4) }}</code>
-    </div>
+    <SafetyChecker :user="user" :insafetypage=true></SafetyChecker>
 </template>
 <script>
 import { gql } from 'apollo-boost';

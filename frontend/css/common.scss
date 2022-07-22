@@ -166,6 +166,7 @@ a {
         flex-grow: 1;
         font-size: 16px;
         text-align: left;
+        overflow: hidden;
 
         * {
             overflow: hidden;
@@ -186,10 +187,22 @@ a {
     }
 }
 
-.user+.user {
+.user[force-border]:last-of-type {
+    border-bottom: 1px solid var(--input-border);
+}
+.user[force-border]:last-of-type {
+    border-bottom: 1px solid var(--input-border);
+}
+
+.user:not(:first-of-type),
+.user[force-border] {
     border-top: 1px solid var(--input-border);
     margin-top: 10px;
     padding-top: 10px;
+}
+.user[force-border]{
+    margin: 0;
+    padding: 11px 0 15px 0;
 }
 
 .linkA {

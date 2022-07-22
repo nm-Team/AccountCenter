@@ -30,7 +30,6 @@
 <script>
 import { gql } from 'apollo-boost';
 
-import LabelInput from '../../components/LabelInput.vue';
 // eslint-disable-next-line import/no-cycle
 import { apolloClient } from '../../main';
 
@@ -119,6 +118,5 @@ export default {
             this[name] = data;
         },
     },
-    components: { LabelInput },
 };
 </script>
