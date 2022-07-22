@@ -33,7 +33,7 @@ export interface UserDoc extends Object {
 
 export class UserModel {
     static defaultUdoc: UserDoc = {
-        uuid: '12345678-1234-1234-1234-123456789012',
+        uuid: '12345678-90AB-CDEF-GHIJ-KLMNOPQR',
         _pass: '',
 
         user: 'guest',
@@ -160,7 +160,7 @@ export class UserModel {
             pass: sha1(token.uuid + token.pass),
             mail: token.mail,
             nick: token.user,
-            avatar: 'mail:guest@nmnm.fun',
+            avatar: `mail:${token.mail}`,
             mood: 'Welcome to nmTeam',
             role: 'user',
             regat: time,
