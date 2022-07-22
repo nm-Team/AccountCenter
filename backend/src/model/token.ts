@@ -63,7 +63,7 @@ class TokenModel {
     static delete(tokenId: string, tokenType: TokenType) {
         bus.emit('token/delete', tokenId, tokenType);
         return TokenModel.coll.deleteOne({
-            uuid: tokenId,
+            _uuid: tokenId,
             tokenType,
         });
     }
