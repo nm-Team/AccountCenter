@@ -40,6 +40,7 @@
                 {{ $t('manage.recent_sessions.operates.logout_all') }}</button>
         </div>
     </div>
+    <SafetyChecker :user="user"></SafetyChecker>
     <div class="block">
         <h2 class="title">Debug</h2>
         <code>{{ JSON.stringify(onlineSessions, null, 4) }}</code>

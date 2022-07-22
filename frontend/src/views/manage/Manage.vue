@@ -15,12 +15,12 @@
         <div class="main">
             <div class="accountSwitcher" v-if="accountSwitcherOpen == true">
                 <p class="title"><span>{{ $t('manage.account_switcher.title') }}</span>
-                    <button class="blockButton" @click="logOutAllSessions()">
+                    <button class="blockButton" @click="this.$router.push('/')">
                         {{ $t('manage.account_switcher.new') }}</button>
                 </p>
                 <div class="uList">
-                    <UserButton v-for="user in avaliableSession" :key="user.uuid" :user="user"
-                        @click="switchAccount(user)"></UserButton>
+                    <UserButton v-for="user, index in avaliableSession" :key="user.uuid" :user="user"
+                        @click="switchAccount(index)"></UserButton>
                 </div>
 
             </div>
@@ -50,7 +50,7 @@ import { gql } from 'apollo-boost';
 import UserButton from '../../components/UserButton.vue';
 // eslint-disable-next-line import/no-cycle
 import { apolloClient } from '../../main';
-import { deleteSession, getSessions } from '../../sessions';
+import { deleteSession, getSessions, useSession } from '../../sessions';
 import { getAvatar } from '../../utils';
 
 export default {
@@ -159,6 +159,10 @@ export default {
                     }
                 });
             });
+        },
+        switchAccount(index) {
+            useSession(this.avaliableSession[index]);
+            window.location.reload();
         },
     },
     components: { UserButton },
