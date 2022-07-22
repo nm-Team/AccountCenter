@@ -15,6 +15,9 @@
         <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
         <button :class="{ processing: processing }">{{ $t("log.login_page.submit") }}</button>
     </form>
+    <router-link v-if="sessions.length > 0" class="useAnotherAccount" to="/choose-account">
+        <LinkA :text="$t('log.login_page.logged_account')"></LinkA>
+    </router-link>
     <div class="related">
         <router-link v-for="item in related" :to="item.path" :key="item.name">{{ $t('log.link.' + item.name) }}
         </router-link>
@@ -26,7 +29,7 @@ import { gql } from 'apollo-boost';
 import LabelInput from '../../components/LabelInput.vue';
 // eslint-disable-next-line import/no-cycle
 import { apolloClient } from '../../main';
-import { addSession } from '../../sessions';
+import { addSession, getSessions } from '../../sessions';
 
 export default {
     name: 'LogIn',
@@ -48,7 +51,11 @@ export default {
             },
             serviceMsg: '',
             processing: false,
+            sessions: [],
         };
+    },
+    mounted() {
+        this.sessions = getSessions();
     },
     methods: {
         login() {

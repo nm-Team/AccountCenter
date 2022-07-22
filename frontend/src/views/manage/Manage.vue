@@ -4,7 +4,7 @@
             <button class="icon" :title="$t('manage.header_icon_button_title')"
                 :alt="$t('manage.header_icon_button_alt')" @click="mobileSideBarOpen = !mobileSideBarOpen"></button>
             <p class="title"><span>{{ $t('manage.header_title') }}</span></p>
-            <div class="user">
+            <div class="headerUser">
                 <p>{{ user.nick }}</p>
                 <button class="avatar" :title="$t('manage.header_account_icon_title')"
                     :style="{ backgroundImage: 'url(' + user.avatarURL + ')' }"
@@ -27,6 +27,7 @@
             <div :class="{ sideBar: true, opened: mobileSideBarOpen }">
                 <router-link v-for="item in sideBar" :to="'/manage/' + item.path" @click="mobileSideBarOpen = false"
                     :key="item.name">
+                    <font-awesome-icon :icon="['fas', item.icon]" />
                     <span>{{ $t('manage.pages.' + item.name) }}</span>
                 </router-link>
             </div>
@@ -38,7 +39,34 @@
             <div class="pcSplitLine"></div>
             <div class="relatedFrame">
                 <div class="block">
-                    <h2 class="title">Example</h2>
+                    <h2 class="title">{{ $t('manage.explore.use_nmservices.title') }}</h2>
+                    <div class="nmServicesList">
+                        <a v-for="item in nmServices" :key="item.name" :href="item.url" target="_blank"
+                            :style="{ backgroundColor: item.backgroundColor, backgroundImage: item.backgroundColor }">
+                            <div class="bgImg"
+                                :style="{ backgroundImage: `url(${item.backgroundImage})`, margin: item.margin }"></div>
+                            <p :style="{ color: item.color }">{{ $t('manage.explore.use_nmservices.products.' +
+                                    item.name)
+                            }}</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="block">
+                    <p class="title">{{ $t('manage.explore.developers_will_love_nmteam_account.title') }}</p>
+                    <p>{{ $t('manage.explore.developers_will_love_nmteam_account.description') }}</p>
+                    <p><a href="" target="_blank">
+                            <LinkA :text="$t('manage.explore.developers_will_love_nmteam_account.a_text')"></LinkA>
+                        </a></p>
+                </div>
+                <div class="block">
+                    <p class="title">{{ $t('manage.explore.help.title') }}</p>
+                    <p>{{ $t('manage.explore.help.description') }}</p>
+                    <p><a href="https://nmteam.xyz/developers" target="_blank">
+                            <LinkA :text="$t('manage.explore.help.a_text')"></LinkA>
+                        </a></p>
+                </div>
+                <div class="footer">
+                    <Footer></Footer>
                 </div>
             </div>
         </div>
@@ -64,17 +92,17 @@ export default {
                 {
                     name: 'index',
                     path: '',
-                    icon: 'home',
+                    icon: 'house',
                 },
                 {
                     name: 'safety',
                     path: 'safety',
-                    icon: 'shield-unlocked',
+                    icon: 'shield',
                 },
                 {
                     name: 'infos',
                     path: 'infos',
-                    icon: 'info',
+                    icon: 'circle-info',
                 },
                 {
                     name: 'preference',
@@ -91,17 +119,43 @@ export default {
                 avatar: '',
                 avatarURL: '',
                 mood: '',
-                role: '',
+                role: 'undefined',
                 regat: '',
             },
             accountSwitcherOpen: false,
+            nmServices: [
+                {
+                    name: 'nmFun',
+                    url: 'https://fun.nmteam.xyz',
+                    color: '#000',
+                    backgroundColor: 'linear-gradient(90deg, rgba(255,250,58,1) 0%, rgba(255,206,0,1) 91%)',
+                    backgroundImage: 'https://websiteres.nmteam.xyz/producticon/nmFun/logo.svg',
+                    margin: '10px 15px',
+                },
+                {
+                    name: 'nmBrowser_startPage',
+                    url: 'https://bs.nmteam.xyz',
+                    color: '#000',
+                    backgroundColor: 'linear-gradient(90deg, rgba(0,192,255,1) 0%, rgba(148,232,255,1) 100%)',
+                    backgroundImage: 'https://websiteres.nmteam.xyz/producticon/nmBrowser/logo.svg',
+                    margin: '14px 19px',
+                },
+                {
+                    name: 'more',
+                    url: 'https://nmteam.xyz/products',
+                    color: '#fff',
+                    backgroundColor: '#00bcd4',
+                    backgroundImage: '/public/view_more.png',
+                    margin: '0',
+                },
+            ],
         };
     },
     mounted() {
-        this.linkSessions();
+        this.trySessions();
     },
     methods: {
-        linkSessions() {
+        trySessions() {
             // eslint-disable-next-line prefer-const
             let sessions = getSessions();
             if (sessions.length === 0) {
@@ -154,6 +208,7 @@ export default {
                         if (this.avaliableSession.length === 0) {
                             this.$router.push('/');
                         } else {
+                            // eslint-disable-next-line prefer-destructuring
                             this.user = this.avaliableSession[0];
                         }
                     }

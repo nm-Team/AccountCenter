@@ -2,7 +2,7 @@
     <h1>{{ $t('manage.pages.safety') }}</h1>
     <div class="block">
         <h2 class="title">{{ $t('manage.recent_sessions.title') }}</h2>
-        <div class="table">
+        <div class="table" v-if="onlineSessions">
             <table>
                 <thead>
                     <td>{{ $t('manage.recent_sessions.table.time') }}</td>
@@ -35,6 +35,9 @@
                 </tbody>
             </table>
         </div>
+        <p v-else>{{ $t('loading') }}...</p>
+        <p>{{$t('manage.recent_sessions.tip.manage_here')}}</p>
+        <p>{{$t('manage.recent_sessions.tip.logout_unrecognized')}}</p>
         <div class="btns">
             <button class="blockButton" @click="logOutAllSessions()">
                 {{ $t('manage.recent_sessions.operates.logout_all') }}</button>

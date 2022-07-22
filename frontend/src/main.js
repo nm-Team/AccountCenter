@@ -2,18 +2,23 @@ import '../css/common.scss';
 import '../css/log.scss';
 import '../css/manage.scss';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { DefaultApolloClient } from '@vue/apollo-composable';
 import ApolloClient from 'apollo-boost';
-import { createApp } from 'vue';
-import MenuIcon from 'vue-material-design-icons/Menu.vue';
+import * as Vue from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
+import FooterItems from './components/FooterItems.vue';
 import LabelInput from './components/LabelInput.vue';
+import LinkA from './components/LinkA.vue';
 import SafetyChecker from './components/SafetyChecker.vue';
 import UserButton from './components/UserButton.vue';
 import { i18n, languages } from './i18n';
 import Main from './Main.vue';
 import Active from './views/log/Active.vue';
+import ChooseAccount from './views/log/ChooseAccount.vue';
 import ForgetPassword from './views/log/ForgetPassword.vue';
 import LogIn from './views/log/LogIn.vue';
 import NotFound from './views/log/NotFound.vue';
@@ -24,9 +29,12 @@ import ManageInfos from './views/manage/ManageInfos.vue';
 import ManageNotFound from './views/manage/ManageNotFound.vue';
 import ManageSafety from './views/manage/ManageSafety.vue';
 
+library.add(fas);
+
 // import routes
 const routes = [
     { path: '/', name: 'login', component: LogIn },
+    { path: '/choose-account', name: 'choose-account', component: ChooseAccount },
     { path: '/register', name: 'register', component: Register },
     { path: '/forget-password', name: 'forget_password', component: ForgetPassword },
     { path: '/active', name: 'active', component: Active },
@@ -53,13 +61,17 @@ const apolloClient = new ApolloClient({
     uri: 'http://localhost:4000/graphql',
 });
 
-createApp(Main).use(i18n).use(router)
+const app = Vue.createApp(Main);
+app.use(i18n).use(router)
     .provide(DefaultApolloClient.DefaultApolloClient, apolloClient)
+    .component('font-awesome-icon', FontAwesomeIcon)
+    .component('Footer', FooterItems)
+    .component('LinkA', LinkA)
     .component('LabelInput', LabelInput)
-    .component('menu-icon', MenuIcon)
+    .component('Footer', FooterItems)
     .component('UserButton', UserButton)
-    .component('SafetyChecker', SafetyChecker)
-    .mount('#app');
+    .component('SafetyChecker', SafetyChecker);
+app.mount('#app');
 
 // eslint-disable-next-line import/prefer-default-export
 export {

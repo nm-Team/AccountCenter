@@ -24,6 +24,7 @@
     --label-input-label-active: #fabb00cc;
     --input-border: #5d5d5d;
     --input-border-focus: #fabb00cc;
+    --icon: url(https://websiteres.nmteam.xyz/producticon/nmTeam/logo@64.png);
 }
 
 body {
@@ -114,7 +115,7 @@ a {
         padding: 10px;
         margin: 10px 0;
         border: 1px solid var(--input-border);
-        border-radius: 3px;
+        border-radius: 4px;
         background: none;
         font-size: 16px;
         overflow: hidden;
@@ -138,6 +139,7 @@ a {
 
 .user {
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
@@ -177,14 +179,45 @@ a {
             margin-bottom: 4px;
         }
 
-        .mail{
+        .mail {
             font-size: 14px;
             opacity: .87;
         }
     }
 }
-.user+.user{
+
+.user+.user {
     border-top: 1px solid var(--input-border);
     margin-top: 10px;
     padding-top: 10px;
+}
+
+.linkA {
+    padding: 9px 0;
+    margin: 0;
+    color: var(--a);
+
+    span {
+        margin: 0;
+        padding: 0;
+        color: var(--a);
+        font-size: 16px;
+    }
+
+    svg {
+        width: 11px;
+        margin: 0px 0 -1px 4px;
+        fill: var(--a);
+        color: var(--a) !important;
+
+        * {
+            fill: var(--a);
+            color: var(--a) !important;
+        }
+    }
+}
+
+a:focus-visible .linkA {
+    outline: var(--outline);
+    outline-offset: 0px;
 }
