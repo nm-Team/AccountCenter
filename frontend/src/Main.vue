@@ -4,9 +4,10 @@
             <i class="background" :style="{ backgroundImage: 'url(' + backgroundImage[theme] + ')' }"></i>
             <div class="frameContainer">
                 <div class="header">
-                    <div class="logo" alt="nmTeam Logo" @click="easterEgg">{{
-                            exploded ? "💥💦😢💦🧃" : ""
-                    }}</div>
+                    <div class="logo" alt="nmTeam Logo" :style="{ backgroundImage: exploded ? 'none' : null }"
+                        @click="easterEgg">{{
+                                exploded ? "💥💦😢💦🧃" : ""
+                        }}</div>
                 </div>
                 <router-view @getdata="setData"></router-view>
                 <div class="footer">
@@ -44,7 +45,6 @@ export default {
                 alert("Please do not click me anymore. I'm just a lemon and will boom and explode if you click me and click me and click me. This is not funny. You will be 😣😫😭🤮. Trust me.");
             } else if (this.eEggCount === 14) {
                 alert("Note: I'm going to explode now. EAT your own fruit.");
-                this.icon = '/';
                 this.exploded = true;
             }
         },
