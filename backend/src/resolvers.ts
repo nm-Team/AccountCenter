@@ -65,6 +65,7 @@ const resolvers = {
             }
             if (parent.token !== undefined) {
                 const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
+                console.log(parent.token, token);
                 if (token === null) {
                     return UserModel.defaultUdoc;
                 }

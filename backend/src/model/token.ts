@@ -16,22 +16,14 @@ class TokenModel {
     static async add(tokenType: TokenType, expire: number, data: Object): Promise<string> {
         const time = new Date();
         const uuid_ = uuidv4();
-        console.log({
-            uuid_,
+        await TokenModel.coll.insertOne({
+            _uuid: uuid_,
             tokenType,
             createAt: time,
             updateAt: time,
             expireAt: new Date(time.getTime() + expire * 1000),
             ...data,
         });
-        console.log(await TokenModel.coll.insertOne({
-            uuid_,
-            tokenType,
-            createAt: time,
-            updateAt: time,
-            expireAt: new Date(time.getTime() + expire * 1000),
-            ...data,
-        }));
         bus.emit('token/add', uuid_, tokenType);
         return uuid_;
     }
@@ -39,7 +31,7 @@ class TokenModel {
     static get(tokenId: string, tokenType: TokenType): Promise<Object | null> {
         bus.emit('token/get', tokenId, tokenType);
         return TokenModel.coll.findOne({
-            uuid: tokenId,
+            _uuid: tokenId,
             tokenType,
         });
     }
@@ -56,7 +48,7 @@ class TokenModel {
         bus.emit('token/update', tokenId, tokenType);
         const time = new Date();
         const res = await TokenModel.coll.findOneAndUpdate(
-            { uuid: tokenId, tokenType },
+            { _uuid: tokenId, tokenType },
             {
                 $set: {
                     ...data,
