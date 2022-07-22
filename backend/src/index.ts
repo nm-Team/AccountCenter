@@ -4,6 +4,7 @@ import express from 'express';
 
 import { port } from './config';
 import bus from './model/bus';
+import log from './model/logger';
 import resolvers from './resolvers';
 import typeDefs from './schema';
 import { isMail } from './utils';
@@ -22,7 +23,7 @@ const apollo = new ApolloServer({
 });
 
 (async () => {
-    console.log('[INFO] Server starting.');
+    log('SYS', 'Server preparing.');
     await new Promise((resolve) => {
         bus.on('mongo/connected', () => {
             resolve(undefined);
@@ -32,6 +33,7 @@ const apollo = new ApolloServer({
 })();
 
 bus.on('app/prepared', async () => {
+    log('SYS', 'Server starting.');
     await apollo.start();
     apollo.applyMiddleware({ app });
     app.listen({ port }, () => {
@@ -39,9 +41,21 @@ bus.on('app/prepared', async () => {
     });
 });
 
-bus.on('mail/send', async (mail, context) => {
+bus.on('app/started', () => {
+    log('SYS', 'Server started.');
+});
+
+bus.on('mail/send', async (mail: string, context: string) => {
     if (!isMail(mail)) {
         throw new Error('invalid_email');
     }
-    console.log(`[MAIL] ${mail} ${context}`);
+    log('MAIL', `${mail} ${context}`);
+});
+
+process.on('exit', (code) => {
+    log('SYS', `Server exit with code ${code}`);
+});
+
+process.on('SIGINT', () => {
+    log('SYS', 'Server exit with SIGINT');
 });
