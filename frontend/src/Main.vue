@@ -33,6 +33,7 @@ export default {
                 dark: 'https://websiteres.nmteam.xyz/background/street/dark.png',
             },
             eEggCount: 0,
+            exploded: false,
             inManagePage: false,
         };
     },
