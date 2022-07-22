@@ -19,9 +19,14 @@ export default {
             continue: '并授权 {app} 账号权限',
             keep_me_logged_in: '使我保持登录',
             submit: '登录',
+            logged_account: '已登录的账号',
             processing: '正在登录...',
         },
-        please_fill_blank: '请填写{name}',
+        choose_account_page: {
+            title: '切换账号',
+            tip: '选择一个已在此设备上登录的 nmTeam 账号以继续。',
+            new: '登录一个新账号',
+        },
         register_page: {
             title: '注册 nmTeam 账号',
             tip: '即刻注册 nmTeam 账号，享受引人入胜的 nmTeam 服务。',
@@ -84,6 +89,7 @@ export default {
             userinfo_get_failed: '获取用户信息失败。',
             unknown_error: '未知错误。',
         },
+        please_fill_blank: '请填写{name}',
     },
     manage: {
         header_title: 'nmTeam 账号',
@@ -102,7 +108,7 @@ export default {
         },
         index: {
             title: '{name}，你好',
-            welcome_text: '欢迎使用 nmTeam 账号。<br>nmTeam 账号不仅为您在 nmTeam 服务中验证身份，更可用于登录第三方网站。',
+            welcome_text: '欢迎使用 nmTeam 账号。<br>nmTeam 账号不仅助您登录 nmTeam 服务，更可用于在第三方网站验证身份。',
             welcome_photo_alt: 'nmTeam 账号',
         },
         infos: {
@@ -123,6 +129,8 @@ export default {
             roles: {
                 user: '用户',
                 admin: '管理员',
+                guest: '访客',
+                undefined: '未定',
             },
         },
         account_safety_block: {
@@ -162,6 +170,10 @@ export default {
                 logout_all: '全部注销',
                 logout_all_confirm: '确定要注销全部会话吗？',
             },
+            tip: {
+                manage_here: '您可以在此管理此账号当前登录的会话。',
+                logout_unrecognized: '若有您无法识别的陌生会话，您应当立即注销，修改密码，并设置其它安全措施（例如两步验证）来保证账号安全性。',
+            },
         },
         auth: {
             title: '密码',
@@ -171,6 +183,26 @@ export default {
                 enable_button: '启用两步验证',
                 disable_button: '禁用两步验证',
                 disable_confirm: '确定要禁用两步验证吗？',
+            },
+        },
+        explore: {
+            use_nmservices: {
+                title: '畅享 nmServices',
+                products: {
+                    nmBrowser_startPage: 'nmBrowser 启动页',
+                    nmFun: 'nmFun',
+                    more: '更多 nmTeam 产品',
+                },
+            },
+            developers_will_love_nmteam_account: {
+                title: '开发者也会爱上 nmTeam 账号',
+                description: '在自己构建的 App 中使用 nmTeam 账号。',
+                a_text: '了解如何做到',
+            },
+            help: {
+                title: '获取帮助',
+                description: 'nmTeam 团队竭诚为您解决 nmTeam 账号问题。',
+                a_text: '开始',
             },
         },
         fake_account_name: '加载中',

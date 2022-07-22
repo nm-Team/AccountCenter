@@ -7,7 +7,7 @@
         </label-input>
         <div class="btns" v-if="inEdit">
             <div>
-                <button class="blockButton" @click="0">
+                <button class="blockButton" @click="initializeUserInfo()">
                     {{ $t('cancel') }}</button>
             </div>
             <div class="right">
@@ -29,12 +29,42 @@
     </div>
 </template>
 <script>
+
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'ManageInfos',
     data() {
         return {
-            changeableForm: [
+            editedInfo: {},
+            inEdit: false,
+            changeableForm: [],
+            readonlyForm: [],
+        };
+    },
+    props: {
+        user: {
+            type: Object,
+            required: true,
+        },
+    },
+    mounted() {
+        this.initializeUserInfo();
+    },
+    watch: {
+        user: {
+            handler() {
+                this.initializeUserInfo();
+            },
+            deep: true,
+        },
+    },
+    methods: {
+        editInfo(name, data) {
+            this.editedInfo[name] = data;
+            this.inEdit = true;
+        },
+        initializeUserInfo() {
+            this.changeableForm = [
                 {
                     id: 'nick',
                     type: 'text',
@@ -53,8 +83,8 @@ export default {
                     label: this.$t('manage.infos.changeable.mood'),
                     value: this.user.mood,
                 },
-            ],
-            readonlyForm: [
+            ];
+            this.readonlyForm = [
                 {
                     id: 'user',
                     type: 'text',
@@ -73,21 +103,7 @@ export default {
                     label: this.$t('manage.infos.readonly.role'),
                     value: this.$t(`manage.infos.roles.${this.user.role}`),
                 },
-            ],
-            editedInfo: {},
-            inEdit: false,
-        };
-    },
-    props: {
-        user: {
-            type: Object,
-            required: true,
-        },
-    },
-    methods: {
-        editInfo(name, data) {
-            this.editedInfo[name] = data;
-            this.inEdit = true;
+            ];
         },
     },
     components: {},

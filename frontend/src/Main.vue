@@ -10,13 +10,7 @@
                 </div>
                 <router-view @getdata="setData"></router-view>
                 <div class="footer">
-                    <p><span>{{ $t('log.footer.copyright', { year: new Date().getFullYear() }) }}</span></p>
-                    <select v-model="language" class="seleteLang" @change="changeLang" :title="$t('selete_language')">
-                        <option v-for="lang in languages" :key="lang"
-                            :value="(lang.code.indexOf(language) > -1 ? language = lang.code[0] : true) && lang.code[0]">
-                            {{ lang.name }}
-                        </option>
-                    </select>
+                    <Footer></Footer>
                 </div>
             </div>
         </div>
@@ -27,9 +21,6 @@
 </template>
 
 <script>
-import { languages } from './i18n';
-
-const langs = languages;
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names, vue/no-reserved-component-names
@@ -42,8 +33,6 @@ export default {
                 dark: 'https://websiteres.nmteam.xyz/background/street/dark.png',
             },
             eEggCount: 0,
-            languages: langs,
-            language: this.$i18n.locale,
             inManagePage: false,
         };
     },
