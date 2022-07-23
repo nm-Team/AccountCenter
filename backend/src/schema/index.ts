@@ -19,6 +19,7 @@ type User {
 }
 
 type Session {
+    _uuid: String,
     createAt: BigInt,
     updateAt: BigInt,
     ua: String,
