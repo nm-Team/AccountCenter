@@ -1,251 +1,300 @@
 {
-    "app_name": "nmTeam 账号中心",
-    "log": {
-       "link": {
-          "register": "注册",
-          "login": "登录",
-          "forget_password": "忘记密码",
-          "support": "nmTeam 支持"
-       },
-       "username": "用户名",
-       "password": "密码",
-       "confirm_password": "确认密码",
-       "email": "电子邮箱",
-       "captcha": "验证码",
-       "register": "注册",
-       "login": "登录",
-       "login_page": {
-          "title": "登录 nmTeam 账号",
-          "continue": "并授权 {app} 账号权限",
-          "keep_me_logged_in": "使我保持登录",
-          "submit": "登录",
-          "logged_account": "已登录的账号",
-          "processing": "正在登录..."
-       },
-       "choose_account_page": {
-          "title": "切换账号",
-          "tip": "选择一个已在此设备上登录的 nmTeam 账号以继续登录{oauth}。",
-          "new": "登录一个新账号"
-       },
-       "register_page": {
-          "title": "注册 nmTeam 账号",
-          "tip": "即刻注册 nmTeam 账号，享受引人入胜的 nmTeam 服务。",
-          "accept_terms": {
-             "text": "我同意 nmTeam 账号 {terms} 和 {privacy} ",
-             "terms": "服务协议",
-             "privacy": "隐私政策"
-          },
-          "submit": "注册",
-          "processing": "正在注册...",
-          "success_title": "注册成功",
-          "success_tip": "您应当查看您的电子邮箱，那里有关于注册的下一步信息。"
-       },
-       "forget_password_page": {
-          "step0": {
-             "title": "重置 nmTeam 账号密码",
-             "tip": "若您忘记了您的 nmTeam 账号密码，则可以在此通过验证电子邮箱重新设置密码。若无法使用电子邮箱，请联系 nmTeam 支持获取帮助。"
-          },
-          "step1": {
-             "title": "确认电子邮箱",
-             "tip": "请确认您注册 nmTeam 账号时使用的电子邮箱，那里有关于找回 nmTeam 账号的进一步措施。"
-          },
-          "nextstep": "下一步"
-       },
-       "ActiveAccount": {
-          "title": "正在激活 nmTeam 账号",
-          "tip": "感谢您注册 nmTeam 账号。我们正在做最后的工作，您将很快完成注册流程。请稍候，我们正在为您激活账号...",
-          "success_title": "nmTeam 账号激活成功",
-          "success_tip": "恭喜您，您的 nmTeam 账号已经成功激活。您现在即可登录 nmTeam 账号，在 nmTeam 服务中驰骋。",
-          "error_title": "激活 nmTeam 账号失败",
-          "error_tip": "很抱歉，出现错误，导致 nmTeam 账号激活失败。请联系 nmTeam 支持获取帮助。",
-          "error_code": "错误详情："
-       },
-       "not_found_page": {
-          "title": "找不到页面",
-          "tip": "此页面不存在。请确认您的 URL 是否正确，或继续以下操作。"
-       },
-       "footer": {
-          "copyright": "版权所有 © {year} nmTeam。保留所有权利。"
-       },
-       "error": {
-          "username_empty": "请输入用户名。",
-          "password_empty": "请输入密码。",
-          "confirm_password_empty": "请输入确认密码。",
-          "password_not_match": "两次输入的密码不一致。",
-          "captcha_empty": "请输入验证码。",
-          "register_failed": "注册失败。",
-          "login_failed": "登录失败。",
-          "forget_password_failed": "重置密码失败。",
-          "email_empty": "请输入电子邮箱。",
-          "email_not_found": "电子邮箱未找到。",
-          "email_not_verified": "电子邮箱未验证。",
-          "email_verify_param_invalid": "验证参数不正确。请检查 URL 后重试。",
-          "email_verify_failed": "验证失败。",
-          "agree_terms": "请阅读并同意 nmTeam 服务协议和隐私政策。",
-          "userinfo_get_failed": "获取用户信息失败。",
-          "invalid_parameters": "传入的参数不正确。",
-          "invalid_token": "传入的验证符不正确。",
-          "invalid_mail": "电子邮箱格式不正确。",
-          "invalid_user": "用户名不正确。",
-          "wrong_user": "用户名错误。",
-          "wrong_pass": "密码错误。",
-          "used_mail": "此电子邮箱已被使用。",
-          "used_user": "此用户名已被使用。",
-          "unknown_error": "未知错误。"
-       },
-       "please_fill_blank": "请填写{name}"
-    },
-    "manage": {
-       "header_title": "nmTeam 账号",
-       "header_icon_button_title": "点击来打开菜单",
-       "header_icon_button_alt": "nmTeam 图标菜单按钮",
-       "header_account_icon_title": "点击切换账号",
-       "logout_title": "注销",
-       "logout_failed": "抱歉，出现了问题，注销失败。",
-       "pages": {
-          "index": "首页",
-          "safety": "账号安全",
-          "infos": "个人信息",
-          "preference": "偏好设置"
-       },
-       "account_switcher": {
-          "title": "切换账号",
-          "new": "登录新账号"
-       },
-       "index": {
-          "title": "{name}，你好",
-          "welcome_text": "欢迎使用 nmTeam 账号。<br>nmTeam 账号不仅助您登录 nmTeam 服务，更可用于在第三方网站验证身份。",
-          "welcome_photo_alt": "nmTeam 账号"
-       },
-       "infos": {
-          "title": "管理个人信息",
-          "customize": {
-             "title": "个性化",
-             "change_avatar": "设置头像"
-          },
-          "changeable": {
-             "title": "修改个人信息",
-             "editing": "正在编辑",
-             "nick": "昵称",
-             "email": "电子邮箱",
-             "mood": "Mood"
-          },
-          "readonly": {
-             "title": "更多账号信息",
-             "user": "用户名",
-             "uuid": "UUID",
-             "role": "用户组"
-          },
-          "roles": {
-             "user": "用户",
-             "admin": "管理员",
-             "guest": "访客",
-             "undefined": "未定"
-          }
-       },
-       "account_safety_block": {
-          "title": "账号安全",
-          "stay_safe": "确保您的账号安全无虞",
-          "stay_safe_text": "账号安全性对安全使用网络服务至关重要。在此了解可采取的措施，进一步保证 nmTeam 账号安全。",
-          "turn_to_safety_page": "转到账号安全页面",
-          "stay_safe_img_alt": "保护 nmTeam 账号安全",
-          "level": {
-             "point": "{point} 分",
-             "high": "您的账号非常安全。",
-             "medium": "您的账号比较安全，但让我们更进一步。",
-             "low": "您的账号非常不安全。"
-          },
-          "improve": "请尝试这些措施：",
-          "improve_ways": {
-             "change_password": {
-                "title": "修改密码",
-                "tip": "您的密码越长、越复杂，就越不容易被猜到。您还应当定期修改密码，进一步增强安全性。"
-             },
-             "enable_2fa": {
-                "title": "启用两步验证",
-                "tip": "启用两步验证来提高您的账号安全性。"
-             }
-          }
-       },
-       "change_password": {
-          "title": "修改密码",
-          "old_password": "旧密码",
-          "new_password": "新密码",
-          "confirm_password": "确认密码",
-          "submit": "修改",
-          "tip": {
-             "title": "如何设置安全的密码",
-             "t0": "密码的位数应当足够长。",
-             "t1": "避免使用易于猜到的密码，例如 12345678, asdfghjkl, mypassword 或您的生日。",
-             "t2": "在密码中包含特殊字符，例如 - 和 _。",
-             "t3": "避免在不同的网站设置相同的密码，这样一旦其中的一个泄露，您的其余账号都将不再安全。",
-             "t4": "不要将密码存储在公开文档或放置于不安全的地方。",
-             "t5": "定期更换密码或启用“两步验证”都可以进一步提高您的账号安全性。"
-          }
-       },
-       "setup_2fa": {
-          "title": "设置两步验证",
-          "tip_a": "启用“两步验证”后，即使攻击者获取了您的密码，也无法获得对您账号的访问权限。",
-          "tip_b": "请设置“两步验证”，进一步增强账号安全性。"
-       },
-       "recent_sessions": {
-          "title": "最近登录的会话",
-          "table": {
-             "time": "活跃时间",
-             "time_log_in_word": "于 {login_time} 登录",
-             "ip": "IP 和大概位置",
-             "ip_word": "大致位于 {city}",
-             "ua": "浏览器和用户 UA",
-             "operates": "操作"
-          },
-          "operates": {
-             "logout": "下线",
-             "logout_all": "全部注销",
-             "logout_all_confirm": "确定要注销全部会话吗？"
-          },
-          "tip": {
-             "manage_here": "您可以在此管理此账号当前登录的会话。",
-             "logout_unrecognized": "若有您无法识别的陌生会话，您应当立即注销，修改密码，并设置其它安全措施（例如两步验证）来保证账号安全性。"
-          }
-       },
-       "auth": {
-          "title": "密码",
-          "change_button": "修改密码",
-          "2fa": {
-             "title": "两步验证",
-             "enable_button": "启用两步验证",
-             "disable_button": "禁用两步验证",
-             "disable_confirm": "确定要禁用两步验证吗？"
-          }
-       },
-       "explore": {
-          "use_nmservices": {
-             "title": "畅享 nmServices",
-             "products": {
-                "nmBrowser_startPage": "nmBrowser 启动页",
-                "nmFun": "nmFun",
-                "more": "更多 nmTeam 产品"
-             }
-          },
-          "developers_will_love_nmteam_account": {
-             "title": "开发者也会爱上 nmTeam 账号",
-             "description": "在自己构建的 App 中使用 nmTeam 账号。",
-             "a_text": "了解如何做到"
-          },
-          "help": {
-             "title": "获取帮助",
-             "description": "nmTeam 团队竭诚为您解决 nmTeam 账号问题。",
-             "a_text": "开始"
-          }
-       },
-       "fake_account_name": "加载中",
-       "not_found_alt": "找不到此页面。"
-    },
-    "avatar_alt": "用户头像",
-    "ok": "好",
-    "cancel": "取消",
-    "save": "保存",
-    "loading": "加载中",
-    "unknown": "未知",
-    "selete_language": "选择语言"
- }
+   "app_name": "nmTeam 账号中心",
+   "log": {
+      "link": {
+         "register": "注册",
+         "login": "登录",
+         "forget_password": "忘记密码",
+         "support": "nmTeam 支持"
+      },
+      "username": "用户名",
+      "password": "密码",
+      "confirm_password": "确认密码",
+      "email": "电子邮箱",
+      "captcha": "验证码",
+      "register": "注册",
+      "login": "登录",
+      "login_page": {
+         "title": "登录 nmTeam 账号",
+         "continue": "并授权 {app} 账号权限",
+         "keep_me_logged_in": "使我保持登录",
+         "submit": "登录",
+         "logged_account": "已登录的账号",
+         "processing": "正在登录..."
+      },
+      "choose_account_page": {
+         "title": "切换账号",
+         "tip": "选择一个已在此设备上登录的 nmTeam 账号以继续登录{oauth}。",
+         "new": "登录一个新账号"
+      },
+      "register_page": {
+         "title": "注册 nmTeam 账号",
+         "tip": "即刻注册 nmTeam 账号，享受引人入胜的 nmTeam 服务。",
+         "accept_terms": {
+            "text": "我同意 nmTeam 账号 {terms} 和 {privacy} ",
+            "terms": "服务协议",
+            "privacy": "隐私政策"
+         },
+         "submit": "注册",
+         "processing": "正在注册...",
+         "success_title": "注册成功",
+         "success_tip": "您应当查看您的电子邮箱，那里有关于注册的下一步信息。"
+      },
+      "forget_password_page": {
+         "step0": {
+            "title": "重置 nmTeam 账号密码",
+            "tip": "若您忘记了您的 nmTeam 账号密码，则可以在此通过验证电子邮箱重新设置密码。若无法使用电子邮箱，请联系 nmTeam 支持获取帮助。"
+         },
+         "step1": {
+            "title": "确认电子邮箱",
+            "tip": "请确认您注册 nmTeam 账号时使用的电子邮箱，那里有关于找回 nmTeam 账号的进一步措施。"
+         },
+         "nextstep": "下一步"
+      },
+      "ActiveAccount": {
+         "title": "正在激活 nmTeam 账号",
+         "tip": "感谢您注册 nmTeam 账号。我们正在做最后的工作，您将很快完成注册流程。请稍候，我们正在为您激活账号...",
+         "success_title": "nmTeam 账号激活成功",
+         "success_tip": "恭喜您，您的 nmTeam 账号已经成功激活。您现在即可登录 nmTeam 账号，在 nmTeam 服务中驰骋。",
+         "error_title": "激活 nmTeam 账号失败",
+         "error_tip": "很抱歉，出现错误，导致 nmTeam 账号激活失败。请联系 nmTeam 支持获取帮助。",
+         "error_code": "错误详情："
+      },
+      "not_found_page": {
+         "title": "找不到页面",
+         "tip": "此页面不存在。请确认您的 URL 是否正确，或继续以下操作。"
+      },
+      "footer": {
+         "copyright": "版权所有 © {year} nmTeam。保留所有权利。"
+      },
+      "error": {
+         "username_empty": "请输入用户名。",
+         "password_empty": "请输入密码。",
+         "confirm_password_empty": "请输入确认密码。",
+         "password_not_match": "两次输入的密码不一致。",
+         "captcha_empty": "请输入验证码。",
+         "register_failed": "注册失败。",
+         "login_failed": "登录失败。",
+         "forget_password_failed": "重置密码失败。",
+         "email_empty": "请输入电子邮箱。",
+         "email_not_found": "电子邮箱未找到。",
+         "email_not_verified": "电子邮箱未验证。",
+         "email_verify_param_invalid": "验证参数不正确。请检查 URL 后重试。",
+         "email_verify_failed": "验证失败。",
+         "agree_terms": "请阅读并同意 nmTeam 服务协议和隐私政策。",
+         "userinfo_get_failed": "获取用户信息失败。",
+         "invalid_parameters": "传入的参数不正确。",
+         "invalid_token": "传入的验证符不正确。",
+         "invalid_mail": "电子邮箱格式不正确。",
+         "invalid_user": "用户名不正确。",
+         "wrong_user": "用户名错误。",
+         "wrong_pass": "密码错误。",
+         "used_mail": "此电子邮箱已被使用。",
+         "used_user": "此用户名已被使用。",
+         "unknown_error": "未知错误。"
+      },
+      "please_fill_blank": "请填写{name}"
+   },
+   "manage": {
+      "header_title": "nmTeam 账号",
+      "header_icon_button_title": "点击来打开菜单",
+      "header_icon_button_alt": "nmTeam 图标菜单按钮",
+      "header_account_icon_title": "点击切换账号",
+      "logout_title": "注销",
+      "logout_failed": "抱歉，出现了问题，注销失败。",
+      "pages": {
+         "index": "首页",
+         "safety": "账号安全",
+         "infos": "个人信息",
+         "preference": "偏好设置"
+      },
+      "account_switcher": {
+         "title": "切换账号",
+         "new": "登录新账号"
+      },
+      "index": {
+         "title": "{name}，你好",
+         "welcome_text": "欢迎使用 nmTeam 账号。<br>nmTeam 账号不仅助您登录 nmTeam 服务，更可用于在第三方网站验证身份。",
+         "welcome_photo_alt": "nmTeam 账号"
+      },
+      "infos": {
+         "title": "管理个人信息",
+         "customize": {
+            "title": "个性化",
+            "change_avatar": "设置头像"
+         },
+         "changeable": {
+            "title": "修改个人信息",
+            "editing": "正在编辑",
+            "nick": "昵称",
+            "email": "电子邮箱",
+            "mood": "Mood"
+         },
+         "readonly": {
+            "title": "更多账号信息",
+            "user": "用户名",
+            "uuid": "UUID",
+            "role": "用户组"
+         },
+         "roles": {
+            "user": "用户",
+            "admin": "管理员",
+            "guest": "访客",
+            "undefined": "未定"
+         }
+      },
+      "account_safety_block": {
+         "title": "账号安全",
+         "stay_safe": "确保您的账号安全无虞",
+         "stay_safe_text": "账号安全性对安全使用网络服务至关重要。在此了解可采取的措施，进一步保证 nmTeam 账号安全。",
+         "turn_to_safety_page": "转到账号安全页面",
+         "stay_safe_img_alt": "保护 nmTeam 账号安全",
+         "level": {
+            "point": "{point} 分",
+            "high": "您的账号非常安全。",
+            "medium": "您的账号比较安全，但让我们更进一步。",
+            "low": "您的账号非常不安全。"
+         },
+         "improve": "请尝试这些措施：",
+         "improve_ways": {
+            "change_password": {
+               "title": "修改密码",
+               "tip": "您的密码越长、越复杂，就越不容易被猜到。您还应当定期修改密码，进一步增强安全性。"
+            },
+            "enable_2fa": {
+               "title": "启用双重验证",
+               "tip": "启用双重验证来提高您的账号安全性。"
+            }
+         }
+      },
+      "change_password": {
+         "title": "修改密码",
+         "old_password": "旧密码",
+         "new_password": "新密码",
+         "confirm_password": "确认密码",
+         "submit": "修改",
+         "tip": {
+            "title": "如何设置安全的密码",
+            "t0": "密码的位数应当足够长。",
+            "t1": "避免使用易于猜到的密码，例如 12345678, asdfghjkl, mypassword 或您的生日。",
+            "t2": "在密码中包含特殊字符，例如 - 和 _。",
+            "t3": "避免在不同的网站设置相同的密码，这样一旦其中的一个泄露，您的其余账号都将不再安全。",
+            "t4": "不要将密码存储在公开文档或放置于不安全的地方。",
+            "t5": "定期更换密码或启用“双重验证”都可以进一步提高您的账号安全性。"
+         }
+      },
+      "setup_2fa": {
+         "title": "设置双重验证",
+         "tip_a": "启用“双重验证”后，即使攻击者获取了您的密码，也无法获得对您账号的访问权限。",
+         "tip_b": "请设置“双重验证”，进一步增强账号安全性。",
+         "setup": {
+            "title": "请选择验证方式",
+            "using_app_title": "使用 App",
+            "using_app": "出现提示时，使用手机上的 App 获取验证码来进行双重验证。我们建议使用基于云的 TOTP 应用程序，例如：1Password、Authy、LastPass Authenticator 或 Microsoft Authenticator。",
+            "app": {
+               "title": "设置双重验证 App",
+               "scan_qrcode_title": "扫描二维码",
+               "scan_qrcode": "使用手机上的双因素身份验证 App 扫描此二维码，或输入此代码：{secure}。",
+               "enter_code_title": "然后输入验证码",
+               "enter_code": "请在此输入 App 中的验证码。",
+               "enter_code_placeholder": "6 位数字验证码",
+               "code_format_error": "验证码格式错误。",
+               "get_code_error": "抱歉，无法获取验证代码。请刷新页面重试。",
+               "set_error": "抱歉，设置双重验证失败。请刷新页面重试。"
+            }
+         },
+         "enabled": {
+            "title": "已启用双重验证",
+            "tip": "您是安全的！您已启用“双重验证”。",
+            "disable": "停用“双重验证”"
+         },
+         "disable": {
+            "title": "停用“双重验证”",
+            "tip": "请输入设备上的 6 位代码以确认您的操作。",
+            "submit": "停用"
+         },
+         "next_step": "下一步"
+      },
+      "recent_sessions": {
+         "title": "最近登录的会话",
+         "detail_mode": "详情模式",
+         "tiny_mode": "简略模式",
+         "table": {
+            "time": "活跃时间",
+            "time_log_in_word": "于 {login_time} 登录",
+            "ip": "IP 和大概位置",
+            "ip_word": "大致位于 {city}",
+            "ua": "浏览器和用户 UA",
+            "operates": "操作"
+         },
+         "tiny": {
+            "colon": "：",
+            "device": "设备",
+            "active_time": "活跃时间",
+            "create_time": "登录时间",
+            "ip": "IP",
+            "ip_value": "{ip} (大致在 {city})",
+            "ua": "浏览器"
+         },
+         "operates": {
+            "logout": "下线",
+            "logout_all": "全部注销",
+            "logout_confirm": "确定要注销此会话吗？",
+            "logout_all_confirm": "确定要注销全部会话吗？",
+            "logout_fail": "注销会话失败。"
+         },
+         "tip": {
+            "manage_here": "您可以在此管理此账号当前登录的会话。",
+            "logout_unrecognized": "若有您无法识别的陌生会话，您应当立即注销，修改密码，并设置其它安全措施（例如双重验证）来保证账号安全性。"
+         }
+      },
+      "auth": {
+         "title": "密码",
+         "change_button": "修改密码",
+         "2fa": {
+            "title": "双重验证",
+            "enable_button": "启用双重验证",
+            "disable_button": "禁用双重验证",
+            "disable_confirm": "确定要禁用双重验证吗？"
+         }
+      },
+      "explore": {
+         "use_nmservices": {
+            "title": "畅享 nmServices",
+            "products": {
+               "nmBrowser_startPage": "nmBrowser 启动页",
+               "nmFun": "nmFun",
+               "more": "更多 nmTeam 产品"
+            }
+         },
+         "developers_will_love_nmteam_account": {
+            "title": "开发者也会爱上 nmTeam 账号",
+            "description": "在自己构建的 App 中使用 nmTeam 账号。",
+            "a_text": "了解如何做到"
+         },
+         "help": {
+            "title": "获取帮助",
+            "description": "nmTeam 团队竭诚为您解决 nmTeam 账号问题。",
+            "a_text": "开始"
+         }
+      },
+      "fake_account_name": "加载中",
+      "not_found_alt": "找不到此页面。"
+   },
+   "time": {
+      "relative": {
+         "day": "天前",
+         "hour": "小时前",
+         "minute": "分钟前",
+         "second": "秒前",
+         "just_now": "现在"
+      }
+   },
+   "avatar_alt": "用户头像",
+   "ok": "好",
+   "cancel": "取消",
+   "save": "保存",
+   "loading": "加载中",
+   "unknown": "未知",
+   "selete_language": "选择语言"
+}

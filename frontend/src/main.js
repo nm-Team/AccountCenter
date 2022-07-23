@@ -10,6 +10,7 @@ import ApolloClient from 'apollo-boost';
 import axios from 'axios';
 import * as Vue from 'vue';
 import VueAxios from 'vue-axios';
+import vueQr from 'vue-qr/src/packages/vue-qr.vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 import FooterItems from './components/FooterItems.vue';
@@ -71,8 +72,10 @@ const apolloClient = new ApolloClient({
 const app = Vue.createApp(Main);
 app.use(i18n).use(router)
     .use(VueAxios, axios)
+    .use(vueQr)
     .provide(DefaultApolloClient.DefaultApolloClient, apolloClient)
     .component('font-awesome-icon', FontAwesomeIcon)
+    .component('vue-qr', vueQr)
     .component('Footer', FooterItems)
     .component('LinkA', LinkA)
     .component('LabelInput', LabelInput)

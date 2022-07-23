@@ -2,10 +2,13 @@
     <div class="labelInput" :autofocus="autofocus" :readonly="readonly" :disabled="disabled">
         <label :class="{ isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true }">
             {{ $t(label) }}</label>
-        <textarea v-if="type == 'textarea'" v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly" :disabled="disabled"
-            @focus="this.focus = true" @blur="this.focus = false" @change="push()" ></textarea>
-        <input v-else v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly" :disabled="disabled"
-            @focus="this.focus = true" @blur="this.focus = false" @change="push()" />
+        <div :class="{ innerInput: true, isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true }">
+            <textarea v-if="type == 'textarea'" v-model="inputVal" :type="type" :autofocus="autofocus"
+                :readonly="readonly" :disabled="disabled" @focus="this.focus = true" @blur="this.focus = false"
+                @change="push()"></textarea>
+            <input v-else v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly"
+                :disabled="disabled" @focus="this.focus = true" @blur="this.focus = false" @change="push()" />
+        </div>
     </div>
 </template>
 

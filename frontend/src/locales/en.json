@@ -219,10 +219,13 @@
             "safety": "Security"
         },
         "recent_sessions": {
+            "detail_mode": "Detail",
             "operates": {
                 "logout": "Log out",
                 "logout_all": "Log out all",
-                "logout_all_confirm": "Are you sure you want to log out of all sessions?"
+                "logout_all_confirm": "Are you sure you want to log out of all sessions?",
+                "logout_confirm": "Are you sure to log out this session?",
+                "logout_fail": "Logout session failed."
             },
             "table": {
                 "ip": "IP & approximate location",
@@ -232,6 +235,16 @@
                 "time_log_in_word": "Login at {login_time}",
                 "ua": "Browser & UA"
             },
+            "tiny": {
+                "active_time": "Active at",
+                "colon": ": ",
+                "create_time": "Login at",
+                "device": "Device",
+                "ip": "IP",
+                "ip_value": "{ip} (Roughly in {city})",
+                "ua": "Browser"
+            },
+            "tiny_mode": "Abbreviated",
             "tip": {
                 "logout_unrecognized": "If there is an unfamiliar session that you cannot identify, you should log out immediately, change your password, and set up other security measures (such as two-step verification) to ensure account security.",
                 "manage_here": "Here you can manage the currently logged in sessions of this account."
@@ -239,6 +252,10 @@
             "title": "Recent Sessions"
         },
         "setup_2fa": {
+            "disable": {
+                "submit": "Disable",
+                "tip": "Please enter the 6-digit code on your device to confirm your action."
+            },
             "tip_a": "With 2-Step Verification enabled, even if an attacker obtains your password, they cannot gain access to your account.",
             "tip_b": "Please set up \"two-step verification\" to further enhance account security.",
             "title": "Set up Two-Step Verification"
