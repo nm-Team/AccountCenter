@@ -8,7 +8,7 @@
                     <LinkA :text="$t('manage.account_safety_block.turn_to_safety_page')"></LinkA>
                 </router-link>
             </div>
-            <div style="width: 130px; height: 110px; flex-shrink: 0; background-image: url(../../public/privacy.png); background-size: 130px; background-position: center; background-repeat: no-repeat;"
+            <div style="width: 130px; height: 110px; flex-shrink: 0; background-image: url(/privacy.png); background-size: 130px; background-position: center; background-repeat: no-repeat;"
                 :alt="$t('manage.account_safety_block.stay_safe_img_alt')"></div>
         </div>
         <p><b>{{ $t('manage.account_safety_block.level.point', { point: this.rate })

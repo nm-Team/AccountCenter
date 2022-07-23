@@ -145,7 +145,7 @@ export default {
                     url: 'https://nmteam.xyz/products',
                     color: '#fff',
                     backgroundColor: '#00bcd4',
-                    backgroundImage: '/public/view_more.png',
+                    backgroundImage: '/view_more.png',
                     margin: '0',
                 },
             ],
