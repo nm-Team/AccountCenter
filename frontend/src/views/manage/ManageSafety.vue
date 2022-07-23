@@ -12,42 +12,40 @@
                 </thead>
                 <tbody>
                     <tr v-for="session in onlineSessions" :key="session">
-                        <td style="min-width: 15em;">{{ $t('manage.recent_sessions.table.time_word', {
-                                last_active:
-                                    session.updateAt, login_time: session.createAt
-                            })
-                        }}
+                        <td style="min-width: 15em;">
+                            {{ session.updateAt }}<br />
+                            {{ $t('manage.recent_sessions.table.time_log_in_word', {
+                                    login_time: session.createAt
+                                })
+                            }}
                         </td>
-                        <td style="min-width: 8em;">{{ $t('manage.recent_sessions.table.ip_word', {
-                                ip: session.ip, city:
-                                    '下北泽'
-                            })
-                        }}
+                        <td style="min-width: 8em;">
+                            {{ session.ip }}<br />
+                            {{ $t('manage.recent_sessions.table.ip_word', {
+                                    city: ipPosition[session.ip] ? ipPosition[session.ip] : $t('loading')
+                                })
+                            }}
                         </td>
                         <td style="min-width: 15em;">{{ session.ua }}
                         </td>
                         <td style="min-width: 2em;">
-                            <!-- <a @click="kickSession" href="javascript:">{{
-                                $t('manage.recent_sessions.operates.logout')
-                        }}</a> -->
+                            <a @click="kickSession()" href="javascript:">{{
+                                    $t('manage.recent_sessions.operates.logout')
+                            }}</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <p v-else>{{ $t('loading') }}...</p>
-        <p>{{$t('manage.recent_sessions.tip.manage_here')}}</p>
-        <p>{{$t('manage.recent_sessions.tip.logout_unrecognized')}}</p>
+        <p>{{ $t('manage.recent_sessions.tip.manage_here') }}</p>
+        <p>{{ $t('manage.recent_sessions.tip.logout_unrecognized') }}</p>
         <div class="btns">
             <button class="blockButton" @click="logOutAllSessions()">
                 {{ $t('manage.recent_sessions.operates.logout_all') }}</button>
         </div>
     </div>
-    <SafetyChecker :user="user"></SafetyChecker>
-    <div class="block">
-        <h2 class="title">Debug</h2>
-        <code>{{ JSON.stringify(onlineSessions, null, 4) }}</code>
-    </div>
+    <SafetyChecker :user="user" :insafetypage=true></SafetyChecker>
 </template>
 <script>
 import { gql } from 'apollo-boost';
@@ -60,6 +58,7 @@ export default {
     data() {
         return {
             onlineSessions: [],
+            ipPosition: {},
         };
     },
     props: {
@@ -98,6 +97,9 @@ export default {
             }).then(({ data }) => {
                 console.log(data);
                 this.onlineSessions = data.User.getSession;
+                this.onlineSessions.forEach((element) => {
+                    this.getIpLoc(element.ip);
+                });
                 // eslint-disable-next-line no-param-reassign
             }, (error) => {
                 console.log(error);
@@ -122,6 +124,16 @@ export default {
                     alert(this.$t('manage.recent_sessions.operates.logout_fail'));
                 });
             }
+        },
+        getIpLoc(ip) {
+            this.axios.get(`https://api.ip.sb/geoip/${ip}`).then((response) => {
+                console.log(response.data);
+                if (response.data.city) {
+                    this.ipPosition[ip] = `${response.data.city}, ${response.data.country}`;
+                } else if (response.data.country) {
+                    this.ipPosition[ip] = response.data.country;
+                } else this.ipPosition[ip] = this.$t('unknown');
+            });
         },
     },
     components: {},

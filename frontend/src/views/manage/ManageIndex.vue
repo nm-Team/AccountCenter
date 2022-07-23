@@ -9,11 +9,6 @@
             :alt="$t('manage.index.welcome_photo_alt')"></div>
     </div>
     <SafetyChecker :user="user"></SafetyChecker>
-    <div class="block">
-        <h2 class="title">Debug</h2>
-        Here's test user info:<br />
-        {{ user }}
-    </div>
 </template>
 <script>
 export default {

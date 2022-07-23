@@ -7,7 +7,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { DefaultApolloClient } from '@vue/apollo-composable';
 import ApolloClient from 'apollo-boost';
+import axios from 'axios';
 import * as Vue from 'vue';
+import VueAxios from 'vue-axios';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 import FooterItems from './components/FooterItems.vue';
@@ -24,6 +26,8 @@ import LogIn from './views/log/LogIn.vue';
 import NotFound from './views/log/NotFound.vue';
 import Register from './views/log/Register.vue';
 import Manage from './views/manage/Manage.vue';
+import Manage2FA from './views/manage/Manage2FA.vue';
+import ManageChangePassword from './views/manage/ManageChangePassword.vue';
 import ManageIndex from './views/manage/ManageIndex.vue';
 import ManageInfos from './views/manage/ManageInfos.vue';
 import ManageNotFound from './views/manage/ManageNotFound.vue';
@@ -46,6 +50,8 @@ const routes = [
             { path: '', name: 'manage_index', component: ManageIndex },
             { path: 'safety', name: 'manage_safety', component: ManageSafety },
             { path: 'infos', name: 'manage_infos', component: ManageInfos },
+            { path: 'two-factor-authentication-setup', name: 'setup_2fa', component: Manage2FA },
+            { path: 'change-password', name: 'change_password', component: ManageChangePassword },
             { path: ':pathMatch(.*)*', name: 'manage_notfound', component: ManageNotFound },
         ],
     },
@@ -63,6 +69,7 @@ const apolloClient = new ApolloClient({
 
 const app = Vue.createApp(Main);
 app.use(i18n).use(router)
+    .use(VueAxios, axios)
     .provide(DefaultApolloClient.DefaultApolloClient, apolloClient)
     .component('font-awesome-icon', FontAwesomeIcon)
     .component('Footer', FooterItems)

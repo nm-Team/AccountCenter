@@ -10,6 +10,7 @@
     --input-border: #ccc;
     --input-border-focus: #fabb00cc;
     --avatar-skection: #cecece89;
+    --logout-hover-bg: #e1e1e1;
     --icon: url(https://websiteres.nmteam.xyz/producticon/nmTeam/logo@64.png);
 }
 
@@ -24,7 +25,12 @@
     --label-input-label-active: #fabb00cc;
     --input-border: #5d5d5d;
     --input-border-focus: #fabb00cc;
+    --logout-hover-bg: #464646;
     --icon: url(https://websiteres.nmteam.xyz/producticon/nmTeam/logo@64.png);
+}
+
+html{
+    overflow: hidden;
 }
 
 body {
@@ -144,7 +150,7 @@ a {
     justify-content: space-between;
     flex-direction: row;
     background: none;
-    overflow: hidden;
+    // overflow: hidden;
     cursor: pointer;
 
     i {
@@ -166,6 +172,7 @@ a {
         flex-grow: 1;
         font-size: 16px;
         text-align: left;
+        overflow: hidden;
 
         * {
             overflow: hidden;
@@ -184,12 +191,44 @@ a {
             opacity: .87;
         }
     }
+
+    .logOutBut {
+        flex: 0 0;
+
+        button {
+            background: none;
+            padding: 9px 9px;
+            margin-right: -4px;
+            border-radius: 5px;
+
+            svg {
+                width: 16px;
+            }
+        }
+        :hover{
+            background: var(--logout-hover-bg);
+        }
+    }
 }
 
-.user+.user {
+.user[force-border]:last-of-type {
+    border-bottom: 1px solid var(--input-border);
+}
+
+.user[force-border]:last-of-type {
+    border-bottom: 1px solid var(--input-border);
+}
+
+.user:not(:first-of-type),
+.user[force-border] {
     border-top: 1px solid var(--input-border);
     margin-top: 10px;
     padding-top: 10px;
+}
+
+.user[force-border] {
+    margin: 0;
+    padding: 11px 0 15px 0;
 }
 
 .linkA {

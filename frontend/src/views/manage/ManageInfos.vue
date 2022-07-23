@@ -22,11 +22,6 @@
             :label="item.label" @getdata="setData" :readonly="true">
         </label-input>
     </div>
-    <div class="block">
-        <h2 class="title">Debug</h2>
-        Here's test user info:<br />
-        {{ user }}
-    </div>
 </template>
 <script>
 

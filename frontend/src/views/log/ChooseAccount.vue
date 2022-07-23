@@ -1,9 +1,14 @@
 <template>
     <h1>{{ $t("log.choose_account_page.title") }}</h1>
-    <p class="h1then" v-if="oauth.name">{{ $t('log.choose_account_page.tip', { app: oauth.name }) }}</p>
-    <p class="h1then" v-if="oauth.name">{{ $t('log.login_page.continue', { app: oauth.name }) }}</p>
+    <p class="h1then" v-if="oauth.name">{{ $t('log.choose_account_page.tip', {
+            oauth: $t('log.login_page.continue', {
+                app: oauth.name
+            })
+        })
+    }}</p>
+    <p class="h1then" v-if="oauth.name">{{ }}</p>
     <div class="uList">
-        <UserButton v-for="user, index in avaliableSession" :key="user.uuid" :user="user" @click="switchAccount(index)">
+        <UserButton v-for="user, index in avaliableSession" :key="user.uuid" :user="user" force-border="true" @click="switchAccount(index)">
         </UserButton>
     </div>
     <router-link class="useAnotherAccount" to="/">

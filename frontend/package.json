@@ -9,6 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "axios": "^0.27.2",
+    "vue-axios": "^3.4.1",
     "fortawesome": "^0.0.1-security",
     "apollo-boost": "^0.4.9",
     "graphql": "^16.5.0",
