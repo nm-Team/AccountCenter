@@ -44,7 +44,6 @@ export class SessionModel {
 
     static async deleteAll(tokenId: string) {
         const sessionList = await SessionModel.getSesions(tokenId);
-        console.log(sessionList);
         // eslint-disable-next-line no-restricted-syntax
         for (const session of sessionList) {
             TokenModel.delete(session._uuid, TokenType.SESSION);

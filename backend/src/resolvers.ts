@@ -84,6 +84,15 @@ const resolvers = {
             const ret: any = await SessionModel.getSesions(parent.token);
             return ret;
         },
+        async logoutSession(parent: any, args: any): Promise<boolean> {
+            if (parent.token === undefined || args.token === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            await SessionModel.deleteSession(parent.token, args.token);
+            return true;
+        },
+    },
+    twoFactorAuthResolvers: {
     },
 };
 export default resolvers;

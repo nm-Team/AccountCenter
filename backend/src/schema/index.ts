@@ -40,6 +40,8 @@ type UserResolvers {
     getUser: User,
     "Get online sessions"
     getSession: [Session],
+    "Logout the specified session"
+    logoutSession(token: String): Boolean,
 }
 
 type Query {
