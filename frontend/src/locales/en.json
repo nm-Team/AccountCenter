@@ -1,0 +1,251 @@
+{
+    "app_name": "nmTeam Account Center",
+    "avatar_alt": "Avatar",
+    "cancel": "Cancel",
+    "loading": "Loading",
+    "log": {
+        "ActiveAccount": {
+            "error_code": "Error detail:",
+            "error_tip": "Sorry, an error occurred and the activation of the nmTeam account failed. \nPlease contact nmTeam support for assistance.",
+            "error_title": "Failed to activate nmTeam account",
+            "success_tip": "Congratulations! Your nmTeam account has been successfully activated. \nYou can now log in to your nmTeam account and experience the nmTeam service.",
+            "success_title": "Successfully Activated Your nmTeam Account ",
+            "tip": "Thank you for registering nmTeam account. \nWe are doing the final work and you will be through the registration process shortly. \nPlease wait while we activate your account...",
+            "title": "Activating nmTeam Account"
+        },
+        "captcha": "Captcha",
+        "choose_account_page": {
+            "new": "Sign in with a new account",
+            "tip": "Select an nmTeam account already logged in on this device to continue logging in {oauth}.",
+            "title": "Switch Account"
+        },
+        "confirm_password": "Confirm Password",
+        "email": "Email",
+        "error": {
+            "agree_terms": "Please read and agree to the nmTeam Terms of Use and Privacy Policy.",
+            "captcha_empty": "please enter verification code.",
+            "confirm_password_empty": "Please enter a confirmation password.",
+            "email_empty": "Please enter email.",
+            "email_not_found": "Email address not found.",
+            "email_not_verified": "Email is not verified.",
+            "email_verify_failed": "Verification failed.",
+            "email_verify_param_invalid": "The validation parameters are incorrect. \nPlease check the URL and try again.",
+            "forget_password_failed": "Failed to reset password.",
+            "invalid_mail": "Email address format is incorrect.",
+            "invalid_parameters": "The parameter passed in is incorrect.",
+            "invalid_token": "The validator passed in is incorrect.",
+            "invalid_user": "Username is incorrect.",
+            "login_failed": "Login failed.",
+            "password_empty": "Please enter a password.",
+            "password_not_match": "The passwords entered twice do not match.",
+            "register_failed": "registration failed.",
+            "unknown_error": "Unknown error.",
+            "used_mail": "This email address is already in use.",
+            "used_user": "This username is already in use.",
+            "userinfo_get_failed": "Failed to get user information.",
+            "username_empty": "Please enter user name.",
+            "wrong_pass": "Wrong password.",
+            "wrong_user": "Username error."
+        },
+        "footer": {
+            "copyright": "Copyright © {year} nmTeam. All rights reserved."
+        },
+        "forget_password_page": {
+            "nextstep": "Next Step",
+            "step0": {
+                "tip": "If you forget your nmTeam Account password, you can reset it by verifying your email address. If you cannot access your email address, please contact nmTeam support for help.",
+                "title": "Reset nmTeam Account Password"
+            },
+            "step1": {
+                "tip": "Please check your email address that you registered nmTeam Account with, and get further instructions about resetting your password.",
+                "title": "Check Your Email"
+            }
+        },
+        "link": {
+            "forget_password": "Forget Password",
+            "login": "Login",
+            "register": "Register",
+            "support": "nmTeam Support"
+        },
+        "login": "Log In",
+        "login_page": {
+            "continue": "and authorize {app} to access your account",
+            "keep_me_logged_in": "Keep me logged in",
+            "logged_account": "Logged in account",
+            "processing": "Logging in...",
+            "submit": "Log In",
+            "title": "Log In to Your nmTeam Account"
+        },
+        "not_found_page": {
+            "tip": "The page you are looking for does not exist. Please check your URL or continue with the following operations.",
+            "title": "Page Not Found"
+        },
+        "password": "Password",
+        "please_fill_blank": "Please fill in the {name} blank",
+        "register": "Register",
+        "register_page": {
+            "accept_terms": {
+                "privacy": "Privacy Policy",
+                "terms": "Terms of Use",
+                "text": "I accept the {terms} and {privacy} of nmTeam Account"
+            },
+            "processing": "Registering...",
+            "submit": "Register",
+            "success_tip": "You should check your email for information on the next steps to register.",
+            "success_title": "Registration Success",
+            "tip": "Register a new nmTeam Account to start using nmTeam services.",
+            "title": "Register"
+        },
+        "username": "Username"
+    },
+    "manage": {
+        "account_safety_block": {
+            "improve": "Please try these measures:",
+            "improve_ways": {
+                "change_password": {
+                    "tip": "The longer and more complex your password, the less likely it will be guessed. \nYou should also change your password regularly to further enhance your security.",
+                    "title": "Change Password"
+                },
+                "enable_2fa": {
+                    "tip": "Enable 2-step verification to increase your account security.",
+                    "title": "Enable 2-step Verification"
+                }
+            },
+            "level": {
+                "high": "Your account is very secure.",
+                "low": "Your account is very insecure.",
+                "medium": "Your account is secure, but let's go a step further.",
+                "point": "{point} points"
+            },
+            "stay_safe": "Keep your account safe and secure",
+            "stay_safe_img_alt": "Securing your nmTeam Account",
+            "stay_safe_text": "Account security is critical to the safe use of web services. \nLearn what you can do here to further keep your nmTeam Account safe.",
+            "title": "Account Security",
+            "turn_to_safety_page": "Go to account security page"
+        },
+        "account_switcher": {
+            "new": "New account",
+            "title": "Switch Account"
+        },
+        "auth": {
+            "2fa": {
+                "disable_button": "Disable 2-step Verification",
+                "disable_confirm": "Are you sure you want to disable 2-step verification?",
+                "enable_button": "Enable 2-step Verification",
+                "title": "2-step Verification"
+            },
+            "change_button": "Change Password",
+            "title": "Password"
+        },
+        "change_password": {
+            "confirm_password": "Confirm Password",
+            "new_password": "New Password",
+            "old_password": "Old Password",
+            "submit": "Revise",
+            "tip": {
+                "t0": "The number of digits in the password should be long enough.",
+                "t1": "Avoid easy-to-guess passwords like 12345678, asdfghjkl, mypassword or your birthday.",
+                "t2": "Include special characters such as - and _ in the password.",
+                "t3": "Avoid setting the same password on different websites, so that if one of them leaks, the rest of your accounts are no longer safe.",
+                "t4": "Do not store passwords in public documents or in unsafe places.",
+                "t5": "Regularly changing your password or enabling 2-step verification can further improve your account security.",
+                "title": "How to set a secure password"
+            },
+            "title": "Change Password"
+        },
+        "explore": {
+            "developers_will_love_nmteam_account": {
+                "a_text": "Learn How",
+                "description": "Use your nmTeam account in your own apps.",
+                "title": "Developers will love nmTeam accounts too"
+            },
+            "help": {
+                "a_text": "Start",
+                "description": "The nmTeam team is happy to help you with your nmTeam account issues.",
+                "title": "Get Help from nmTeam Support"
+            },
+            "use_nmservices": {
+                "products": {
+                    "more": "More nmTeam products",
+                    "nmBrowser_startPage": "nmBrowser StartPage",
+                    "nmFun": "nmFun"
+                },
+                "title": "Enjoy nmServices"
+            }
+        },
+        "fake_account_name": "Loading",
+        "header_account_icon_title": "Click to switch accounts",
+        "header_icon_button_alt": "nmTeam icon menu button",
+        "header_icon_button_title": "Click to open the menu",
+        "header_title": "nmTeam Account",
+        "index": {
+            "title": "Hello, {name}",
+            "welcome_photo_alt": "nmTeam Account",
+            "welcome_text": "Welcome to the nmTeam account. \n<br>nmTeam account not only helps you log in to nmTeam services, but can also be used to verify your identity on third-party websites."
+        },
+        "infos": {
+            "changeable": {
+                "editing": "Editing",
+                "email": "E-mail",
+                "mood": "Mood",
+                "nick": "Nickname",
+                "title": "Modify Personal Information"
+            },
+            "customize": {
+                "change_avatar": "Set Avatar",
+                "title": "Personalise"
+            },
+            "readonly": {
+                "role": "User Group",
+                "title": "More Account Information",
+                "user": "Username",
+                "uuid": "UUID"
+            },
+            "roles": {
+                "admin": "Administrator",
+                "guest": "Guest",
+                "undefined": "Undefined",
+                "user": "User"
+            },
+            "title": "Manage Personal Information"
+        },
+        "logout_failed": "Sorry, something went wrong and logout failed.",
+        "logout_title": "Log out",
+        "not_found_alt": "This page could not be found.",
+        "pages": {
+            "index": "Index",
+            "infos": "Personal Information",
+            "preference": "Preferences",
+            "safety": "Security"
+        },
+        "recent_sessions": {
+            "operates": {
+                "logout": "Log out",
+                "logout_all": "Log out all",
+                "logout_all_confirm": "Are you sure you want to log out of all sessions?"
+            },
+            "table": {
+                "ip": "IP & approximate location",
+                "ip_word": "around {city}",
+                "operates": "Operate",
+                "time": "Active time",
+                "time_log_in_word": "Login at {login_time}",
+                "ua": "Browser & UA"
+            },
+            "tip": {
+                "logout_unrecognized": "If there is an unfamiliar session that you cannot identify, you should log out immediately, change your password, and set up other security measures (such as two-step verification) to ensure account security.",
+                "manage_here": "Here you can manage the currently logged in sessions of this account."
+            },
+            "title": "Recent Sessions"
+        },
+        "setup_2fa": {
+            "tip_a": "With 2-Step Verification enabled, even if an attacker obtains your password, they cannot gain access to your account.",
+            "tip_b": "Please set up \"two-step verification\" to further enhance account security.",
+            "title": "Set up Two-Step Verification"
+        }
+    },
+    "ok": "OK",
+    "save": "Save",
+    "selete_language": "Selete Language",
+    "unknown": "Unknown"
+}
