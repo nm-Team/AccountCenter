@@ -1,0 +1,251 @@
+{
+    "app_name": "nmTeamアカウントセンター",
+    "avatar_alt": "プロフィールの写真",
+    "cancel": "キャンセル",
+    "loading": "読み込み中",
+    "log": {
+        "ActiveAccount": {
+            "error_code": "エラーの詳細：",
+            "error_tip": "申し訳ありませんが、エラーが発生し、nmTeamアカウントのアクティブ化に失敗しました。 \nnmTeamサポートにお問い合わせください。",
+            "error_title": "nmTeamアカウントのアクティブ化に失敗しました",
+            "success_tip": "おめでとうございます。nmTeamアカウントが正常にアクティブ化されました。\nこれで、nmTeamアカウントにログインして、nmTeamサービスを実行できます。",
+            "success_title": "nmTeamアカウントが正常にアクティブ化されました",
+            "tip": "nmTeamアカウントを登録していただきありがとうございます。\n最終作業を行っており、まもなく登録プロセスが完了します。\nアカウントが有効になるまでお待ちください...",
+            "title": "nmTeamアカウントのアクティブ化"
+        },
+        "captcha": "検証コード",
+        "choose_account_page": {
+            "new": "新しいアカウントでサインイン",
+            "tip": "このデバイスにすでにログインしているnmTeamアカウントを選択して、{oauth}へのログインを続行します。",
+            "title": "アカウントを切り替える"
+        },
+        "confirm_password": "パスワードを認証する",
+        "email": "Eメール",
+        "error": {
+            "agree_terms": "nmTeamサービス契約とプライバシーポリシーを読んで同意してください。",
+            "captcha_empty": "確認コードを入力してください。",
+            "confirm_password_empty": "確認パスワードを入力してください。",
+            "email_empty": "メールアドレスを入力してください。",
+            "email_not_found": "メールアドレスが見つかりません。",
+            "email_not_verified": "メールは検証されていない。",
+            "email_verify_failed": "検証に失敗しました。",
+            "email_verify_param_invalid": "検証パラメーターが正しくありません。 \nURLを確認して、もう一度お試しください。",
+            "forget_password_failed": "パスワードのリセットに失敗しました。",
+            "invalid_mail": "メールアドレスの形式が正しくありません。",
+            "invalid_parameters": "渡されたパラメーターが正しくありません。",
+            "invalid_token": "渡されたバリデーターが正しくありません。",
+            "invalid_user": "ユーザー名が正しくありません。",
+            "login_failed": "ログインに失敗しました。",
+            "password_empty": "パスワードを入力して下さい。",
+            "password_not_match": "2回入力したパスワードが一致しません。",
+            "register_failed": "登録に失敗しました。",
+            "unknown_error": "未知の間違い。",
+            "used_mail": "この電子メールアドレスが既に使用されている。",
+            "used_user": "このユーザー名は既に使われています。",
+            "userinfo_get_failed": "ユーザー情報の取得に失敗しました。",
+            "username_empty": "ユーザー名を入力してください。",
+            "wrong_pass": "間違ったパスワード。",
+            "wrong_user": "ユーザー名エラー。"
+        },
+        "footer": {
+            "copyright": "Copyright © {year} nmTeam。全著作権所有。"
+        },
+        "forget_password_page": {
+            "nextstep": "次のステップ",
+            "step0": {
+                "tip": "nmTeamアカウントのパスワードを忘れた場合は、ここでメールアドレスを確認してパスワードをリセットできます。\n電子メールが利用できない場合は、nmTeamサポートに連絡して支援を求めてください。",
+                "title": "nmTeamアカウントのパスワードをリセットする"
+            },
+            "step1": {
+                "tip": "nmTeamアカウントの登録に使用したメールアドレスを確認してください。nmTeamアカウントを復元するための追加の手順があります。",
+                "title": "Eメール確認"
+            }
+        },
+        "link": {
+            "forget_password": "パスワードをお忘れですか",
+            "login": "ログイン",
+            "register": "登録",
+            "support": "nmTeamのサポート"
+        },
+        "login": "ログイン",
+        "login_page": {
+            "continue": "そして、{app}アカウントの権限を承認します",
+            "keep_me_logged_in": "ログイン状態を保つ",
+            "logged_account": "ログインしたアカウント",
+            "processing": "ログインしています...",
+            "submit": "ログイン",
+            "title": "nmTeamアカウントにログインします"
+        },
+        "not_found_page": {
+            "tip": "このページは存在しません。 \nURLが正しいことを確認するか、以下に進んでください。",
+            "title": "ページが見つかりません"
+        },
+        "password": "パスワード",
+        "please_fill_blank": "{名前}を入力してください",
+        "register": "登録",
+        "register_page": {
+            "accept_terms": {
+                "privacy": "プライバシーポリシー",
+                "terms": "役務契約",
+                "text": "nmTeamアカウントの{terms}と{privacy}に同意します"
+            },
+            "processing": "登録中...",
+            "submit": "登録",
+            "success_tip": "登録する次のステップについては、電子メールを確認する必要があります。",
+            "success_title": "登録完了",
+            "tip": "今すぐnmTeamアカウントにサインアップして、魅力的なnmTeamサービスをお楽しみください。",
+            "title": "nmTeamアカウントを登録する"
+        },
+        "username": "ユーザー名"
+    },
+    "manage": {
+        "account_safety_block": {
+            "improve": "次の対策を試してください。",
+            "improve_ways": {
+                "change_password": {
+                    "tip": "パスワードが長く複雑になるほど、推測される可能性は低くなります。\nまた、セキュリティをさらに強化するために、パスワードを定期的に変更する必要があります。",
+                    "title": "パスワードを変更する"
+                },
+                "enable_2fa": {
+                    "tip": "アカウントのセキュリティを強化するには、2段階認証プロセスを有効にします。",
+                    "title": "2段階認証を有効にする"
+                }
+            },
+            "level": {
+                "high": "あなたのアカウントは非常に安全です。",
+                "low": "あなたのアカウントは非常に安全ではありません。",
+                "medium": "あなたのアカウントはより安全ですが、さらに一歩進んでみましょう。",
+                "point": "{point} ポイント"
+            },
+            "stay_safe": "アカウントを安全に保つ",
+            "stay_safe_img_alt": "nmTeamアカウントを保護する",
+            "stay_safe_text": "アカウントのセキュリティは、Webサービスを安全に使用するために重要です。 \nnmTeamアカウントをさらに安全に保つために、ここで何ができるかを学びます。",
+            "title": "アカウントのセキュリティ",
+            "turn_to_safety_page": "アカウントのセキュリティページに移動します"
+        },
+        "account_switcher": {
+            "new": "新しいアカウントでログイン",
+            "title": "アカウントを切り替える"
+        },
+        "auth": {
+            "2fa": {
+                "disable_button": "2段階認証を無効にする",
+                "disable_confirm": "2段階認証プロセスを無効にしてもよろしいですか？",
+                "enable_button": "2段階認証を有効にする",
+                "title": "2段階認証"
+            },
+            "change_button": "パスワードを変更する",
+            "title": "パスワード"
+        },
+        "change_password": {
+            "confirm_password": "パスワードを認証する",
+            "new_password": "新しいパスワード",
+            "old_password": "以前のパスワード",
+            "submit": "改訂",
+            "tip": {
+                "t0": "パスワードの桁数は十分に長くする必要があります。",
+                "t1": "12345678、asdfghjkl、mypassword、誕生日など、推測しやすいパスワードは避けてください。",
+                "t2": "パスワードに-や_などの特殊文字を含めます。",
+                "t3": "異なるWebサイトに同じパスワードを設定することは避けてください。そうすれば、それらの1つがリークした場合、残りのアカウントは安全ではなくなります。",
+                "t4": "公開文書や安全でない場所にパスワードを保存しないでください。",
+                "t5": "パスワードを定期的に変更するか、2段階認証プロセスを有効にすると、アカウントのセキュリティがさらに向上します。",
+                "title": "安全なパスワードを設定する方法"
+            },
+            "title": "パスワードを変更する"
+        },
+        "explore": {
+            "developers_will_love_nmteam_account": {
+                "a_text": "方法を学ぶ",
+                "description": "独自のアプリでnmTeamアカウントを使用します。",
+                "title": "開発者はnmTeamアカウントも気に入るはずです"
+            },
+            "help": {
+                "a_text": "始める",
+                "description": "nmTeamチームは、nmTeamアカウントの問題について喜んでお手伝いします。",
+                "title": "助けを得ます"
+            },
+            "use_nmservices": {
+                "products": {
+                    "more": "その他のnmTeam製品",
+                    "nmBrowser_startPage": "nmBrowserスタートページ",
+                    "nmFun": "nmFun"
+                },
+                "title": "nmServicesをお楽しみください"
+            }
+        },
+        "fake_account_name": "読み込み中",
+        "header_account_icon_title": "クリックしてアカウントを切り替えます",
+        "header_icon_button_alt": "nmTeamアイコンメニューボタン",
+        "header_icon_button_title": "クリックしてメニューを開きます",
+        "header_title": "nmTeamアカウント",
+        "index": {
+            "title": "こんにちは, {name}",
+            "welcome_photo_alt": "nmTeamアカウント",
+            "welcome_text": "nmTeamアカウントへようこそ。 \n<br> nmTeamアカウントは、nmTeamサービスへのログインに役立つだけでなく、サードパーティのWebサイトで本人確認を行うためにも使用できます。"
+        },
+        "infos": {
+            "changeable": {
+                "editing": "編集",
+                "email": "Eメール",
+                "mood": "ムード",
+                "nick": "ニックネーム",
+                "title": "個人情報の変更"
+            },
+            "customize": {
+                "change_avatar": "アバターを設定する",
+                "title": "パーソナライズ"
+            },
+            "readonly": {
+                "role": "ユーザー・グループ",
+                "title": "アカウント情報の詳細",
+                "user": "ユーザー名",
+                "uuid": "UUID"
+            },
+            "roles": {
+                "admin": "管理者",
+                "guest": "ビジター",
+                "undefined": "未定",
+                "user": "ユーザー"
+            },
+            "title": "個人情報の管理"
+        },
+        "logout_failed": "申し訳ありませんが、問題が発生し、ログアウトに失敗しました。",
+        "logout_title": "ログアウト",
+        "not_found_alt": "このページが見つかりませんでした。",
+        "pages": {
+            "index": "表紙",
+            "infos": "個人情報",
+            "preference": "環境設定",
+            "safety": "アカウントのセキュリティ"
+        },
+        "recent_sessions": {
+            "operates": {
+                "logout": "オフライン",
+                "logout_all": "すべてログアウトする",
+                "logout_all_confirm": "すべてのセッションからログアウトしてもよろしいですか？"
+            },
+            "table": {
+                "ip": "IPとおおよその場所",
+                "ip_word": "{city}周辺",
+                "operates": "操作する",
+                "time": "アクティブタイム",
+                "time_log_in_word": "{login_time}でログインします",
+                "ua": "ブラウザとユーザーUA"
+            },
+            "tip": {
+                "logout_unrecognized": "識別できない見慣れないセッションがある場合は、すぐにログアウトし、パスワードを変更し、アカウントのセキュリティを確保するために他のセキュリティ対策（2段階認証など）を設定する必要があります。",
+                "manage_here": "ここでは、このアカウントの現在ログインしているセッションを管理できます。"
+            },
+            "title": "最近ログインしたセッション"
+        },
+        "setup_2fa": {
+            "tip_a": "2段階認証プロセスを有効にすると、攻撃者がパスワードを取得しても、攻撃者はあなたのアカウントにアクセスできなくなります。",
+            "tip_b": "アカウントのセキュリティをさらに強化するために、「2段階認証」を設定してください。",
+            "title": "2段階認証を設定する"
+        }
+    },
+    "ok": "いいです",
+    "save": "保存",
+    "selete_language": "言語を選択してください",
+    "unknown": "わからない"
+}

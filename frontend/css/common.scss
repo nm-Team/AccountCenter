@@ -1,4 +1,4 @@
-[data-theme=light] {
+body {
     --text: #000;
     --a: #e5bb00;
     --warn: #f44;
@@ -14,7 +14,7 @@
     --icon: url(https://websiteres.nmteam.xyz/producticon/nmTeam/logo@64.png);
 }
 
-[data-theme=dark] {
+body [data-theme=dark] {
     --text: #fff;
     --a: #e5bb00;
     --warn: #f44;

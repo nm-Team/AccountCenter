@@ -17,6 +17,7 @@ import LabelInput from './components/LabelInput.vue';
 import LinkA from './components/LinkA.vue';
 import SafetyChecker from './components/SafetyChecker.vue';
 import UserButton from './components/UserButton.vue';
+import config from './config';
 import { i18n, languages } from './i18n';
 import Main from './Main.vue';
 import Active from './views/log/Active.vue';
@@ -64,7 +65,7 @@ const router = createRouter({
 });
 
 const apolloClient = new ApolloClient({
-    uri: 'http://localhost:4000/graphql',
+    uri: config.backEnd,
 });
 
 const app = Vue.createApp(Main);

@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 import { createI18n } from 'vue-i18n';
 
-import en from './locales/en';
-import ja from './locales/ja';
-import zh_Hans from './locales/zh-Hans';
-import zh_Hant from './locales/zh-Hant';
+import en from './locales/en.json';
+import ja from './locales/ja.json';
+import zh_Hans from './locales/zh-Hans.json';
+import zh_Hant from './locales/zh-Hant.json';
 
 const languages = [
     {

@@ -1,4 +1,4 @@
-[data-theme=light] {
+body {
     --sidebar: #000;
     --sidebar-active-background: #f2f2f2;
     --sidebar-active: #000;
@@ -8,7 +8,7 @@
     --block-button-border: #d4d4d4;
 }
 
-[data-theme=dark] {
+body [data-theme=dark] {
     --sidebar: #ffffff;
     --sidebar-active-background: #565656;
     --sidebar-active: #ffffff;

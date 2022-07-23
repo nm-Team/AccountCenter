@@ -3,3 +3,4 @@ config.ts
 dist
 .vscode
 yarn-error.log
+frontend/src/config.js
