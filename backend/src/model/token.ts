@@ -7,8 +7,7 @@ import db from './mongo';
 enum TokenType {
     SESSION,
     REGISTER,
-    TURN_ON_TFA,
-    CHANGEMAIL,
+    SUDOMODE,
 }
 
 class TokenModel {
@@ -31,10 +30,7 @@ class TokenModel {
 
     static get(tokenId: string, tokenType: TokenType): Promise<Object | null> {
         bus.emit('token/get', tokenId, tokenType);
-        return TokenModel.coll.findOne({
-            _uuid: tokenId,
-            tokenType,
-        });
+        return TokenModel.update(tokenId, tokenType, 0, { updateAt: new Date() });
     }
 
     static query(tokenType: TokenType, query: Filter<Object>) {

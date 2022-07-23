@@ -1,7 +1,5 @@
 import { generateSecret, generateToken, verifyToken } from 'node-2fa';
 
-console.log(generateSecret({ name: 'aaa', account: 'bbb' }));
-
 class twoFactorAuth {
     static generateSecret(name: string, account: string) {
         return generateSecret({ name, account });
