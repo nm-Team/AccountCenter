@@ -44,8 +44,18 @@ type UserResolvers {
     logoutSession(token: String): Boolean,
 }
 
+type twoFactorAuthResolvers {
+    "Generate a two factor auth secret"
+    generate: String,
+    "Turn on two factor authentication"
+    enable(secret: String, code: String): Boolean,
+    "Turn off two factor authentication"
+    disable(code: String): Boolean,
+}
+
 type Query {
     User(uuid: String, user: String, mail: String, token: String): UserResolvers,
+    twoFactorAuth(token: String): twoFactorAuthResolvers,
 }
 `;
 

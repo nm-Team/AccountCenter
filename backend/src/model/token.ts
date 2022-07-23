@@ -7,6 +7,7 @@ import db from './mongo';
 enum TokenType {
     SESSION,
     REGISTER,
+    TURN_ON_TFA,
     CHANGEMAIL,
 }
 

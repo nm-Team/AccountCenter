@@ -283,6 +283,13 @@
   resolved "https://registry.npmmirror.com/@types/node/-/node-10.17.60.tgz#35f3d6213daed95da7f0f73e75bcc6980e90597b"
   integrity sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==
 
+"@types/notp@^2.0.0", "@types/notp@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.npmmirror.com/@types/notp/-/notp-2.0.2.tgz#7283f4918b2770555e0f2df72acc9f46ebd41ae9"
+  integrity sha512-JUcVYN9Tmw0AjoAfvjslS4hbv39fPBbZdftBK3b50g5z/DmhLsu6cd0UOEBiQuMwy2FirshF2Gk9gAvfWjshMw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/qs@*":
   version "6.9.7"
   resolved "https://registry.npmmirror.com/@types/qs/-/qs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
@@ -933,6 +940,16 @@ negotiator@0.6.3:
   resolved "https://registry.npmmirror.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
+node-2fa@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npmmirror.com/node-2fa/-/node-2fa-2.0.3.tgz#74a5f3c618e803c3b7a9b04c38d36cbf4a5e26d6"
+  integrity sha512-PQldrOhjuoZyoydMvMSctllPN1ZPZ1/NwkEcgYwY9faVqE/OymxR+3awPpbWZxm6acLKqvmNqQmdqTsqYyflFw==
+  dependencies:
+    "@types/notp" "^2.0.0"
+    notp "^2.0.3"
+    thirty-two "1.0.2"
+    tslib "^2.1.0"
+
 node-fetch@^2.6.7:
   version "2.6.7"
   resolved "https://registry.npmmirror.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
@@ -944,6 +961,11 @@ node-logger@^0.0.1:
   version "0.0.1"
   resolved "https://registry.npmmirror.com/node-logger/-/node-logger-0.0.1.tgz#e269fc0de12aacf84518bc27637355905fb6a18a"
   integrity sha512-gP8UdgPkkMesjJUWT1gY2iAq020IlIs4GzUxiuQg3+W6pa4GacETCmitFE+lBFciUit3t52pGbRIpKv2BM1aRg==
+
+notp@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npmmirror.com/notp/-/notp-2.0.3.tgz#a9fd11e25cfe1ccb39fc6689544ee4c10ef9a577"
+  integrity sha512-oBig/2uqkjQ5AkBuw4QJYwkEWa/q+zHxI5/I5z6IeP2NT0alpJFsP/trrfCC+9xOAgQSZXssNi962kp5KBmypQ==
 
 object-assign@^4:
   version "4.1.1"
@@ -1158,6 +1180,11 @@ supports-color@^7.1.0:
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   dependencies:
     has-flag "^4.0.0"
+
+thirty-two@1.0.2, thirty-two@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmmirror.com/thirty-two/-/thirty-two-1.0.2.tgz#4ca2fffc02a51290d2744b9e3f557693ca6b627a"
+  integrity sha512-OEI0IWCe+Dw46019YLl6V10Us5bi574EvlJEOcAkB29IzQ/mYD1A6RyNHLjZPiHCmuodxvgF6U+vZO1L15lxVA==
 
 toidentifier@1.0.0:
   version "1.0.0"

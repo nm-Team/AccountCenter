@@ -1,3 +1,4 @@
+import twoFactorAuth from './model/2fa';
 import { SessionDoc, SessionModel } from './model/session';
 import { TokenModel, TokenType } from './model/token';
 import { UserDoc, UserModel } from './model/user';
@@ -5,6 +6,9 @@ import { UserDoc, UserModel } from './model/user';
 const resolvers = {
     Query: {
         User(_: any, args: any): any {
+            return args;
+        },
+        twoFactorAuth(_: any, args: any): any {
             return args;
         },
     },
@@ -77,10 +81,6 @@ const resolvers = {
             if (parent.token === undefined) {
                 throw new Error('invalid_parameters');
             }
-            // const token: any = TokenModel.get(parent.token, TokenType.SESSION);
-            // if (token === null) {
-            //     throw new Error('Token is expired');
-            // }
             const ret: any = await SessionModel.getSesions(parent.token);
             return ret;
         },
@@ -93,6 +93,53 @@ const resolvers = {
         },
     },
     twoFactorAuthResolvers: {
+        async generate(parent: any) {
+            console.log(parent);
+            if (parent.token === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
+            if (token === null) {
+                throw new Error('invalid_token');
+            }
+            return twoFactorAuth.generateSecret('nmTeam', token.user).uri;
+        },
+        async enable(parent: any, args: any): Promise<boolean> {
+            if (parent.token === undefined || args.secret === undefined || args.code === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
+            if (token === null) {
+                throw new Error('invalid_token');
+            }
+            const user = await UserModel.getByUUID(token.uuid);
+            if (user.tfa !== undefined) {
+                throw new Error('tfa_already_on');
+            }
+            if (twoFactorAuth.verifyToken(args.secret, args.code) !== 0) {
+                throw new Error('tfa_invalid_code');
+            }
+            await UserModel.setByUUID(token.uuid, { tfa: args.secret });
+            return true;
+        },
+        async disable(parent: any, args: any): Promise<boolean> {
+            if (parent.token === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
+            if (token === null) {
+                throw new Error('invalid_token');
+            }
+            const user = await UserModel.getByUUID(token.uuid);
+            if (user.tfa === undefined || user.tfa === null) {
+                throw new Error('tfa_already_off');
+            }
+            if (twoFactorAuth.verifyToken(user.tfa, args.code) !== 0) {
+                throw new Error('tfa_invalid_code');
+            }
+            await UserModel.setByUUID(token.uuid, { tfa: undefined });
+            return true;
+        },
     },
 };
 export default resolvers;

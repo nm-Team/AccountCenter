@@ -29,6 +29,8 @@ export interface UserDoc extends Object {
     regat: Date;
     loginat: Date;
     loginip: string;
+
+    tfa?: string;
 }
 
 export class UserModel {
@@ -69,6 +71,8 @@ export class UserModel {
             regat: doc.regat,
             loginat: doc.logat,
             loginip: doc.loginip,
+
+            tfa: doc.tfa,
         };
     }
 
@@ -93,6 +97,8 @@ export class UserModel {
             regat: doc.regat,
             loginat: doc.logat,
             loginip: doc.loginip,
+
+            tfa: doc.tfa,
         };
     }
 
@@ -117,7 +123,39 @@ export class UserModel {
             regat: doc.regat,
             loginat: doc.logat,
             loginip: doc.loginip,
+
+            tfa: doc.tfa,
         };
+    }
+
+    static async setByUUID(uuid: string, data: Partial<UserDoc>) {
+        const ret = await coll.updateOne(
+            { uuid },
+            {
+                $set: data,
+            },
+        );
+        return ret;
+    }
+
+    static async setByUser(user: string, data: Partial<UserDoc>) {
+        const ret = await coll.updateOne(
+            { user },
+            {
+                $set: data,
+            },
+        );
+        return ret;
+    }
+
+    static async setByMail(mail: string, data: Partial<UserDoc>) {
+        const ret = await coll.updateOne(
+            { mail },
+            {
+                $set: data,
+            },
+        );
+        return ret;
     }
 
     static async register(

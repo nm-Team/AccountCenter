@@ -4,6 +4,7 @@
     "@node-ts/bus-messages": "^1.0.4",
     "@types/amqplib": "^0.8.2",
     "@types/cookie-parser": "^1.4.3",
+    "@types/notp": "^2.0.2",
     "@types/uuid": "^8.3.4",
     "amqplib": "^0.10.0",
     "apollo-server-express": "^3.9.0",
@@ -16,7 +17,10 @@
     "graphql": "^16.5.0",
     "graphql-type-long": "^0.1.1",
     "mongodb": "^4.7.0",
+    "node-2fa": "^2.0.3",
     "node-logger": "^0.0.1",
+    "notp": "^2.0.3",
+    "thirty-two": "^1.0.2",
     "uuid": "^8.3.2"
   }
 }
