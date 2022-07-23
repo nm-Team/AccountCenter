@@ -7,7 +7,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { DefaultApolloClient } from '@vue/apollo-composable';
 import ApolloClient from 'apollo-boost';
+import axios from 'axios';
 import * as Vue from 'vue';
+import VueAxios from 'vue-axios';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 import FooterItems from './components/FooterItems.vue';
@@ -67,6 +69,7 @@ const apolloClient = new ApolloClient({
 
 const app = Vue.createApp(Main);
 app.use(i18n).use(router)
+    .use(VueAxios, axios)
     .provide(DefaultApolloClient.DefaultApolloClient, apolloClient)
     .component('font-awesome-icon', FontAwesomeIcon)
     .component('Footer', FooterItems)

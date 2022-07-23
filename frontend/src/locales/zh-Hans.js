@@ -100,6 +100,8 @@ export default {
         header_icon_button_title: '点击来打开菜单',
         header_icon_button_alt: 'nmTeam 图标菜单按钮',
         header_account_icon_title: '点击切换账号',
+        logout_title: '注销',
+        logout_failed: '抱歉，出现了问题，注销失败。',
         pages: {
             index: '首页',
             safety: '账号安全',
@@ -117,6 +119,10 @@ export default {
         },
         infos: {
             title: '管理个人信息',
+            customize: {
+                title: '个性化',
+                change_avatar: '设置头像',
+            },
             changeable: {
                 title: '修改个人信息',
                 editing: '正在编辑',
@@ -186,9 +192,9 @@ export default {
             title: '最近登录的会话',
             table: {
                 time: '活跃时间',
-                time_word: '{last_active} (登录于 {login_time})',
+                time_log_in_word: '于 {login_time} 登录',
                 ip: 'IP 和大概位置',
-                ip_word: '{ip} (大致位于 {city})',
+                ip_word: '大致位于 {city}',
                 ua: '浏览器和用户 UA',
                 operates: '操作',
             },
@@ -240,5 +246,6 @@ export default {
     cancel: '取消',
     save: '保存',
     loading: '加载中',
+    unknown: '未知',
     selete_language: '选择语言',
 };
