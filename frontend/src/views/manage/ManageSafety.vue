@@ -149,7 +149,7 @@ export default {
                 },
             }).then(({ data }) => {
                 console.log(data);
-                this.onlineSessions = data.User.getSession;
+                this.onlineSessions = data.User.getSession.reverse();
                 const relativeTime = ['createAt', 'updateAt'];
                 this.onlineSessions.forEach((element) => {
                     this.getIpLoc(element.ip);

@@ -58,6 +58,14 @@ export default {
     mounted() {
         this.inputVal = this.value;
     },
+    watch: {
+        value: {
+            handler() {
+                this.inputVal = this.value;
+            },
+            deep: true,
+        },
+    },
     methods: {
         push() {
             this.$emit('getdata', this.model, this.inputVal);

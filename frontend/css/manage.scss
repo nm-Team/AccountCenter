@@ -584,13 +584,15 @@ body [data-theme=dark] {
     .tfaQrCode {
         width: 200px;
         border: 1px solid var(--block-border);
-        margin: 15px 0;
+        margin: 1px 0 15px 0;
+        padding: 2px;
+        background: #fff;
         border-radius: 5px;
     }
 
 .tinySessionList{
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     padding: 0px 5px 0px 0px;
     margin-top: -2px;
     overflow: auto;
