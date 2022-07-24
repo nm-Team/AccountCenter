@@ -2,10 +2,12 @@
     <h1>{{ $t("log.login_page.title") }}</h1>
     <p class="h1then" v-if="oauth.name">{{ $t('log.login_page.continue', { app: oauth.name }) }}</p>
     <form class="form" @submit.prevent="login">
-        <label-input model="username" type="text" label="log.username" enablescale=false autofocus="true"
-            @getdata="setData">
+        <label-input model="username" type="text" label="log.username" enablescale="false" autofocus="true"
+            @getdata="setData" @blur="console.log(0)">
         </label-input>
-        <label-input model="password" type="password" label="log.password" enablescale=false @getdata="setData">
+        <label-input model="password" type="password" label="log.password" enablescale="false" @getdata="setData">
+        </label-input>
+        <label-input v-if="is2FA" model="tfaCode" type="text" label="log.2fa" enablescale="false" @getdata="setData">
         </label-input>
         <!-- I'm not sure if it's useful -->
         <label class="checkbox" style="display: none;">
@@ -50,6 +52,7 @@ export default {
             },
             serviceMsg: '',
             processing: false,
+            is2FA: false,
             sessions: [],
         };
     },

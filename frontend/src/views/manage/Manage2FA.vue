@@ -1,11 +1,13 @@
 <template>
     <h1>{{ $t('manage.setup_2fa.title') }}</h1>
-    <p>{{ $t('manage.setup_2fa.tip_a') }}</p>
-    <p>{{ $t('manage.setup_2fa.tip_b') }}</p>
-    <div class="block" v-if="!tfaEnabled && inStep == 0">
+    <p v-if="(!tfaEnabled && enableStep == 0) || (tfaEnabled && disableStep == 0)">{{ $t('manage.setup_2fa.tip_a') }}
+    </p>
+    <p v-if="(!tfaEnabled && enableStep == 0) || (tfaEnabled && disableStep == 0)">{{ $t('manage.setup_2fa.tip_b') }}
+    </p>
+    <div class="block" v-if="!tfaEnabled && enableStep == 0">
         <p class="title">{{ $t('manage.setup_2fa.setup.title') }}</p>
         <div class="tfaSelector">
-            <button @click="inStep = 1; vType = 'app'; getAppSecure();">
+            <button @click="enableStep = 1; vType = 'app'; getAppSecure();">
                 <font-awesome-icon :icon="['fas', 'mobile-screen-button']"></font-awesome-icon>
                 <div>
                     <b>{{ $t('manage.setup_2fa.setup.using_app_title') }}</b>
@@ -14,20 +16,24 @@
             </button>
         </div>
     </div>
-    <div class="block" v-if="!tfaEnabled && inStep == 1 && vType == 'app'">
+    <div class="block" v-if="!tfaEnabled && enableStep == 1 && vType == 'app'">
         <p class="title">{{ $t('manage.setup_2fa.setup.app.title') }}</p>
         <p><b>{{ $t('manage.setup_2fa.setup.app.scan_qrcode_title') }}</b></p>
-        <p>{{ $t('manage.setup_2fa.setup.app.scan_qrcode', {
-                secure: appSecure !== '' ? appSecure : this.$t('loading')
-            })
-        }}
+        <p>{{ $t('manage.setup_2fa.setup.app.scan_qrcode') }}
         </p>
-        <vue-qr class="tfaQrCode" :text="appQr" :size="600"></vue-qr>
+        <label-input type="text" :label="$t('manage.setup_2fa.setup.app.secret_box_placeholder')"
+            :value="appSecure !== '' ? appSecure : this.$t('loading')" :readonly="true"></label-input>
+        <vue-qr class="tfaQrCode" v-if="appQr != ''" :text="appQr" :size="600"></vue-qr>
         <p><b>{{ $t('manage.setup_2fa.setup.app.enter_code_title') }}</b></p>
         <p>{{ $t('manage.setup_2fa.setup.app.enter_code') }}</p>
+        <p>{{ $t('manage.setup_2fa.setup.app.code_not_expire') }}</p>
         <label-input model="appUserCode" type="text" :label="$t('manage.setup_2fa.setup.app.enter_code_placeholder')"
-            @getdata="setData"></label-input>
+            @getdata="setData" @keyup.enter="appCheckCode()"></label-input>
         <div class="btns">
+            <div class="left">
+                <button class="blockButton" @click="this.enableStep = 0">
+                    {{ $t('cancel') }}</button>
+            </div>
             <div class="right">
                 <button class="blockButton" @click="appCheckCode()">
                     {{ $t('manage.setup_2fa.next_step') }}</button>
@@ -48,7 +54,7 @@
         <p class="title">{{ $t('manage.setup_2fa.disable.title') }}</p>
         <p>{{ $t('manage.setup_2fa.disable.tip') }}</p>
         <label-input model="appUserCode" type="text" :label="$t('manage.setup_2fa.setup.app.enter_code_placeholder')"
-            @getdata="setData"></label-input>
+            @getdata="setData" @keyup.enter="disable2FA()"></label-input>
         <div class="btns">
             <div class="left">
                 <button class="blockButton" @click="this.disableStep = 0">
@@ -73,7 +79,7 @@ export default {
     data() {
         return {
             tfaEnabled: false,
-            inStep: 0,
+            enableStep: 0,
             disableStep: 0,
             vType: '',
             appSecure: '',
@@ -125,11 +131,11 @@ export default {
                 }).then(({ data }) => {
                     console.log(data);
                     this.tfaEnabled = true;
-                    this.inStep = 0;
+                    this.enableStep = 0;
                 }, (error) => {
                     console.log(error);
                     alert(this.$t('manage.setup_2fa.setup.app.set_error'));
-                    this.inStep = 0;
+                    this.appUserCode = '';
                 });
             }
         },
@@ -150,12 +156,11 @@ export default {
                 }).then(({ data }) => {
                     console.log(data);
                     this.tfaEnabled = false;
-                    this.inStep = 0;
+                    this.enableStep = 0;
                 }, (error) => {
                     console.log(error);
                     alert(this.$t('manage.setup_2fa.setup.app.set_error'));
-                    this.inStep = 0;
-                    this.disableStep = 0;
+                    this.appUserCode = '';
                 });
             }
         },

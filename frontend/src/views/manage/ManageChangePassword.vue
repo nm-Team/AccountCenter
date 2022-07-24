@@ -1,6 +1,9 @@
 <template>
     <h1>{{ $t('manage.change_password.title') }}</h1>
     <div class="block">
+        <p
+            v-html="$t('manage.change_password.forget', { reset: `<a href='/#/forget-password'>${$t('manage.change_password.reset')}</a>` })">
+        </p>
         <label-input v-for="item in form" :key="item.id" :model="item.id" :type="item.type" :label="item.label"
             :autofocus="item.autofocus" @getdata="setData">
         </label-input>

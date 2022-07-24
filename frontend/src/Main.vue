@@ -64,6 +64,10 @@ export default {
             // this.isInManagePage();
             console.log(to, from);
             this.inManagePage = to.path.indexOf('/manage') > -1;
+            if (document.querySelector('.manageContainer')) {
+                document.querySelector('.manageContainer .main').scrollTop = 0;
+                document.querySelector('.pageContent').scrollTop = 0;
+            }
         },
     },
 };
