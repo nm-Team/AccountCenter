@@ -134,10 +134,10 @@ const resolvers = {
                 throw new Error('invalid_token');
             }
             const user = await UserModel.getByUUID(token.uuid);
-            if (user.tfa === undefined || user.tfa === null) {
+            if (!user.tfa || user._tfa === undefined) {
                 throw new Error('tfa_off');
             }
-            if (twoFactorAuth.verifyToken(user.tfa, args.code) !== 0) {
+            if (twoFactorAuth.verifyToken(user._tfa, args.code) !== 0) {
                 throw new Error('tfa_invalid_code');
             }
             await UserModel.setByUUID(token.uuid, { tfa: undefined });

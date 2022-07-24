@@ -30,7 +30,8 @@ export interface UserDoc extends Object {
     loginat: Date;
     loginip: string;
 
-    tfa?: string;
+    tfa: boolean;
+    _tfa?: string;
 }
 
 export class UserModel {
@@ -48,6 +49,8 @@ export class UserModel {
         regat: new Date('2021-06-14'),
         loginat: new Date('2021-06-14'),
         loginip: '127.0.0.1',
+
+        tfa: false,
     };
 
     static async getByUUID(uuid: string): Promise<UserDoc> {
@@ -72,7 +75,8 @@ export class UserModel {
             loginat: doc.logat,
             loginip: doc.loginip,
 
-            tfa: doc.tfa,
+            tfa: doc._tfa !== undefined,
+            _tfa: doc.tfa,
         };
     }
 
@@ -98,7 +102,8 @@ export class UserModel {
             loginat: doc.logat,
             loginip: doc.loginip,
 
-            tfa: doc.tfa,
+            tfa: doc._tfa !== undefined,
+            _tfa: doc.tfa,
         };
     }
 
@@ -124,7 +129,8 @@ export class UserModel {
             loginat: doc.logat,
             loginip: doc.loginip,
 
-            tfa: doc.tfa,
+            tfa: doc._tfa !== undefined,
+            _tfa: doc.tfa,
         };
     }
 

@@ -16,6 +16,8 @@ type User {
     regat: BigInt,
     loginat: BigInt,
     loginip: String,
+
+    tfa: Boolean,
 }
 
 type Session {
