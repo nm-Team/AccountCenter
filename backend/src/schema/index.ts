@@ -34,7 +34,7 @@ type UserResolvers {
     "Activate a account"
     active(token: String): Boolean,
     "Login"
-    login(user: String, pass: String): String,
+    login(user: String, pass: String, code: String): String,
     "Logoug"
     logout: Boolean,
     "Logout all"

@@ -2,6 +2,7 @@ import { Collection } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
 
 import { checkUser, isMail } from '../utils';
+import twoFactorAuth from './2fa';
 import bus from './bus';
 import { sha1 } from './crypto';
 import db from './mongo';
@@ -213,13 +214,18 @@ export class UserModel {
         TokenModel.delete(tokenId, TokenType.REGISTER);
     }
 
-    static async login(user: string, pass: string, ua: string, ip: string): Promise<string> {
+    static async login(user: string, pass: string, code: string, ua: string, ip: string): Promise<string> {
         const doc = await UserModel.getByUser(user);
         if (doc === UserModel.defaultUdoc) {
             throw new Error('wrong_user');
         }
         if (sha1(doc.uuid + pass) !== doc._pass) {
             throw new Error('wrong_pass');
+        }
+        if (doc.tfa && doc._tfa !== undefined) {
+            if (twoFactorAuth.verifyToken(doc._tfa, code) !== 0) {
+                throw new Error('tfa_invalid_code');
+            }
         }
         const token = TokenModel.add(TokenType.SESSION, 24 * 60 * 60, {
             uuid: doc.uuid,
