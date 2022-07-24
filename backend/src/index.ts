@@ -15,6 +15,8 @@ app.use(cookieParser());
 const apollo = new ApolloServer({
     typeDefs,
     resolvers,
+    csrfPrevention: true,
+    // debug: false,
     context: (expressContext) => ({
         ip: expressContext.req.ip,
         ua: expressContext.req.headers['user-agent'],

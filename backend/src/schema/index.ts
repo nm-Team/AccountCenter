@@ -54,9 +54,24 @@ type twoFactorAuthResolvers {
     disable(code: String): Boolean,
 }
 
+type sudoModeInfo {
+    uuid: String,
+    sudo: Boolean,
+    pass: Boolean,
+    tfa: Boolean,
+}
+
+type sudoModeResolvers {
+    "enable sudoMode"
+    enable(pass: String, code: String): Boolean,
+    "list sudoMode"
+    info: sudoModeInfo,
+}
+
 type Query {
     User(uuid: String, user: String, mail: String, token: String): UserResolvers,
     twoFactorAuth(token: String): twoFactorAuthResolvers,
+    sudoMode(token: String): sudoModeResolvers,
 }
 `;
 

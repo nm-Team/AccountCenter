@@ -1,5 +1,6 @@
 import twoFactorAuth from './model/2fa';
 import { SessionDoc, SessionModel } from './model/session';
+import SudoModel from './model/sudo';
 import { TokenModel, TokenType } from './model/token';
 import { UserDoc, UserModel } from './model/user';
 
@@ -9,6 +10,9 @@ const resolvers = {
             return args;
         },
         twoFactorAuth(_: any, args: any): any {
+            return args;
+        },
+        sudoMode(_any: any, args: any): any {
             return args;
         },
     },
@@ -94,12 +98,10 @@ const resolvers = {
     },
     twoFactorAuthResolvers: {
         async generate(parent: any) {
-            console.log(parent);
             if (parent.token === undefined) {
                 throw new Error('invalid_parameters');
             }
             const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
-            console.log(token);
             if (token === null) {
                 throw new Error('invalid_token');
             }
@@ -115,7 +117,7 @@ const resolvers = {
             }
             const user = await UserModel.getByUUID(token.uuid);
             if (user.tfa !== undefined) {
-                throw new Error('tfa_already_on');
+                throw new Error('tfa_on');
             }
             if (twoFactorAuth.verifyToken(args.secret, args.code) !== 0) {
                 throw new Error('tfa_invalid_code');
@@ -133,13 +135,49 @@ const resolvers = {
             }
             const user = await UserModel.getByUUID(token.uuid);
             if (user.tfa === undefined || user.tfa === null) {
-                throw new Error('tfa_already_off');
+                throw new Error('tfa_off');
             }
             if (twoFactorAuth.verifyToken(user.tfa, args.code) !== 0) {
                 throw new Error('tfa_invalid_code');
             }
             await UserModel.setByUUID(token.uuid, { tfa: undefined });
             return true;
+        },
+    },
+    sudoModeResolvers: {
+        async enable(parent: any, args: any): Promise<boolean> {
+            if (parent.token === undefined || (args.pass === undefined && args.code === undefined)) {
+                throw new Error('invalid_parameters');
+            }
+            const sudo = new SudoModel(parent.token);
+            await sudo.init();
+            if (args.pass !== undefined) {
+                if (await sudo.check('pass')) {
+                    return true;
+                }
+                sudo.enableByPass(args.pass);
+            } else if (args.code !== undefined) {
+                if (await sudo.check('2fa')) {
+                    return true;
+                }
+                sudo.enableBy2FA(args.code);
+            }
+            return false;
+        },
+        async info(parent: any): Promise<any> {
+            if (parent.token === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const sudo = new SudoModel(parent.token);
+            await sudo.init();
+            const pass = await sudo.check('pass');
+            const code = await sudo.check('2fa');
+            return {
+                uuid: sudo.uuid,
+                sudo: pass || code,
+                pass,
+                code,
+            };
         },
     },
 };
