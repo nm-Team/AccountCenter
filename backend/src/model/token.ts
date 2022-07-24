@@ -30,7 +30,7 @@ class TokenModel {
 
     static get(tokenId: string, tokenType: TokenType): Promise<Object | null> {
         bus.emit('token/get', tokenId, tokenType);
-        return TokenModel.update(tokenId, tokenType, 0, { updateAt: new Date() });
+        return TokenModel.update(tokenId, tokenType, 24 * 60 * 60, {});
     }
 
     static query(tokenType: TokenType, query: Filter<Object>) {

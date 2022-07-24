@@ -99,6 +99,7 @@ const resolvers = {
                 throw new Error('invalid_parameters');
             }
             const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
+            console.log(token);
             if (token === null) {
                 throw new Error('invalid_token');
             }
