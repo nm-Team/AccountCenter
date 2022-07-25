@@ -1,9 +1,10 @@
 <template>
     <h1>{{ $t('manage.change_password.title') }}</h1>
-    <div class="block">
-        <p
+    <sudo-mode :user="user" @success="sudoSuccess = true"></sudo-mode>
+    <div class="block" v-if="sudoSuccess">
+        <!-- <p
             v-html="$t('manage.change_password.forget', { reset: `<a href='/#/forget-password'>${$t('manage.change_password.reset')}</a>` })">
-        </p>
+        </p> -->
         <label-input v-for="item in form" :key="item.id" :model="item.id" :type="item.type" :label="item.label"
             :autofocus="item.autofocus" @getdata="setData">
         </label-input>
@@ -25,8 +26,9 @@ export default {
     name: 'ManageChangePassword',
     data() {
         return {
+            sudoSuccess: false,
             form: [
-                { id: 'oldpassword', type: 'password', label: 'manage.change_password.old_password' },
+                // { id: 'oldpassword', type: 'password', label: 'manage.change_password.old_password' },
                 { id: 'password', type: 'password', label: 'manage.change_password.new_password' },
                 { id: 'confirmpassword', type: 'password', label: 'manage.change_password.confirm_password' },
             ],

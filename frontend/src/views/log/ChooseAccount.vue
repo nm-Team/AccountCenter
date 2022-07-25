@@ -74,6 +74,7 @@ export default {
       mood
       role
       regat
+      tfa
     }
   }
 }`,

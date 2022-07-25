@@ -28,7 +28,7 @@
         <p>{{ $t('manage.setup_2fa.setup.app.enter_code') }}</p>
         <p>{{ $t('manage.setup_2fa.setup.app.code_not_expire') }}</p>
         <label-input model="appUserCode" type="text" :label="$t('manage.setup_2fa.setup.app.enter_code_placeholder')"
-            @getdata="setData" @keyup.enter="appCheckCode()"></label-input>
+            @getdata="setData" @keyup.enter="appCheckCode()" :value="appUserCode"></label-input>
         <div class="btns">
             <div class="left">
                 <button class="blockButton" @click="this.enableStep = 0">
@@ -54,7 +54,7 @@
         <p class="title">{{ $t('manage.setup_2fa.disable.title') }}</p>
         <p>{{ $t('manage.setup_2fa.disable.tip') }}</p>
         <label-input model="appUserCode" type="text" :label="$t('manage.setup_2fa.setup.app.enter_code_placeholder')"
-            @getdata="setData" @keyup.enter="disable2FA()"></label-input>
+            @getdata="setData" :value="appUserCode" @keyup.enter="disable2FA()"></label-input>
         <div class="btns">
             <div class="left">
                 <button class="blockButton" @click="this.disableStep = 0">
@@ -91,6 +91,13 @@ export default {
             type: Object,
             required: true,
         },
+    },
+    mounted() {
+        if (this.user.tfa) {
+            this.tfaEnabled = true;
+        } else {
+            this.tfaEnabled = false;
+        }
     },
     methods: {
         getAppSecure() {
@@ -132,6 +139,7 @@ export default {
                     console.log(data);
                     this.tfaEnabled = true;
                     this.enableStep = 0;
+                    window.location.reload(); // user info will be reload after page refresh. Maybe hot reload in the future.
                 }, (error) => {
                     console.log(error);
                     alert(this.$t('manage.setup_2fa.setup.app.set_error'));
@@ -157,6 +165,7 @@ export default {
                     console.log(data);
                     this.tfaEnabled = false;
                     this.enableStep = 0;
+                    window.location.reload(); // user info will be reload after page refresh. Maybe hot reload in the future.
                 }, (error) => {
                     console.log(error);
                     alert(this.$t('manage.setup_2fa.setup.app.set_error'));

@@ -68,32 +68,6 @@
       "footer": {
          "copyright": "版权所有 © {year} nmTeam。保留所有权利。"
       },
-      "error": {
-         "username_empty": "请输入用户名。",
-         "password_empty": "请输入密码。",
-         "confirm_password_empty": "请输入确认密码。",
-         "password_not_match": "两次输入的密码不一致。",
-         "captcha_empty": "请输入验证码。",
-         "register_failed": "注册失败。",
-         "login_failed": "登录失败。",
-         "forget_password_failed": "重置密码失败。",
-         "email_empty": "请输入电子邮箱。",
-         "email_not_found": "电子邮箱未找到。",
-         "email_not_verified": "电子邮箱未验证。",
-         "email_verify_param_invalid": "验证参数不正确。请检查 URL 后重试。",
-         "email_verify_failed": "验证失败。",
-         "agree_terms": "请阅读并同意 nmTeam 服务协议和隐私政策。",
-         "userinfo_get_failed": "获取用户信息失败。",
-         "invalid_parameters": "传入的参数不正确。",
-         "invalid_token": "传入的验证符不正确。",
-         "invalid_mail": "电子邮箱格式不正确。",
-         "invalid_user": "用户名不正确。",
-         "wrong_user": "用户名错误。",
-         "wrong_pass": "密码错误。",
-         "used_mail": "此电子邮箱已被使用。",
-         "used_user": "此用户名已被使用。",
-         "unknown_error": "未知错误。"
-      },
       "please_fill_blank": "请填写{name}"
    },
    "manage": {
@@ -154,7 +128,8 @@
             "point": "{point} 分",
             "high": "您的账号非常安全。",
             "medium": "您的账号比较安全，但让我们更进一步。",
-            "low": "您的账号非常不安全。"
+            "low": "您的账号非常不安全。",
+            "undefined": "正在计算..."
          },
          "improve": "请尝试这些措施：",
          "improve_ways": {
@@ -265,6 +240,11 @@
             "disable_confirm": "确定要禁用双重验证吗？"
          }
       },
+      "sudo_mode_page": {
+         "title": "进入 Sudo 模式",
+         "tip": "您正在对账号做关键操作，因此我们需要验证您的身份。",
+         "submit": "验证"
+      },
       "explore": {
          "use_nmservices": {
             "title": "畅享 nmServices",
@@ -296,6 +276,34 @@
          "second": "秒前",
          "just_now": "现在"
       }
+   },
+   "error": {
+      "username_empty": "请输入用户名。",
+      "password_empty": "请输入密码。",
+      "confirm_password_empty": "请输入确认密码。",
+      "password_not_match": "两次输入的密码不一致。",
+      "captcha_empty": "请输入验证码。",
+      "register_failed": "注册失败。",
+      "login_failed": "登录失败。",
+      "forget_password_failed": "重置密码失败。",
+      "email_empty": "请输入电子邮箱。",
+      "email_not_found": "电子邮箱未找到。",
+      "email_not_verified": "电子邮箱未验证。",
+      "email_verify_param_invalid": "验证参数不正确。请检查 URL 后重试。",
+      "email_verify_failed": "验证失败。",
+      "agree_terms": "请阅读并同意 nmTeam 服务协议和隐私政策。",
+      "userinfo_get_failed": "获取用户信息失败。",
+      "invalid_parameters": "传入的参数不正确。",
+      "invalid_token": "传入的验证符不正确。",
+      "invalid_mail": "电子邮箱格式不正确。",
+      "invalid_user": "用户名不正确。",
+      "wrong_user": "用户名错误。",
+      "wrong_pass": "密码错误。",
+      "used_mail": "此电子邮箱已被使用。",
+      "used_user": "此用户名已被使用。",
+      "unknown_error": "未知错误。",
+      "2fa_empty": "请输入正确的双重验证代码。",
+      "tfa_invalid_code": "双重验证代码不正确。"
    },
    "avatar_alt": "用户头像",
    "ok": "好",

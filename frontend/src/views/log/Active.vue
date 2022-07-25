@@ -44,7 +44,7 @@ export default {
     methods: {
         activeAcount() {
             if (!this.$route.query.token || this.$route.query.token === '') {
-                this.serviceMsg = this.$t('log.error.email_verify_param_invalid');
+                this.serviceMsg = this.$t('error.email_verify_param_invalid');
                 this.regSuccess = false;
                 return;
             }
@@ -63,7 +63,7 @@ export default {
                 this.regSuccess = true;
             }, (error) => {
                 console.log(error);
-                this.serviceMsg = this.$t(`log.error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                this.serviceMsg = this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
                 this.regSuccess = false;
             }).then(() => {
                 this.processing = false;

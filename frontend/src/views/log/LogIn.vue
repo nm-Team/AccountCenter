@@ -3,7 +3,7 @@
     <p class="h1then" v-if="oauth.name">{{ $t('log.login_page.continue', { app: oauth.name }) }}</p>
     <form class="form" @submit.prevent="login">
         <label-input model="username" type="text" label="log.username" enablescale="false" autofocus="true"
-            @getdata="setData" @blur="console.log(0)">
+            @getdata="setData" @blur="check2FA()">
         </label-input>
         <label-input model="password" type="password" label="log.password" enablescale="false" @getdata="setData">
         </label-input>
@@ -60,14 +60,34 @@ export default {
         this.sessions = getSessions();
     },
     methods: {
+        check2FA() {
+            if (this.username && this.username !== '') {
+                apolloClient.query({
+                    query: gql`query User($user: String) {
+  User(user: $user) {
+    getUser {
+      tfa
+    }
+  }
+}
+                    `,
+                    variables: {
+                        user: this.username,
+                    },
+                }).then(({ data }) => {
+                    console.log(data);
+                    this.is2FA = data.User.getUser.tfa;
+                });
+            }
+        },
         login() {
             this.isError = true;
             if (!this.username || this.username === '') {
-                this.serviceMsg = this.$t('log.error.username_empty');
+                this.serviceMsg = this.$t('error.username_empty');
                 return;
             }
             if (!this.password || this.password === '') {
-                this.serviceMsg = this.$t('log.error.password_empty');
+                this.serviceMsg = this.$t('error.password_empty');
                 return;
             }
             this.serviceMsg = '';
@@ -75,14 +95,15 @@ export default {
             this.processing = true;
 
             apolloClient.query({
-                query: gql`query Query($user: String, $pass: String) {
+                query: gql`query Query($user: String, $pass: String, $code: String) {
   User {
-    login(user: $user, pass: $pass)
+    login(user: $user, pass: $pass, code: $code)
   }
 }`,
                 variables: {
                     user: this.username,
                     pass: this.password,
+                    code: this.tfaCode,
                 },
             }).then(({ data }) => {
                 console.log(data);
@@ -100,6 +121,7 @@ export default {
       mood
       role
       regat
+      tfa
     }
   }
 }`,
@@ -120,14 +142,14 @@ export default {
                     this.$emit('getdata', 'inManagePage', true);
                 }, (error) => {
                     console.log(error);
-                    this.serviceMsg = this.$t('log.error.userinfo_get_failed')
-                        + this.$t(`log.error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                    this.serviceMsg = this.$t('error.userinfo_get_failed')
+                        + this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
                     this.isError = true;
                     this.processing = false;
                 });
             }, (error) => {
                 console.log(error);
-                this.serviceMsg = this.$t(`log.error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                this.serviceMsg = this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
                 this.isError = true;
                 this.processing = false;
             });

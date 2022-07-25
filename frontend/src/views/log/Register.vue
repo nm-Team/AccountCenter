@@ -65,27 +65,27 @@ export default {
         register() {
             this.isError = true;
             if (!this.username || this.username === '') {
-                this.serviceMsg = this.$t('log.error.username_empty');
+                this.serviceMsg = this.$t('error.username_empty');
                 return;
             }
             if (!this.email || this.email === '') {
-                this.serviceMsg = this.$t('log.error.email_empty');
+                this.serviceMsg = this.$t('error.email_empty');
                 return;
             }
             if (!this.password || this.password === '') {
-                this.serviceMsg = this.$t('log.error.password_empty');
+                this.serviceMsg = this.$t('error.password_empty');
                 return;
             }
             if (!this.confirmpassword || this.confirmpassword === '') {
-                this.serviceMsg = this.$t('log.error.confirm_password_empty');
+                this.serviceMsg = this.$t('error.confirm_password_empty');
                 return;
             }
             if (this.password !== this.confirmpassword) {
-                this.serviceMsg = this.$t('log.error.password_not_match');
+                this.serviceMsg = this.$t('error.password_not_match');
                 return;
             }
             if (!this.agreeTerms) {
-                this.serviceMsg = this.$t('log.error.agree_terms');
+                this.serviceMsg = this.$t('error.agree_terms');
                 return;
             }
             this.serviceMsg = '';
@@ -108,7 +108,7 @@ export default {
                 this.regSuccess = true;
             }, (error) => {
                 console.log(error);
-                this.serviceMsg = this.$t(`log.error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                this.serviceMsg = this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
                 this.isError = true;
             }).then(() => {
                 this.processing = false;

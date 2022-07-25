@@ -35,9 +35,10 @@
                         <td style="min-width: 15em;">{{ session.ua }}
                         </td>
                         <td style="min-width: 2em;">
-                            <a @click="kickSession()" href="javascript:">{{
-                                    $t('manage.recent_sessions.operates.logout')
-                            }}</a>
+                            <a @click="logOutSession(session._uuid)" v-if="session._uuid != user.token"
+                                href="javascript:">{{
+                                        $t('manage.recent_sessions.operates.logout')
+                                }}</a>
                         </td>
                     </tr>
                 </tbody>
@@ -73,7 +74,7 @@
                     </p>
                 </div>
                 <div class="operates">
-                    <a @click="kickSession()" href="javascript:">{{
+                    <a @click="logOutSession(session._uuid)" v-if="session._uuid != user.token" href="javascript:">{{
                             $t('manage.recent_sessions.operates.logout')
                     }}</a>
                 </div>
@@ -137,6 +138,7 @@ export default {
                 query: gql`query GetSession($token: String) {
   User(token: $token) {
     getSession {
+      _uuid
       createAt
       updateAt
       ua
@@ -216,23 +218,31 @@ export default {
             });
         },
         getUA(ua) {
+            if (!ua) {
+                return {
+                    browser: this.$t('unknown'),
+                    os: this.$t('unknown'),
+                    device: this.$t('unknown'),
+                    deviceDetail: {},
+                };
+            }
             const returnua = {};
             if (ua.indexOf('Edg') > -1) {
-                returnua.browser = 'Edge';
+                returnua.browser = 'Microsoft Edge (Chromium)';
             } else if (ua.indexOf('Opera') > -1) {
                 returnua.browser = 'Opera';
             } else if (ua.indexOf('Firefox') > -1) {
-                returnua.browser = 'FF';
+                returnua.browser = 'Mozilla FireFox';
             } else if (ua.indexOf('Chrome') > -1) {
-                returnua.browser = 'Chrome';
+                returnua.browser = 'Google Chrome';
             } else if (ua.indexOf('Safari') > -1) {
-                returnua.browser = 'Safari';
+                returnua.browser = 'Apple Safari';
             } else if (ua.indexOf('compatible') > -1 && ua.indexOf('MSIE') > -1 && !(ua.indexOf('Opera') > -1)) {
-                returnua.browser = 'IE';
+                returnua.browser = 'Internet Explorer';
             } else if (ua.indexOf('Trident') > -1) {
-                returnua.browser = 'Edge_Legacy';
+                returnua.browser = 'Microsoft Edge (Legacy)';
             } else returnua.browser = this.$t('unknown');
-            //    device
+            // device
             if (ua.indexOf('Android') > -1) {
                 returnua.device = 'Android';
             } else if (ua.indexOf('iPad') > -1) {

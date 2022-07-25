@@ -11,11 +11,12 @@
             <div style="width: 130px; height: 110px; flex-shrink: 0; background-image: url(/privacy.png); background-size: 130px; background-position: center; background-repeat: no-repeat;"
                 :alt="$t('manage.account_safety_block.stay_safe_img_alt')"></div>
         </div>
-        <p><b>{{ $t('manage.account_safety_block.level.point', { point: this.rate })
+        <p v-if="rate"><b>{{ $t('manage.account_safety_block.level.point', { point: this.rate })
                 + ' - ' + $t('manage.account_safety_block.level.' + (rate > 79 ? 'high' : (rate > 59 ? 'medium' :
                     'low')))
         }}</b>
         </p>
+        <p v-else>{{ $t('manage.account_safety_block.level.undefined') }}</p>
         <p style="margin-top: .5em"><i>{{ $t('manage.account_safety_block.improve') }}</i></p>
         <router-link to="/manage/change-password">
             <LinkA :text="$t('manage.account_safety_block.improve_ways.change_password.title')"></LinkA>
@@ -34,7 +35,7 @@ export default {
     name: 'SafetyChecker',
     data() {
         return {
-            rate: 60,
+            rate: null,
         };
     },
     props: {
@@ -48,8 +49,21 @@ export default {
         },
     },
     mounted() {
+        this.countSafetyRate();
+    },
+    watch: {
+        user: {
+            handler() {
+                this.countSafetyRate();
+            },
+            deep: true,
+        },
     },
     methods: {
+        countSafetyRate() {
+            if (this.user.tfa) this.rate = 100;
+            else this.rate = 60;
+        },
     },
 };
 </script>

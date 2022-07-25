@@ -19,7 +19,7 @@
                         {{ $t('manage.account_switcher.new') }}</button>
                 </p>
                 <div class="uList">
-                    <UserButton v-for="user, index in avaliableSession" :key="user.uuid" :user="user"
+                    <UserButton v-for="user, index in avaliableSession" :key="user.uuid" :user="user" :showlogout=true
                         @click="switchAccount(index)"></UserButton>
                 </div>
 
@@ -175,6 +175,7 @@ export default {
       mood
       role
       regat
+      tfa
     }
   }
 }`,
@@ -205,7 +206,7 @@ export default {
                                 this.avaliableSession.splice(index, 1);
                             }
                         });
-                        if (this.avaliableSession.length === 0) {
+                        if (this.avaliableSession.length === 0 || this.avaliableSession[0] === false) {
                             this.$router.push('/');
                         } else {
                             // eslint-disable-next-line prefer-destructuring

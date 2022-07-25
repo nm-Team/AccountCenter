@@ -6,6 +6,8 @@ body {
     --pc-split-line: #dddddd;
     --block-border: #e8e8e8;
     --block-button-border: #d4d4d4;
+    --block-button-focus-border: #b2b2b2;
+    --block-button-focus-background: #f2f2f2;
 }
 
 body [data-theme=dark] {
@@ -16,6 +18,8 @@ body [data-theme=dark] {
     --pc-split-line: #4f4f4f;
     --block-border: #404040;
     --block-button-border: #5b5b5b;
+    --block-button-focus-border: #949494;
+    --block-button-focus-background: #404040;
 }
 
 [data-manage-page=true] .manageContainer {
@@ -324,6 +328,12 @@ body [data-theme=dark] {
             cursor: pointer;
         }
 
+        button.blockButton:hover,
+        button.blockButton:focus-visible {
+            border: 1px solid var(--block-button-focus-border);
+            background: var(--block-button-focus-background);
+        }
+
         button.blockButton:last-child {
             margin-right: 0px;
         }
@@ -590,36 +600,36 @@ body [data-theme=dark] {
         border-radius: 5px;
     }
 
-.tinySessionList{
-    display: flex;
-    flex-direction: column;
-    padding: 0px 5px 0px 0px;
-    margin-top: -2px;
-    overflow: auto;
-    overflow: overlay;
-    transition: width .2s;
-
-    .tinySession{
+    .tinySessionList {
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 4px 0;
-        justify-content: space-between;
+        flex-direction: column;
+        padding: 0px 5px 0px 0px;
+        margin-top: -2px;
+        overflow: auto;
+        overflow: overlay;
+        transition: width .2s;
 
-        svg{
-            font-size: 28px;
-            width: 28px;
-            margin: 0 18px 0 3px;
-            flex-grow: 0;
-            flex-shrink: 0;
-        }
+        .tinySession {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 4px 0;
+            justify-content: space-between;
 
-        .operates{
-            text-align: right;
-            flex-grow: 1;
-            flex-shrink: 0;
+            svg {
+                font-size: 28px;
+                width: 28px;
+                margin: 0 18px 0 3px;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+
+            .operates {
+                text-align: right;
+                flex-grow: 1;
+                flex-shrink: 0;
+            }
         }
     }
-}
 
 }
