@@ -7,7 +7,6 @@ scalar BigInt
 type User {
     uuid: String!,
     user: String!,
-    mail: String,
     nick: String,
     avatar: String,
     mood: String,
