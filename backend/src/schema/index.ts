@@ -40,6 +40,8 @@ type UserResolvers {
     logoutAll: Boolean,
     "Change password"
     changePass(oldPass: String, newPass: String): Boolean,
+    "Change avatar"
+    changeAvatar(avatar: String): Boolean,
     "Get user information by uuid, user, mail or token"
     getUser: User,
     "Get online sessions"

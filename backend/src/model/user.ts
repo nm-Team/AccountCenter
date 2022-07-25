@@ -263,4 +263,20 @@ export class UserModel {
         );
         return true;
     }
+
+    static async changeAvatar(uuid: string, avatar: string) {
+        const doc = await UserModel.getByUUID(uuid);
+        if (doc === UserModel.defaultUdoc) {
+            throw new Error('invalid_user');
+        }
+        await coll.updateOne(
+            { uuid },
+            {
+                $set: {
+                    avatar,
+                },
+            },
+        );
+        return true;
+    }
 }
