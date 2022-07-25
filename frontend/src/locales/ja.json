@@ -2,8 +2,37 @@
     "app_name": "nmTeamアカウントセンター",
     "avatar_alt": "プロフィールの写真",
     "cancel": "キャンセル",
+    "error": {
+        "2fa_empty": "正しい2要素認証コードを入力してください。",
+        "agree_terms": "nmTeamサービス契約とプライバシーポリシーを読んで同意してください。",
+        "captcha_empty": "確認コードを入力してください。",
+        "confirm_password_empty": "確認パスワードを入力してください。",
+        "email_empty": "メールアドレスを入力してください。",
+        "email_not_found": "メールアドレスが見つかりません。",
+        "email_not_verified": "メールは検証されていない。",
+        "email_verify_failed": "検証に失敗しました。",
+        "email_verify_param_invalid": "検証パラメーターが正しくありません。 \nURLを確認して、もう一度お試しください。",
+        "forget_password_failed": "パスワードのリセットに失敗しました。",
+        "invalid_mail": "メールアドレスの形式が正しくありません。",
+        "invalid_parameters": "渡されたパラメーターが正しくありません。",
+        "invalid_token": "渡されたバリデーターが正しくありません。",
+        "invalid_user": "ユーザー名が正しくありません。",
+        "login_failed": "ログインに失敗しました。",
+        "password_empty": "パスワードを入力して下さい。",
+        "password_not_match": "2回入力したパスワードが一致しません。",
+        "register_failed": "登録に失敗しました。",
+        "tfa_invalid_code": "2要素認証コードが正しくありません。",
+        "unknown_error": "未知の間違い。",
+        "used_mail": "この電子メールアドレスが既に使用されている。",
+        "used_user": "このユーザー名は既に使われています。",
+        "userinfo_get_failed": "ユーザー情報の取得に失敗しました。",
+        "username_empty": "ユーザー名を入力してください。",
+        "wrong_pass": "間違ったパスワード。",
+        "wrong_user": "ユーザー名エラー。"
+    },
     "loading": "読み込み中",
     "log": {
+        "2fa": "二要素認証コード",
         "ActiveAccount": {
             "error_code": "エラーの詳細：",
             "error_tip": "申し訳ありませんが、エラーが発生し、nmTeamアカウントのアクティブ化に失敗しました。 \nnmTeamサポートにお問い合わせください。",
@@ -81,6 +110,8 @@
                     "title": "パスワードを変更する"
                 },
                 "enable_2fa": {
+                    "manage": "2段階認証を管理する",
+                    "manage_tip": "2要素認証の設定を管理します。",
                     "tip": "アカウントのセキュリティを強化するには、2段階認証プロセスを有効にします。",
                     "title": "2段階認証を有効にする"
                 }
@@ -89,7 +120,8 @@
                 "high": "あなたのアカウントは非常に安全です。",
                 "low": "あなたのアカウントは非常に安全ではありません。",
                 "medium": "あなたのアカウントはより安全ですが、さらに一歩進んでみましょう。",
-                "point": "{point} ポイント"
+                "point": "{point} ポイント",
+                "undefined": "計算中..."
             },
             "stay_safe": "アカウントを安全に保つ",
             "stay_safe_img_alt": "nmTeamアカウントを保護する",
@@ -111,11 +143,43 @@
             "change_button": "パスワードを変更する",
             "title": "パスワード"
         },
+        "change_avatar": {
+            "chosen": {
+                "gravatar": "nmTeamサービスは、Gravatarに登録されているメールのプロフィール写真を表示します。",
+                "type": "アバターの種類を{type}に設定します。",
+                "upload": "nmTeamサービスは、アップロードされた画像を表示します。"
+            },
+            "loading": {
+                "tip": "お待ちください...",
+                "title": "アバターを設定しています..."
+            },
+            "success": {
+                "refresh": "ページの更新",
+                "tip": "アバターの設定に成功しました。\nページを更新して、プロフィール写真が表示されるまで待つ必要がある場合があります。",
+                "title": "アバターを正常に設定してください！"
+            },
+            "tip_0": "アバターはあなたの個性を誇示するための素晴らしいツールです。",
+            "tip_1": "nmTeamアカウントには、アバターを設定して自分を表現するためのさまざまなアバター設定方法が用意されています。",
+            "title": "アバターを設定する",
+            "type": {
+                "choose_another": "別のタイプを選択してください",
+                "gravatar": "Gravatar",
+                "gravatar_description": "メールアドレスに基づいてGravatarアバターを表示します。 \nGravatarは、ユーザーがインターネット上で自分のアバターを使用できるようにする素晴らしい公共サービスです。",
+                "gravatar_knowledge": "Gravatarの詳細",
+                "title": "アバターを表示する場所は？",
+                "unknown": "申し訳ありませんが、設定したアバターの種類が認識されませんでした。",
+                "upload": "画像をアップロード",
+                "upload_description": "これにより、デバイスから画像がアップロードされ、アバターとして使用されます。"
+            }
+        },
         "change_password": {
             "confirm_password": "パスワードを認証する",
+            "forget": "使用しているパスワードを忘れた場合は、代わりに{reset}を使用してください。",
             "new_password": "新しいパスワード",
             "old_password": "以前のパスワード",
+            "reset": "パスワードを再設定する",
             "submit": "改訂",
+            "success": "パスワードが更新されました。",
             "tip": {
                 "t0": "パスワードの桁数は十分に長くする必要があります。",
                 "t1": "12345678、asdfghjkl、mypassword、誕生日など、推測しやすいパスワードは避けてください。",
@@ -166,6 +230,8 @@
                 "title": "個人情報の変更"
             },
             "customize": {
+                "avatar": "アバター",
+                "avatar_alt": "あなたのアバター",
                 "change_avatar": "アバターを設定する",
                 "title": "パーソナライズ"
             },
@@ -193,10 +259,13 @@
             "safety": "アカウントのセキュリティ"
         },
         "recent_sessions": {
+            "detail_mode": "詳細",
             "operates": {
                 "logout": "オフライン",
                 "logout_all": "すべてログアウトする",
-                "logout_all_confirm": "すべてのセッションからログアウトしてもよろしいですか？"
+                "logout_all_confirm": "すべてのセッションからログアウトしてもよろしいですか？",
+                "logout_confirm": "このセッションからログアウトしてもよろしいですか？",
+                "logout_fail": "ログアウトセッションが失敗しました。"
             },
             "table": {
                 "ip": "IPとおおよその場所",
@@ -207,9 +276,15 @@
                 "ua": "ブラウザとユーザーUA"
             },
             "tiny": {
+                "active_time": "アクティブタイム",
                 "colon": "：",
-                "ip": "IP"
+                "create_time": "ログイン時間",
+                "device": "装置",
+                "ip": "IP",
+                "ip_value": "{ip}（おおよそ{city}）",
+                "ua": "ブラウザ"
             },
+            "tiny_mode": "単純",
             "tip": {
                 "logout_unrecognized": "識別できない見慣れないセッションがある場合は、すぐにログアウトし、パスワードを変更し、アカウントのセキュリティを確保するために他のセキュリティ対策（2段階認証など）を設定する必要があります。",
                 "manage_here": "ここでは、このアカウントの現在ログインしているセッションを管理できます。"
@@ -217,36 +292,43 @@
             "title": "最近ログインしたセッション"
         },
         "setup_2fa": {
+            "disable": {
+                "submit": "無効にする",
+                "tip": "アクションを確認するために、デバイスに6桁のコードを入力してください。",
+                "title": "2要素認証を無効にする"
+            },
+            "enabled": {
+                "disable": "2要素認証を無効にする",
+                "tip": "あなたは安全です！ \n「2要素認証」が有効になっています。",
+                "title": "2段階認証が有効になっています"
+            },
+            "next_step": "次のステップ",
+            "setup": {
+                "app": {
+                    "code_format_error": "確認コードの形式が正しくありません。",
+                    "code_not_expire": "入力した確認コードの有効期限が切れていないことを確認するには、アプリに表示される残り時間を参照してください。",
+                    "enter_code": "ここにアプリから確認コードを入力してください。",
+                    "enter_code_placeholder": "6桁の確認コード",
+                    "enter_code_title": "次に、確認コードを入力します",
+                    "get_code_error": "申し訳ありませんが、確認コードを取得できませんでした。\nページを更新して、もう一度お試しください。",
+                    "scan_qrcode": "このQRコードを2要素認証アプリでスキャンするか、以下のコードを入力してください。",
+                    "scan_qrcode_title": "QRコードをスキャンする",
+                    "secret_box_placeholder": "コード",
+                    "set_error": "申し訳ありませんが、2要素認証の設定に失敗しました。\nページを更新して、もう一度お試しください。",
+                    "title": "二要素認証アプリを設定する"
+                },
+                "title": "確認方法を選択してください",
+                "using_app_title": "アプリを使用する"
+            },
             "tip_a": "2段階認証プロセスを有効にすると、攻撃者がパスワードを取得しても、攻撃者はあなたのアカウントにアクセスできなくなります。",
             "tip_b": "アカウントのセキュリティをさらに強化するために、「2段階認証」を設定してください。",
             "title": "2段階認証を設定する"
+        },
+        "sudo_mode_page": {
+            "submit": "確認",
+            "tip": "アカウントで重要なアクションを実行しているため、本人確認を行う必要があります。",
+            "title": "sudoモードに入る"
         }
-    },
-    "error": {
-        "agree_terms": "nmTeamサービス契約とプライバシーポリシーを読んで同意してください。",
-        "captcha_empty": "確認コードを入力してください。",
-        "confirm_password_empty": "確認パスワードを入力してください。",
-        "email_empty": "メールアドレスを入力してください。",
-        "email_not_found": "メールアドレスが見つかりません。",
-        "email_not_verified": "メールは検証されていない。",
-        "email_verify_failed": "検証に失敗しました。",
-        "email_verify_param_invalid": "検証パラメーターが正しくありません。 \nURLを確認して、もう一度お試しください。",
-        "forget_password_failed": "パスワードのリセットに失敗しました。",
-        "invalid_mail": "メールアドレスの形式が正しくありません。",
-        "invalid_parameters": "渡されたパラメーターが正しくありません。",
-        "invalid_token": "渡されたバリデーターが正しくありません。",
-        "invalid_user": "ユーザー名が正しくありません。",
-        "login_failed": "ログインに失敗しました。",
-        "password_empty": "パスワードを入力して下さい。",
-        "password_not_match": "2回入力したパスワードが一致しません。",
-        "register_failed": "登録に失敗しました。",
-        "unknown_error": "未知の間違い。",
-        "used_mail": "この電子メールアドレスが既に使用されている。",
-        "used_user": "このユーザー名は既に使われています。",
-        "userinfo_get_failed": "ユーザー情報の取得に失敗しました。",
-        "username_empty": "ユーザー名を入力してください。",
-        "wrong_pass": "間違ったパスワード。",
-        "wrong_user": "ユーザー名エラー。"
     },
     "ok": "いいです",
     "save": "保存",

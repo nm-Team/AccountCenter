@@ -2,7 +2,7 @@
     <div class="block">
         <div style="display: flex; ">
             <div style="flex: 1 1;">
-                <h2 class="title">{{ $t('manage.account_safety_block.stay_safe', { name: user.nick }) }}</h2>
+                <p class="title">{{ $t('manage.account_safety_block.stay_safe', { name: user.nick }) }}</p>
                 <p v-html="$t('manage.account_safety_block.stay_safe_text')"></p>
                 <router-link to="/manage/safety" v-if="!insafetypage">
                     <LinkA :text="$t('manage.account_safety_block.turn_to_safety_page')"></LinkA>

@@ -39,7 +39,7 @@
             <div class="pcSplitLine"></div>
             <div class="relatedFrame">
                 <div class="block">
-                    <h2 class="title">{{ $t('manage.explore.use_nmservices.title') }}</h2>
+                    <p class="title">{{ $t('manage.explore.use_nmservices.title') }}</p>
                     <div class="nmServicesList">
                         <a v-for="item in nmServices" :key="item.name" :href="item.url" target="_blank"
                             :style="{ backgroundColor: item.backgroundColor, backgroundImage: item.backgroundColor }">
@@ -169,7 +169,6 @@ export default {
     getUser {
       uuid
       user
-      mail
       nick
       avatar
       mood

@@ -3,7 +3,7 @@
     <p class="h1then" v-if="oauth.name">{{ $t('log.login_page.continue', { app: oauth.name }) }}</p>
     <form class="form" @submit.prevent="login">
         <label-input model="username" type="text" label="log.username" enablescale="false" autofocus="true"
-            @getdata="setData" @blur="check2FA()">
+            @getdata="setData" @blur="check2FA()" @change="check2FA()">
         </label-input>
         <label-input model="password" type="password" label="log.password" enablescale="false" @getdata="setData">
         </label-input>
@@ -114,14 +114,6 @@ export default {
   User(token: $token) {
     getUser {
       uuid
-      user
-      mail
-      nick
-      avatar
-      mood
-      role
-      regat
-      tfa
     }
   }
 }`,

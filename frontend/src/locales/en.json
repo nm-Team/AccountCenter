@@ -2,8 +2,33 @@
     "app_name": "nmTeam Account Center",
     "avatar_alt": "Avatar",
     "cancel": "Cancel",
+    "error": {
+        "2fa_empty": "Please enter the correct two-factor verification code.",
+        "agree_terms": "Please read and agree to the nmTeam Service Agreement and Privacy Policy.",
+        "captcha_empty": "Please enter verification code.",
+        "confirm_password_empty": "Please enter a confirmation password.",
+        "email_empty": "Please enter email.",
+        "email_not_found": "Email address not found.",
+        "email_not_verified": "Email is not verified.",
+        "email_verify_failed": "Verification failed.",
+        "email_verify_param_invalid": "The validation parameters are incorrect. \nPlease check the URL and try again.",
+        "forget_password_failed": "Failed to reset password.",
+        "invalid_mail": "Email address format is incorrect.",
+        "invalid_parameters": "The parameter passed in is incorrect.",
+        "invalid_token": "The validator passed in is incorrect.",
+        "invalid_user": "Username is incorrect.",
+        "login_failed": "Login failed.",
+        "password_empty": "Please enter a password.",
+        "register_failed": "Registration failed.",
+        "tfa_invalid_code": "Incorrect two-factor verification code.",
+        "unknown_error": "Unknown error.",
+        "used_mail": "This email address is already in use.",
+        "userinfo_get_failed": "Failed to get user information.",
+        "wrong_user": "Username error."
+    },
     "loading": "Loading",
     "log": {
+        "2fa": "Two-factor verification code",
         "ActiveAccount": {
             "error_code": "Error detail:",
             "error_tip": "Sorry, an error occurred and the activation of the nmTeam account failed. \nPlease contact nmTeam support for assistance.",
@@ -111,6 +136,30 @@
             "change_button": "Change Password",
             "title": "Password"
         },
+        "change_avatar": {
+            "chosen": {
+                "upload": "The nmTeam service will display your uploaded images."
+            },
+            "loading": {
+                "tip": "Please wait...",
+                "title": "Setting avatar..."
+            },
+            "success": {
+                "refresh": "Refresh",
+                "tip": "You have successfully set an avatar! You may need to refresh the page and wait until you see your profile picture."
+            },
+            "tip_0": "Avatars are a great tool for showing off your personality.",
+            "tip_1": "nmTeam account provides a variety of avatar setting methods for you to set an avatar and express yourself.",
+            "title": "Set Avatar",
+            "type": {
+                "choose_another": "Another Type",
+                "gravatar": "Gravatar",
+                "gravatar_description": "Display a Gravatar avatar based on your email address. \nGravatar is an amazing public service that allows users to use their own avatars on the Internet.",
+                "title": "Show avatars from...",
+                "upload": "Upload Image",
+                "upload_description": "This will upload an image from your device and use it as an avatar."
+            }
+        },
         "change_password": {
             "confirm_password": "Confirm Password",
             "new_password": "New Password",
@@ -135,7 +184,7 @@
             },
             "help": {
                 "a_text": "Start",
-                "description": "The nmTeam team is happy to help you with your nmTeam account issues.",
+                "description": "nmTeam is happy to help you with your nmTeam account issues.",
                 "title": "Get Help from nmTeam Support"
             },
             "use_nmservices": {
@@ -230,6 +279,27 @@
                 "submit": "Disable",
                 "tip": "Please enter the 6-digit code on your device to confirm your action."
             },
+            "enabled": {
+                "disable": "Disable Two-Factor Verification",
+                "tip": "You are safe! You have \"two-factor verification\" enabled.",
+                "title": "Two-step verification enabled"
+            },
+            "next_step": "Next Step",
+            "setup": {
+                "app": {
+                    "code_not_expire": "Please refer to the remaining time displayed in the app to ensure that the entered verification code has not expired.",
+                    "enter_code": "Please enter the verification code from the app here.",
+                    "enter_code_placeholder": "6-digit verification code",
+                    "enter_code_title": "Then enter the verification code",
+                    "get_code_error": "Sorry, the verification code could not be obtained. \nPlease refresh the page and try again.",
+                    "scan_qrcode": "Scan this QR code with a two-factor authentication app, or enter the code below.",
+                    "scan_qrcode_title": "Scan QR code",
+                    "secret_box_placeholder": "Code",
+                    "set_error": "Sorry, setting up two-factor verification failed. \nPlease refresh the page and try again.",
+                    "title": "Set up a two-factor authentication app"
+                },
+                "title": "Please select a verification method"
+            },
             "tip_a": "With 2-Step Verification enabled, even if an attacker obtains your password, they cannot gain access to your account.",
             "tip_b": "Please set up \"two-step verification\" to further enhance account security.",
             "title": "Set up Two-Step Verification"
@@ -238,5 +308,14 @@
     "ok": "OK",
     "save": "Save",
     "selete_language": "Selete Language",
+    "time": {
+        "relative": {
+            "day": "day ago|days ago",
+            "hour": "hour ago|hours ago",
+            "just_now": "just now",
+            "minute": "minute ago|minutes ago",
+            "second": "second ago|seconds ago"
+        }
+    },
     "unknown": "Unknown"
 }

@@ -6,7 +6,7 @@
     </p>
     <div class="block" v-if="!tfaEnabled && enableStep == 0">
         <p class="title">{{ $t('manage.setup_2fa.setup.title') }}</p>
-        <div class="tfaSelector">
+        <div class="typeSelecter">
             <button @click="enableStep = 1; vType = 'app'; getAppSecure();">
                 <font-awesome-icon :icon="['fas', 'mobile-screen-button']"></font-awesome-icon>
                 <div>

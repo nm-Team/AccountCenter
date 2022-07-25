@@ -68,7 +68,6 @@ export default {
     getUser {
       uuid
       user
-      mail
       nick
       avatar
       mood

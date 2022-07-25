@@ -6,10 +6,10 @@
             :class="{ innerInput: true, isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true }">
             <textarea v-if="type == 'textarea'" v-model="inputVal" :type="type" :autofocus="autofocus"
                 :readonly="readonly" :disabled="disabled" @focus="this.focus = true; this.$emit('focus')"
-                @blur="this.focus = false; this.$emit('blur')" @change="push()"></textarea>
+                @blur="this.focus = false; this.$emit('blur')" @change="push();this.$emit('change')"></textarea>
             <input v-else v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly"
                 :disabled="disabled" @focus="this.focus = true; this.$emit('focus')"
-                @blur="this.focus = false; this.$emit('blur')" @change="push()" />
+                @blur="this.focus = false; this.$emit('blur')" @change="push();this.$emit('change')" />
         </div>
     </div>
 </template>

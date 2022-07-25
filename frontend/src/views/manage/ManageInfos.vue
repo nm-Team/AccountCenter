@@ -1,13 +1,24 @@
 <template>
     <h1>{{ $t('manage.infos.title') }}</h1>
     <div class="block">
-        <h2 class="title">{{ $t('manage.infos.changeable.title') }}</h2>
+        <p class="title">{{ $t('manage.infos.customize.title') }}</p>
+        <p><b>{{ $t('manage.infos.customize.avatar') }}</b></p>
+        <img :src="user.avatarURL" onerror="this.src=''" :alt="$t('manage.infos.customize.avatar_alt')"
+            class="userInfoPageAvatar">
+        <div class="btns">
+            <button class="blockButton" @click="this.$router.push('/manage/change-avatar')">
+                {{ $t('manage.infos.customize.change_avatar') }}</button>
+        </div>
+
+    </div>
+    <div class="block">
+        <p class="title">{{ $t('manage.infos.changeable.title') }}</p>
         <label-input v-for="item in changeableForm" :key="item.id" :model="item.id" :type="item.type"
             :value="item.value" :label="item.label" @getdata="editInfo">
         </label-input>
         <div class="btns" v-if="inEdit">
             <div>
-                <button class="blockButton" @click="initializeUserInfo()">
+                <button class="blockButton" @click="this.inEdit = false; initializeUserInfo()">
                     {{ $t('cancel') }}</button>
             </div>
             <div class="right">
@@ -17,7 +28,7 @@
         </div>
     </div>
     <div class="block">
-        <h2 class="title">{{ $t('manage.infos.readonly.title') }}</h2>
+        <p class="title">{{ $t('manage.infos.readonly.title') }}</p>
         <label-input v-for="item in readonlyForm" :key="item.id" :model="item.id" :type="item.type" :value="item.value"
             :label="item.label" @getdata="setData" :readonly="true">
         </label-input>
@@ -59,18 +70,14 @@ export default {
             this.inEdit = true;
         },
         initializeUserInfo() {
+            this.changeableForm = [];
+            this.readonlyForm = [];
             this.changeableForm = [
                 {
                     id: 'nick',
                     type: 'text',
                     label: this.$t('manage.infos.changeable.nick'),
                     value: this.user.nick,
-                },
-                {
-                    id: 'email',
-                    type: 'text',
-                    label: this.$t('manage.infos.changeable.email'),
-                    value: this.user.mail,
                 },
                 {
                     id: 'mood',
@@ -85,6 +92,12 @@ export default {
                     type: 'text',
                     label: this.$t('manage.infos.readonly.user'),
                     value: this.user.user,
+                },
+                {
+                    id: 'email',
+                    type: 'text',
+                    label: this.$t('manage.infos.changeable.email'),
+                    value: this.user.mail,
                 },
                 {
                     id: 'uuid',

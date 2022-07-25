@@ -2,12 +2,12 @@
 <template>
     <h1>{{ $t('manage.pages.safety') }}</h1>
     <div class="block">
-        <h2 class="title">{{ $t('manage.recent_sessions.title') }}
+        <p class="title">{{ $t('manage.recent_sessions.title') }}
             <button class="blockButton" style="float: right; margin-top: 0;"
                 @click="sessionDetailMode = !sessionDetailMode">
                 {{ sessionDetailMode ? $t('manage.recent_sessions.tiny_mode') : $t('manage.recent_sessions.detail_mode')
                 }}</button>
-        </h2>
+        </p>
         <div class="table" v-if="onlineSessions && sessionDetailMode">
             <table>
                 <thead>
@@ -272,13 +272,13 @@ export default {
             const minute = Math.floor(diff / (1000 * 60));
             const second = Math.floor(diff / 1000);
             if (day > 0) {
-                return `${day} ${this.$t('time.relative.day')}`;
+                return `${day} ${this.$tc('time.relative.day', day)}`;
             } if (hour > 0) {
-                return `${hour} ${this.$t('time.relative.hour')}`;
+                return `${hour} ${this.$tc('time.relative.hour', hour)}`;
             } if (minute > 0) {
-                return `${minute} ${this.$t('time.relative.minute')}`;
+                return `${minute} ${this.$tc('time.relative.minute', minute)}`;
             } if (second > 0) {
-                return `${second} ${this.$t('time.relative.second')}`;
+                return `${second} ${this.$tc('time.relative.second', second)}`;
             }
             return this.$t('time.relative.just_now');
         },
