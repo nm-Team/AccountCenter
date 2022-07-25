@@ -184,7 +184,7 @@ export class UserModel {
         }
 
         const uuid = uuidv4();
-        const tokenId = TokenModel.add(TokenType.REGISTER, 1800, {
+        const tokenId = await TokenModel.add(TokenType.REGISTER, 1800, {
             uuid, user, pass, mail,
         });
         bus.emit('mail/send', mail, tokenId);
