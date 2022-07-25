@@ -65,10 +65,10 @@ class SudoModel {
         if (!this.inited) {
             await this.init();
         }
-        if (this.user.tfa === undefined || this.user.tfa === null) {
+        if (!this.user.tfa) {
             throw new Error('tfa_off');
         }
-        if (twoFactorAuth.verifyToken(this.user.tfa, code) !== 0) {
+        if (twoFactorAuth.verifyToken(this.user._tfa, code) !== 0) {
             throw new Error('tfa_invalid_code');
         }
         const ret = await TokenModel.add(TokenType.SUDOMODE, 30 * 60, {

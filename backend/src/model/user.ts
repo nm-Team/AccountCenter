@@ -174,7 +174,7 @@ export class UserModel {
             throw new Error('invalid_mail');
         }
         if (!checkUser(user)) {
-            throw new Error('invalid user');
+            throw new Error('invalid_user');
         }
         if (await this.getByMail(mail) !== UserModel.defaultUdoc) {
             throw new Error('used_mail');
@@ -243,5 +243,24 @@ export class UserModel {
             },
         );
         return token;
+    }
+
+    static async changePass(uuid: string, oldPass: string, newPass: string) {
+        const doc = await UserModel.getByUUID(uuid);
+        if (doc === UserModel.defaultUdoc) {
+            throw new Error('invalid_user');
+        }
+        if (sha1(doc.uuid + oldPass) !== doc._pass) {
+            throw new Error('wrong_pass');
+        }
+        await coll.updateOne(
+            { uuid },
+            {
+                $set: {
+                    _pass: sha1(doc.uuid + newPass),
+                },
+            },
+        );
+        return true;
     }
 }

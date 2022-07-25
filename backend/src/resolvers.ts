@@ -52,6 +52,18 @@ const resolvers = {
             await SessionModel.deleteAll(parent.token);
             return true;
         },
+        async changePass(parent: any, args: any): Promise<boolean> {
+            if (parent.token === undefined || args.oldPass === undefined || args.newPass === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
+            if (token === null) {
+                throw new Error('invalid_token');
+            }
+            await UserModel.changePass(token.uuid, args.oldPass, args.newPass);
+            await SessionModel.deleteAll(parent.token);
+            return true;
+        },
         async getUser(parent: any): Promise<UserDoc> {
             if (parent.uuid === undefined
                 && parent.user === undefined

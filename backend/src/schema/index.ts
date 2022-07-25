@@ -39,6 +39,8 @@ type UserResolvers {
     logout: Boolean,
     "Logout all"
     logoutAll: Boolean,
+    "Change password"
+    changePass(oldPass: String, newPass: String): Boolean,
     "Get user information by uuid, user, mail or token"
     getUser: User,
     "Get online sessions"
