@@ -128,7 +128,7 @@ const resolvers = {
                 throw new Error('invalid_token');
             }
             const user = await UserModel.getByUUID(token.uuid);
-            if (user.tfa !== undefined) {
+            if (user._tfa) {
                 throw new Error('tfa_on');
             }
             if (twoFactorAuth.verifyToken(args.secret, args.code) !== 0) {
@@ -146,6 +146,7 @@ const resolvers = {
                 throw new Error('invalid_token');
             }
             const user = await UserModel.getByUUID(token.uuid);
+            console.log(user);
             if (!user.tfa || user._tfa === undefined) {
                 throw new Error('tfa_off');
             }

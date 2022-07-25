@@ -76,7 +76,7 @@ export class UserModel {
             loginat: doc.logat,
             loginip: doc.loginip,
 
-            tfa: doc._tfa !== undefined,
+            tfa: doc.tfa !== undefined && doc.tfa !== null,
             _tfa: doc.tfa,
         };
     }
@@ -103,7 +103,7 @@ export class UserModel {
             loginat: doc.logat,
             loginip: doc.loginip,
 
-            tfa: doc._tfa !== undefined,
+            tfa: doc.tfa !== undefined && doc.tfa !== null,
             _tfa: doc.tfa,
         };
     }
@@ -130,7 +130,7 @@ export class UserModel {
             loginat: doc.logat,
             loginip: doc.loginip,
 
-            tfa: doc._tfa !== undefined,
+            tfa: doc.tfa !== undefined && doc.tfa !== null,
             _tfa: doc.tfa,
         };
     }
