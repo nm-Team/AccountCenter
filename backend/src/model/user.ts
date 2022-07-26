@@ -257,7 +257,7 @@ export class UserModel {
             { uuid },
             {
                 $set: {
-                    _pass: sha1(doc.uuid + newPass),
+                    pass: sha1(doc.uuid + newPass),
                 },
             },
         );

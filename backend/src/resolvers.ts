@@ -157,7 +157,6 @@ const resolvers = {
                 throw new Error('invalid_token');
             }
             const user = await UserModel.getByUUID(token.uuid);
-            console.log(user);
             if (!user.tfa || user._tfa === undefined) {
                 throw new Error('tfa_off');
             }
