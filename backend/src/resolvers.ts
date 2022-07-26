@@ -178,14 +178,14 @@ const resolvers = {
                 if (await sudo.check('pass')) {
                     return true;
                 }
-                sudo.enableByPass(args.pass);
+                await sudo.enableByPass(args.pass);
             } else if (args.code !== undefined) {
                 if (await sudo.check('2fa')) {
                     return true;
                 }
-                sudo.enableBy2FA(args.code);
+                await sudo.enableBy2FA(args.code);
             }
-            return false;
+            return true;
         },
         async info(parent: any): Promise<any> {
             if (parent.token === undefined) {
