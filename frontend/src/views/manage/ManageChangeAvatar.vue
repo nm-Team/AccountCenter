@@ -3,8 +3,8 @@
     <p v-if="(changeStep == 0)">{{ $t('manage.change_avatar.tip_0') }}<br />{{ $t('manage.change_avatar.tip_1') }}</p>
     <div class="block" v-if="!avatarEnabled && changeStep == 0">
         <p class="title">{{ $t('manage.change_avatar.type.title') }}</p>
-        <div class="typeSelecter">
-            <button @click="avatarType = 'gravatar'; setAvatar()">
+        <div class="typeSelecterA">
+            <button class="type" @click="avatarType = 'gravatar'; changeStep = 1; ">
                 <!-- eslint-disable-next-line max-len -->
                 <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -16,7 +16,7 @@
                     <p>{{ $t('manage.change_avatar.type.gravatar_description') }}</p>
                 </div>
             </button>
-            <button @click="changeStep = 1; avatarType = 'upload';">
+            <button class="type" @click="avatarType = 'upload'; changeStep = 1; ">
                 <font-awesome-icon :icon="['fas', 'upload']"></font-awesome-icon>
                 <div>
                     <b>{{ $t('manage.change_avatar.type.upload') }}</b>
@@ -29,16 +29,59 @@
             }}</a>
         </div>
     </div>
-    <div class="block" v-if="changeStep == 1 && avatarType == 'upload'">
-        <p class="title">{{ $t('manage.change_avatar.upload.title') }}</p>
+    <div class="block" v-if="changeStep == 1 && avatarType == 'gravatar'">
+        <p class="title">{{ $t('manage.change_avatar.gravatar.title') }}</p>
+        <div class="typeSelecterA">
+            <label class="type">
+                <input type="radio" v-model="gravatarType" name="gType" value="default" />
+                <font-awesome-icon :icon="['fas', 'user']"></font-awesome-icon>
+                <div>
+                    <b>{{ $t('manage.change_avatar.gravatar.use_my_email') }}</b>
+                    <p>{{ $t('manage.change_avatar.gravatar.use_my_email_description', { email: user.mail }) }}</p>
+                </div>
+            </label>
+            <label class="type">
+                <input type="radio" v-model="gravatarType" name="gType" value="custom" />
+                <font-awesome-icon :icon="['fas', 'at']"></font-awesome-icon>
+                <div>
+                    <b>{{ $t('manage.change_avatar.gravatar.use_another_email') }}</b>
+                    <p>{{ $t('manage.change_avatar.gravatar.use_another_email_description') }}</p>
+                    <label-input type="text" model="gravatarEmail" :readonly="gravatarType == 'custom' ? false : true"
+                        :label="$t('manage.change_avatar.gravatar.custom_placeholder')" @getdata="setData">
+                    </label-input>
+                </div>
+            </label>
+        </div>
+        <p>{{ gravatarError }}</p>
         <div class="btns">
             <div class="left">
                 <button class="blockButton" @click="this.changeStep = 0">
                     {{ $t('manage.change_avatar.type.choose_another') }}</button>
             </div>
             <div class="right">
-                <button class="blockButton" @click="appCheckCode()">
-                    {{ $t('manage.change_avatar.next_step') }}</button>
+                <button class="blockButton" @click="setAvatar()">
+                    {{ $t('next_step') }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="block" v-if="changeStep == 1 && avatarType == 'upload'">
+        <p class="title">{{ $t('manage.change_avatar.upload.title') }}</p>
+        <input type="file" :model="uploadAvatarOrigin" @change="goCut()" />
+        <div class="btns">
+            <button class="blockButton" @click="0">
+                {{ $t('manage.change_avatar.upload.upload_button') }}</button>
+        </div>
+        <!-- <vueCropper ref="cropper" :img="uploadAvatarOrigin" :outputSize="1" :outputType="png">
+        </vueCropper> -->
+
+        <div class="btns">
+            <div class="left">
+                <button class="blockButton" @click="this.changeStep = 0">
+                    {{ $t('manage.change_avatar.type.choose_another') }}</button>
+            </div>
+            <div class="right">
+                <button class="blockButton" @click="0">
+                    {{ $t('next_step') }}</button>
             </div>
         </div>
     </div>
@@ -59,10 +102,10 @@
     <div class="block" v-if="changeStep == 10">
         <p class="title">{{ $t('manage.change_avatar.error.title') }}</p>
         <p>{{ $t('manage.change_avatar.error.tip') }}</p>
-        <p>{{ $t('error.' + errorMsg) }}</p>
+        <p>{{ errorMsg }}</p>
         <div class="btns">
             <div class="left">
-                <button class="blockButton" @click="changeStep == 0">
+                <button class="blockButton" @click="changeStep = 0">
                     {{ $t('manage.change_avatar.error.retry') }}</button>
             </div>
         </div>
@@ -82,6 +125,10 @@ export default {
             changeStep: 0,
             avatarType: '',
             newAvatarCode: '',
+            gravatarType: 'default',
+            gravatarEmail: '',
+            gravatarError: '',
+            uploadAvatarOrigin: '',
         };
     },
     props: {
@@ -96,12 +143,19 @@ export default {
         setAvatar() {
             switch (this.avatarType) {
                 case 'gravatar':
-                    this.newAvatarCode = `email:${this.user.email}`;
+                    if (this.gravatarType === 'default') {
+                        this.newAvatarCode = `email:${this.user.email}`;
+                    } else if (this.gravatarEmail === '' || this.gravatarEmail == null || this.gravatarEmail.indexOf('@') < 1 || this.gravatarEmail.indexOf('.') < 2) {
+                        this.gravatarError = this.$t('manage.change_avatar.gravatar.error_email');
+                        return;
+                    } else {
+                        this.newAvatarCode = `email:${this.gravatarEmail}`;
+                    }
                     break;
                 default:
-                    return window.alert(this.$t('manage.change_avatar.type.unknown'));
+                    window.alert(this.$t('manage.change_avatar.type.unknown'));
             }
-            return this.sendRequest();
+            this.sendRequest();
         },
         sendRequest() {
             this.changeStep = 8;

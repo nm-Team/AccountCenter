@@ -22,10 +22,18 @@
             <LinkA :text="$t('manage.account_safety_block.improve_ways.change_password.title')"></LinkA>
         </router-link>
         <p>{{ $t('manage.account_safety_block.improve_ways.change_password.tip') }}</p>
-        <router-link to="/manage/two-factor-authentication-setup">
-            <LinkA :text="$t('manage.account_safety_block.improve_ways.enable_2fa.title')"></LinkA>
-        </router-link>
-        <p>{{ $t('manage.account_safety_block.improve_ways.enable_2fa.tip') }}</p>
+        <div v-if="user.tfa == false">
+            <router-link to="/manage/two-factor-authentication-setup">
+                <LinkA :text="$t('manage.account_safety_block.improve_ways.enable_2fa.title')"></LinkA>
+            </router-link>
+            <p>{{ $t('manage.account_safety_block.improve_ways.enable_2fa.tip') }}</p>
+        </div>
+        <div v-else>
+            <router-link to="/manage/two-factor-authentication-setup">
+                <LinkA :text="$t('manage.account_safety_block.improve_ways.enable_2fa.manage')"></LinkA>
+            </router-link>
+            <p>{{ $t('manage.account_safety_block.improve_ways.enable_2fa.manage_tip') }}</p>
+        </div>
     </div>
 </template>
 

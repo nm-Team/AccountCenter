@@ -1,13 +1,17 @@
 <template>
     <h1>{{ $t('manage.setup_2fa.title') }}</h1>
-    <p v-if="(!tfaEnabled && enableStep == 0) || (tfaEnabled && disableStep == 0)">{{ $t('manage.setup_2fa.tip_a') }}
+    <p v-if="(tfaEnabled == false && enableStep == 0) || (tfaEnabled && disableStep == 0)">{{
+            $t('manage.setup_2fa.tip_a')
+    }}
     </p>
-    <p v-if="(!tfaEnabled && enableStep == 0) || (tfaEnabled && disableStep == 0)">{{ $t('manage.setup_2fa.tip_b') }}
+    <p v-if="(tfaEnabled == false && enableStep == 0) || (tfaEnabled && disableStep == 0)">{{
+            $t('manage.setup_2fa.tip_b')
+    }}
     </p>
-    <div class="block" v-if="!tfaEnabled && enableStep == 0">
+    <div class="block" v-if="tfaEnabled == false && enableStep == 0">
         <p class="title">{{ $t('manage.setup_2fa.setup.title') }}</p>
-        <div class="typeSelecter">
-            <button @click="enableStep = 1; vType = 'app'; getAppSecure();">
+        <div class="typeSelecterA">
+            <button class="type" @click="enableStep = 1; vType = 'app'; getAppSecure();">
                 <font-awesome-icon :icon="['fas', 'mobile-screen-button']"></font-awesome-icon>
                 <div>
                     <b>{{ $t('manage.setup_2fa.setup.using_app_title') }}</b>
@@ -16,7 +20,7 @@
             </button>
         </div>
     </div>
-    <div class="block" v-if="!tfaEnabled && enableStep == 1 && vType == 'app'">
+    <div class="block" v-if="tfaEnabled == false && enableStep == 1 && vType == 'app'">
         <p class="title">{{ $t('manage.setup_2fa.setup.app.title') }}</p>
         <p><b>{{ $t('manage.setup_2fa.setup.app.scan_qrcode_title') }}</b></p>
         <p>{{ $t('manage.setup_2fa.setup.app.scan_qrcode') }}
@@ -78,7 +82,7 @@ export default {
     name: 'Manage2FA',
     data() {
         return {
-            tfaEnabled: false,
+            tfaEnabled: undefined,
             enableStep: 0,
             disableStep: 0,
             vType: '',
@@ -90,6 +94,18 @@ export default {
         user: {
             type: Object,
             required: true,
+        },
+    },
+    watch: {
+        user: {
+            handler() {
+                if (this.user.tfa) {
+                    this.tfaEnabled = true;
+                } else {
+                    this.tfaEnabled = false;
+                }
+            },
+            deep: true,
         },
     },
     mounted() {

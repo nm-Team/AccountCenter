@@ -54,14 +54,14 @@
                 <div class="block">
                     <p class="title">{{ $t('manage.explore.developers_will_love_nmteam_account.title') }}</p>
                     <p>{{ $t('manage.explore.developers_will_love_nmteam_account.description') }}</p>
-                    <p><a href="" target="_blank">
+                    <p><a href="https://nmteam.xyz/developers" target="_blank">
                             <LinkA :text="$t('manage.explore.developers_will_love_nmteam_account.a_text')"></LinkA>
                         </a></p>
                 </div>
                 <div class="block">
                     <p class="title">{{ $t('manage.explore.help.title') }}</p>
                     <p>{{ $t('manage.explore.help.description') }}</p>
-                    <p><a href="https://nmteam.xyz/developers" target="_blank">
+                    <p><a href="https://nmteam.xyz/support" target="_blank">
                             <LinkA :text="$t('manage.explore.help.a_text')"></LinkA>
                         </a></p>
                 </div>
@@ -130,7 +130,7 @@ export default {
                     color: '#000',
                     backgroundColor: 'linear-gradient(90deg, rgba(255,250,58,1) 0%, rgba(255,206,0,1) 91%)',
                     backgroundImage: 'https://websiteres.nmteam.xyz/producticon/nmFun/logo.svg',
-                    margin: '10px 15px',
+                    margin: '10px 21px',
                 },
                 {
                     name: 'nmBrowser_startPage',
@@ -138,7 +138,7 @@ export default {
                     color: '#000',
                     backgroundColor: 'linear-gradient(90deg, rgba(0,192,255,1) 0%, rgba(148,232,255,1) 100%)',
                     backgroundImage: 'https://websiteres.nmteam.xyz/producticon/nmBrowser/logo.svg',
-                    margin: '14px 19px',
+                    margin: '14px 24px',
                 },
                 {
                     name: 'more',

@@ -32,7 +32,7 @@
    },
    "loading": "加载中",
    "log": {
-      "2fa": "双重验证验证码",
+      "2fa": "双重验证代码",
       "ActiveAccount": {
          "error_code": "错误详情：",
          "error_tip": "很抱歉，出现错误，导致 nmTeam 账号激活失败。请联系 nmTeam 支持获取帮助。",
@@ -169,7 +169,22 @@
             "title": "从何处展示头像？",
             "unknown": "抱歉，无法识别您设置的头像类型。",
             "upload": "上传图片",
-            "upload_description": "这将从您的设备上传图片，并作为头像。"
+            "upload_description": "这将从您的设备上传图片作为头像。"
+         },
+         "gravatar": {
+            "title": "使用 Gravatar 头像",
+            "use_my_email": "使用我的电子邮箱地址",
+            "use_my_email_description": "使用 {email} 注册的 Gravatar 头像。",
+            "use_another_email": "使用其他电子邮箱地址",
+            "use_another_email_description": "使用其他电子邮箱地址注册的 Gravatar 头像。",
+            "custom_placeholder": "电子邮箱",
+            "email_error": "请输入正确的电子邮箱。"
+         },
+         "upload": {
+            "title": "上传头像",
+            "upload_button": "从设备上选择图片",
+            "cut": "裁剪图片",
+            "cut_description": "将您的图片裁剪为正方形。"
          }
       },
       "change_password": {
@@ -329,10 +344,12 @@
          "submit": "验证",
          "tip": "您正在对账号做关键操作，因此我们需要验证您的身份。",
          "title": "进入 Sudo 模式"
-      }
+      },
+      "logout_confirm": "确定要退出登录吗？"
    },
    "ok": "好",
    "save": "保存",
+   "next_step": "下一步",
    "selete_language": "选择语言",
    "time": {
       "relative": {
