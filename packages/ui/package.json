@@ -1,4 +1,10 @@
 {
+  "name": "ui",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@vue/apollo-composable": "^4.0.0-alpha.18",

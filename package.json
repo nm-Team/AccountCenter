@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "repository": "git@github.com:nm-Team/AccountCenter.git",
   "scripts": {
-    "core:dev": "ts-node ./backend/src/index.ts",
-    "ui:dev": "vite ./frontend",
-    "ui:build": "vite build ./frontend"
+    "core:dev": "yarn workspace core dev",
+    "ui:dev": "yarn workspace ui dev",
+    "ui:build": "yarn workspace ui build"
   },
+  "private": "true",
+  "workspaces": [
+    "packages/*"
+  ],
   "author": "nmTeam",
   "license": "MIT",
   "devDependencies": {
