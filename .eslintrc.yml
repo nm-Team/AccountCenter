@@ -28,3 +28,4 @@ rules:
   '@typescript-eslint/no-shadow': 2
   max-len: ['warn', 200]
   no-alert: 0
+  import/prefer-default-export: 0

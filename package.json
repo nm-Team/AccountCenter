@@ -4,6 +4,7 @@
   "repository": "git@github.com:nm-Team/AccountCenter.git",
   "scripts": {
     "core:dev": "yarn workspace core dev",
+    "mail:dev": "yarn workspace mail dev",
     "ui:dev": "yarn workspace ui dev",
     "ui:build": "yarn workspace ui build"
   },

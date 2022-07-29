@@ -1,0 +1,11 @@
+{
+  "name": "mail",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "mongodb": "^4.8.1"
+  }
+}
