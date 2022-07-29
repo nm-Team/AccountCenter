@@ -4,7 +4,7 @@
 > EVERYTHING YOU DO SHOULD BE DONE IN A WORKSPACE
 
 ## Workspace
-### Add or remove sth in a workspace
+### Add or remove a package in a workspace
 ```bash
 yarn workspace <workspace_name> <command>
 ```
