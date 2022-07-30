@@ -501,6 +501,13 @@
   resolved "https://registry.npmmirror.com/@types/node/-/node-10.17.60.tgz#35f3d6213daed95da7f0f73e75bcc6980e90597b"
   integrity sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==
 
+"@types/nodemailer@^6.4.4":
+  version "6.4.4"
+  resolved "https://registry.npmmirror.com/@types/nodemailer/-/nodemailer-6.4.4.tgz#c265f7e7a51df587597b3a49a023acaf0c741f4b"
+  integrity sha512-Ksw4t7iliXeYGvIQcSIgWQ5BLuC/mljIEbjf615svhZL10PE9t+ei8O9gDaD3FPCasUJn9KTLwz2JFJyiiyuqw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/notp@^2.0.0", "@types/notp@^2.0.2":
   version "2.0.2"
   resolved "https://registry.npmmirror.com/@types/notp/-/notp-2.0.2.tgz#7283f4918b2770555e0f2df72acc9f46ebd41ae9"
@@ -2629,6 +2636,11 @@ node-logger@^0.0.1:
   version "0.0.1"
   resolved "https://registry.npmmirror.com/node-logger/-/node-logger-0.0.1.tgz#e269fc0de12aacf84518bc27637355905fb6a18a"
   integrity sha512-gP8UdgPkkMesjJUWT1gY2iAq020IlIs4GzUxiuQg3+W6pa4GacETCmitFE+lBFciUit3t52pGbRIpKv2BM1aRg==
+
+nodemailer@^6.7.7:
+  version "6.7.7"
+  resolved "https://registry.npmmirror.com/nodemailer/-/nodemailer-6.7.7.tgz#e522fbd7507b81c51446d3f79c4603bf00083ddd"
+  integrity sha512-pOLC/s+2I1EXuSqO5Wa34i3kXZG3gugDssH+ZNCevHad65tc8vQlCQpOLaUjopvkRQKm2Cki2aME7fEOPRy3bA==
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"

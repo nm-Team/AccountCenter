@@ -5,6 +5,7 @@ import { checkUser, isMail } from '../utils';
 import twoFactorAuth from './2fa';
 import bus from './bus';
 import { sha1 } from './crypto';
+import Mail from './mail';
 import db from './mongo';
 import { TokenModel, TokenType } from './token';
 
@@ -169,6 +170,7 @@ export class UserModel {
         user: string,
         pass: string,
         mail: string,
+        language: string,
     ) {
         if (!isMail(mail)) {
             throw new Error('invalid_mail');
@@ -187,6 +189,7 @@ export class UserModel {
         const tokenId = await TokenModel.add(TokenType.REGISTER, 1800, {
             uuid, user, pass, mail,
         });
+        Mail.send(mail, 'register', language, { user });
         bus.emit('mail/send', mail, tokenId);
         return true;
     }

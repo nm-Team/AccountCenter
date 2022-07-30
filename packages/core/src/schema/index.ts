@@ -29,7 +29,7 @@ type Session {
 
 type UserResolvers {
     "Register a account"
-    register(user: String, pass: String, mail: String): Boolean,
+    register(user: String, pass: String, mail: String, language: String): Boolean,
     "Activate a account"
     active(token: String): Boolean,
     "Login"

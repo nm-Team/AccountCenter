@@ -18,10 +18,10 @@ const resolvers = {
     },
     UserResolvers: {
         async register(_: any, args: any): Promise<boolean> {
-            if (args.user === undefined || args.mail === undefined || args.pass === undefined) {
+            if (args.user === undefined || args.mail === undefined || args.pass === undefined || args.language === undefined) {
                 throw new Error('invalid_parameters');
             }
-            const ret = await UserModel.register(args.user, args.pass, args.mail);
+            const ret = await UserModel.register(args.user, args.pass, args.mail, args.language);
             return ret;
         },
         async active(_: any, args: any): Promise<boolean> {
