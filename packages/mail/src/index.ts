@@ -55,7 +55,7 @@ bus.on('app/prepared', async () => {
         } catch (e) {
             log('ERROR', e);
         }
-    }, 5000);
+    }, 10000);
 
     bus.emit('app/started');
 });
