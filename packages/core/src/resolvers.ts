@@ -84,14 +84,17 @@ const resolvers = {
             }
             if (parent.uuid !== undefined) {
                 const ret = await UserModel.getByUUID(parent.uuid);
+                ret.mail = '';
                 return ret;
             }
             if (parent.user !== undefined) {
                 const ret = await UserModel.getByUser(parent.user);
+                ret.mail = '';
                 return ret;
             }
             if (parent.mail !== undefined) {
                 const ret = await UserModel.getByMail(parent.mail);
+                ret.mail = '';
                 return ret;
             }
             if (parent.token !== undefined) {

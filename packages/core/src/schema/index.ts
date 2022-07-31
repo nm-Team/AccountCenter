@@ -9,6 +9,7 @@ type User {
     user: String!,
     nick: String,
     avatar: String,
+    mail: String,
     mood: String,
     role: String,
 
