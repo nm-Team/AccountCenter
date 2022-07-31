@@ -8,12 +8,12 @@ import zh_Hant from './locales/zh-Hant.json';
 
 const languages = [
     {
-        code: ['en', 'en-AU', 'en-BZ', 'en-CA', 'en-CB', 'en-GB', 'en-IE', 'en-JM', 'en-NZ', 'en-PH', 'en-TT', 'en-US', 'en-ZA', 'en-ZW'],
+        code: ['en', 'en-US', 'en-AU', 'en-BZ', 'en-CA', 'en-CB', 'en-GB', 'en-IE', 'en-JM', 'en-NZ', 'en-PH', 'en-TT', 'en-ZA', 'en-ZW'],
         object: en,
         name: 'English',
     },
     {
-        code: ['zh', 'zh-Hans', 'zh-CN'],
+        code: ['zh-Hans', 'zh', 'zh-CN'],
         object: zh_Hans,
         name: '简体中文',
     },
@@ -23,7 +23,7 @@ const languages = [
         name: '繁體中文',
     },
     {
-        code: ['ja'],
+        code: ['ja_JP', 'ja'],
         object: ja,
         name: '日本語',
     },

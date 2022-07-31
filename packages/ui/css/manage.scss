@@ -130,6 +130,12 @@ body [data-theme=dark] {
         }
     }
 
+    @media (min-width: 800px) {
+        .header .icon {
+            pointer-events: none;
+        }
+    }
+
     .main {
         display: flex;
         flex-direction: row;
@@ -375,6 +381,16 @@ body [data-theme=dark] {
             }
         }
 
+        .accountSwitcherHover {
+            display: block;
+            z-index: 7;
+            position: fixed;
+            top: 50px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
         .pageContent {
             display: flex;
             flex-direction: column;
@@ -598,54 +614,4 @@ body [data-theme=dark] {
             margin-top: 18px;
         }
     }
-
-    .tfaQrCode {
-        width: 200px;
-        border: 1px solid var(--block-border);
-        margin: 1px 0 15px 0;
-        padding: 2px;
-        background: #fff;
-        border-radius: 5px;
-    }
-
-    .tinySessionList {
-        display: flex;
-        flex-direction: column;
-        padding: 0px 5px 0px 0px;
-        margin-top: -2px;
-        overflow: auto;
-        overflow: overlay;
-        transition: width .2s;
-
-        .tinySession {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 4px 0;
-            justify-content: space-between;
-
-            svg {
-                font-size: 28px;
-                width: 28px;
-                margin: 0 18px 0 3px;
-                flex-grow: 0;
-                flex-shrink: 0;
-            }
-
-            .operates {
-                text-align: right;
-                flex-grow: 1;
-                flex-shrink: 0;
-            }
-        }
-    }
-
-    .userInfoPageAvatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin: 10px 10px 10px 0;
-        background: var(--avatar-skection);
-    }
-
 }

@@ -1,0 +1,8 @@
+{
+    "title": "nmTeam account registration email verification",
+    "para_tks": "Thank you for registering an nmTeam account. Please click the button below to verify your email and continue the registration process.",
+    "button": "Verify",
+    "para_backup": "If you are unable to click the button to complete the verification, please open this page in your browser to complete the registration.",
+    "para_why": "You received this email because you are registering for an nmTeam account.",
+    "para_measure": "If you did not apply for an nmTeam account, please ignore this email."
+}

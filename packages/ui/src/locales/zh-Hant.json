@@ -17,6 +17,7 @@
         "invalid_token": "傳入的驗證符不正確。",
         "invalid_user": "用戶名不正確。",
         "login_failed": "登錄失敗。",
+        "network_error": "出現錯誤，可能是網絡問題。請檢查您的網絡連接後重試。",
         "password_empty": "請輸入密碼。",
         "password_not_match": "兩次輸入的密碼不一致。",
         "register_failed": "註冊失敗。",
@@ -139,7 +140,9 @@
         },
         "change_avatar": {
             "type": {
-                "gravatar": "Gravatar"
+                "github": "GitHub",
+                "gravatar": "Gravatar",
+                "qq": "QQ"
             }
         },
         "change_password": {
@@ -239,7 +242,8 @@
             },
             "tiny": {
                 "colon": "：",
-                "ip": "IP"
+                "ip": "大致位置",
+                "ip_value": "{city} (IP: {ip})"
             },
             "tip": {
                 "logout_unrecognized": "若有您無法識別的陌生會話，您應當立即註銷，修改密碼，並設置其它安全措施（例如雙重驗證）來保證賬號安全性。",
@@ -253,6 +257,7 @@
             "title": "設置雙重驗證"
         }
     },
+    "next_step": "下一步",
     "ok": "好",
     "save": "保存",
     "selete_language": "選擇語言",

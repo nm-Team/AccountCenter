@@ -87,7 +87,7 @@ export default {
             disableStep: 0,
             vType: '',
             appSecure: '',
-            appUserCode: 0,
+            appUserCode: '',
         };
     },
     props: {
@@ -196,3 +196,13 @@ export default {
     components: {},
 };
 </script>
+<style lang="scss" scoped>
+.tfaQrCode {
+    width: 200px;
+    border: 1px solid var(--block-border);
+    margin: 1px 0 15px 0;
+    padding: 2px;
+    background: #fff;
+    border-radius: 5px;
+}
+</style>

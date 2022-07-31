@@ -18,6 +18,7 @@
       "invalid_token": "传入的验证符不正确。",
       "invalid_user": "用户名不正确。",
       "login_failed": "登录失败。",
+      "network_error": "出现错误，可能是网络问题。请检查您的网络连接后重试。",
       "password_empty": "请输入密码。",
       "password_not_match": "两次输入的密码不一致。",
       "register_failed": "注册失败。",
@@ -149,6 +150,27 @@
             "type": "设置头像类型为 {type}。",
             "upload": "nmTeam 服务将展示您上传的图片。"
          },
+         "gravatar": {
+            "custom_placeholder": "电子邮箱",
+            "email_error": "请输入正确的电子邮箱。",
+            "title": "使用 Gravatar 头像",
+            "use_another_email": "使用其他电子邮箱地址",
+            "use_another_email_description": "使用其他电子邮箱地址注册的 Gravatar 头像。",
+            "use_my_email": "使用我的电子邮箱地址",
+            "use_my_email_description": "使用 {email} 注册的 Gravatar 头像。"
+         },
+         "qq": {
+            "title": "使用 QQ 头像",
+            "custom_placeholder": "您的 QQ 号",
+            "error_invalid": "请输入正确的 QQ 号。",
+            "your_qq_might_be_visible": "其他人可能可以根据您的头像获取您的 QQ 号。"
+         },
+         "github": {
+            "title": "使用 GitHub 头像",
+            "custom_placeholder": "您的 GitHub 用户名",
+            "error_invalid": "请输入正确的 GitHub 用户名。",
+            "help_alt": "在 URL 中获取 GitHub 用户名"
+         },
          "loading": {
             "tip": "请稍候...",
             "title": "正在设置头像..."
@@ -160,31 +182,38 @@
          },
          "tip_0": "头像是展示自我个性的好工具。",
          "tip_1": "nmTeam 账号提供了多种头像设置方法，供您设置头像，展现自我。",
+         "public_warning": "您设置的头像将被公开显示。",
+         "legal_warning": "请确保设置的头像内容符合当地法律法规和 nmTeam 的相关规定。",
+         "legal_more": "展示相关条件",
+         "legal": {
+            "title": "请确保您的头像符合以下条件",
+            "no_illegal": "头像中不得包含违反您所在地、nmTeam 服务所在地以及被大多数国家和地区公认的法律、法规与行政命令的内容。",
+            "no_discriminate": "头像中不得包含存在或容易被误解存在对任何人群的歧视的内容。",
+            "no_porn": "头像中不得包含生殖器官、性行为、存在性暗示、不适宜在公共场所观看，或与以上内容接近的内容。",
+            "no_politics": "头像中不得包含政治暗示。",
+            "no_other": "头像中不得包含任何其他不适宜内容。",
+            "our_action": "nmTeam 团队将对不符合以上条件的头像进行删除，并可能加以其它限制措施。"
+         },
          "title": "设置头像",
          "type": {
             "choose_another": "选择另一个类型",
             "gravatar": "Gravatar",
             "gravatar_description": "展示基于您 Email 地址的 Gravatar 头像。Gravatar 是一项令人赞叹的公共服务，允许用户在互联网中使用自己设定的头像。",
             "gravatar_knowledge": "进一步了解 Gravatar",
+            "qq": "QQ",
+            "qq_description": "展示您在 QQ 中设置的头像。",
+            "github": "GitHub",
+            "github_description": "展示您在 GitHub 中设置的头像。",
             "title": "从何处展示头像？",
             "unknown": "抱歉，无法识别您设置的头像类型。",
             "upload": "上传图片",
             "upload_description": "这将从您的设备上传图片作为头像。"
          },
-         "gravatar": {
-            "title": "使用 Gravatar 头像",
-            "use_my_email": "使用我的电子邮箱地址",
-            "use_my_email_description": "使用 {email} 注册的 Gravatar 头像。",
-            "use_another_email": "使用其他电子邮箱地址",
-            "use_another_email_description": "使用其他电子邮箱地址注册的 Gravatar 头像。",
-            "custom_placeholder": "电子邮箱",
-            "email_error": "请输入正确的电子邮箱。"
-         },
          "upload": {
-            "title": "上传头像",
-            "upload_button": "从设备上选择图片",
             "cut": "裁剪图片",
-            "cut_description": "将您的图片裁剪为正方形。"
+            "cut_description": "将您的图片裁剪为正方形。",
+            "title": "上传头像",
+            "upload_button": "从设备上选择图片"
          }
       },
       "change_password": {
@@ -237,6 +266,7 @@
          "welcome_text": "欢迎使用 nmTeam 账号。<br>nmTeam 账号不仅助您登录 nmTeam 服务，更可用于在第三方网站验证身份。"
       },
       "infos": {
+         "change_info_tip": "点击来编辑账号信息。",
          "changeable": {
             "editing": "正在编辑",
             "email": "电子邮箱",
@@ -264,6 +294,7 @@
          },
          "title": "管理个人信息"
       },
+      "logout_confirm": "确定要退出登录吗？",
       "logout_failed": "抱歉，出现了问题，注销失败。",
       "logout_title": "注销",
       "not_found_alt": "找不到此页面。",
@@ -295,8 +326,8 @@
             "colon": "：",
             "create_time": "登录时间",
             "device": "设备",
-            "ip": "IP",
-            "ip_value": "{ip} (大致在 {city})",
+            "ip": "大致位置",
+            "ip_value": "{city} (IP: {ip})",
             "ua": "浏览器"
          },
          "tiny_mode": "简略",
@@ -333,8 +364,8 @@
                "title": "设置双重验证 App"
             },
             "title": "请选择验证方式",
-            "using_app_title": "使用 App",
-            "using_app": "出现提示时，使用 App 获取验证码来进行双重验证。我们建议使用基于云的 TOTP 应用程序，例如：1Password、Authy、LastPass Authenticator 或 Microsoft Authenticator。"
+            "using_app": "出现提示时，使用 App 获取验证码来进行双重验证。我们建议使用基于云的 TOTP 应用程序，例如：1Password、Authy、LastPass Authenticator 或 Microsoft Authenticator。",
+            "using_app_title": "使用 App"
          },
          "tip_a": "启用“双重验证”后，即使攻击者获取了您的密码，也无法获得对您账号的访问权限。",
          "tip_b": "请设置“双重验证”，进一步增强账号安全性。",
@@ -344,12 +375,11 @@
          "submit": "验证",
          "tip": "您正在对账号做关键操作，因此我们需要验证您的身份。",
          "title": "进入 Sudo 模式"
-      },
-      "logout_confirm": "确定要退出登录吗？"
+      }
    },
+   "next_step": "下一步",
    "ok": "好",
    "save": "保存",
-   "next_step": "下一步",
    "selete_language": "选择语言",
    "time": {
       "relative": {

@@ -117,3 +117,88 @@ export default {
     },
 };
 </script>
+<style lang="scss" scoped>
+.labelInput {
+    width: 100%;
+    position: relative;
+    display: flex;
+
+    label {
+        position: absolute;
+        top: 16px;
+        left: 11px;
+        font-size: 16px;
+        pointer-events: none;
+        color: var(--label-input-label-inactive);
+        background-color: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: break-all;
+        max-width: 80%;
+        transition: all .2s, background-color 0s .05s, color 0s;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+    }
+
+    label.isFocus.enableScale.isEmpty:not(readonly):not(disabled),
+    label.enableScale:not(.isEmpty):not(readonly):not(disabled) {
+        top: 3px;
+        left: 7px;
+        font-size: 13.6px;
+        padding: 0 4px 0 4px;
+        line-height: 1;
+        background-color: var(--frame-background);
+        opacity: 1;
+        transition: all .2s, background-color 0s .08s, color 0s;
+        flex-grow: 1;
+    }
+
+    label.isFocus.enableScale {
+        color: var(--label-input-label-active);
+    }
+
+    label:not(.enableScale):not(.isEmpty) {
+        display: none;
+    }
+
+    .innerInput {
+        width: 100%;
+        padding: 5px 1px;
+        margin: 10px 0;
+        border: 1px solid var(--input-border);
+        border-radius: 4px;
+    }
+
+    input[type=text],
+    input[type=password],
+    textarea {
+        width: calc(100% - 20px);
+        padding: 2px 4px;
+        margin: 2px 6px;
+        background: none;
+        font-size: 16px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        resize: vertical;
+    }
+
+    textarea {
+        height: 3em;
+    }
+
+    input[type=text]:focus,
+    input[type=password]:focus,
+    textarea:focus {
+        outline: none;
+    }
+
+    .innerInput.isFocus {
+        outline: none;
+        border-width: 2px;
+        border-color: var(--input-border-focus);
+        padding: 4px 0;
+    }
+}
+</style>

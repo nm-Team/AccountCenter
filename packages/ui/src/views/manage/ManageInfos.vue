@@ -18,13 +18,16 @@
         </label-input>
         <div class="btns" v-if="inEdit">
             <div>
-                <button class="blockButton" @click="this.inEdit = false; initializeUserInfo()">
+                <button style="display: none;" class="blockButton" @click="this.inEdit = false; this.initializeUserInfo()">
                     {{ $t('cancel') }}</button>
             </div>
             <div class="right">
                 <button class="blockButton" @click="0">
                     {{ $t('save') }}</button>
             </div>
+        </div>
+        <div v-else>
+            <p>{{ $t('manage.infos.change_info_tip') }}</p>
         </div>
     </div>
     <div class="block">
@@ -117,3 +120,12 @@ export default {
     components: {},
 };
 </script>
+<style lang="scss" scoped>
+.userInfoPageAvatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px 10px 10px 0;
+    background: var(--avatar-skection);
+}
+</style>

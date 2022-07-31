@@ -18,6 +18,7 @@
         "invalid_token": "渡されたバリデーターが正しくありません。",
         "invalid_user": "ユーザー名が正しくありません。",
         "login_failed": "ログインに失敗しました。",
+        "network_error": "エラーが発生しました。ネットワークの問題である可能性があります。\nインターネット接続を確認して、もう一度お試しください。",
         "password_empty": "パスワードを入力して下さい。",
         "password_not_match": "2回入力したパスワードが一致しません。",
         "register_failed": "登録に失敗しました。",
@@ -163,9 +164,11 @@
             "title": "アバターを設定する",
             "type": {
                 "choose_another": "別のタイプを選択してください",
+                "github": "GitHub",
                 "gravatar": "Gravatar",
                 "gravatar_description": "メールアドレスに基づいてGravatarアバターを表示します。 \nGravatarは、ユーザーがインターネット上で自分のアバターを使用できるようにする素晴らしい公共サービスです。",
                 "gravatar_knowledge": "Gravatarの詳細",
+                "qq": "QQ",
                 "title": "アバターを表示する場所は？",
                 "unknown": "申し訳ありませんが、設定したアバターの種類が認識されませんでした。",
                 "upload": "画像をアップロード",
@@ -280,8 +283,8 @@
                 "colon": "：",
                 "create_time": "ログイン時間",
                 "device": "装置",
-                "ip": "IP",
-                "ip_value": "{ip}（おおよそ{city}）",
+                "ip": "おおよその位置",
+                "ip_value": "{city} (IP: {ip})",
                 "ua": "ブラウザ"
             },
             "tiny_mode": "単純",
@@ -330,6 +333,7 @@
             "title": "sudoモードに入る"
         }
     },
+    "next_step": "次のステップ",
     "ok": "いいです",
     "save": "保存",
     "selete_language": "言語を選択してください",

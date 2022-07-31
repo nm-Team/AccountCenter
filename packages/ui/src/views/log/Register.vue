@@ -93,22 +93,23 @@ export default {
             this.processing = true;
 
             apolloClient.query({
-                query: gql`query Query($user: String, $pass: String, $mail: String) {
+                query: gql`query User($user: String, $pass: String, $mail: String, $language: String) {
   User {
-    register(user: $user, pass: $pass, mail: $mail)
+    register(user: $user, pass: $pass, mail: $mail, language: $language)
   }
 }`,
                 variables: {
                     user: this.username,
                     pass: this.password,
                     mail: this.email,
+                    language: this.$i18n.locale,
                 },
             }).then(({ data }) => {
                 console.log(data);
                 this.regSuccess = true;
             }, (error) => {
                 console.log(error);
-                this.serviceMsg = this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                this.serviceMsg = this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'network_error'}`);
                 this.isError = true;
             }).then(() => {
                 this.processing = false;

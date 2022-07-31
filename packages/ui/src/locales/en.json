@@ -18,12 +18,17 @@
         "invalid_token": "The validator passed in is incorrect.",
         "invalid_user": "Username is incorrect.",
         "login_failed": "Login failed.",
+        "network_error": "An error occurred, possibly a network problem. Please check your internet connection and try again.",
         "password_empty": "Please enter a password.",
+        "password_not_match": "The passwords entered do not match.",
         "register_failed": "Registration failed.",
         "tfa_invalid_code": "Incorrect two-factor verification code.",
         "unknown_error": "Unknown error.",
         "used_mail": "This email address is already in use.",
+        "used_user": "This username is already in use.",
         "userinfo_get_failed": "Failed to get user information.",
+        "username_empty": "please enter username.",
+        "wrong_pass": "The password is error.",
         "wrong_user": "Username error."
     },
     "loading": "Loading",
@@ -106,6 +111,8 @@
                     "title": "Change Password"
                 },
                 "enable_2fa": {
+                    "manage": "Manage Two-step Verification",
+                    "manage_tip": "Manage your two-factor verification settings.",
                     "tip": "Enable 2-step verification to increase your account security.",
                     "title": "Enable 2-step Verification"
                 }
@@ -114,7 +121,8 @@
                 "high": "Your account is very secure.",
                 "low": "Your account is very insecure.",
                 "medium": "Your account is secure, but let's go a step further.",
-                "point": "{point} points"
+                "point": "{point} points",
+                "undefined": "Calculating..."
             },
             "stay_safe": "Keep your account safe and secure",
             "stay_safe_img_alt": "Securing your nmTeam Account",
@@ -138,33 +146,84 @@
         },
         "change_avatar": {
             "chosen": {
+                "gravatar": "The nmTeam service will display the profile picture of your Email registered on Gravatar.",
+                "type": "Set the avatar type to {type}.",
                 "upload": "The nmTeam service will display your uploaded images."
             },
+            "github": {
+                "custom_placeholder": "Your GitHub username",
+                "error_invalid": "Please enter a correct GitHub username.",
+                "help_alt": "How to get GitHub username in URL",
+                "title": "Using GitHub Avatar"
+            },
+            "gravatar": {
+                "custom_placeholder": "E-mail",
+                "email_error": "Please enter the correct email.",
+                "title": "Using Gravatar avatar",
+                "use_another_email": "Use another email address",
+                "use_another_email_description": "Gravatar registered with a different email address.",
+                "use_my_email": "Use my email address",
+                "use_my_email_description": "This will use gravatar registered with {email}."
+            },
+            "legal": {
+                "no_discriminate": "Avatars must not contain content that exists or is easily misunderstood as discriminatory against any group of people.",
+                "no_illegal": "Avatars must not contain content that violates the laws, regulations and executive orders in your location, where nmTeam services are located, and recognized by most countries and regions.",
+                "no_other": "Avatars must not contain any other inappropriate content.",
+                "no_politics": "Avatars must not contain political innuendo.",
+                "no_porn": "Avatars must not contain reproductive organs, sexual behavior, sexual innuendo, inappropriate viewing in public places, or content similar to the above.",
+                "our_action": "nmTeam will delete avatars that do not meet the above conditions and may impose other restrictions.",
+                "title": "Please make sure your avatar meets the following criteria"
+            },
+            "legal_more": "Show conditions",
+            "legal_warning": "Please ensure that the content of the set avatar complies with local laws and regulations and the relevant regulations of nmTeam.",
             "loading": {
                 "tip": "Please wait...",
                 "title": "Setting avatar..."
             },
+            "public_warning": "The avatar you set will be displayed publicly.",
+            "qq": {
+                "custom_placeholder": "Your QQ number",
+                "error_invalid": "Please enter a correct QQ number.",
+                "title": "Use QQ Avatar",
+                "your_qq_might_be_visible": "Others may be able to get your QQ number by your avatar."
+            },
             "success": {
                 "refresh": "Refresh",
-                "tip": "You have successfully set an avatar! You may need to refresh the page and wait until you see your profile picture."
+                "tip": "You have successfully set an avatar! You may need to refresh the page and wait until you see your profile picture.",
+                "title": "Set avatar successfully!"
             },
             "tip_0": "Avatars are a great tool for showing off your personality.",
             "tip_1": "nmTeam account provides a variety of avatar setting methods for you to set an avatar and express yourself.",
             "title": "Set Avatar",
             "type": {
                 "choose_another": "Another Type",
+                "github": "GitHub",
+                "github_description": "Display the avatar you set in GitHub.",
                 "gravatar": "Gravatar",
                 "gravatar_description": "Display a Gravatar avatar based on your email address. \nGravatar is an amazing public service that allows users to use their own avatars on the Internet.",
+                "gravatar_knowledge": "Learn more about Gravatar",
+                "qq": "QQ",
+                "qq_description": "Show the avatar you set in QQ.",
                 "title": "Show avatars from...",
+                "unknown": "Sorry, the type of avatar you set was not recognized.",
                 "upload": "Upload Image",
                 "upload_description": "This will upload an image from your device and use it as an avatar."
+            },
+            "upload": {
+                "cut": "Crop the picture",
+                "cut_description": "Crop your image to a square.",
+                "title": "upload avatar",
+                "upload_button": "Choose an image from your device"
             }
         },
         "change_password": {
             "confirm_password": "Confirm Password",
+            "forget": "If you forget the password you are using, use {reset} instead.",
             "new_password": "New Password",
             "old_password": "Old Password",
+            "reset": "reset password",
             "submit": "Revise",
+            "success": "password has been updated.",
             "tip": {
                 "t0": "The number of digits in the password should be long enough.",
                 "t1": "Avoid easy-to-guess passwords like 12345678, asdfghjkl, mypassword or your birthday.",
@@ -207,6 +266,7 @@
             "welcome_text": "Welcome to the nmTeam account. \n<br>nmTeam account not only helps you log in to nmTeam services, but can also be used to verify your identity on third-party websites."
         },
         "infos": {
+            "change_info_tip": "Click to edit account information.",
             "changeable": {
                 "editing": "Editing",
                 "email": "E-mail",
@@ -215,6 +275,8 @@
                 "title": "Modify Personal Information"
             },
             "customize": {
+                "avatar": "Avatar",
+                "avatar_alt": "Your avatar",
                 "change_avatar": "Set Avatar",
                 "title": "Personalise"
             },
@@ -232,6 +294,7 @@
             },
             "title": "Manage Personal Information"
         },
+        "logout_confirm": "Are you sure you want to log out?",
         "logout_failed": "Sorry, something went wrong and logout failed.",
         "logout_title": "Log out",
         "not_found_alt": "This page could not be found.",
@@ -263,8 +326,8 @@
                 "colon": ": ",
                 "create_time": "Login at",
                 "device": "Device",
-                "ip": "IP",
-                "ip_value": "{ip} (Roughly in {city})",
+                "ip": "Location",
+                "ip_value": "{city} (IP: {ip})",
                 "ua": "Browser"
             },
             "tiny_mode": "Abbreviated",
@@ -277,7 +340,8 @@
         "setup_2fa": {
             "disable": {
                 "submit": "Disable",
-                "tip": "Please enter the 6-digit code on your device to confirm your action."
+                "tip": "Please enter the 6-digit code on your device to confirm your action.",
+                "title": "Disable Two-Factor Verification"
             },
             "enabled": {
                 "disable": "Disable Two-Factor Verification",
@@ -287,6 +351,7 @@
             "next_step": "Next Step",
             "setup": {
                 "app": {
+                    "code_format_error": "The verification code is malformed.",
                     "code_not_expire": "Please refer to the remaining time displayed in the app to ensure that the entered verification code has not expired.",
                     "enter_code": "Please enter the verification code from the app here.",
                     "enter_code_placeholder": "6-digit verification code",
@@ -298,13 +363,21 @@
                     "set_error": "Sorry, setting up two-factor verification failed. \nPlease refresh the page and try again.",
                     "title": "Set up a two-factor authentication app"
                 },
-                "title": "Please select a verification method"
+                "title": "Please select a verification method",
+                "using_app": "When prompted, use the app to get a verification code for two-factor verification. \nWe recommend using a cloud-based TOTP app such as: 1Password, Authy, LastPass Authenticator or Microsoft Authenticator.",
+                "using_app_title": "Using an App"
             },
             "tip_a": "With 2-Step Verification enabled, even if an attacker obtains your password, they cannot gain access to your account.",
             "tip_b": "Please set up \"two-step verification\" to further enhance account security.",
             "title": "Set up Two-Step Verification"
+        },
+        "sudo_mode_page": {
+            "submit": "Verify",
+            "tip": "You are performing critical action on your account, so we need to verify your identity.",
+            "title": "Entering Sudo mode"
         }
     },
+    "next_step": "Next step",
     "ok": "OK",
     "save": "Save",
     "selete_language": "Selete Language",

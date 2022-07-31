@@ -24,6 +24,8 @@
                 </div>
 
             </div>
+            <div class="accountSwitcherHover" :style="{ display: accountSwitcherOpen ? 'block' : 'none' }"
+                @click="accountSwitcherOpen = false"></div>
             <div :class="{ sideBar: true, opened: mobileSideBarOpen }">
                 <router-link v-for="item in sideBar" :to="'/manage/' + item.path" @click="mobileSideBarOpen = false"
                     :key="item.name">
@@ -32,7 +34,8 @@
                 </router-link>
             </div>
             <div class="pcSplitLine"></div>
-            <div :class="{ sideBarCover: true, opened: mobileSideBarOpen }" @click="mobileSideBarOpen = false"></div>
+            <div :class="{ sideBarCover: true, opened: mobileSideBarOpen }"
+                @click="mobileSideBarOpen = false; accountSwitcherOpen = false"></div>
             <div class="pageContent">
                 <router-view :user="user"></router-view>
             </div>
@@ -152,7 +155,15 @@ export default {
         };
     },
     mounted() {
+        const self = this;
         this.trySessions();
+        this.$nextTick(() => {
+            document.addEventListener('keyup', (e) => {
+                if (e.keyCode === 27) {
+                    self.accountSwitcherOpen = false;
+                }
+            });
+        });
     },
     methods: {
         trySessions() {
@@ -171,6 +182,7 @@ export default {
       user
       nick
       avatar
+      mail
       mood
       role
       regat

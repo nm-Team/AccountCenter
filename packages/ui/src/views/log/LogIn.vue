@@ -135,13 +135,13 @@ export default {
                 }, (error) => {
                     console.log(error);
                     this.serviceMsg = this.$t('error.userinfo_get_failed')
-                        + this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                        + this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'network_error'}`);
                     this.isError = true;
                     this.processing = false;
                 });
             }, (error) => {
                 console.log(error);
-                this.serviceMsg = this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'unknown_error'}`);
+                this.serviceMsg = this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'network_error'}`);
                 this.isError = true;
                 this.processing = false;
             });

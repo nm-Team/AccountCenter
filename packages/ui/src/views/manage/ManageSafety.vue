@@ -286,3 +286,36 @@ export default {
     components: {},
 };
 </script>
+<style scoped lang="scss">
+.tinySessionList {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 5px 0px 0px;
+    margin-top: -2px;
+    overflow: auto;
+    overflow: overlay;
+    transition: width .2s;
+
+    .tinySession {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 4px 0;
+        justify-content: space-between;
+
+        svg {
+            font-size: 28px;
+            width: 28px;
+            margin: 0 18px 0 3px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        .operates {
+            text-align: right;
+            flex-grow: 1;
+            flex-shrink: 0;
+        }
+    }
+}
+</style>
