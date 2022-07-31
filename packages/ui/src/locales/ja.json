@@ -1,10 +1,10 @@
 {
-    "app_name": "nmTeamアカウントセンター",
+    "app_name": "nmTeam アカウントセンター",
     "avatar_alt": "プロフィールの写真",
     "cancel": "キャンセル",
     "error": {
         "2fa_empty": "正しい2要素認証コードを入力してください。",
-        "agree_terms": "nmTeamサービス契約とプライバシーポリシーを読んで同意してください。",
+        "agree_terms": "nmTeam サービス契約とプライバシーポリシーを読んで同意してください。",
         "captcha_empty": "確認コードを入力してください。",
         "confirm_password_empty": "確認パスワードを入力してください。",
         "email_empty": "メールアドレスを入力してください。",
@@ -36,32 +36,32 @@
         "2fa": "二要素認証コード",
         "ActiveAccount": {
             "error_code": "エラーの詳細：",
-            "error_tip": "申し訳ありませんが、エラーが発生し、nmTeamアカウントのアクティブ化に失敗しました。 \nnmTeamサポートにお問い合わせください。",
-            "error_title": "nmTeamアカウントのアクティブ化に失敗しました",
-            "success_tip": "おめでとうございます。nmTeamアカウントが正常にアクティブ化されました。\nこれで、nmTeamアカウントにログインして、nmTeamサービスを実行できます。",
-            "success_title": "nmTeamアカウントが正常にアクティブ化されました",
-            "tip": "nmTeamアカウントを登録していただきありがとうございます。\n最終作業を行っており、まもなく登録プロセスが完了します。\nアカウントが有効になるまでお待ちください...",
-            "title": "nmTeamアカウントのアクティブ化"
+            "error_tip": "申し訳ありませんが、エラーが発生し、 nmTeam アカウントのアクティブ化に失敗しました。 \n nmTeam サポートにお問い合わせください。",
+            "error_title": "nmTeam アカウントのアクティブ化に失敗しました",
+            "success_tip": "おめでとうございます。 nmTeam アカウントが正常にアクティブ化されました。\nこれで、 nmTeam アカウントにログインして、 nmTeam サービスを実行できます。",
+            "success_title": "nmTeam アカウントが正常にアクティブ化されました",
+            "tip": "nmTeam アカウントを登録していただきありがとうございます。\n最終作業を行っており、まもなく登録プロセスが完了します。\nアカウントが有効になるまでお待ちください...",
+            "title": "nmTeam アカウントのアクティブ化"
         },
         "captcha": "検証コード",
         "choose_account_page": {
             "new": "新しいアカウントでサインイン",
-            "tip": "このデバイスにすでにログインしているnmTeamアカウントを選択して、{oauth}へのログインを続行します。",
+            "tip": "このデバイスにすでにログインしている nmTeam アカウントを選択して、{oauth}へのログインを続行します。",
             "title": "アカウントを切り替える"
         },
         "confirm_password": "パスワードを認証する",
         "email": "Eメール",
         "footer": {
-            "copyright": "Copyright © {year} nmTeam。全著作権所有。"
+            "copyright": "Copyright © {year}  nmTeam 。全著作権所有。"
         },
         "forget_password_page": {
             "nextstep": "次のステップ",
             "step0": {
-                "tip": "nmTeamアカウントのパスワードを忘れた場合は、ここでメールアドレスを確認してパスワードをリセットできます。\n電子メールが利用できない場合は、nmTeamサポートに連絡して支援を求めてください。",
-                "title": "nmTeamアカウントのパスワードをリセットする"
+                "tip": "nmTeam アカウントのパスワードを忘れた場合は、ここでメールアドレスを確認してパスワードをリセットできます。\n電子メールが利用できない場合は、 nmTeam サポートに連絡して支援を求めてください。",
+                "title": "nmTeam アカウントのパスワードをリセットする"
             },
             "step1": {
-                "tip": "nmTeamアカウントの登録に使用したメールアドレスを確認してください。nmTeamアカウントを復元するための追加の手順があります。",
+                "tip": "nmTeam アカウントの登録に使用したメールアドレスを確認してください。 nmTeam アカウントを復元するための追加の手順があります。",
                 "title": "Eメール確認"
             }
         },
@@ -69,7 +69,7 @@
             "forget_password": "パスワードをお忘れですか",
             "login": "ログイン",
             "register": "登録",
-            "support": "nmTeamのサポート"
+            "support": "nmTeam のサポート"
         },
         "login": "ログイン",
         "login_page": {
@@ -78,10 +78,10 @@
             "logged_account": "ログインしたアカウント",
             "processing": "ログインしています...",
             "submit": "ログイン",
-            "title": "nmTeamアカウントにログインします"
+            "title": "nmTeam アカウントにログインします"
         },
         "not_found_page": {
-            "tip": "このページは存在しません。 \nURLが正しいことを確認するか、以下に進んでください。",
+            "tip": "このページは存在しません。 \nURL が正しいことを確認するか、以下に進んでください。",
             "title": "ページが見つかりません"
         },
         "password": "パスワード",
@@ -91,14 +91,14 @@
             "accept_terms": {
                 "privacy": "プライバシーポリシー",
                 "terms": "役務契約",
-                "text": "nmTeamアカウントの{terms}と{privacy}に同意します"
+                "text": "nmTeam アカウントの{terms}と{privacy}に同意します"
             },
             "processing": "登録中...",
             "submit": "登録",
             "success_tip": "登録する次のステップについては、電子メールを確認する必要があります。",
             "success_title": "登録完了",
-            "tip": "今すぐnmTeamアカウントにサインアップして、魅力的なnmTeamサービスをお楽しみください。",
-            "title": "nmTeamアカウントを登録する"
+            "tip": "今すぐ nmTeam アカウントにサインアップして、魅力的な nmTeam サービスをお楽しみください。",
+            "title": "nmTeam アカウントを登録する"
         },
         "username": "ユーザー名"
     },
@@ -125,8 +125,8 @@
                 "undefined": "計算中..."
             },
             "stay_safe": "アカウントを安全に保つ",
-            "stay_safe_img_alt": "nmTeamアカウントを保護する",
-            "stay_safe_text": "アカウントのセキュリティは、Webサービスを安全に使用するために重要です。 \nnmTeamアカウントをさらに安全に保つために、ここで何ができるかを学びます。",
+            "stay_safe_img_alt": "nmTeam アカウントを保護する",
+            "stay_safe_text": "アカウントのセキュリティは、Webサービスを安全に使用するために重要です。 \n nmTeam アカウントをさらに安全に保つために、ここで何ができるかを学びます。",
             "title": "アカウントのセキュリティ",
             "turn_to_safety_page": "アカウントのセキュリティページに移動します"
         },
@@ -146,9 +146,9 @@
         },
         "change_avatar": {
             "chosen": {
-                "gravatar": "nmTeamサービスは、Gravatarに登録されているメールのプロフィール写真を表示します。",
+                "gravatar": "nmTeam サービスは、Gravatarに登録されているメールのプロフィール写真を表示します。",
                 "type": "アバターの種類を{type}に設定します。",
-                "upload": "nmTeamサービスは、アップロードされた画像を表示します。"
+                "upload": "nmTeam サービスは、アップロードされた画像を表示します。"
             },
             "loading": {
                 "tip": "お待ちください...",
@@ -160,7 +160,7 @@
                 "title": "アバターを正常に設定してください！"
             },
             "tip_0": "アバターはあなたの個性を誇示するための素晴らしいツールです。",
-            "tip_1": "nmTeamアカウントには、アバターを設定して自分を表現するためのさまざまなアバター設定方法が用意されています。",
+            "tip_1": "nmTeam アカウントには、アバターを設定して自分を表現するためのさまざまなアバター設定方法が用意されています。",
             "title": "アバターを設定する",
             "type": {
                 "choose_another": "別のタイプを選択してください",
@@ -195,19 +195,19 @@
             "title": "パスワードを変更する"
         },
         "explore": {
-            "developers_will_love_nmteam_account": {
+            "developers_will_love_ nmTeam _account": {
                 "a_text": "方法を学ぶ",
-                "description": "独自のアプリでnmTeamアカウントを使用します。",
-                "title": "開発者はnmTeamアカウントも気に入るはずです"
+                "description": "独自のアプリで nmTeam アカウントを使用します。",
+                "title": "開発者は nmTeam アカウントも気に入るはずです"
             },
             "help": {
                 "a_text": "始める",
-                "description": "nmTeamチームは、nmTeamアカウントの問題について喜んでお手伝いします。",
+                "description": "nmTeam チームは、 nmTeam アカウントの問題について喜んでお手伝いします。",
                 "title": "助けを得ます"
             },
             "use_nmservices": {
                 "products": {
-                    "more": "その他のnmTeam製品",
+                    "more": "その他の nmTeam 製品",
                     "nmBrowser_startPage": "nmBrowserスタートページ",
                     "nmFun": "nmFun"
                 },
@@ -216,13 +216,13 @@
         },
         "fake_account_name": "読み込み中",
         "header_account_icon_title": "クリックしてアカウントを切り替えます",
-        "header_icon_button_alt": "nmTeamアイコンメニューボタン",
+        "header_icon_button_alt": "nmTeam アイコンメニューボタン",
         "header_icon_button_title": "クリックしてメニューを開きます",
-        "header_title": "nmTeamアカウント",
+        "header_title": "nmTeam アカウント",
         "index": {
             "title": "こんにちは, {name}",
-            "welcome_photo_alt": "nmTeamアカウント",
-            "welcome_text": "nmTeamアカウントへようこそ。 \n<br> nmTeamアカウントは、nmTeamサービスへのログインに役立つだけでなく、サードパーティのWebサイトで本人確認を行うためにも使用できます。"
+            "welcome_photo_alt": "nmTeam アカウント",
+            "welcome_text": "nmTeam アカウントへようこそ。 \n<br>  nmTeam アカウントは、 nmTeam サービスへのログインに役立つだけでなく、サードパーティのWebサイトで本人確認を行うためにも使用できます。"
         },
         "infos": {
             "changeable": {

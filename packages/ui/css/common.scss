@@ -198,3 +198,12 @@ a {
         margin: 0 -3px -1px 7px;
     }
 }
+
+.commonLoading{
+    display: block;
+    height: 60px;
+    background-image: url(/loading.gif);
+    background-position: center;
+    background-size: 30px;
+    background-repeat: no-repeat;
+}

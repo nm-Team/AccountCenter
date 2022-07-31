@@ -267,6 +267,12 @@
       },
       "infos": {
          "change_info_tip": "点击来编辑账号信息。",
+         "change":{
+            "success":"成功编辑了账号信息。",
+            "saving":"正在保存...",
+            "nick_empty":"昵称不能为空。",
+            "error":"编辑账号信息失败，因为出现了一些问题。"
+         },
          "changeable": {
             "editing": "正在编辑",
             "email": "电子邮箱",

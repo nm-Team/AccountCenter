@@ -6,9 +6,10 @@
             })
         })
     }}</p>
-    <p class="h1then" v-if="oauth.name">{{ }}</p>
     <div class="uList">
-        <UserButton v-for="user, index in avaliableSession" :key="user.uuid" :user="user" force-border="true" @click="switchAccount(index)">
+        <div class="commonLoading" v-if="avaliableSession.length == 0"></div>
+        <UserButton v-for="user, index in avaliableSession" :key="user.uuid" :user="user" force-border="true"
+            @click="switchAccount(index)">
         </UserButton>
     </div>
     <router-link class="useAnotherAccount" to="/">
@@ -70,10 +71,8 @@ export default {
       user
       nick
       avatar
-      mood
-      role
-      regat
       tfa
+      mail
     }
   }
 }`,

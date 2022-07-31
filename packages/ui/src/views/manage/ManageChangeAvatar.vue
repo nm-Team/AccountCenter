@@ -48,6 +48,13 @@
                     <p>{{ $t('manage.change_avatar.type.upload_description') }}</p>
                 </div>
             </button>
+            <button class="type" @click="avatarType = 'default'; setAvatar(); ">
+                <font-awesome-icon :icon="['fas', 'ban']"></font-awesome-icon>
+                <div>
+                    <b>{{ $t('manage.change_avatar.type.default') }}</b>
+                    <p>{{ $t('manage.change_avatar.type.default_description') }}</p>
+                </div>
+            </button>
             <br />
             <p><a href="https://gravatar.com" onclick="" target="_blank">{{
                     $t('manage.change_avatar.type.gravatar_knowledge')
@@ -222,9 +229,11 @@ export default {
         setAvatar() {
             switch (this.avatarType) {
                 case 'gravatar':
+                    // eslint-disable-next-line no-case-declarations, prefer-regex-literals
+                    const emailArg = new RegExp(/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/);
                     if (this.gravatarType === 'default') {
                         this.newAvatarCode = `mail:${md5(this.user.mail)}`;
-                    } else if (this.customValue === '' || this.customValue == null || this.customValue.indexOf('@') < 1 || this.customValue.indexOf('.') < 2) {
+                    } else if (this.customValue === '' || this.customValue == null || !emailArg.test(this.customValue)) {
                         this.avatarError = this.$t('manage.change_avatar.gravatar.error_email');
                         return;
                     } else {
@@ -246,6 +255,9 @@ export default {
                         return;
                     }
                     this.newAvatarCode = `github:${this.customValue}`;
+                    break;
+                case 'default':
+                    this.newAvatarCode = 'default';
                     break;
                 default:
                     window.alert(this.$t('manage.change_avatar.type.unknown'));

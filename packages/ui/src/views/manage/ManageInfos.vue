@@ -14,20 +14,22 @@
     <div class="block">
         <p class="title">{{ $t('manage.infos.changeable.title') }}</p>
         <label-input v-for="item in changeableForm" :key="item.id" :model="item.id" :type="item.type"
-            :value="item.value" :label="item.label" @getdata="editInfo">
+            :value="item.value" :label="item.label" @getdata="infoOnEdit">
         </label-input>
+        <p>{{ saveMessage }}</p>
         <div class="btns" v-if="inEdit">
             <div>
-                <button style="display: none;" class="blockButton" @click="this.inEdit = false; this.initializeUserInfo()">
+                <button style="display: none;" class="blockButton"
+                    @click="this.inEdit = false; this.initializeUserInfo()">
                     {{ $t('cancel') }}</button>
             </div>
             <div class="right">
-                <button class="blockButton" @click="0">
+                <button class="blockButton" @click="saveInfo()">
                     {{ $t('save') }}</button>
             </div>
         </div>
         <div v-else>
-            <p>{{ $t('manage.infos.change_info_tip') }}</p>
+            <p v-if="saveMessage == ''">{{ $t('manage.infos.change_info_tip') }}</p>
         </div>
     </div>
     <div class="block">
@@ -38,6 +40,10 @@
     </div>
 </template>
 <script>
+import { gql } from 'apollo-boost';
+
+// eslint-disable-next-line import/no-cycle
+import { apolloClient } from '../../main';
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
@@ -48,6 +54,7 @@ export default {
             inEdit: false,
             changeableForm: [],
             readonlyForm: [],
+            saveMessage: '',
         };
     },
     props: {
@@ -68,9 +75,10 @@ export default {
         },
     },
     methods: {
-        editInfo(name, data) {
+        infoOnEdit(name, data) {
             this.editedInfo[name] = data;
             this.inEdit = true;
+            this.saveMessage = '';
         },
         initializeUserInfo() {
             this.changeableForm = [];
@@ -115,6 +123,52 @@ export default {
                     value: this.$t(`manage.infos.roles.${this.user.role}`),
                 },
             ];
+        },
+        saveInfo() {
+            const newInfo = {};
+            if (this.editedInfo.nick === '') {
+                this.saveMessage = this.$t('manage.infos.change.nick_empty');
+                return;
+            }
+            if (this.editedInfo.nick !== null && this.editedInfo.nick !== this.user.nick) {
+                newInfo.nick = this.editedInfo.nick;
+            }
+            if ((this.editedInfo.mood || this.editedInfo.mood === '') && this.editedInfo.mood !== this.user.mood) {
+                newInfo.mood = this.editedInfo.mood;
+            }
+            if (Object.keys(newInfo).length === 0) {
+                this.inEdit = false;
+                return;
+            }
+            this.saveMessage = this.$t('manage.infos.change.saving');
+            apolloClient.query({
+                query: gql`query User($token: String${newInfo.nick ? ', $nick: String' : ''}${newInfo.mood != null ? ', $mood: String' : ''}) {
+  User(token: $token) {
+    ${newInfo.nick ? 'changeNick(nick: $nick)' : ''}
+    ${newInfo.mood != null ? 'changeMood(mood: $mood)' : ''}
+  }
+}`,
+                variables: {
+                    token: this.user.token,
+                    nick: newInfo.nick,
+                    mood: newInfo.mood,
+                },
+                // eslint-disable-next-line @typescript-eslint/no-shadow
+            }).then(({ data }) => {
+                if (data.User) {
+                    this.saveMessage = this.$t('manage.infos.change.success');
+                    this.inEdit = false;
+                    this.editedInfo = {};
+                    this.initializeUserInfo();
+                } else {
+                    this.saveMessage = this.$t('manage.infos.change.error');
+                }
+            }, (error) => {
+                console.log(error);
+                this.saveMessage = this.$t('error.userinfo_get_failed')
+                    + this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'network_error'}`);
+                this.isError = true;
+            });
         },
     },
     components: {},
