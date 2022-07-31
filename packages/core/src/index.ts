@@ -1,6 +1,7 @@
 import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import express from 'express';
+import OAuthServer from 'express-oauth-server';
 
 import { port } from './config';
 import bus from './model/bus';
@@ -9,8 +10,13 @@ import resolvers from './resolvers';
 import typeDefs from './schema';
 import { isMail } from './utils';
 
-const app = express();
+const app: any = express();
+app.oauth = new OAuthServer({
+    // eslint-disable-next-line global-require
+    model: require('./model/oauth'),
+});
 app.use(cookieParser());
+// app.use(app.oauth.authorize());
 
 const apollo = new ApolloServer({
     typeDefs,

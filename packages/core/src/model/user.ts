@@ -285,4 +285,36 @@ export class UserModel {
         );
         return true;
     }
+
+    static async changeNick(uuid: string, nick: string) {
+        const doc = await UserModel.getByUUID(uuid);
+        if (doc === UserModel.defaultUdoc) {
+            throw new Error('invalid_user');
+        }
+        await coll.updateOne(
+            { uuid },
+            {
+                $set: {
+                    nick,
+                },
+            },
+        );
+        return true;
+    }
+
+    static async changeMood(uuid: string, mood: string) {
+        const doc = await UserModel.getByUUID(uuid);
+        if (doc === UserModel.defaultUdoc) {
+            throw new Error('invalid_user');
+        }
+        await coll.updateOne(
+            { uuid },
+            {
+                $set: {
+                    mood,
+                },
+            },
+        );
+        return true;
+    }
 }

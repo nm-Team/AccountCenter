@@ -75,6 +75,28 @@ const resolvers = {
             await UserModel.changeAvatar(token.uuid, args.avatar);
             return true;
         },
+        async changeNick(parent: any, args: any): Promise<boolean> {
+            if (parent.token === undefined || args.nick === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
+            if (token === null) {
+                throw new Error('invalid_token');
+            }
+            await UserModel.changeNick(token.uuid, args.nick);
+            return true;
+        },
+        async changeMood(parent: any, args: any): Promise<boolean> {
+            if (parent.token === undefined || args.mood === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const token: any = await TokenModel.get(parent.token, TokenType.SESSION);
+            if (token === null) {
+                throw new Error('invalid_token');
+            }
+            await UserModel.changeMood(token.uuid, args.mood);
+            return true;
+        },
         async getUser(parent: any): Promise<UserDoc> {
             if (parent.uuid === undefined
                 && parent.user === undefined
