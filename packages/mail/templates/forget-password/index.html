@@ -1,0 +1,95 @@
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: min(90vw, 1200px);
+            margin: 50px auto;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            overflow: hidden;
+        }
+
+        .main h1 {
+            padding: 30px 5% 20px 5%;
+            background-color: #EAD050;
+            font-weight: bold;
+            color: #000;
+            font-size: 30px;
+        }
+
+        .main h1 span {
+            float: right;
+        }
+
+        .textArea {
+            font-size: 16px;
+            color: #111;
+            line-height: 1.6;
+            padding: 28px 5% 0 5%;
+        }
+
+        .code {
+            font-size: 21px;
+            font-weight: bold;
+            padding: 8px 0;
+            user-select: all;
+            -webkit-user-select: all;
+            -moz-user-select: all;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            margin: 5px 0;
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+            color: #000;
+            background-color: #EAD050;
+            text-decoration: none;
+        }
+
+        .footerIcon {
+            height: 26px;
+            margin: 10px 5% 10px 5%;
+            background-image: url(data:image/png;base64,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);
+            background-position: left center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .footerTip {
+            margin: 0px 5% 30px 5%;
+            color: #444;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .footerTip a {
+            color: #555;
+            text-decoration: none;
+        }
+    </style>
+
+    <div class="main">
+        <h1>${title}<span></span></h1>
+        <div class="textArea">
+            <p>${user}, </p>
+            <p>${para_tks}</p>
+            <a href="https://accounts.nmteam.xyz/#/active?token=${token}" class="btn">${button}</a>
+            <p>${para_backup} </p>
+            <p>https://accounts.nmteam.xyz/#/active?token=${token}</p>
+            <p>${para_why} </p>
+            <p>${para_measure}</p>
+        </div>
+        <div class="footerIcon" alt="nmTeam Icon"></div>
+        <div class="footerTip">
+            © 2022 nmTeam. All rights reserved. <br>
+        </div>
+    </div>
+</body>

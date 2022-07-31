@@ -1,0 +1,9 @@
+{
+    "subject": "驗證郵箱以註冊 nmTeam 賬號",
+    "title": "驗證郵箱以註冊 nmTeam 賬號",
+    "para_tks": "感謝您註冊 nmTeam 賬號。請點擊下面的按鈕來驗證郵箱並繼續註冊流程。",
+    "button": "驗證郵箱",
+    "para_backup": "如果您無法點擊按鈕完成驗證，請在瀏覽器中打開此頁面來完成註冊。",
+    "para_why": "根據您註冊 nmTeam 賬號的請求，我們發送了這封郵件。",
+    "para_measure": "如果您沒有申請註冊 nmTeam 賬號，請忽略此郵件。"
+}
