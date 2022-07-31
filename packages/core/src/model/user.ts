@@ -1,12 +1,13 @@
 import { Collection } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
 
-import { checkUser, isMail } from '../utils';
+import { checkPass, checkUser, isMail } from '../utils';
 import twoFactorAuth from './2fa';
 import bus from './bus';
 import { sha1 } from './crypto';
 import Mail from './mail';
 import db from './mongo';
+import { SessionModel } from './session';
 import { TokenModel, TokenType } from './token';
 
 /* eslint-disable lines-between-class-members */
@@ -44,7 +45,7 @@ export class UserModel {
         user: 'guest',
         mail: 'guest@nmnm.fun',
         nick: 'Guest',
-        avatar: 'gravatar:guest@nmnm.fun',
+        avatar: 'mail:guest@nmnm.fun',
         mood: 'Welcome to nmTeam',
         role: 'guest',
 
@@ -251,7 +252,11 @@ export class UserModel {
         return token;
     }
 
-    static async changePass(uuid: string, oldPass: string, newPass: string) {
+    static async changePass(
+        uuid: string,
+        oldPass: string,
+        newPass: string,
+    ) {
         const doc = await UserModel.getByUUID(uuid);
         if (doc === UserModel.defaultUdoc) {
             throw new Error('invalid_user');
@@ -315,6 +320,56 @@ export class UserModel {
                 },
             },
         );
+        return true;
+    }
+
+    static async resetPassQuery(
+        user: string,
+        mail: string,
+        language: string,
+    ) {
+        const doc = await UserModel.getByUser(user);
+        if (doc === UserModel.defaultUdoc) {
+            throw new Error('invalid_user');
+        }
+        if (doc.mail !== mail) {
+            throw new Error('invalid_mail');
+        }
+
+        const tokenId = await TokenModel.add(
+            TokenType.RESET_PASSWORD,
+            1800,
+            { uuid: doc.uuid },
+        );
+        Mail.send(mail, 'forgot_pass', language, {
+            user,
+            token: tokenId,
+        });
+
+        bus.emit('mail/send', mail, tokenId);
+        return true;
+    }
+
+    static async resetPass(tokenId: string, pass: string) {
+        const token: any = await TokenModel.get(tokenId, TokenType.RESET_PASSWORD);
+        if (token === null) {
+            throw new Error('invalid_token');
+        }
+        if (!checkPass(pass)) {
+            throw new Error('invalid_pass');
+        }
+
+        coll.updateOne(
+            { uuid: token.uuid },
+            {
+                $set: {
+                    pass: sha1(token.uuid + pass),
+                },
+            },
+        );
+        SessionModel.deleteAll(tokenId);
+        TokenModel.delete(tokenId, TokenType.RESET_PASSWORD);
+
         return true;
     }
 }

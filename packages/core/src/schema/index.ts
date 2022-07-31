@@ -53,6 +53,10 @@ type UserResolvers {
     getSession: [Session],
     "Logout the specified session"
     logoutSession(token: String): Boolean,
+    "Reset password query"
+    resetPassQuery(user: String, mail: String, language: String): Boolean,
+    "Reset password"
+    resetPass(token: String, pass: String): Boolean,
 }
 
 type twoFactorAuthResolvers {

@@ -7,6 +7,7 @@ import db from './mongo';
 enum TokenType {
     SESSION,
     REGISTER,
+    RESET_PASSWORD,
     SUDOMODE,
 }
 

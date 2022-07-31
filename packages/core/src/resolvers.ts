@@ -143,6 +143,21 @@ const resolvers = {
             await SessionModel.deleteSession(parent.token, args.token);
             return true;
         },
+        async resetPassQuery(_: any, args: any): Promise<boolean> {
+            if (args.user === undefined || args.mail === undefined || args.language === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            await UserModel.resetPassQuery(args.user, args.mail, args.language);
+            return true;
+        },
+        async resetPass(_: any, args: any): Promise<boolean> {
+            if (args.token === undefined || args.pass === undefined) {
+                throw new Error('invalid_parameters');
+            }
+
+            await UserModel.resetPass(args.token, args.pass);
+            return true;
+        },
     },
     twoFactorAuthResolvers: {
         async generate(parent: any) {

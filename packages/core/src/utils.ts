@@ -11,4 +11,15 @@ const checkUser = (user: string) => {
     return reg.test(user);
 };
 
-export { isMail, checkUser };
+const checkPass = (pass: string) => {
+    if (pass.length < 8 || pass.length > 22) {
+        return false;
+    }
+    const cnt = Number(/[a-z]/.test(pass))
+        + Number(/[A-Z]/.test(pass))
+        + Number(/[0-9]/.test(pass))
+        + Number(/[^0-9A-Za-z]/.test(pass));
+    return cnt >= 2;
+};
+
+export { isMail, checkUser, checkPass };
