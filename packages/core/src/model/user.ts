@@ -1,10 +1,13 @@
 import { Collection } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
 
-import { checkPass, checkUser, isMail } from '../utils';
+import {
+    checkAvatar, checkNick, checkPass, checkUser, isMail,
+    seeable
+} from '../utils';
 import twoFactorAuth from './2fa';
 import bus from './bus';
-import { sha1 } from './crypto';
+import { md5, sha1 } from './crypto';
 import Mail from './mail';
 import db from './mongo';
 import { SessionModel } from './session';
@@ -212,7 +215,7 @@ export class UserModel {
             pass: sha1(token.uuid + token.pass),
             mail: token.mail,
             nick: token.user,
-            avatar: `mail:${token.mail}`,
+            avatar: `mail:${md5(token.mail)}`,
             mood: 'Welcome to nmTeam',
             role: 'user',
             regat: time,
@@ -280,14 +283,10 @@ export class UserModel {
         if (doc === UserModel.defaultUdoc) {
             throw new Error('invalid_user');
         }
-        await coll.updateOne(
-            { uuid },
-            {
-                $set: {
-                    avatar,
-                },
-            },
-        );
+        if (!checkAvatar(avatar)) {
+            throw new Error('invalid_avatar');
+        }
+        UserModel.setByUUID(uuid, { avatar });
         return true;
     }
 
@@ -296,14 +295,11 @@ export class UserModel {
         if (doc === UserModel.defaultUdoc) {
             throw new Error('invalid_user');
         }
-        await coll.updateOne(
-            { uuid },
-            {
-                $set: {
-                    nick,
-                },
-            },
-        );
+        if (!checkNick(nick)) {
+            throw new Error('invalid_nick');
+        }
+
+        UserModel.setByUUID(uuid, { nick });
         return true;
     }
 
@@ -312,14 +308,11 @@ export class UserModel {
         if (doc === UserModel.defaultUdoc) {
             throw new Error('invalid_user');
         }
-        await coll.updateOne(
-            { uuid },
-            {
-                $set: {
-                    mood,
-                },
-            },
-        );
+        if (!seeable(mood)) {
+            throw new Error('invalid_mood');
+        }
+
+        UserModel.setByUUID(uuid, { mood });
         return true;
     }
 
