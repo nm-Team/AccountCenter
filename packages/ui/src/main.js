@@ -26,9 +26,11 @@ import Main from './Main.vue';
 import Active from './views/log/Active.vue';
 import ChooseAccount from './views/log/ChooseAccount.vue';
 import ForgetPassword from './views/log/ForgetPassword.vue';
+import GetSupport from './views/log/GetSupport.vue';
 import LogIn from './views/log/LogIn.vue';
 import NotFound from './views/log/NotFound.vue';
 import Register from './views/log/Register.vue';
+import ResetPassword from './views/log/ResetPassword.vue';
 import Manage from './views/manage/Manage.vue';
 import Manage2FA from './views/manage/Manage2FA.vue';
 import ManageChangeAvatar from './views/manage/ManageChangeAvatar.vue';
@@ -47,6 +49,8 @@ const routes = [
     { path: '/choose-account', name: 'choose-account', component: ChooseAccount },
     { path: '/register', name: 'register', component: Register },
     { path: '/forget-password', name: 'forget_password', component: ForgetPassword },
+    { path: '/reset-password', name: 'reset_password', component: ResetPassword },
+    { path: '/support', name: 'support', component: GetSupport },
     { path: '/active', name: 'active', component: Active },
     {
         path: '/manage',

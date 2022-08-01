@@ -1,18 +1,24 @@
 <template>
     <div v-if="step == 0">
-        <h1>{{ $t("log.forget_password_page.step0.title") }}</h1>
-        <p class="h1then">{{ $t('log.forget_password_page.step0.tip') }}</p>
+        <h1>{{ $t("log.reset_password_page.title") }}</h1>
+        <p class="h1then">{{ $t('log.reset_password_page.tip') }}</p>
         <form class="form" @submit.prevent="submit">
             <label-input v-for="item in form" :key="item.id" :model="item.id" :type="item.type" :label="item.label"
                 :autofocus="item.autofocus" @getdata="setData">
             </label-input>
             <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
-            <button>{{ $t("log.forget_password_page.nextstep") }}</button>
+            <button>{{ $t("log.reset_password_page.nextstep") }}</button>
         </form>
     </div>
     <div v-if="step == 1">
-        <h1>{{ $t("log.forget_password_page.step1.title") }}</h1>
-        <p class="h1then">{{ $t('log.forget_password_page.step1.tip') }}</p>
+        <h1>{{ $t("log.reset_password_page.success.title") }}</h1>
+        <p class="h1then">{{ $t('log.reset_password_page.success.tip') }}</p>
+    </div>
+    <div v-if="step == 2">
+        <h1>{{ $t("log.reset_password_page.error.title") }}</h1>
+        <p class="h1then">{{ $t('log.reset_password_page.error.msg.0') }}</p>
+        <p class="h1then">{{ $t('log.reset_password_page.error.msg.1') }}</p>
+        <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
     </div>
     <div class="related">
         <router-link v-for="item in related" :to="item.path" :key="item.name">{{ $t('log.link.' + item.name) }}
@@ -26,14 +32,12 @@ import { gql } from 'apollo-boost';
 import { apolloClient } from '../../main';
 
 export default {
-    name: 'ForgetPassword',
+    name: 'ResetPassword',
     data() {
         return {
             form: [
-                { id: 'username', type: 'text', label: 'log.username' },
-                {
-                    id: 'email', type: 'text', label: 'log.email', autofocus: true,
-                },
+                { id: 'password', type: 'password', label: 'log.password' },
+                { id: 'confirmpassword', type: 'password', label: 'log.confirm_password' },
             ],
             step: 0,
             related: [
@@ -54,15 +58,25 @@ export default {
             processing: false,
         };
     },
+    mounted() {
+        if (!this.$route.query.token || this.$route.query.token === '') {
+            this.serviceMsg = this.$t('error.token_not_found');
+            this.step = 2;
+        }
+    },
     methods: {
         submit() {
             this.isError = true;
-            if (!this.username || this.username === '') {
-                this.serviceMsg = this.$t('error.username_empty');
+            if (!this.password || this.password === '') {
+                this.serviceMsg = this.$t('error.password_empty');
                 return;
             }
-            if (!this.email || this.email === '') {
-                this.serviceMsg = this.$t('error.email_empty');
+            if (!this.confirmpassword || this.confirmpassword === '') {
+                this.serviceMsg = this.$t('error.confirm_password_empty');
+                return;
+            }
+            if (this.password !== this.confirmpassword) {
+                this.serviceMsg = this.$t('error.password_not_match');
                 return;
             }
             this.serviceMsg = '';
@@ -70,15 +84,14 @@ export default {
             this.processing = true;
 
             apolloClient.query({
-                query: gql`query User($user: String, $mail: String, $language: String) {
+                query: gql`query User($token: String, $pass: String) {
   User {
-    resetPassQuery(user: $user, mail: $mail, language: $language)
+    resetPass(token: $token, pass: $pass)
   }
 }`,
                 variables: {
-                    user: this.username,
-                    mail: this.email,
-                    language: this.$i18n.locale,
+                    token: this.$route.query.token,
+                    pass: this.password,
                 },
             }).then(({ data }) => {
                 console.log(data);
