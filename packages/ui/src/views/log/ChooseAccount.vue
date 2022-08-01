@@ -92,7 +92,7 @@ export default {
                     }
                 }, (error) => {
                     console.log(error);
-                    deleteSession(session);
+                    if (error.graphQLErrors && error.graphQLErrors[0]) { deleteSession(session); }
                     this.avaliableSession[index] = false;
                 }).then(() => {
                     sessionsCheckedCount++;
