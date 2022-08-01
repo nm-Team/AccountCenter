@@ -7,5 +7,6 @@ const encrypt = (algo: string, text: string) => {
 };
 
 const sha1 = (text: string) => encrypt('sha1', text);
+const md5 = (text: string) => encrypt('md5', text);
 
-export { encrypt, sha1 };
+export { encrypt, sha1, md5 };
