@@ -15,6 +15,7 @@
         "forget_password_failed": "パスワードのリセットに失敗しました。",
         "invalid_mail": "メールアドレスの形式が正しくありません。",
         "invalid_parameters": "渡されたパラメーターが正しくありません。",
+        "invalid_pass": "入力されたパスワードは要件を満たしていません。",
         "invalid_token": "渡されたバリデーターが正しくありません。",
         "invalid_user": "ユーザー名が正しくありません。",
         "login_failed": "ログインに失敗しました。",
@@ -23,6 +24,7 @@
         "password_not_match": "2回入力したパスワードが一致しません。",
         "register_failed": "登録に失敗しました。",
         "tfa_invalid_code": "2要素認証コードが正しくありません。",
+        "token_not_found": "確認キーが見つかりません。URL を確認してください。",
         "unknown_error": "未知の間違い。",
         "used_mail": "この電子メールアドレスが既に使用されている。",
         "used_user": "このユーザー名は既に使われています。",
@@ -65,6 +67,14 @@
                 "title": "Eメール確認"
             }
         },
+        "get_support_page": {
+            "button": "nmTeam サポートに連絡する",
+            "tip": {
+                "0": "nmTeam アカウントの使用中に問題が発生した場合は、nmTeam サポートにお問い合わせください。",
+                "1": "詳細については、公式の nmTeam サポート Web サイトにアクセスしてください。"
+            },
+            "title": "nmチームのサポート"
+        },
         "link": {
             "forget_password": "パスワードをお忘れですか",
             "login": "ログイン",
@@ -99,6 +109,22 @@
             "success_title": "登録完了",
             "tip": "今すぐ nmTeam アカウントにサインアップして、魅力的な nmTeam サービスをお楽しみください。",
             "title": "nmTeam アカウントを登録する"
+        },
+        "reset_password_page": {
+            "error": {
+                "msg": {
+                    "0": "問題が発生したため、現在パスワードをリセットできません。",
+                    "1": "以下のエラー メッセージを参照して、もう一度お試しください。\n問題が解決しない場合は、nmTeam サポートにお問い合わせください。"
+                },
+                "title": "エラーが発生しました"
+            },
+            "nextstep": "パスワードの確認とリセット",
+            "success": {
+                "tip": "nmTeam アカウントのパスワードが正常にリセットされました。\nこのパスワードで nmTeam サービスにログインできます。",
+                "title": "パスワードのリセットが成功しました"
+            },
+            "tip": "新しいパスワードを設定してください。\nメールアドレスの認証に成功すると、パスワードがリセットされます。",
+            "title": "パスワードを再設定する"
         },
         "username": "ユーザー名"
     },
@@ -150,9 +176,42 @@
                 "type": "アバターの種類を{type}に設定します。",
                 "upload": "nmTeam サービスは、アップロードされた画像を表示します。"
             },
+            "github": {
+                "custom_placeholder": "GitHub ユーザー名",
+                "error_invalid": "正しい GitHub ユーザー名を入力してください。",
+                "help_alt": "URL で GitHub ユーザー名を取得する",
+                "title": "GitHub アバターの使用"
+            },
+            "gravatar": {
+                "custom_placeholder": "Eメール",
+                "email_error": "正しいメールアドレスを入力してください。",
+                "title": "Gravatar アバターの使用",
+                "use_another_email": "別のメールアドレスを使用する",
+                "use_another_email_description": "別のメールアドレスで登録された Gravatar アバター。",
+                "use_my_email": "私のメールアドレスを使用する",
+                "use_my_email_description": "{email} に登録された Gravatar アバター。"
+            },
+            "legal": {
+                "no_discriminate": "アバターには、存在するコンテンツ、または特定のグループに対する差別的であると誤解されやすいコンテンツを含めてはなりません。",
+                "no_illegal": "アバターには、nmTeam サービスが配置され、ほとんどの国や地域で認められている場所の法律、規制、行政命令に違反するコンテンツを含めてはなりません。",
+                "no_other": "アバターには、その他の不適切なコンテンツを含めてはなりません。",
+                "no_politics": "アバターに政治的なほのめかしを含めてはなりません。",
+                "no_porn": "アバターには、生殖器、性的行動、性的ほのめかし、公共の場での不適切な視聴、または上記に類似したコンテンツが含まれていてはなりません。",
+                "our_action": "nmTeam チームは、上記の条件を満たさないアバターを削除し、その他の制限を課す場合があります。",
+                "title": "アバターが次の基準を満たしていることを確認してください"
+            },
+            "legal_more": "関連条件の表示",
+            "legal_warning": "セットされたアバターの内容は、現地の法律および規制および nmTeam の関連規制に準拠していることを確認してください。",
             "loading": {
                 "tip": "お待ちください...",
                 "title": "アバターを設定しています..."
+            },
+            "public_warning": "設定したアバターが公開されます。",
+            "qq": {
+                "custom_placeholder": "あなたのQQ番号",
+                "error_invalid": "正しい QQ 番号を入力してください。",
+                "title": "QQ アバターを使用する",
+                "your_qq_might_be_visible": "他の人は、あなたのアバターに基づいて QQ ID を取得できる可能性があります。"
             },
             "success": {
                 "refresh": "ページの更新",
@@ -165,14 +224,22 @@
             "type": {
                 "choose_another": "別のタイプを選択してください",
                 "github": "GitHub",
+                "github_description": "GitHub で設定したアバターを表示します。",
                 "gravatar": "Gravatar",
                 "gravatar_description": "メールアドレスに基づいてGravatarアバターを表示します。 \nGravatarは、ユーザーがインターネット上で自分のアバターを使用できるようにする素晴らしい公共サービスです。",
                 "gravatar_knowledge": "Gravatarの詳細",
                 "qq": "QQ",
+                "qq_description": "QQで設定したアバターを表示します。",
                 "title": "アバターを表示する場所は？",
                 "unknown": "申し訳ありませんが、設定したアバターの種類が認識されませんでした。",
                 "upload": "画像をアップロード",
                 "upload_description": "これにより、デバイスから画像がアップロードされ、アバターとして使用されます。"
+            },
+            "upload": {
+                "cut": "画像をトリミングする",
+                "cut_description": "画像を正方形にトリミングします。",
+                "title": "アバターをアップロード",
+                "upload_button": "デバイスから画像を選択してください"
             }
         },
         "change_password": {
@@ -195,7 +262,7 @@
             "title": "パスワードを変更する"
         },
         "explore": {
-            "developers_will_love_ nmTeam _account": {
+            "developers_will_love_nmteam_account": {
                 "a_text": "方法を学ぶ",
                 "description": "独自のアプリで nmTeam アカウントを使用します。",
                 "title": "開発者は nmTeam アカウントも気に入るはずです"
@@ -225,6 +292,13 @@
             "welcome_text": "nmTeam アカウントへようこそ。 \n<br>  nmTeam アカウントは、 nmTeam サービスへのログインに役立つだけでなく、サードパーティのWebサイトで本人確認を行うためにも使用できます。"
         },
         "infos": {
+            "change": {
+                "error": "問題が発生したため、アカウント情報の編集に失敗しました。",
+                "nick_empty": "ユーザー名を空白にすることはできません。",
+                "saving": "保存中...",
+                "success": "アカウント情報が正常に編集されました。"
+            },
+            "change_info_tip": "クリックしてアカウント情報を編集します。",
             "changeable": {
                 "editing": "編集",
                 "email": "Eメール",
@@ -252,6 +326,7 @@
             },
             "title": "個人情報の管理"
         },
+        "logout_confirm": "ログアウトしてもよろしいですか？",
         "logout_failed": "申し訳ありませんが、問題が発生し、ログアウトに失敗しました。",
         "logout_title": "ログアウト",
         "not_found_alt": "このページが見つかりませんでした。",
@@ -321,6 +396,7 @@
                     "title": "二要素認証アプリを設定する"
                 },
                 "title": "確認方法を選択してください",
+                "using_app": "プロンプトが表示されたら、アプリを使用して 2 要素認証用の認証コードを取得します。 \n1Password、Authy、LastPass Authenticator、Microsoft Authenticator などのクラウドベースの TOTP アプリを使用することをお勧めします。",
                 "using_app_title": "アプリを使用する"
             },
             "tip_a": "2段階認証プロセスを有効にすると、攻撃者がパスワードを取得しても、攻撃者はあなたのアカウントにアクセスできなくなります。",
@@ -337,5 +413,14 @@
     "ok": "いいです",
     "save": "保存",
     "selete_language": "言語を選択してください",
+    "time": {
+        "relative": {
+            "day": "数日前",
+            "hour": "1時間前",
+            "just_now": "今",
+            "minute": "数分前",
+            "second": "数秒前"
+        }
+    },
     "unknown": "わからない"
 }

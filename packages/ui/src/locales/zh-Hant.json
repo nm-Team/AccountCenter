@@ -3,6 +3,7 @@
     "avatar_alt": "用戶頭像",
     "cancel": "取消",
     "error": {
+        "2fa_empty": "請輸入正確的雙重驗證代碼。",
         "agree_terms": "請閱讀並同意 nmTeam 服務協議和隱私政策。",
         "captcha_empty": "請輸入驗證碼。",
         "confirm_password_empty": "請輸入確認密碼。",
@@ -14,6 +15,7 @@
         "forget_password_failed": "重置密碼失敗。",
         "invalid_mail": "電子郵箱格式不正確。",
         "invalid_parameters": "傳入的參數不正確。",
+        "invalid_pass": "輸入的密碼不符合要求。",
         "invalid_token": "傳入的驗證符不正確。",
         "invalid_user": "用戶名不正確。",
         "login_failed": "登錄失敗。",
@@ -21,6 +23,8 @@
         "password_empty": "請輸入密碼。",
         "password_not_match": "兩次輸入的密碼不一致。",
         "register_failed": "註冊失敗。",
+        "tfa_invalid_code": "雙重驗證代碼不正確。",
+        "token_not_found": "未找到驗證密鑰，請確認您的 URL。",
         "unknown_error": "未知錯誤。",
         "used_mail": "此電子郵箱已被使用。",
         "used_user": "此用戶名已被使用。",
@@ -31,6 +35,7 @@
     },
     "loading": "加載中",
     "log": {
+        "2fa": "雙重驗證代碼",
         "ActiveAccount": {
             "error_code": "錯誤詳情：",
             "error_tip": "很抱歉，出現錯誤，導致 nmTeam 賬號激活失敗。請聯繫 nmTeam 支持獲取幫助。",
@@ -61,6 +66,14 @@
                 "tip": "請確認您註冊 nmTeam 賬號時使用的電子郵箱，那裡有關於找回 nmTeam 賬號的進一步措施。",
                 "title": "確認電子郵箱"
             }
+        },
+        "get_support_page": {
+            "button": "聯繫 nmTeam 支持",
+            "tip": {
+                "0": "若在使用 nmTeam 賬號時遇到問題，請聯繫 nmTeam 支持來獲取幫助。",
+                "1": "請轉到 nmTeam 支持官方網站以獲取更多信息。"
+            },
+            "title": "nmTeam 支持"
         },
         "link": {
             "forget_password": "忘記密碼",
@@ -97,6 +110,22 @@
             "tip": "即刻註冊 nmTeam 賬號，享受引人入勝的 nmTeam 服務。",
             "title": "註冊 nmTeam 賬號"
         },
+        "reset_password_page": {
+            "error": {
+                "msg": {
+                    "0": "出現了一些問題，現在無法重置您的密碼。",
+                    "1": "請參考下面提供的錯誤信息，並考慮再試一次。\n如果問題始終出現，請聯繫 nmTeam 支持來獲取幫助。"
+                },
+                "title": "出現錯誤"
+            },
+            "nextstep": "驗證並重置密碼",
+            "success": {
+                "tip": "您已經成功地重置了 nmTeam 賬號的密碼。\n您將可以用此密碼登錄 nmTeam 服務。",
+                "title": "重置密碼成功"
+            },
+            "tip": "請設置您的新密碼。\n如果你成功地進行了郵箱認證，我們會為你重置密碼。",
+            "title": "重置密碼"
+        },
         "username": "用戶名"
     },
     "manage": {
@@ -108,6 +137,8 @@
                     "title": "修改密碼"
                 },
                 "enable_2fa": {
+                    "manage": "管理雙重驗證",
+                    "manage_tip": "管理您的雙重驗證設置。",
                     "tip": "啟用雙重驗證來提高您的賬號安全性。",
                     "title": "啟用雙重驗證"
                 }
@@ -116,7 +147,8 @@
                 "high": "您的賬號非常安全。",
                 "low": "您的賬號非常不安全。",
                 "medium": "您的賬號比較安全，但讓我們更進一步。",
-                "point": "{point} 分"
+                "point": "{point} 分",
+                "undefined": "正在計算..."
             },
             "stay_safe": "確保您的賬號安全無虞",
             "stay_safe_img_alt": "保護 nmTeam 賬號安全",
@@ -139,17 +171,85 @@
             "title": "密碼"
         },
         "change_avatar": {
+            "chosen": {
+                "gravatar": "nmTeam 服務將展示您的 Email 在 Gravatar 上註冊的頭像。",
+                "type": "設置頭像類型為 {type}。",
+                "upload": "nmTeam 服務將展示您上傳的圖片。"
+            },
+            "github": {
+                "custom_placeholder": "您的 GitHub 用戶名",
+                "error_invalid": "請輸入正確的 GitHub 用戶名。",
+                "help_alt": "在 URL 中獲取 GitHub 用戶名",
+                "title": "使用 GitHub 頭像"
+            },
+            "gravatar": {
+                "custom_placeholder": "電子郵箱",
+                "email_error": "請輸入正確的電子郵箱。",
+                "title": "使用 Gravatar 頭像",
+                "use_another_email": "使用其他電子郵箱地址",
+                "use_another_email_description": "使用其他電子郵箱地址註冊的 Gravatar 頭像。",
+                "use_my_email": "使用我的電子郵箱地址",
+                "use_my_email_description": "使用 {email} 註冊的 Gravatar 頭像。"
+            },
+            "legal": {
+                "no_discriminate": "頭像中不得包含存在或容易被誤解存在對任何人群的歧視的內容。",
+                "no_illegal": "頭像中不得包含違反您所在地、nmTeam 服務所在地以及被大多數國家和地區公認的法律、法規與行政命令的內容。",
+                "no_other": "頭像中不得包含任何其他不適宜內容。",
+                "no_politics": "頭像中不得包含政治暗示。",
+                "no_porn": "頭像中不得包含生殖器官、性行為、存在性暗示、不適宜在公共場所觀看，或與以上內容接近的內容。",
+                "our_action": "nmTeam 團隊將對不符合以上條件的頭像進行刪除，並可能加以其它限制措施。",
+                "title": "請確保您的頭像符合以下條件"
+            },
+            "legal_more": "展示相關條件",
+            "legal_warning": "請確保設置的頭像內容符合當地法律法規和 nmTeam 的相關規定。",
+            "loading": {
+                "tip": "請稍候...",
+                "title": "正在設置頭像..."
+            },
+            "public_warning": "您設置的頭像將被公開顯示。",
+            "qq": {
+                "custom_placeholder": "您的 QQ 號",
+                "error_invalid": "請輸入正確的 QQ 號。",
+                "title": "使用 QQ 頭像",
+                "your_qq_might_be_visible": "其他人可能可以根據您的頭像獲取您的 QQ 號。"
+            },
+            "success": {
+                "refresh": "刷新頁面",
+                "tip": "您已經成功設置了頭像！\n可能需要刷新頁面，並稍候才能看到自己的頭像。",
+                "title": "設置頭像成功！"
+            },
+            "tip_0": "頭像是展示自我個性的好工具。",
+            "tip_1": "nmTeam 賬號提供了多種頭像設置方法，供您設置頭像，展現自我。",
+            "title": "設置頭像",
             "type": {
+                "choose_another": "選擇另一個類型",
                 "github": "GitHub",
+                "github_description": "展示您在 GitHub 中設置的頭像。",
                 "gravatar": "Gravatar",
-                "qq": "QQ"
+                "gravatar_description": "展示基於您 Email 地址的 Gravatar 頭像。 \nGravatar 是一項令人讚嘆的公共服務，允許用戶在互聯網中使用自己設定的頭像。",
+                "gravatar_knowledge": "進一步了解 Gravatar",
+                "qq": "QQ",
+                "qq_description": "展示您在 QQ 中設置的頭像。",
+                "title": "從何處展示頭像？",
+                "unknown": "抱歉，無法識別您設置的頭像類型。",
+                "upload": "上傳圖片",
+                "upload_description": "這將從您的設備上傳圖片作為頭像。"
+            },
+            "upload": {
+                "cut": "裁剪圖片",
+                "cut_description": "將您的圖片裁剪為正方形。",
+                "title": "上傳頭像",
+                "upload_button": "從設備上選擇圖片"
             }
         },
         "change_password": {
             "confirm_password": "確認密碼",
+            "forget": "如果忘記了正在使用的密碼，請改用{reset}。",
             "new_password": "新密碼",
             "old_password": "舊密碼",
+            "reset": "重置密碼",
             "submit": "修改",
+            "success": "修改密碼成功。",
             "tip": {
                 "t0": "密碼的位數應當足夠長。",
                 "t1": "避免使用易於猜到的密碼，例如 12345678, asdfghjkl, mypassword 或您的生日。",
@@ -192,6 +292,13 @@
             "welcome_text": "歡迎使用 nmTeam 賬號。 \n<br>nmTeam 賬號不僅助您登錄 nmTeam 服務，更可用於在第三方網站驗證身份。"
         },
         "infos": {
+            "change": {
+                "error": "編輯賬號信息失敗，因為出現了一些問題。",
+                "nick_empty": "暱稱不能為空。",
+                "saving": "正在保存...",
+                "success": "成功編輯了賬號信息。"
+            },
+            "change_info_tip": "點擊來編輯賬號信息。",
             "changeable": {
                 "editing": "正在編輯",
                 "email": "電子郵箱",
@@ -200,6 +307,8 @@
                 "title": "修改個人信息"
             },
             "customize": {
+                "avatar": "頭像",
+                "avatar_alt": "您的頭像",
                 "change_avatar": "設置頭像",
                 "title": "個性化"
             },
@@ -217,6 +326,7 @@
             },
             "title": "管理個人信息"
         },
+        "logout_confirm": "確定要退出登錄嗎？",
         "logout_failed": "抱歉，出現了問題，註銷失敗。",
         "logout_title": "註銷",
         "not_found_alt": "找不到此頁面。",
@@ -227,10 +337,13 @@
             "safety": "賬號安全"
         },
         "recent_sessions": {
+            "detail_mode": "詳情",
             "operates": {
                 "logout": "下線",
                 "logout_all": "全部註銷",
-                "logout_all_confirm": "確定要註銷全部會話嗎？"
+                "logout_all_confirm": "確定要註銷全部會話嗎？",
+                "logout_confirm": "確定要註銷此會話嗎？",
+                "logout_fail": "註銷會話失敗。"
             },
             "table": {
                 "ip": "IP 和大概位置",
@@ -241,10 +354,15 @@
                 "ua": "瀏覽器和用戶 UA"
             },
             "tiny": {
+                "active_time": "活躍時間",
                 "colon": "：",
+                "create_time": "登錄時間",
+                "device": "設備",
                 "ip": "大致位置",
-                "ip_value": "{city} (IP: {ip})"
+                "ip_value": "{city} (IP: {ip})",
+                "ua": "瀏覽器"
             },
+            "tiny_mode": "簡略",
             "tip": {
                 "logout_unrecognized": "若有您無法識別的陌生會話，您應當立即註銷，修改密碼，並設置其它安全措施（例如雙重驗證）來保證賬號安全性。",
                 "manage_here": "您可以在此管理此賬號當前登錄的會話。"
@@ -252,14 +370,57 @@
             "title": "最近登錄的會話"
         },
         "setup_2fa": {
+            "disable": {
+                "submit": "停用",
+                "tip": "請輸入設備上的 6 位代碼以確認您的操作。",
+                "title": "停用“雙重驗證”"
+            },
+            "enabled": {
+                "disable": "停用“雙重驗證”",
+                "tip": "您是安全的！\n您已啟用“雙重驗證”。",
+                "title": "已啟用雙重驗證"
+            },
+            "next_step": "下一步",
+            "setup": {
+                "app": {
+                    "code_format_error": "驗證碼格式錯誤。",
+                    "code_not_expire": "請參考 App 中顯示的剩餘時間，確保輸入的驗證碼沒有過期。",
+                    "enter_code": "請在此輸入 App 中的驗證碼。",
+                    "enter_code_placeholder": "6 位數字驗證碼",
+                    "enter_code_title": "然後輸入驗證碼",
+                    "get_code_error": "抱歉，無法獲取驗證代碼。\n請刷新頁面重試。",
+                    "scan_qrcode": "使用雙因素身份驗證 App 掃描此二維碼，或輸入下面的代碼。",
+                    "scan_qrcode_title": "掃描二維碼",
+                    "secret_box_placeholder": "代碼",
+                    "set_error": "抱歉，設置雙重驗證失敗。\n請刷新頁面重試。",
+                    "title": "設置雙重驗證 App"
+                },
+                "title": "請選擇驗證方式",
+                "using_app": "出現提示時，使用 App 獲取驗證碼來進行雙重驗證。\n我們建議使用基於雲的 TOTP 應用程序，例如：1Password、Authy、LastPass Authenticator 或 Microsoft Authenticator。",
+                "using_app_title": "使用 App"
+            },
             "tip_a": "啟用“雙重驗證”後，即使攻擊者獲取了您的密碼，也無法獲得對您賬號的訪問權限。",
             "tip_b": "請設置“雙重驗證”，進一步增強賬號安全性。",
             "title": "設置雙重驗證"
+        },
+        "sudo_mode_page": {
+            "submit": "驗證",
+            "tip": "您正在對賬號做關鍵操作，因此我們需要驗證您的身份。",
+            "title": "進入 Sudo 模式"
         }
     },
     "next_step": "下一步",
     "ok": "好",
     "save": "保存",
     "selete_language": "選擇語言",
+    "time": {
+        "relative": {
+            "day": "天前",
+            "hour": "小時前",
+            "just_now": "現在",
+            "minute": "分鐘前",
+            "second": "秒前"
+        }
+    },
     "unknown": "未知"
 }

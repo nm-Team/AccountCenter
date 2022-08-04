@@ -15,6 +15,7 @@
         "forget_password_failed": "Failed to reset password.",
         "invalid_mail": "Email address format is incorrect.",
         "invalid_parameters": "The parameter passed in is incorrect.",
+        "invalid_pass": "The entered password does not meet the requirements.",
         "invalid_token": "The validator passed in is incorrect.",
         "invalid_user": "Username is incorrect.",
         "login_failed": "Login failed.",
@@ -23,6 +24,7 @@
         "password_not_match": "The passwords entered do not match.",
         "register_failed": "Registration failed.",
         "tfa_invalid_code": "Incorrect two-factor verification code.",
+        "token_not_found": "Verification key not found, please confirm your URL.",
         "unknown_error": "Unknown error.",
         "used_mail": "This email address is already in use.",
         "used_user": "This username is already in use.",
@@ -65,6 +67,14 @@
                 "title": "Check Your Email"
             }
         },
+        "get_support_page": {
+            "button": "Contact nmTeam Support",
+            "tip": {
+                "0": "If you encounter problems using your nmTeam account, please contact nmTeam support for assistance.",
+                "1": "Please visit the official nmTeam support website for more information."
+            },
+            "title": "nmTeam Support"
+        },
         "link": {
             "forget_password": "Forget Password",
             "login": "Login",
@@ -99,6 +109,22 @@
             "success_title": "Registration Success",
             "tip": "Register a new nmTeam Account to start using nmTeam services.",
             "title": "Register"
+        },
+        "reset_password_page": {
+            "error": {
+                "msg": {
+                    "0": "Something went wrong and we can't reset your password right now.",
+                    "1": "Please refer to the error message provided below and consider trying again. \nIf the problem persists, please contact nmTeam support for assistance."
+                },
+                "title": "An error occurred"
+            },
+            "nextstep": "Verify and reset password",
+            "success": {
+                "tip": "You have successfully reset the password for your nmTeam account. \nYou will be able to log in to the nmTeam service with this password.",
+                "title": "Password reset successful"
+            },
+            "tip": "Please set your new password. \nIf you have successfully authenticated your email address, we will reset your password for you.",
+            "title": "Reset Password"
         },
         "username": "Username"
     },
@@ -266,6 +292,12 @@
             "welcome_text": "Welcome to the nmTeam account. \n<br>nmTeam account not only helps you log in to nmTeam services, but can also be used to verify your identity on third-party websites."
         },
         "infos": {
+            "change": {
+                "error": "Editing account information failed because of some problems.",
+                "nick_empty": "Nickname can not be empty.",
+                "saving": "Saving...",
+                "success": "Successfully edited account information."
+            },
             "change_info_tip": "Click to edit account information.",
             "changeable": {
                 "editing": "Editing",
