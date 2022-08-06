@@ -15,6 +15,7 @@
         "forget_password_failed": "Failed to reset password.",
         "invalid_avatar": "The avatar format is incorrect.",
         "invalid_mail": "Email address format is incorrect.",
+        "invalid_nick": "Nickname format is incorrect.",
         "invalid_parameters": "The parameter passed in is incorrect.",
         "invalid_pass": "The entered password does not meet the requirements.",
         "invalid_token": "The validator passed in is incorrect.",

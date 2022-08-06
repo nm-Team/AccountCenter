@@ -15,6 +15,7 @@
         "forget_password_failed": "パスワードのリセットに失敗しました。",
         "invalid_avatar": "アバターの形式が正しくありません。",
         "invalid_mail": "メールアドレスの形式が正しくありません。",
+        "invalid_nick": "ニックネームの形式が正しくありません。",
         "invalid_parameters": "渡されたパラメーターが正しくありません。",
         "invalid_pass": "入力されたパスワードは要件を満たしていません。",
         "invalid_token": "渡されたバリデーターが正しくありません。",

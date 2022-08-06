@@ -13,6 +13,7 @@
         "email_verify_failed": "验证失败。",
         "email_verify_param_invalid": "验证参数不正确。请检查 URL 后重试。",
         "forget_password_failed": "重置密码失败。",
+        "invalid_nick": "昵称格式不正确。",
         "invalid_mail": "电子邮箱格式不正确。",
         "invalid_parameters": "传入的参数不正确。",
         "invalid_pass": "输入的密码不符合要求。",

@@ -15,6 +15,7 @@
         "forget_password_failed": "重置密碼失敗。",
         "invalid_avatar": "頭像格式不正確。",
         "invalid_mail": "電子郵箱格式不正確。",
+        "invalid_nick": "暱稱格式不正確。",
         "invalid_parameters": "傳入的參數不正確。",
         "invalid_pass": "輸入的密碼不符合要求。",
         "invalid_token": "傳入的驗證符不正確。",
