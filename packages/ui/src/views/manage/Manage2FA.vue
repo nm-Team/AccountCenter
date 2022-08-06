@@ -154,6 +154,7 @@ export default {
                 }).then(({ data }) => {
                     console.log(data);
                     this.tfaEnabled = true;
+                    this.user.tfa = true;
                     this.enableStep = 0;
                     this.$emit('updateuser', this.user);
                 }, (error) => {
@@ -179,7 +180,9 @@ export default {
                     },
                 }).then(({ data }) => {
                     console.log(data);
+                    this.user.tfa = false;
                     this.tfaEnabled = false;
+                    this.$emit('updateuser', this.user);
                     this.enableStep = 0;
                     window.location.reload(); // user info will be reload after page refresh. Maybe hot reload in the future.
                 }, (error) => {
