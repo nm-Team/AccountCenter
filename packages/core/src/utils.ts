@@ -9,11 +9,11 @@ const isMD5 = (text: string) => /^[0-9a-f]{32}$/.test(text);
 const seeable = (text: string) => /^[^\x00-\x1f\x7f]+$/.test(text);
 
 const checkAvatar = (avatar: string) => {
-    const type = avatar.split(';')[0].split('/')[1];
+    const type = avatar.split(':')[0];
     const attr = avatar.substring(avatar.indexOf(':') + 1);
     switch (type) {
         case 'mail':
-            return isMail(attr);
+            return isMD5(attr);
         case 'qq':
             return /^[1-9]\d{4,}$/.test(attr);
         case 'github':
