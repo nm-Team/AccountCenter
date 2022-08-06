@@ -31,7 +31,8 @@
         "userinfo_get_failed": "获取用户信息失败。",
         "username_empty": "请输入用户名。",
         "wrong_pass": "密码错误。",
-        "wrong_user": "用户名错误。"
+        "wrong_user": "用户名错误。",
+        "invalid_avatar": "头像格式不正确。"
     },
     "loading": "加载中",
     "log": {
@@ -218,6 +219,11 @@
                 "tip": "您已经成功设置了头像！可能需要刷新页面，并稍候才能看到自己的头像。",
                 "title": "设置头像成功！"
             },
+            "error": {
+                "title": "设置头像失败",
+                "tip": "出现了一些问题，我们现在无法为你设置头像。",
+                "retry": "重试"
+            },
             "tip_0": "头像是展示自我个性的好工具。",
             "tip_1": "nmTeam 账号提供了多种头像设置方法，供您设置头像，展现自我。",
             "title": "设置头像",
@@ -230,6 +236,8 @@
                 "gravatar_knowledge": "进一步了解 Gravatar",
                 "qq": "QQ",
                 "qq_description": "展示您在 QQ 中设置的头像。",
+                "default": "默认",
+                "default_description": "清除个性头像设置，并使用 nmTeam 账号默认头像。",
                 "title": "从何处展示头像？",
                 "unknown": "抱歉，无法识别您设置的头像类型。",
                 "upload": "上传图片",
@@ -339,6 +347,7 @@
         "recent_sessions": {
             "detail_mode": "详情",
             "operates": {
+                "this_session": "当前会话",
                 "logout": "下线",
                 "logout_all": "全部注销",
                 "logout_all_confirm": "确定要注销全部会话吗？",

@@ -13,6 +13,7 @@
         "email_verify_failed": "検証に失敗しました。",
         "email_verify_param_invalid": "検証パラメーターが正しくありません。 \nURLを確認して、もう一度お試しください。",
         "forget_password_failed": "パスワードのリセットに失敗しました。",
+        "invalid_avatar": "アバターの形式が正しくありません。",
         "invalid_mail": "メールアドレスの形式が正しくありません。",
         "invalid_parameters": "渡されたパラメーターが正しくありません。",
         "invalid_pass": "入力されたパスワードは要件を満たしていません。",
@@ -176,6 +177,11 @@
                 "type": "アバターの種類を{type}に設定します。",
                 "upload": "nmTeam サービスは、アップロードされた画像を表示します。"
             },
+            "error": {
+                "retry": "リトライ",
+                "tip": "エラーが発生したため、現在アバターを設定できません。",
+                "title": "アバターの設定に失敗しました"
+            },
             "github": {
                 "custom_placeholder": "GitHub ユーザー名",
                 "error_invalid": "正しい GitHub ユーザー名を入力してください。",
@@ -223,6 +229,8 @@
             "title": "アバターを設定する",
             "type": {
                 "choose_another": "別のタイプを選択してください",
+                "default": "デフォルト",
+                "default_description": "パーソナライズされたアバター設定をクリアし、nmTeam アカウントのデフォルトのアバターを使用します。",
                 "github": "GitHub",
                 "github_description": "GitHub で設定したアバターを表示します。",
                 "gravatar": "Gravatar",
@@ -343,7 +351,8 @@
                 "logout_all": "すべてログアウトする",
                 "logout_all_confirm": "すべてのセッションからログアウトしてもよろしいですか？",
                 "logout_confirm": "このセッションからログアウトしてもよろしいですか？",
-                "logout_fail": "ログアウトセッションが失敗しました。"
+                "logout_fail": "ログアウトセッションが失敗しました。",
+                "this_session": "現在のセッション"
             },
             "table": {
                 "ip": "IPとおおよその場所",

@@ -39,6 +39,7 @@
                                 href="javascript:">{{
                                         $t('manage.recent_sessions.operates.logout')
                                 }}</a>
+                            <span v-else>{{ $t('manage.recent_sessions.operates.this_session') }}</span>
                         </td>
                     </tr>
                 </tbody>
@@ -77,6 +78,7 @@
                     <a @click="logOutSession(session._uuid)" v-if="session._uuid != user.token" href="javascript:">{{
                             $t('manage.recent_sessions.operates.logout')
                     }}</a>
+                    <span v-else>{{ $t('manage.recent_sessions.operates.this_session') }}</span>
                 </div>
             </div>
         </div>

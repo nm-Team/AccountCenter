@@ -13,6 +13,7 @@
         "email_verify_failed": "Verification failed.",
         "email_verify_param_invalid": "The validation parameters are incorrect. \nPlease check the URL and try again.",
         "forget_password_failed": "Failed to reset password.",
+        "invalid_avatar": "The avatar format is incorrect.",
         "invalid_mail": "Email address format is incorrect.",
         "invalid_parameters": "The parameter passed in is incorrect.",
         "invalid_pass": "The entered password does not meet the requirements.",
@@ -176,6 +177,11 @@
                 "type": "Set the avatar type to {type}.",
                 "upload": "The nmTeam service will display your uploaded images."
             },
+            "error": {
+                "retry": "Retry",
+                "tip": "Something went wrong and we can't set an avatar for you right now.",
+                "title": "Failed to set avatar"
+            },
             "github": {
                 "custom_placeholder": "Your GitHub username",
                 "error_invalid": "Please enter a correct GitHub username.",
@@ -223,6 +229,8 @@
             "title": "Set Avatar",
             "type": {
                 "choose_another": "Another Type",
+                "default": "default",
+                "default_description": "Clear the personalized avatar settings and use the default avatar of the nmTeam account.",
                 "github": "GitHub",
                 "github_description": "Display the avatar you set in GitHub.",
                 "gravatar": "Gravatar",
@@ -343,7 +351,8 @@
                 "logout_all": "Log out all",
                 "logout_all_confirm": "Are you sure you want to log out of all sessions?",
                 "logout_confirm": "Are you sure to log out this session?",
-                "logout_fail": "Logout session failed."
+                "logout_fail": "Logout session failed.",
+                "this_session": "Current session"
             },
             "table": {
                 "ip": "IP & approximate location",

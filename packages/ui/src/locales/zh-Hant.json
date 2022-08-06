@@ -13,6 +13,7 @@
         "email_verify_failed": "驗證失敗。",
         "email_verify_param_invalid": "驗證參數不正確。請檢查 URL 後重試。",
         "forget_password_failed": "重置密碼失敗。",
+        "invalid_avatar": "頭像格式不正確。",
         "invalid_mail": "電子郵箱格式不正確。",
         "invalid_parameters": "傳入的參數不正確。",
         "invalid_pass": "輸入的密碼不符合要求。",
@@ -176,6 +177,11 @@
                 "type": "設置頭像類型為 {type}。",
                 "upload": "nmTeam 服務將展示您上傳的圖片。"
             },
+            "error": {
+                "retry": "重試",
+                "tip": "出現了一些問題，我們現在無法為你設置頭像。",
+                "title": "設置頭像失敗"
+            },
             "github": {
                 "custom_placeholder": "您的 GitHub 用戶名",
                 "error_invalid": "請輸入正確的 GitHub 用戶名。",
@@ -223,6 +229,8 @@
             "title": "設置頭像",
             "type": {
                 "choose_another": "選擇另一個類型",
+                "default": "默認",
+                "default_description": "清除個性頭像設置，並使用 nmTeam 賬號默認頭像。",
                 "github": "GitHub",
                 "github_description": "展示您在 GitHub 中設置的頭像。",
                 "gravatar": "Gravatar",
@@ -343,7 +351,8 @@
                 "logout_all": "全部註銷",
                 "logout_all_confirm": "確定要註銷全部會話嗎？",
                 "logout_confirm": "確定要註銷此會話嗎？",
-                "logout_fail": "註銷會話失敗。"
+                "logout_fail": "註銷會話失敗。",
+                "this_session": "當前會話"
             },
             "table": {
                 "ip": "IP 和大概位置",
