@@ -130,7 +130,7 @@ export default {
                 this.saveMessage = this.$t('manage.infos.change.nick_empty');
                 return;
             }
-            if (this.editedInfo.nick !== null && this.editedInfo.nick !== this.user.nick) {
+            if (this.editedInfo.nick !== undefined && this.editedInfo.nick !== this.user.nick) {
                 newInfo.nick = this.editedInfo.nick;
             }
             if ((this.editedInfo.mood || this.editedInfo.mood === '') && this.editedInfo.mood !== this.user.mood) {
