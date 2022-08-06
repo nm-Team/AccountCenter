@@ -31,15 +31,15 @@ import LogIn from './views/log/LogIn.vue';
 import NotFound from './views/log/NotFound.vue';
 import Register from './views/log/Register.vue';
 import ResetPassword from './views/log/ResetPassword.vue';
+import ChangeAvatar from './views/manage/ChangeAvatar.vue';
+import ChangePassword from './views/manage/ChangePassword.vue';
 import Manage from './views/manage/Manage.vue';
 import Manage2FA from './views/manage/Manage2FA.vue';
-import ManageChangeAvatar from './views/manage/ManageChangeAvatar.vue';
-import ManageChangePassword from './views/manage/ManageChangePassword.vue';
 import ManageIndex from './views/manage/ManageIndex.vue';
 import ManageInfos from './views/manage/ManageInfos.vue';
-import ManageNotFound from './views/manage/ManageNotFound.vue';
 import ManageSafety from './views/manage/ManageSafety.vue';
-import ManageSudoMode from './views/manage/ManageSudoMode.vue';
+import ManageNotFound from './views/manage/NotFound.vue';
+import SudoMode from './views/manage/SudoMode.vue';
 
 library.add(fas);
 
@@ -61,8 +61,8 @@ const routes = [
             { path: 'safety', name: 'manage_safety', component: ManageSafety },
             { path: 'infos', name: 'manage_infos', component: ManageInfos },
             { path: 'two-factor-authentication-setup', name: 'setup_2fa', component: Manage2FA },
-            { path: 'change-password', name: 'change_password', component: ManageChangePassword },
-            { path: 'change-avatar', name: 'change_avatar', component: ManageChangeAvatar },
+            { path: 'change-password', name: 'change_password', component: ChangePassword },
+            { path: 'change-avatar', name: 'change_avatar', component: ChangeAvatar },
             { path: ':pathMatch(.*)*', name: 'manage_notfound', component: ManageNotFound },
         ],
     },
@@ -93,7 +93,7 @@ app.use(i18n).use(router)
     .component('Footer', FooterItems)
     .component('UserButton', UserButton)
     .component('SafetyChecker', SafetyChecker)
-    .component('sudo-mode', ManageSudoMode);
+    .component('sudo-mode', SudoMode);
 app.mount('#app');
 
 // eslint-disable-next-line import/prefer-default-export
