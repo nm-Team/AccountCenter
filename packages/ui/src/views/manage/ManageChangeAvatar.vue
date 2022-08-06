@@ -279,6 +279,7 @@ export default {
             }).then(({ data }) => {
                 console.log(data);
                 this.changeStep = 9;
+                this.$emit('updateuser', this.user);
             }, (error) => {
                 console.log(error);
                 this.changeStep = 10;

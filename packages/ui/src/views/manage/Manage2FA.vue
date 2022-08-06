@@ -155,7 +155,7 @@ export default {
                     console.log(data);
                     this.tfaEnabled = true;
                     this.enableStep = 0;
-                    window.location.reload(); // user info will be reload after page refresh. Maybe hot reload in the future.
+                    this.$emit('updateuser', this.user);
                 }, (error) => {
                     console.log(error);
                     alert(this.$t('manage.setup_2fa.setup.app.set_error'));

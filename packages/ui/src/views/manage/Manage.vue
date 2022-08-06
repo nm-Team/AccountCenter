@@ -37,7 +37,7 @@
             <div :class="{ sideBarCover: true, opened: mobileSideBarOpen }"
                 @click="mobileSideBarOpen = false; accountSwitcherOpen = false"></div>
             <div class="pageContent">
-                <router-view :user="user"></router-view>
+                <router-view :user="user" @updateuser="updateUser"></router-view>
             </div>
             <div class="pcSplitLine"></div>
             <div class="relatedFrame">
@@ -81,7 +81,9 @@ import { gql } from 'apollo-boost';
 import UserButton from '../../components/UserButton.vue';
 // eslint-disable-next-line import/no-cycle
 import { apolloClient } from '../../main';
-import { deleteSession, getSessions, useSession } from '../../sessions';
+import {
+    addSession, deleteSession, getSessions, useSession,
+} from '../../sessions';
 import { getAvatar } from '../../utils';
 
 export default {
@@ -230,6 +232,10 @@ export default {
         switchAccount(index) {
             useSession(this.avaliableSession[index]);
             window.location.reload();
+        },
+        updateUser(data) {
+            this.user = data;
+            addSession(this.user);
         },
     },
     components: { UserButton },

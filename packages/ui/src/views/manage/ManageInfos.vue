@@ -158,6 +158,10 @@ export default {
                 if (data.User) {
                     this.saveMessage = this.$t('manage.infos.change.success');
                     this.inEdit = false;
+                    for (const key in newInfo) {
+                        this.user[key] = newInfo[key];
+                    }
+                    this.$emit('updateuser', this.user);
                     this.editedInfo = {};
                     this.initializeUserInfo();
                 } else {
