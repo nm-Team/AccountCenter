@@ -40,38 +40,7 @@
                 <router-view :user="user" @updateuser="updateUser"></router-view>
             </div>
             <div class="pcSplitLine"></div>
-            <div class="relatedFrame">
-                <div class="block">
-                    <p class="title">{{ $t('manage.explore.use_nmservices.title') }}</p>
-                    <div class="nmServicesList">
-                        <a v-for="item in nmServices" :key="item.name" :href="item.url" target="_blank"
-                            :style="{ backgroundColor: item.backgroundColor, backgroundImage: item.backgroundColor }">
-                            <div class="bgImg"
-                                :style="{ backgroundImage: `url(${item.backgroundImage})`, margin: item.margin }"></div>
-                            <p :style="{ color: item.color }">{{ $t('manage.explore.use_nmservices.products.' +
-                                    item.name)
-                            }}</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="block">
-                    <p class="title">{{ $t('manage.explore.developers_will_love_nmteam_account.title') }}</p>
-                    <p>{{ $t('manage.explore.developers_will_love_nmteam_account.description') }}</p>
-                    <p><a href="https://nmteam.xyz/developers" target="_blank">
-                            <LinkA :text="$t('manage.explore.developers_will_love_nmteam_account.a_text')"></LinkA>
-                        </a></p>
-                </div>
-                <div class="block">
-                    <p class="title">{{ $t('manage.explore.help.title') }}</p>
-                    <p>{{ $t('manage.explore.help.description') }}</p>
-                    <p><a href="https://nmteam.xyz/support" target="_blank">
-                            <LinkA :text="$t('manage.explore.help.a_text')"></LinkA>
-                        </a></p>
-                </div>
-                <div class="footer">
-                    <Footer></Footer>
-                </div>
-            </div>
+            <RelatedFrame :user="user" @updateuser="updateUser"></RelatedFrame>
         </div>
     </div>
 </template>
@@ -128,32 +97,6 @@ export default {
                 regat: '',
             },
             accountSwitcherOpen: false,
-            nmServices: [
-                {
-                    name: 'nmFun',
-                    url: 'https://fun.nmteam.xyz',
-                    color: '#000',
-                    backgroundColor: 'linear-gradient(90deg, rgba(255,250,58,1) 0%, rgba(255,206,0,1) 91%)',
-                    backgroundImage: 'https://websiteres.nmteam.xyz/producticon/nmFun/logo.svg',
-                    margin: '10px 21px',
-                },
-                {
-                    name: 'nmBrowser_startPage',
-                    url: 'https://bs.nmteam.xyz',
-                    color: '#000',
-                    backgroundColor: 'linear-gradient(90deg, rgba(0,192,255,1) 0%, rgba(148,232,255,1) 100%)',
-                    backgroundImage: 'https://websiteres.nmteam.xyz/producticon/nmBrowser/logo.svg',
-                    margin: '14px 24px',
-                },
-                {
-                    name: 'more',
-                    url: 'https://nmteam.xyz/products',
-                    color: '#fff',
-                    backgroundColor: '#00bcd4',
-                    backgroundImage: '/view_more.png',
-                    margin: '0',
-                },
-            ],
         };
     },
     mounted() {

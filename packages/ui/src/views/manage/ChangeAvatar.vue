@@ -257,7 +257,7 @@ export default {
                     this.newAvatarCode = `github:${this.customValue}`;
                     break;
                 case 'default':
-                    this.newAvatarCode = 'default';
+                    this.newAvatarCode = 'mail:default';
                     break;
                 default:
                     window.alert(this.$t('manage.change_avatar.type.unknown'));

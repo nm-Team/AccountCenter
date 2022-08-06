@@ -39,6 +39,7 @@ import ManageIndex from './views/manage/ManageIndex.vue';
 import ManageInfos from './views/manage/ManageInfos.vue';
 import ManageSafety from './views/manage/ManageSafety.vue';
 import ManageNotFound from './views/manage/NotFound.vue';
+import RelatedFrame from './views/manage/RelatedFrame.vue';
 import SudoMode from './views/manage/SudoMode.vue';
 
 library.add(fas);
@@ -93,7 +94,8 @@ app.use(i18n).use(router)
     .component('Footer', FooterItems)
     .component('UserButton', UserButton)
     .component('SafetyChecker', SafetyChecker)
-    .component('sudo-mode', SudoMode);
+    .component('sudo-mode', SudoMode)
+    .component('RelatedFrame', RelatedFrame);
 app.mount('#app');
 
 // eslint-disable-next-line import/prefer-default-export
