@@ -27,11 +27,23 @@
             <div class="accountSwitcherHover" :style="{ display: accountSwitcherOpen ? 'block' : 'none' }"
                 @click="accountSwitcherOpen = false"></div>
             <div :class="{ sideBar: true, opened: mobileSideBarOpen }">
-                <router-link v-for="item in sideBar" :to="'/manage/' + item.path" @click="mobileSideBarOpen = false"
-                    :key="item.name">
-                    <font-awesome-icon :icon="['fas', item.icon]" />
-                    <span>{{ $t('manage.pages.' + item.name) }}</span>
-                </router-link>
+                <span v-for="item in sideBar" :key="item.name">
+                    <router-link class="link" v-if="!item.child && item.display !== false" :to="'/manage/' + item.path"
+                        @click="mobileSideBarOpen = false">
+                        <font-awesome-icon :icon="['fas', item.icon]" />
+                        <span>{{ $t('manage.pages.' + item.name) }}</span>
+                    </router-link>
+                    <div v-else-if="item.display !== false">
+                        <div class="twoLevelTitle">{{ $t('manage.pages.' + item.name) }}</div>
+                        <div v-for="child in item.child" :key="child.name">
+                            <router-link v-if="child.display !== false" class="link" :to="'/manage/' + child.path"
+                                @click="mobileSideBarOpen = false">
+                                <font-awesome-icon :icon="['fas', child.icon]" />
+                                <span>{{ $t('manage.pages.' + child.name) }}</span>
+                            </router-link>
+                        </div>
+                    </div>
+                </span>
             </div>
             <div class="pcSplitLine"></div>
             <div :class="{ sideBarCover: true, opened: mobileSideBarOpen }"
@@ -77,6 +89,11 @@ export default {
                     name: 'infos',
                     path: 'infos',
                     icon: 'circle-info',
+                },
+                {
+                    name: 'authorization',
+                    path: 'authorization',
+                    icon: 'unlock-keyhole',
                 },
                 {
                     name: 'preference',
@@ -167,6 +184,20 @@ export default {
                         } else {
                             // eslint-disable-next-line prefer-destructuring
                             this.user = this.avaliableSession[0];
+                            if (this.user.role === 'admin') {
+                                this.sideBar.push(
+                                    {
+                                        name: 'admin.title',
+                                        child: [
+                                            {
+                                                name: 'admin.users',
+                                                path: 'admin/users',
+                                                icon: 'user-gear',
+                                            },
+                                        ],
+                                    },
+                                );
+                            }
                         }
                     }
                 });

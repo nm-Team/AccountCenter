@@ -163,7 +163,7 @@ body [data-theme=dark] {
             overflow-x: hidden;
             background-color: var(--frame-background);
 
-            a {
+            .link {
                 margin: 1px 2px;
                 padding: 9px 10px;
                 display: flex;
@@ -175,6 +175,7 @@ body [data-theme=dark] {
                     padding-right: 7px;
                     width: 16px;
                     fill: var(--sidebar);
+                    flex-shrink: 1;
                 }
 
                 span {
@@ -184,11 +185,24 @@ body [data-theme=dark] {
                     fill: var(--sidebar);
                     font-size: 17px;
                 }
+
             }
 
-            :hover,
-            :focus-visible {
+            a:hover,
+            a:focus-visible {
                 background: var(--sidebar-active-background);
+            }
+
+            .twoLevelTitle{
+                margin: 1px 2px;
+                padding: 4px 10px;
+                color: var(--sidebar);
+                opacity: .7;
+                font-size: 15px;
+                font-weight: bold;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
 
             a.router-link-exact-active {
