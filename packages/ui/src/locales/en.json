@@ -143,6 +143,10 @@
                     "manage_tip": "Manage your two-factor verification settings.",
                     "tip": "Enable 2-step verification to increase your account security.",
                     "title": "Enable 2-step Verification"
+                },
+                "manage_authorization": {
+                    "tip": "Regularly confirm the apps authorized by the nmTeam account, and promptly remove apps that are no longer in use.",
+                    "title": "Manage authorized Apps"
                 }
             },
             "level": {

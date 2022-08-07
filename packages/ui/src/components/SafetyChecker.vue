@@ -34,6 +34,10 @@
             </router-link>
             <p>{{ $t('manage.account_safety_block.improve_ways.enable_2fa.manage_tip') }}</p>
         </div>
+                    <router-link to="/manage/authorization">
+                <LinkA :text="$t('manage.account_safety_block.improve_ways.manage_authorization.title')"></LinkA>
+            </router-link>
+            <p>{{ $t('manage.account_safety_block.improve_ways.manage_authorization.tip') }}</p>
     </div>
 </template>
 

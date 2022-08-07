@@ -40,6 +40,7 @@ import ManageInfos from './views/manage/ManageInfos.vue';
 import ManageSafety from './views/manage/ManageSafety.vue';
 import ManageNotFound from './views/manage/NotFound.vue';
 import RelatedFrame from './views/manage/RelatedFrame.vue';
+import ManageAuthorization from './views/manage/ManageAuthorization.vue';
 import SudoMode from './views/manage/SudoMode.vue';
 
 library.add(fas);
@@ -61,6 +62,7 @@ const routes = [
             { path: '', name: 'manage_index', component: ManageIndex },
             { path: 'safety', name: 'manage_safety', component: ManageSafety },
             { path: 'infos', name: 'manage_infos', component: ManageInfos },
+            { path: 'authorization', name: 'authorization', component: ManageAuthorization },
             { path: 'two-factor-authentication-setup', name: 'setup_2fa', component: Manage2FA },
             { path: 'change-password', name: 'change_password', component: ChangePassword },
             { path: 'change-avatar', name: 'change_avatar', component: ChangeAvatar },

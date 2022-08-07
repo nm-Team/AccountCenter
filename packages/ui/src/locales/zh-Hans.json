@@ -13,8 +13,9 @@
         "email_verify_failed": "验证失败。",
         "email_verify_param_invalid": "验证参数不正确。请检查 URL 后重试。",
         "forget_password_failed": "重置密码失败。",
-        "invalid_nick": "昵称格式不正确。",
+        "invalid_avatar": "头像格式不正确。",
         "invalid_mail": "电子邮箱格式不正确。",
+        "invalid_nick": "昵称格式不正确。",
         "invalid_parameters": "传入的参数不正确。",
         "invalid_pass": "输入的密码不符合要求。",
         "invalid_token": "传入的验证符不正确。",
@@ -32,8 +33,7 @@
         "userinfo_get_failed": "获取用户信息失败。",
         "username_empty": "请输入用户名。",
         "wrong_pass": "密码错误。",
-        "wrong_user": "用户名错误。",
-        "invalid_avatar": "头像格式不正确。"
+        "wrong_user": "用户名错误。"
     },
     "loading": "加载中",
     "log": {
@@ -143,6 +143,10 @@
                     "manage_tip": "管理您的双重验证设置。",
                     "tip": "启用双重验证来提高您的账号安全性。",
                     "title": "启用双重验证"
+                },
+                "manage_authorization": {
+                    "tip": "定期确认 nmTeam 账号授权的 App，并及时移除不再使用的 App。",
+                    "title": "管理授权的 App"
                 }
             },
             "level": {
@@ -177,6 +181,11 @@
                 "gravatar": "nmTeam 服务将展示您的 Email 在 Gravatar 上注册的头像。",
                 "type": "设置头像类型为 {type}。",
                 "upload": "nmTeam 服务将展示您上传的图片。"
+            },
+            "error": {
+                "retry": "重试",
+                "tip": "出现了一些问题，我们现在无法为你设置头像。",
+                "title": "设置头像失败"
             },
             "github": {
                 "custom_placeholder": "您的 GitHub 用户名",
@@ -220,16 +229,13 @@
                 "tip": "您已经成功设置了头像！可能需要刷新页面，并稍候才能看到自己的头像。",
                 "title": "设置头像成功！"
             },
-            "error": {
-                "title": "设置头像失败",
-                "tip": "出现了一些问题，我们现在无法为你设置头像。",
-                "retry": "重试"
-            },
             "tip_0": "头像是展示自我个性的好工具。",
             "tip_1": "nmTeam 账号提供了多种头像设置方法，供您设置头像，展现自我。",
             "title": "设置头像",
             "type": {
                 "choose_another": "选择另一个类型",
+                "default": "默认",
+                "default_description": "清除个性头像设置，并使用 nmTeam 账号默认头像。",
                 "github": "GitHub",
                 "github_description": "展示您在 GitHub 中设置的头像。",
                 "gravatar": "Gravatar",
@@ -237,8 +243,6 @@
                 "gravatar_knowledge": "进一步了解 Gravatar",
                 "qq": "QQ",
                 "qq_description": "展示您在 QQ 中设置的头像。",
-                "default": "默认",
-                "default_description": "清除个性头像设置，并使用 nmTeam 账号默认头像。",
                 "title": "从何处展示头像？",
                 "unknown": "抱歉，无法识别您设置的头像类型。",
                 "upload": "上传图片",
@@ -269,6 +273,24 @@
                 "title": "如何设置安全的密码"
             },
             "title": "修改密码"
+        },
+        "authorization": {
+            "title": "授权的 App",
+            "description": "查询并管理您的 nmTeam 账号授权的 App。",
+            "nmteam_services": "已注册的 nmTeam 服务",
+            "nmteam_services_description": "大多数 nmTeam 服务使用统一的 nmTeam 账号来进行身份验证。",
+            "3rd_party_services": "已授权的第三方 App",
+            "3rd_party_services_description": "您已授权这些第三方 App 访问您的 nmTeam 账号。这些 App 将有权访问您的用户名、昵称等非机密信息。",
+            "search": "搜索 App",
+            "reg_at": "注册于 {time}",
+            "authorized_at": "授权于 {time}",
+            "last_seen": "上次使用于 {time}",
+            "no_description": "该 App 的开发者未提供关于此 App 的描述。",
+            "open_app_website":"转到 App 提供的页面",
+            "cancel_authorization": "取消授权",
+            "cancel_all_authorizations": "全部取消授权",
+            "cancel_authorization_confirm": "您确定要取消授权吗？",
+            "report_abuse": "举报 App 滥用"
         },
         "explore": {
             "developers_will_love_nmteam_account": {
@@ -343,17 +365,22 @@
             "index": "首页",
             "infos": "个人信息",
             "preference": "偏好设置",
-            "safety": "账号安全"
+            "safety": "账号安全",
+            "authorization": "授权的 App",
+            "admin": {
+                "title": "nmTeam 账号管理员",
+                "users": "用户管理"
+            }
         },
         "recent_sessions": {
             "detail_mode": "详情",
             "operates": {
-                "this_session": "当前会话",
                 "logout": "下线",
                 "logout_all": "全部注销",
                 "logout_all_confirm": "确定要注销全部会话吗？",
                 "logout_confirm": "确定要注销此会话吗？",
-                "logout_fail": "注销会话失败。"
+                "logout_fail": "注销会话失败。",
+                "this_session": "当前会话"
             },
             "table": {
                 "ip": "IP 和大概位置",
