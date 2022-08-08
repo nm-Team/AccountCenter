@@ -2,6 +2,8 @@
     "app_name": "nmTeam 账号中心",
     "avatar_alt": "用户头像",
     "cancel": "取消",
+    "confirm": "确定",
+    "deny": "拒绝",
     "error": {
         "2fa_empty": "请输入正确的双重验证代码。",
         "agree_terms": "请阅读并同意 nmTeam 服务协议和隐私政策。",
@@ -176,6 +178,24 @@
             "change_button": "修改密码",
             "title": "密码"
         },
+        "authorization": {
+            "3rd_party_services": "已授权的第三方 App",
+            "3rd_party_services_description": "您已授权这些第三方 App 访问您的 nmTeam 账号。这些 App 将有权访问您的用户名、昵称等非机密信息。",
+            "authorized_at": "授权于 {time}",
+            "cancel_all_authorizations": "全部取消授权",
+            "cancel_authorization": "取消授权",
+            "cancel_authorization_confirm": "您确定要取消授权吗？",
+            "description": "查询并管理您的 nmTeam 账号授权的 App。",
+            "last_seen": "上次使用于 {time}",
+            "nmteam_services": "已注册的 nmTeam 服务",
+            "nmteam_services_description": "大多数 nmTeam 服务使用统一的 nmTeam 账号来进行身份验证。",
+            "no_description": "该 App 的开发者未提供关于此 App 的描述。",
+            "open_app_website": "转到 App 提供的页面",
+            "reg_at": "注册于 {time}",
+            "report_abuse": "举报 App 滥用",
+            "search": "搜索 App",
+            "title": "授权的 App"
+        },
         "change_avatar": {
             "chosen": {
                 "gravatar": "nmTeam 服务将展示您的 Email 在 Gravatar 上注册的头像。",
@@ -274,24 +294,6 @@
             },
             "title": "修改密码"
         },
-        "authorization": {
-            "title": "授权的 App",
-            "description": "查询并管理您的 nmTeam 账号授权的 App。",
-            "nmteam_services": "已注册的 nmTeam 服务",
-            "nmteam_services_description": "大多数 nmTeam 服务使用统一的 nmTeam 账号来进行身份验证。",
-            "3rd_party_services": "已授权的第三方 App",
-            "3rd_party_services_description": "您已授权这些第三方 App 访问您的 nmTeam 账号。这些 App 将有权访问您的用户名、昵称等非机密信息。",
-            "search": "搜索 App",
-            "reg_at": "注册于 {time}",
-            "authorized_at": "授权于 {time}",
-            "last_seen": "上次使用于 {time}",
-            "no_description": "该 App 的开发者未提供关于此 App 的描述。",
-            "open_app_website": "转到 App 提供的页面",
-            "cancel_authorization": "取消授权",
-            "cancel_all_authorizations": "全部取消授权",
-            "cancel_authorization_confirm": "您确定要取消授权吗？",
-            "report_abuse": "举报 App 滥用"
-        },
         "explore": {
             "developers_will_love_nmteam_account": {
                 "a_text": "了解如何做到",
@@ -362,15 +364,15 @@
         "logout_title": "注销",
         "not_found_alt": "找不到此页面。",
         "pages": {
-            "index": "首页",
-            "infos": "个人信息",
-            "preference": "偏好设置",
-            "safety": "账号安全",
-            "authorization": "授权的 App",
             "admin": {
                 "title": "nmTeam 账号管理员",
                 "users": "用户管理"
-            }
+            },
+            "authorization": "授权的 App",
+            "index": "首页",
+            "infos": "个人信息",
+            "preference": "偏好设置",
+            "safety": "账号安全"
         },
         "recent_sessions": {
             "detail_mode": "详情",
@@ -448,8 +450,6 @@
     },
     "next_step": "下一步",
     "ok": "好",
-    "confirm": "确定",
-    "deny": "拒绝",
     "save": "保存",
     "selete_language": "选择语言",
     "time": {

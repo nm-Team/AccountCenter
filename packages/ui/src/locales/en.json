@@ -2,6 +2,8 @@
     "app_name": "nmTeam Account Center",
     "avatar_alt": "Avatar",
     "cancel": "Cancel",
+    "confirm": "Confirm",
+    "deny": "Deny",
     "error": {
         "2fa_empty": "Please enter the correct two-factor verification code.",
         "agree_terms": "Please read and agree to the nmTeam Service Agreement and Privacy Policy.",
@@ -176,6 +178,24 @@
             "change_button": "Change Password",
             "title": "Password"
         },
+        "authorization": {
+            "3rd_party_services": "Authorized third-party apps",
+            "3rd_party_services_description": "You have authorized these third-party apps to access your nmTeam account. \nThese apps will have access to non-confidential information such as your username, nickname, etc.",
+            "authorized_at": "Authorized {time}",
+            "cancel_all_authorizations": "Cancel all authorizations",
+            "cancel_authorization": "Cancel authorization",
+            "cancel_authorization_confirm": "Are you sure you want to deauthorize?",
+            "description": "Query and manage apps authorized by your nmTeam account.",
+            "last_seen": "Last used {time}",
+            "nmteam_services": "Registered nmTeam Services",
+            "nmteam_services_description": "Most nmTeam services use a unified nmTeam account for authentication.",
+            "no_description": "The developer of this app has not provided a description for this app.",
+            "open_app_website": "Go to the page provided by the app",
+            "reg_at": "registered {time}",
+            "report_abuse": "Report App Abuse",
+            "search": "Search apps",
+            "title": "Authorized Apps"
+        },
         "change_avatar": {
             "chosen": {
                 "gravatar": "The nmTeam service will display the profile picture of your Email registered on Gravatar.",
@@ -344,6 +364,11 @@
         "logout_title": "Log out",
         "not_found_alt": "This page could not be found.",
         "pages": {
+            "admin": {
+                "title": "nmTeam Account Administrator",
+                "users": "User Management"
+            },
+            "authorization": "Authorized Apps",
             "index": "Index",
             "infos": "Personal Information",
             "preference": "Preferences",

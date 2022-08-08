@@ -2,6 +2,8 @@
     "app_name": "nmTeam 賬號中心",
     "avatar_alt": "用戶頭像",
     "cancel": "取消",
+    "confirm": "確定",
+    "deny": "拒絕",
     "error": {
         "2fa_empty": "請輸入正確的雙重驗證代碼。",
         "agree_terms": "請閱讀並同意 nmTeam 服務協議和隱私政策。",
@@ -143,6 +145,10 @@
                     "manage_tip": "管理您的雙重驗證設置。",
                     "tip": "啟用雙重驗證來提高您的賬號安全性。",
                     "title": "啟用雙重驗證"
+                },
+                "manage_authorization": {
+                    "tip": "定期確認 nmTeam 賬號授權的 App，並及時移除不再使用的 App。",
+                    "title": "管理授權的 App"
                 }
             },
             "level": {
@@ -171,6 +177,24 @@
             },
             "change_button": "修改密碼",
             "title": "密碼"
+        },
+        "authorization": {
+            "3rd_party_services": "已授權的第三方 App",
+            "3rd_party_services_description": "您已授權這些第三方 App 訪問您的 nmTeam 賬號。\n這些 App 將有權訪問您的用戶名、暱稱等非機密信息。",
+            "authorized_at": "授權於 {time}",
+            "cancel_all_authorizations": "全部取消授權",
+            "cancel_authorization": "取消授權",
+            "cancel_authorization_confirm": "您確定要取消授權嗎？",
+            "description": "查詢並管理您的 nmTeam 賬號授權的 App。",
+            "last_seen": "上次使用於 {time}",
+            "nmteam_services": "已註冊的 nmTeam 服務",
+            "nmteam_services_description": "大多數 nmTeam 服務使用統一的 nmTeam 賬號來進行身份驗證。",
+            "no_description": "該 App 的開發者未提供關於此 App 的描述。",
+            "open_app_website": "轉到 App 提供的頁面",
+            "reg_at": "註冊於 {time}",
+            "report_abuse": "舉報 App 濫用",
+            "search": "搜索 App",
+            "title": "授權的 App"
         },
         "change_avatar": {
             "chosen": {
@@ -340,6 +364,11 @@
         "logout_title": "註銷",
         "not_found_alt": "找不到此頁面。",
         "pages": {
+            "admin": {
+                "title": "nmTeam 賬號管理員",
+                "users": "用戶管理"
+            },
+            "authorization": "授權的 App",
             "index": "首頁",
             "infos": "個人信息",
             "preference": "偏好設置",

@@ -2,6 +2,8 @@
     "app_name": "nmTeam アカウントセンター",
     "avatar_alt": "プロフィールの写真",
     "cancel": "キャンセル",
+    "confirm": "もちろん",
+    "deny": "拒絶",
     "error": {
         "2fa_empty": "正しい2要素認証コードを入力してください。",
         "agree_terms": "nmTeam サービス契約とプライバシーポリシーを読んで同意してください。",
@@ -143,6 +145,10 @@
                     "manage_tip": "2要素認証の設定を管理します。",
                     "tip": "アカウントのセキュリティを強化するには、2段階認証プロセスを有効にします。",
                     "title": "2段階認証を有効にする"
+                },
+                "manage_authorization": {
+                    "tip": "nmTeam アカウントで承認されたアプリを定期的に確認し、使用しなくなったアプリは速やかに削除してください。",
+                    "title": "承認済みアプリを管理する"
                 }
             },
             "level": {
@@ -171,6 +177,24 @@
             },
             "change_button": "パスワードを変更する",
             "title": "パスワード"
+        },
+        "authorization": {
+            "3rd_party_services": "認定サードパーティ アプリ",
+            "3rd_party_services_description": "これらのサードパーティ アプリが nmTeam アカウントにアクセスすることを承認しました。\nこれらのアプリは、ユーザー名、ニックネームなどの非機密情報にアクセスできます。",
+            "authorized_at": "{time} に承認済み",
+            "cancel_all_authorizations": "すべての承認を取り消す",
+            "cancel_authorization": "承認を取り消す",
+            "cancel_authorization_confirm": "認証を解除してもよろしいですか？",
+            "description": "nmTeam アカウントで承認されたアプリを照会および管理します。",
+            "last_seen": "最終使用: {time}",
+            "nmteam_services": "登録された nmTeam サービス",
+            "nmteam_services_description": "ほとんどの nmTeam サービスは、認証に統一された nmTeam アカウントを使用します。",
+            "no_description": "このアプリの開発者は、このアプリの説明を提供していません。",
+            "open_app_website": "アプリが提供するページに移動します",
+            "reg_at": "{time} に登録",
+            "report_abuse": "アプリの不正使用を報告",
+            "search": "アプリを検索",
+            "title": "承認済みアプリ"
         },
         "change_avatar": {
             "chosen": {
@@ -340,6 +364,11 @@
         "logout_title": "ログアウト",
         "not_found_alt": "このページが見つかりませんでした。",
         "pages": {
+            "admin": {
+                "title": "nmTeam アカウント管理者",
+                "users": "ユーザー管理"
+            },
+            "authorization": "承認済みアプリ",
             "index": "表紙",
             "infos": "個人情報",
             "preference": "環境設定",
