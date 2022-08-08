@@ -58,9 +58,9 @@ export default {
         easterEgg() {
             this.eEggCount++;
             if (this.eEggCount === 7) {
-                this.defaultSwal.fire("Please do not click me anymore. I'm just a lemon and will boom and explode if you click me and click me and click me. This is not funny. You will be 😣😫😭🤮. Trust me.");
+                this.defaultSwal.fire(this.$t('easter_egg.first_warning', { emoji: '😣😫😭🤮' }));
             } else if (this.eEggCount === 14) {
-                this.defaultSwal.fire("Note: I'm going to explode now. EAT your own fruit.");
+                this.defaultSwal.fire(this.$t('easter_egg.second_warning'));
                 this.exploded = true;
             }
         },

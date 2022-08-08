@@ -4,6 +4,10 @@
     "cancel": "取消",
     "confirm": "確定",
     "deny": "拒絕",
+    "easter_egg": {
+        "first_warning": "請不要再這樣戳我了。我雖只是一介檸檬，可如果您一而再，再而三的戳我，我也是會氣到爆炸的。到時候您的臉色 {emoji} 的話，還請不要怪在下了。",
+        "second_warning": "對不起。我是炸彈。"
+    },
     "error": {
         "2fa_empty": "請輸入正確的雙重驗證代碼。",
         "agree_terms": "請閱讀並同意 nmTeam 服務協議和隱私政策。",
