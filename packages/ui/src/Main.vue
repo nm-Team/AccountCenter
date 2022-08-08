@@ -36,15 +36,31 @@ export default {
             eEggCount: 0,
             exploded: false,
             inManagePage: false,
+            defaultSwal: this.$swal.mixin({
+                confirmButtonText: this.$t('confirm'),
+                confirmButtonAriaLabel: this.$t('confirm'),
+                cancelButtonText: this.$t('cancel'),
+                cancelButtonAriaLabel: this.$t('cancel'),
+                denyButtonText: this.$t('deny'),
+                denyButtonAriaLabel: this.$t('deny'),
+                customClass: {
+                    container: `theme-${window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'}`,
+                },
+            }),
+        };
+    },
+    provide() {
+        return {
+            defaultSwal: this.defaultSwal,
         };
     },
     methods: {
         easterEgg() {
             this.eEggCount++;
             if (this.eEggCount === 7) {
-                alert("Please do not click me anymore. I'm just a lemon and will boom and explode if you click me and click me and click me. This is not funny. You will be 😣😫😭🤮. Trust me.");
+                this.defaultSwal.fire("Please do not click me anymore. I'm just a lemon and will boom and explode if you click me and click me and click me. This is not funny. You will be 😣😫😭🤮. Trust me.");
             } else if (this.eEggCount === 14) {
-                alert("Note: I'm going to explode now. EAT your own fruit.");
+                this.defaultSwal.fire("Note: I'm going to explode now. EAT your own fruit.");
                 this.exploded = true;
             }
         },

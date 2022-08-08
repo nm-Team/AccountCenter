@@ -12,6 +12,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/vue-fontawesome": "^3.0.1",
+    "@sweetalert2/themes": "^5.0.11",
     "@vue/apollo-composable": "^4.0.0-alpha.18",
     "@vue/compiler-sfc": "^3.0.4",
     "apollo-boost": "^0.4.9",
@@ -22,6 +23,7 @@
     "js-md5": "^0.7.3",
     "sass": "^1.53.0",
     "sass-loader": "^13.0.2",
+    "sweetalert2": "^11.4.26",
     "vue": "^3.0.4",
     "vue-apollo": "^3.1.0",
     "vue-axios": "^3.4.1",
@@ -29,6 +31,7 @@
     "vue-i18n": "^9.2.0-beta.36",
     "vue-material-design-icons": "^5.1.2",
     "vue-qr": "^4.0.9",
-    "vue-router": "^4.1.0"
+    "vue-router": "^4.1.0",
+    "vue-sweetalert2": "^5.0.5"
   }
 }

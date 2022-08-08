@@ -376,6 +376,16 @@
   resolved "https://registry.npmmirror.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
+"@sweetalert2/theme-dark@^5.0.11":
+  version "5.0.11"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/theme-dark/-/theme-dark-5.0.11.tgz#a4596be171858a0dcc761f545dcb317ea7de6550"
+  integrity sha512-yw42SqvvFc1ObRVLNLSo5HpJo3vDTYlpS2ba+JkWHRcVIEXDnEOaDfAVRtDPSK75GJkvdz9IdfUrc18zdmiE2w==
+
+"@sweetalert2/themes@^5.0.11":
+  version "5.0.11"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/themes/-/themes-5.0.11.tgz#5e5e5f8aee7452f2e71cd0299ae3f459163fbe3b"
+  integrity sha512-2i7YpRNMjTCRzHQJwUhvhRNqctcrTGejpAKnycPL1nsRrhdDMxNDIleMkac8FA/tEq9riR1174qzd8HtLmzzVA==
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
   resolved "https://registry.npmmirror.com/@tsconfig/node10/-/node10-1.0.9.tgz#df4907fc07a886922637b15e02d4cebc4c0021b2"
@@ -3397,6 +3407,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmmirror.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
+sweetalert2@11.x, sweetalert2@^11.4.26:
+  version "11.4.26"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.26.tgz#a09aa01dda9b430f411531c8e2e998e3bc92ab17"
+  integrity sha512-YqH/C6IPudeWVK9R0x3pCOqP7m90Ae50tl98SQBpAwL3+UBl1WYD2+5OaKy0ybiVTKbYe76wwJ3PV+bITLjl+A==
+
 symbol-observable@^1.0.2:
   version "1.2.0"
   resolved "https://registry.npmmirror.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
@@ -3699,6 +3714,13 @@ vue-router@^4.1.0:
   integrity sha512-XvK81bcYglKiayT7/vYAg/f36ExPC4t90R/HIpzrZ5x+17BOWptXLCrEPufGgZeuq68ww4ekSIMBZY1qdUdfjA==
   dependencies:
     "@vue/devtools-api" "^6.1.4"
+
+vue-sweetalert2@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/vue-sweetalert2/-/vue-sweetalert2-5.0.5.tgz#298663884149c7675d514490d1389f0614d875c0"
+  integrity sha512-Q7+TjQxNwGruT2jfPaSKMz18HHWs81r4umEwlrrtOf/QL5Iwl1T+tUaNkcvKB7Rf9rYftubt7NnOMjfDMnDH3A==
+  dependencies:
+    sweetalert2 "11.x"
 
 vue@^3.0.4:
   version "3.2.37"

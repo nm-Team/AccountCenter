@@ -36,29 +36,33 @@ export default {
             default: false,
         },
     },
+    inject: ['defaultSwal'],
     mounted() {
     },
     methods: {
         logout() {
-            if (window.confirm(this.$t('manage.logout_confirm'))) {
-                apolloClient.query({
-                    query: gql`query Query($token: String) {
+            this.defaultSwal.fire({ title: this.$t('manage.logout_confirm'), showCancelButton: true })
+                .then((result) => {
+                    if (result.value) {
+                        apolloClient.query({
+                            query: gql`query Query($token: String) {
   User(token: $token) {
     logout
   }
 }`,
-                    variables: {
-                        token: this.user.token,
-                    },
-                }).then(({ data }) => {
-                    console.log(data);
-                    deleteSession(this.user);
-                    window.location.reload();
-                }, (error) => {
-                    console.log(error);
-                    alert(this.$t('manage.logout_failed'));
+                            variables: {
+                                token: this.user.token,
+                            },
+                        }).then(({ data }) => {
+                            console.log(data);
+                            deleteSession(this.user);
+                            window.location.reload();
+                        }, (error) => {
+                            console.log(error);
+                            this.defaultSwal.fire(this.$t('manage.logout_failed'));
+                        });
+                    }
                 });
-            }
         },
     },
 };

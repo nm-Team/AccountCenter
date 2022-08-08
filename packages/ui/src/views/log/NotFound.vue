@@ -27,9 +27,10 @@ export default {
             ],
         };
     },
+    inject: ['defaultSwal'],
     methods: {
         login() {
-            alert(`${this.username} ${this.password}`);
+            this.defaultSwal.fire(`${this.username} ${this.password}`);
         },
     },
 };

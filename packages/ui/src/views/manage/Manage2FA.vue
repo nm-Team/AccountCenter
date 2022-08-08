@@ -96,6 +96,7 @@ export default {
             required: true,
         },
     },
+    inject: ['defaultSwal'],
     watch: {
         user: {
             handler() {
@@ -133,12 +134,12 @@ export default {
                 this.appSecure = data.twoFactorAuth.generate.split('?secret=')[1].split('&')[0];
             }, (error) => {
                 console.log(error);
-                alert(this.$t('manage.setup_2fa.setup.app.get_code_error'));
+                this.defaultSwal.fire(this.$t('manage.setup_2fa.setup.app.get_code_error'));
             });
         },
         appCheckCode() {
             if (Number.isNaN(this.appUserCode) || this.appUserCode.toString().length !== 6) {
-                alert(this.$t('manage.setup_2fa.setup.app.code_format_error'));
+                this.defaultSwal.fire(this.$t('manage.setup_2fa.setup.app.code_format_error'));
             } else {
                 apolloClient.query({
                     query: gql`query TwoFactorAuth($secret: String, $code: String, $token: String) {
@@ -159,14 +160,14 @@ export default {
                     this.$emit('updateuser', this.user);
                 }, (error) => {
                     console.log(error);
-                    alert(this.$t('manage.setup_2fa.setup.app.set_error'));
+                    this.defaultSwal.fire(this.$t('manage.setup_2fa.setup.app.set_error'));
                     this.appUserCode = '';
                 });
             }
         },
         disable2FA() {
             if (Number.isNaN(this.appUserCode) || this.appUserCode.toString().length !== 6) {
-                alert(this.$t('manage.setup_2fa.setup.app.code_format_error'));
+                this.defaultSwal.fire(this.$t('manage.setup_2fa.setup.app.code_format_error'));
             } else {
                 apolloClient.query({
                     query: gql`query TwoFactorAuth($token: String, $code: String) {
@@ -187,7 +188,7 @@ export default {
                     window.location.reload(); // user info will be reload after page refresh. Maybe hot reload in the future.
                 }, (error) => {
                     console.log(error);
-                    alert(this.$t('manage.setup_2fa.setup.app.set_error'));
+                    this.defaultSwal.fire(this.$t('manage.setup_2fa.setup.app.set_error'));
                     this.appUserCode = '';
                 });
             }

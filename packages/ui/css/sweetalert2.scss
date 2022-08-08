@@ -1,0 +1,63 @@
+.swal2-container.theme-light {
+    --text: #000000;
+    --background: #ffffff;
+    --swal2-confirm: #fabb00;
+    --swal2-confirm-text: #000;
+    --swal2-cancel: #eaeaea;
+    --swal2-cancel-text: #000;
+    --swal2-deny: #eaeaea;
+    --swal2-deny-text: #000;
+}
+
+.swal2-container.theme-dark {
+    --text: #fff;
+    --background: #252525;
+    --swal2-confirm: #fabb00;
+    --swal2-confirm-text: #000;
+    --swal2-cancel: #4f4f4f;
+    --swal2-cancel-text: #fff;
+    --swal2-deny: #4f4f4f;
+    --swal2-deny-text: #fff;
+}
+
+.swal2-container *:not(.swal2-container * *) {
+    font-size: 96% !important;
+}
+
+.swal2-container {
+    .swal2-modal {
+        color: var(--text);
+        background-color: var(--background);
+    }
+
+    *:focus-visible,
+    *:focus {
+        outline: var(--outline) !important;
+        box-shadow: none !important;
+    }
+
+    *:not(:focus-visible) {
+        outline: none !important;
+    }
+
+    .swal2-title {
+        font-size: 1.3em !important;
+        padding: 1.1em 1em 0 1em;
+        margin-bottom: -2px;
+    }
+
+    .swal2-confirm {
+        background: var(--swal2-confirm);
+        color: var(--swal2-confirm-text);
+    }
+
+    .swal2-cancel {
+        background: var(--swal2-cancel);
+        color: var(--swal2-cancel-text);
+    }
+
+    .swal2-deny {
+        background: var(--swal2-deny);
+        color: var(--swal2-deny-text);
+    }
+}

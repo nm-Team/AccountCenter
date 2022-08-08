@@ -286,7 +286,7 @@
             "authorized_at": "授权于 {time}",
             "last_seen": "上次使用于 {time}",
             "no_description": "该 App 的开发者未提供关于此 App 的描述。",
-            "open_app_website":"转到 App 提供的页面",
+            "open_app_website": "转到 App 提供的页面",
             "cancel_authorization": "取消授权",
             "cancel_all_authorizations": "全部取消授权",
             "cancel_authorization_confirm": "您确定要取消授权吗？",
@@ -448,6 +448,8 @@
     },
     "next_step": "下一步",
     "ok": "好",
+    "confirm": "确定",
+    "deny": "拒绝",
     "save": "保存",
     "selete_language": "选择语言",
     "time": {

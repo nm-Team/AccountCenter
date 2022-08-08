@@ -123,6 +123,7 @@ export default {
             required: true,
         },
     },
+    inject: ['defaultSwal'],
     mounted() {
         this.getActiveSessions();
     },
@@ -169,45 +170,49 @@ export default {
             });
         },
         logOutSession(session) {
-            if (window.confirm(this.$t('manage.recent_sessions.operates.logout_confirm'))) {
-                apolloClient.query({
-                    query: gql`query User($token: String, $logoutSessionToken2: String) {
+            this.defaultSwal.fire({ title: this.$t('manage.recent_sessions.operates.logout_confirm'), showCancelButton: true }).then((result) => {
+                if (result.isConfirmed) {
+                    apolloClient.query({
+                        query: gql`query User($token: String, $logoutSessionToken2: String) {
   User(token: $token) {
     logoutSession(token: $logoutSessionToken2)
   }
 }`,
-                    variables: {
-                        token: this.user.token,
-                        logoutSessionToken2: session,
-                    },
-                }).then(({ data }) => {
-                    console.log(data);
-                    this.getActiveSessions();
-                }, (error) => {
-                    console.log(error);
-                    alert(this.$t('manage.recent_sessions.operates.logout_fail'));
-                });
-            }
+                        variables: {
+                            token: this.user.token,
+                            logoutSessionToken2: session,
+                        },
+                    }).then(({ data }) => {
+                        console.log(data);
+                        this.getActiveSessions();
+                    }, (error) => {
+                        console.log(error);
+                        this.defaultSwal.fire(this.$t('manage.recent_sessions.operates.logout_fail'));
+                    });
+                }
+            });
         },
         logOutAllSessions() {
-            if (window.confirm(this.$t('manage.recent_sessions.operates.logout_all_confirm'))) {
-                apolloClient.query({
-                    query: gql`query User($token: String) {
+            this.defaultSwal.fire({ title: this.$t('manage.recent_sessions.operates.logout_all_confirm'), showCancelButton: true }).then((result) => {
+                if (result.isConfirmed) {
+                    apolloClient.query({
+                        query: gql`query User($token: String) {
   User(token: $token) {
     logoutAll
   }
 }`,
-                    variables: {
-                        token: this.user.token,
-                    },
-                }).then(({ data }) => {
-                    console.log(data);
-                    this.$router.push('/');
-                }, (error) => {
-                    console.log(error);
-                    alert(this.$t('manage.recent_sessions.operates.logout_fail'));
-                });
-            }
+                        variables: {
+                            token: this.user.token,
+                        },
+                    }).then(({ data }) => {
+                        console.log(data);
+                        this.$router.push('/');
+                    }, (error) => {
+                        console.log(error);
+                        this.defaultSwal.fire(this.$t('manage.recent_sessions.operates.logout_fail'));
+                    });
+                }
+            });
         },
         getIpLoc(ip) {
             this.axios.get(`https://api.ip.sb/geoip/${ip}`).then((response) => {

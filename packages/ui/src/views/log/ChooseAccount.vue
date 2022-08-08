@@ -98,11 +98,12 @@ export default {
                     sessionsCheckedCount++;
                     if (sessionsCheckedCount === sessions.length) {
                         this.pageLoading = false;
-                        this.avaliableSession.forEach((element) => {
-                            if (element === false) {
-                                this.avaliableSession.splice(index, 1);
+                        for (let i = 0; i < this.avaliableSession.length; i++) {
+                            if (this.avaliableSession[i] === false) {
+                                this.avaliableSession.splice(i, 1);
+                                i--;
                             }
-                        });
+                        }
                         if (this.avaliableSession.length === 0) {
                             this.$router.push('/');
                         } else {

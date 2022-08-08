@@ -223,6 +223,7 @@ export default {
             required: true,
         },
     },
+    inject: ['defaultSwal'],
     mounted() {
     },
     methods: {
@@ -260,7 +261,7 @@ export default {
                     this.newAvatarCode = 'mail:00000000000000000000000000000000';
                     break;
                 default:
-                    window.alert(this.$t('manage.change_avatar.type.unknown'));
+                    window.this.defaultSwal.fire(this.$t('manage.change_avatar.type.unknown'));
             }
             this.sendRequest();
         },

@@ -1,7 +1,10 @@
 import '../css/common.scss';
 import '../css/log.scss';
 import '../css/manage.scss';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import '../css/sweetalert2.scss';
 
+// import '@sweetalert2/themes/dark/dark.css';
 // import 'vue-cropper/dist/index.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +17,7 @@ import VueAxios from 'vue-axios';
 import VueCropper from 'vue-cropper';
 import vueQr from 'vue-qr/src/packages/vue-qr.vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
+import VueSweetalert2 from 'vue-sweetalert2';
 
 import FooterItems from './components/FooterItems.vue';
 import LabelInput from './components/LabelInput.vue';
@@ -35,12 +39,12 @@ import ChangeAvatar from './views/manage/ChangeAvatar.vue';
 import ChangePassword from './views/manage/ChangePassword.vue';
 import Manage from './views/manage/Manage.vue';
 import Manage2FA from './views/manage/Manage2FA.vue';
+import ManageAuthorization from './views/manage/ManageAuthorization.vue';
 import ManageIndex from './views/manage/ManageIndex.vue';
 import ManageInfos from './views/manage/ManageInfos.vue';
 import ManageSafety from './views/manage/ManageSafety.vue';
 import ManageNotFound from './views/manage/NotFound.vue';
 import RelatedFrame from './views/manage/RelatedFrame.vue';
-import ManageAuthorization from './views/manage/ManageAuthorization.vue';
 import SudoMode from './views/manage/SudoMode.vue';
 
 library.add(fas);
@@ -82,10 +86,12 @@ const apolloClient = new ApolloClient({
 });
 
 const app = Vue.createApp(Main);
+
 app.use(i18n).use(router)
     .use(VueAxios, axios)
     .use(vueQr)
     .use(VueCropper)
+    .use(VueSweetalert2)
     .provide(DefaultApolloClient.DefaultApolloClient, apolloClient)
     .component('font-awesome-icon', FontAwesomeIcon)
     .component('vue-qr', vueQr)
