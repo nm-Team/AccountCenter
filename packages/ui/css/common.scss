@@ -3,6 +3,7 @@ body {
     --a: #e5bb00;
     --warn: #f44;
     --outline: 3px solid #fabb00cc;
+    --scroller-grey: #c8c8c854;
     --page-background: #eee;
     --frame-background: #fff;
     --label-input-label-inactive: #767676cc;
@@ -19,6 +20,7 @@ body [data-theme=dark] {
     --a: #e5bb00;
     --warn: #f44;
     --outline: 3px solid #fabb00cc;
+    --scroller-grey: #616161a1;
     --page-background: #000;
     --frame-background: #202020;
     --label-input-label-inactive: #c8c8c8;
@@ -52,7 +54,7 @@ body {
     text-decoration: none;
 }
 
-svg{
+svg {
     fill: var(--text);
 }
 
@@ -72,6 +74,32 @@ a {
 :focus-visible {
     outline: var(--outline);
     outline-offset: 0px;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--scroller-grey);
+}
+
+*:not(:hover):not(:focus):not(:active)::-webkit-scrollbar-thumb {
+    background-color: #00000000;
+    transition: all 1s;
+}
+
+body *[scroll=hidden]::-webkit-scrollbar-thumb {
+    background: none;
+}
+
+::-webkit-scrollbar-track {
+    margin: 8px;
+    border-radius: 10px;
+    width: 0;
+    opacity: 0;
 }
 
 .user {
@@ -203,7 +231,7 @@ a {
     }
 }
 
-.commonLoading{
+.commonLoading {
     display: block;
     height: 60px;
     background-image: url(/loading.gif);
