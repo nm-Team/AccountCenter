@@ -280,6 +280,7 @@ export default {
             }).then(({ data }) => {
                 console.log(data);
                 this.changeStep = 9;
+                this.user.avatar = this.newAvatarCode;
                 this.$emit('updateuser', this.user);
             }, (error) => {
                 console.log(error);

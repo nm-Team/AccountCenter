@@ -250,7 +250,7 @@
             },
             "success": {
                 "refresh": "Refresh",
-                "tip": "You have successfully set an avatar! You may need to refresh the page and wait until you see your profile picture.",
+                "tip": "You have successfully set an avatar! It may take some time for your new avatar to take effect in nmService and third-party apps.",
                 "title": "Set avatar successfully!"
             },
             "tip_0": "Avatars are a great tool for showing off your personality.",

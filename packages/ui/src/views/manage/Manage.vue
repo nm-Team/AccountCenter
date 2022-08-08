@@ -127,6 +127,15 @@ export default {
             });
         });
     },
+    watch: {
+        user: {
+            handler() {
+                this.user.avatarURL = getAvatar(this.user.avatar);
+                this.avaliableSession[0].avatarURL = this.user.avatarURL;
+            },
+            deep: true,
+        },
+    },
     methods: {
         trySessions() {
             // eslint-disable-next-line prefer-const
