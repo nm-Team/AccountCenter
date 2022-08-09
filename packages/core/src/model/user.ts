@@ -2,14 +2,19 @@ import { Collection } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
 
 import {
-    checkAvatar, checkNick, checkPass, checkUser, isMail,
-    seeable
+    checkAvatar,
+    checkNick,
+    checkPass,
+    checkUser,
+    isMail,
+    seeable,
 } from '../utils';
 import twoFactorAuth from './2fa';
 import bus from './bus';
 import { md5, sha1 } from './crypto';
 import Mail from './mail';
 import db from './mongo';
+import { Permission } from './permission';
 import { SessionModel } from './session';
 import { TokenModel, TokenType } from './token';
 
@@ -31,6 +36,7 @@ export interface UserDoc extends Object {
     avatar: string;
     mood: string;
     role: string;
+    permBlack: string[];
 
     regat: Date;
     loginat: Date;
@@ -51,6 +57,7 @@ export class UserModel {
         avatar: 'mail:guest@nmnm.fun',
         mood: 'Welcome to nmTeam',
         role: 'guest',
+        permBlack: [],
 
         regat: new Date('2021-06-14'),
         loginat: new Date('2021-06-14'),
@@ -76,6 +83,7 @@ export class UserModel {
             avatar: doc.avatar,
             mood: doc.mood,
             role: doc.role,
+            permBlack: doc.permBlack,
 
             regat: doc.regat,
             loginat: doc.logat,
@@ -103,6 +111,7 @@ export class UserModel {
             avatar: doc.avatar,
             mood: doc.mood,
             role: doc.role,
+            permBlack: doc.permBlack,
 
             regat: doc.regat,
             loginat: doc.logat,
@@ -130,6 +139,7 @@ export class UserModel {
             avatar: doc.avatar,
             mood: doc.mood,
             role: doc.role,
+            permBlack: doc.permBlack,
 
             regat: doc.regat,
             loginat: doc.logat,
@@ -218,6 +228,7 @@ export class UserModel {
             avatar: `mail:${md5(token.mail)}`,
             mood: 'Welcome to nmTeam',
             role: 'user',
+            permBlack: [],
             regat: time,
             loginat: time,
         });
@@ -232,6 +243,12 @@ export class UserModel {
         if (sha1(doc.uuid + pass) !== doc._pass) {
             throw new Error('wrong_pass');
         }
+
+        const perm = new Permission(doc.permBlack);
+        if (!perm.check('user.login')) {
+            throw new Error('no_permission');
+        }
+
         if (doc.tfa && doc._tfa !== undefined) {
             if (twoFactorAuth.verifyToken(doc._tfa, code) !== 0) {
                 throw new Error('tfa_invalid_code');
@@ -267,6 +284,7 @@ export class UserModel {
         if (sha1(doc.uuid + oldPass) !== doc._pass) {
             throw new Error('wrong_pass');
         }
+
         await coll.updateOne(
             { uuid },
             {

@@ -12,7 +12,6 @@ import { isMail } from './utils';
 const app: any = express();
 
 app.use(cookieParser());
-// app.use(app.oauth.authorize());
 
 const apollo = new ApolloServer({
     typeDefs,
