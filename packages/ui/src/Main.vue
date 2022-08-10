@@ -54,6 +54,12 @@ export default {
             defaultSwal: this.defaultSwal,
         };
     },
+    mounted() {
+        window.matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', () => {
+                this.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            });
+    },
     methods: {
         easterEgg() {
             this.eEggCount++;
