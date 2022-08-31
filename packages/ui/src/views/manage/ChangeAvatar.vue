@@ -137,7 +137,7 @@
         </div>
     </div>
     <div class="block" v-if="changeStep == 1 && avatarType == 'github'">
-        <img src="/how_to_get_gthub_username.png" :alt="$t('manage.change_avatar.github.help_alt')"
+        <img src="/how_to_get_github_username.png" :alt="$t('manage.change_avatar.github.help_alt')"
             style="border-radius: 4px">
     </div>
     <div class="block" v-if="changeStep == 1 && avatarType == 'upload'">
