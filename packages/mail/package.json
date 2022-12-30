@@ -6,8 +6,11 @@
   },
   "dependencies": {
     "@types/nodemailer": "^6.4.4",
+    "@vitejs/plugin-vue": "^4.0.0",
     "chalk": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
     "mongodb": "^4.8.1",
-    "nodemailer": "^6.7.7"
+    "nodemailer": "^6.7.7",
+    "vite": "^4.0.3"
   }
 }
