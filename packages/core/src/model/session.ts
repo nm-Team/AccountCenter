@@ -1,20 +1,13 @@
-import { Collection } from 'mongodb';
-
-import bus from './bus';
-import db from './mongo';
+import tokenModel from '../schema/token';
 import { TokenModel, TokenType } from './token';
-
-let coll: Collection;
-
-bus.once('mongo/connected', () => {
-    coll = db.collection('token');
-});
 
 export interface SessionDoc extends Object {
     createAt: Date,
     updateAt: Date,
-    ua: String,
-    ip: String,
+    data: {
+        ua: String,
+        ip: String,
+    }
 }
 
 export class SessionModel {
@@ -23,9 +16,15 @@ export class SessionModel {
         if (token === null) {
             throw new Error('invalid_token');
         }
-        const { uuid } = token;
-        const sessions = await coll.find({ uuid }).toArray();
-        return sessions;
+        const { uuid } = token.data;
+        const sessions = await tokenModel.find({ 'data.uuid': uuid });
+        return sessions.map((session) => ({
+            uuid: session.uuid,
+            createAt: session.createAt,
+            updateAt: session.updateAt,
+            ip: session.data.ip,
+            ua: session.data.ua,
+        }));
     }
 
     static async deleteSession(tokenId: string, sessionId: string) {
@@ -37,7 +36,7 @@ export class SessionModel {
         if (session === null) {
             throw new Error('invalid_session');
         }
-        if (token.uuid === session.uuid) {
+        if (token.data.uuid === session.uuid) {
             await TokenModel.delete(sessionId, TokenType.SESSION);
         }
     }
@@ -46,7 +45,7 @@ export class SessionModel {
         const sessionList = await SessionModel.getSesions(tokenId);
         // eslint-disable-next-line no-restricted-syntax
         for (const session of sessionList) {
-            TokenModel.delete(session._uuid, TokenType.SESSION);
+            TokenModel.delete(session.uuid, TokenType.SESSION);
         }
     }
 }

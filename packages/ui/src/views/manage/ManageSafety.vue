@@ -6,7 +6,7 @@
             <button class="blockButton" style="float: right; margin-top: 0;"
                 @click="sessionDetailMode = !sessionDetailMode">
                 {{ sessionDetailMode ? $t('manage.recent_sessions.tiny_mode') : $t('manage.recent_sessions.detail_mode')
-                }}</button>
+}}</button>
         </p>
         <div class="table" v-if="onlineSessions && sessionDetailMode">
             <table>
@@ -21,24 +21,24 @@
                         <td style="min-width: 15em;">
                             {{ session.updateAt }}<br />
                             {{ $t('manage.recent_sessions.table.time_log_in_word', {
-                                    login_time: session.createAt
-                                })
-                            }}
+        login_time: session.createAt
+    })
+}}
                         </td>
                         <td style="min-width: 8em;">
                             {{ session.ip }}<br />
                             {{ $t('manage.recent_sessions.table.ip_word', {
-                                    city: ipPosition[session.ip] ? ipPosition[session.ip] : $t('loading')
-                                })
-                            }}
+        city: ipPosition[session.ip] ? ipPosition[session.ip] : $t('loading')
+    })
+}}
                         </td>
                         <td style="min-width: 15em;">{{ session.ua }}
                         </td>
                         <td style="min-width: 2em;">
-                            <a @click="logOutSession(session._uuid)" v-if="session._uuid != user.token"
+                            <a @click="logOutSession(session.uuid)" v-if="session.uuid != user.token"
                                 href="javascript:">{{
-                                        $t('manage.recent_sessions.operates.logout')
-                                }}</a>
+        $t('manage.recent_sessions.operates.logout')
+}}</a>
                             <span v-else>{{ $t('manage.recent_sessions.operates.this_session') }}</span>
                         </td>
                     </tr>
@@ -52,32 +52,32 @@
                 <font-awesome-icon v-else :icon="['fas', 'earth-asia']"></font-awesome-icon>
                 <div class="infos">
                     <p :title="session.uaParsed.deviceDetail"><b>{{ $t('manage.recent_sessions.tiny.device') }}{{
-                            $t('manage.recent_sessions.tiny.colon')
-                    }}</b>{{ session.uaParsed.device }}
+        $t('manage.recent_sessions.tiny.colon')
+}}</b>{{ session.uaParsed.device }}
                     </p>
                     <p :title="session.updateAt"><b>{{ $t('manage.recent_sessions.tiny.active_time') }}{{
-                            $t('manage.recent_sessions.tiny.colon')
-                    }}</b>{{ session.updateAtRelative }}
+        $t('manage.recent_sessions.tiny.colon')
+}}</b>{{ session.updateAtRelative }}
                     </p>
                     <p :title="session.createAt"><b>{{ $t('manage.recent_sessions.tiny.create_time') }}{{
-                            $t('manage.recent_sessions.tiny.colon')
-                    }}</b>{{ session.createAtRelative }}
+        $t('manage.recent_sessions.tiny.colon')
+}}</b>{{ session.createAtRelative }}
                     </p>
                     <p><b>{{ $t('manage.recent_sessions.tiny.ip') }}{{ $t('manage.recent_sessions.tiny.colon') }}</b>{{
-                            $t('manage.recent_sessions.tiny.ip_value', {
-                                ip: session.ip, city: ipPosition[session.ip] ? ipPosition[session.ip] : $t('loading')
-                            })
-                    }}
+        $t('manage.recent_sessions.tiny.ip_value', {
+            ip: session.ip, city: ipPosition[session.ip] ? ipPosition[session.ip] : $t('loading')
+        })
+}}
                     </p>
                     <p><b>{{ $t('manage.recent_sessions.tiny.ua') }}{{ $t('manage.recent_sessions.tiny.colon') }}</b>{{
-                            session.uaParsed.browser
-                    }}
+        session.uaParsed.browser
+}}
                     </p>
                 </div>
                 <div class="operates">
-                    <a @click="logOutSession(session._uuid)" v-if="session._uuid != user.token" href="javascript:">{{
-                            $t('manage.recent_sessions.operates.logout')
-                    }}</a>
+                    <a @click="logOutSession(session.uuid)" v-if="session.uuid != user.token" href="javascript:">{{
+        $t('manage.recent_sessions.operates.logout')
+}}</a>
                     <span v-else>{{ $t('manage.recent_sessions.operates.this_session') }}</span>
                 </div>
             </div>
@@ -141,7 +141,7 @@ export default {
                 query: gql`query GetSession($token: String) {
   User(token: $token) {
     getSession {
-      _uuid
+      uuid
       createAt
       updateAt
       ua

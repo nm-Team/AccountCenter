@@ -1,12 +1,10 @@
-import { Db, MongoClient } from 'mongodb';
+import mongoose from 'mongoose';
 
 import { mongo } from '../config';
 import bus from './bus';
 
 class MongoModel {
-    public client!: MongoClient;
-
-    public db!: Db;
+    public mongoose!: mongoose.Mongoose;
 
     private mongourl: string;
 
@@ -18,13 +16,27 @@ class MongoModel {
     }
 
     public async init() {
-        this.client = await MongoClient.connect(this.mongourl);
-        this.db = this.client.db(this.mongodb);
-        bus.emit('mongo/connected');
+        mongoose.connect(this.mongourl + this.mongodb);
+        this.mongoose = mongoose;
+        return new Promise((resolve, reject) => {
+            this.mongoose.connection.on('error', (err) => {
+                console.log('mongo connect error', err);
+                reject(err);
+            });
+            this.mongoose.connection.once('open', () => {
+                bus.emit('mongo/connected');
+                resolve(true);
+            });
+        });
     }
 
-    public collection(name: string) {
-        return this.db.collection(name);
+    public schema(schema: mongoose.SchemaDefinition) {
+        return new this.mongoose.Schema(schema, { versionKey: false });
+        // remove __v field
+    }
+
+    public model(name: string, schema: mongoose.Schema) {
+        return this.mongoose.model(name, schema);
     }
 }
 

@@ -60,7 +60,7 @@ const resolvers = {
             if (token === null) {
                 throw new Error('invalid_token');
             }
-            await UserModel.changePass(token.uuid, args.oldPass, args.newPass);
+            await UserModel.changePass(token.data.uuid, args.oldPass, args.newPass);
             await SessionModel.deleteAll(parent.token);
             return true;
         },
@@ -72,7 +72,7 @@ const resolvers = {
             if (token === null) {
                 throw new Error('invalid_token');
             }
-            await UserModel.changeAvatar(token.uuid, args.avatar);
+            await UserModel.changeAvatar(token.data.uuid, args.avatar);
             return true;
         },
         async changeNick(parent: any, args: any): Promise<boolean> {
@@ -83,7 +83,7 @@ const resolvers = {
             if (token === null) {
                 throw new Error('invalid_token');
             }
-            await UserModel.changeNick(token.uuid, args.nick);
+            await UserModel.changeNick(token.data.uuid, args.nick);
             return true;
         },
         async changeMood(parent: any, args: any): Promise<boolean> {
@@ -94,7 +94,7 @@ const resolvers = {
             if (token === null) {
                 throw new Error('invalid_token');
             }
-            await UserModel.changeMood(token.uuid, args.mood);
+            await UserModel.changeMood(token.data.uuid, args.mood);
             return true;
         },
         async getUser(parent: any): Promise<UserDoc> {
@@ -124,7 +124,7 @@ const resolvers = {
                 if (token === null) {
                     return UserModel.defaultUdoc;
                 }
-                const ret = await UserModel.getByUUID(token.uuid);
+                const ret = await UserModel.getByUUID(token.data.uuid);
                 return ret;
             }
             return UserModel.defaultUdoc;
@@ -168,7 +168,7 @@ const resolvers = {
             if (token === null) {
                 throw new Error('invalid_token');
             }
-            return twoFactorAuth.generateSecret('nmTeam', token.user).uri;
+            return twoFactorAuth.generateSecret('nmTeam', token.data.user).uri;
         },
         async enable(parent: any, args: any): Promise<boolean> {
             if (parent.token === undefined || args.secret === undefined || args.code === undefined) {
@@ -178,14 +178,14 @@ const resolvers = {
             if (token === null) {
                 throw new Error('invalid_token');
             }
-            const user = await UserModel.getByUUID(token.uuid);
+            const user = await UserModel.getByUUID(token.data.uuid);
             if (user._tfa) {
                 throw new Error('tfa_on');
             }
             if (twoFactorAuth.verifyToken(args.secret, args.code) !== 0) {
                 throw new Error('tfa_invalid_code');
             }
-            await UserModel.setByUUID(token.uuid, { tfa: args.secret });
+            await UserModel.setByUUID(token.data.uuid, { tfa: args.secret });
             return true;
         },
         async disable(parent: any, args: any): Promise<boolean> {
@@ -196,14 +196,14 @@ const resolvers = {
             if (token === null) {
                 throw new Error('invalid_token');
             }
-            const user = await UserModel.getByUUID(token.uuid);
+            const user = await UserModel.getByUUID(token.data.uuid);
             if (!user.tfa || user._tfa === undefined) {
                 throw new Error('tfa_off');
             }
             if (twoFactorAuth.verifyToken(user._tfa, args.code) !== 0) {
                 throw new Error('tfa_invalid_code');
             }
-            await UserModel.setByUUID(token.uuid, { tfa: undefined });
+            await UserModel.setByUUID(token.data.uuid, { tfa: undefined });
             return true;
         },
     },

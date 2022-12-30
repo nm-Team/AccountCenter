@@ -34,12 +34,12 @@ class SudoModel {
         if (method === undefined) {
             ret = await TokenModel.query(TokenType.SUDOMODE, {
                 uuid: this.uuid,
-                _uuid: this.token,
+                token: this.token,
             });
         } else {
             ret = await TokenModel.query(TokenType.SUDOMODE, {
                 uuid: this.uuid,
-                _uuid: this.token,
+                token: this.token,
                 method,
             });
         }
@@ -55,7 +55,7 @@ class SudoModel {
         }
         const ret = await TokenModel.add(TokenType.SUDOMODE, 30 * 60, {
             uuid: this.uuid,
-            _uuid: this.token,
+            token: this.token,
             method: 'pass',
         });
         return ret;

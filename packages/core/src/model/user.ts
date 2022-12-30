@@ -1,4 +1,3 @@
-import { Collection } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
 
 import {
@@ -13,18 +12,12 @@ import twoFactorAuth from './2fa';
 import bus from './bus';
 import { md5, sha1 } from './crypto';
 import Mail from './mail';
-import db from './mongo';
 import { Permission } from './permission';
 import { SessionModel } from './session';
 import { TokenModel, TokenType } from './token';
+import userModel from '../schema/user';
 
 /* eslint-disable lines-between-class-members */
-
-let coll: Collection;
-
-bus.once('mongo/connected', () => {
-    coll = db.collection('user');
-});
 
 export interface UserDoc extends Object {
     uuid: string;
@@ -67,7 +60,7 @@ export class UserModel {
     };
 
     static async getByUUID(uuid: string): Promise<UserDoc> {
-        const doc = await coll.findOne({
+        const doc = await userModel.findOne({
             uuid,
         });
         if (doc === null) {
@@ -95,7 +88,7 @@ export class UserModel {
     }
 
     static async getByUser(user: string): Promise<UserDoc> {
-        const doc = await coll.findOne({
+        const doc = await userModel.findOne({
             user,
         });
         if (doc === null) {
@@ -123,7 +116,7 @@ export class UserModel {
     }
 
     static async getByMail(mail: string): Promise<UserDoc> {
-        const doc = await coll.findOne({
+        const doc = await userModel.findOne({
             mail,
         });
         if (doc === null) {
@@ -151,31 +144,25 @@ export class UserModel {
     }
 
     static async setByUUID(uuid: string, data: Partial<UserDoc>) {
-        const ret = await coll.updateOne(
+        const ret = await userModel.updateOne(
             { uuid },
-            {
-                $set: data,
-            },
+            data,
         );
         return ret;
     }
 
     static async setByUser(user: string, data: Partial<UserDoc>) {
-        const ret = await coll.updateOne(
+        const ret = await userModel.updateOne(
             { user },
-            {
-                $set: data,
-            },
+            data,
         );
         return ret;
     }
 
     static async setByMail(mail: string, data: Partial<UserDoc>) {
-        const ret = await coll.updateOne(
+        const ret = await userModel.updateOne(
             { mail },
-            {
-                $set: data,
-            },
+            data,
         );
         return ret;
     }
@@ -212,34 +199,40 @@ export class UserModel {
     }
 
     static async active(tokenId: string) {
-        const token: any = await TokenModel.get(tokenId, TokenType.REGISTER);
+        let token: any = await TokenModel.get(tokenId, TokenType.REGISTER);
 
         if (token === null) {
             throw new Error('invalid_token');
         }
 
+        token = token.data.data;
+
         const time = new Date();
-        coll.insertOne({
-            uuid: token.uuid,
-            user: token.user,
-            pass: sha1(token.uuid + token.pass),
-            mail: token.mail,
-            nick: token.user,
-            avatar: `mail:${md5(token.mail)}`,
+        const doc = await userModel.create({
+            uuid: token.data.uuid,
+            user: token.data.user,
+            pass: sha1(token.data.uuid + token.data.pass),
+            mail: token.data.mail,
+            nick: token.data.user,
+            avatar: `mail:${md5(token.data.mail)}`,
             mood: 'Welcome to nmTeam',
             role: 'user',
             permBlack: [],
             regat: time,
             loginat: time,
         });
-        TokenModel.delete(tokenId, TokenType.REGISTER);
+        await doc.save();
+
+        await TokenModel.delete(tokenId, TokenType.REGISTER);
     }
 
     static async login(user: string, pass: string, code: string, ua: string, ip: string): Promise<string> {
         const doc = await UserModel.getByUser(user);
+
         if (doc === UserModel.defaultUdoc) {
             throw new Error('wrong_user');
         }
+
         if (sha1(doc.uuid + pass) !== doc._pass) {
             throw new Error('wrong_pass');
         }
@@ -254,19 +247,17 @@ export class UserModel {
                 throw new Error('tfa_invalid_code');
             }
         }
-        const token = TokenModel.add(TokenType.SESSION, 24 * 60 * 60, {
+        const token = await TokenModel.add(TokenType.SESSION, 24 * 60 * 60, {
             uuid: doc.uuid,
             user: doc.user,
             ua,
             ip,
         });
-        coll.updateOne(
+        await userModel.updateOne(
             { uuid: doc.uuid },
             {
-                $set: {
-                    loginat: new Date(),
-                    loginip: ip,
-                },
+                loginat: new Date(),
+                loginip: ip,
             },
         );
         return token;
@@ -285,12 +276,10 @@ export class UserModel {
             throw new Error('wrong_pass');
         }
 
-        await coll.updateOne(
+        await userModel.updateOne(
             { uuid },
             {
-                $set: {
-                    pass: sha1(doc.uuid + newPass),
-                },
+                pass: sha1(doc.uuid + newPass),
             },
         );
         return true;
@@ -370,12 +359,10 @@ export class UserModel {
             throw new Error('invalid_pass');
         }
 
-        coll.updateOne(
-            { uuid: token.uuid },
+        userModel.updateOne(
+            { uuid: token.data.uuid },
             {
-                $set: {
-                    pass: sha1(token.uuid + pass),
-                },
+                pass: sha1(token.data.uuid + pass),
             },
         );
         SessionModel.deleteAll(tokenId);
