@@ -29,11 +29,6 @@ const apollo = new ApolloServer({
     typeDefs,
     resolvers,
     csrfPrevention: true,
-    // context: (expressContext) => ({
-    //     ip: expressContext.req.ip,
-    //     ua: expressContext.req.headers['user-agent'],
-    //     cookies: expressContext.req.cookies,
-    // }),
 });
 
 (async () => {
@@ -49,8 +44,20 @@ const apollo = new ApolloServer({
 bus.on('app/prepared', async () => {
     log('SYS', 'Server starting.');
     await apollo.start();
-    app.use('/graphql', cors<cors.CorsRequest>(), json(), expressMiddleware(apollo));
-    // apollo.applyMiddleware({ app });
+    app.use(
+        '/graphql',
+        cors<cors.CorsRequest>(),
+        json(),
+        expressMiddleware(apollo, {
+            context: async ({ req }) => (
+                {
+                    ip: req.ip,
+                    ua: req.headers['user-agent'],
+                    cookies: req.cookies,
+                }
+            ),
+        }),
+    );
     app.listen({ port }, () => {
         bus.emit('app/started');
     });
