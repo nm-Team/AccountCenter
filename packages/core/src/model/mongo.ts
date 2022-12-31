@@ -17,7 +17,14 @@ class MongoModel {
 
     public async init() {
         mongoose.connect(this.mongourl + this.mongodb);
+
+        // auto reconnect
+        mongoose.connection.on('disconnected', () => {
+            mongoose.connect(this.mongourl + this.mongodb);
+        });
+
         this.mongoose = mongoose;
+
         return new Promise((resolve, reject) => {
             this.mongoose.connection.on('error', (err) => {
                 console.log('mongo connect error', err);
