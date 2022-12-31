@@ -1,7 +1,11 @@
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
+import { json } from 'body-parser';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import express from 'express';
 
+// import OAuthServer from 'express-oauth-server';
 import { port } from './config';
 import bus from './model/bus';
 import log from './model/logger';
@@ -13,15 +17,23 @@ const app: any = express();
 
 app.use(cookieParser());
 
+// app.oauth = new OAuthServer({
+//     // eslint-disable-next-line global-require
+//     model: require('./model/oauth'),
+// });
+
+// app.get('/oauth2/authorize', app.oauth.authorize());
+// app.post('/oauth2/token', app.oauth.token());
+
 const apollo = new ApolloServer({
     typeDefs,
     resolvers,
     csrfPrevention: true,
-    context: (expressContext) => ({
-        ip: expressContext.req.ip,
-        ua: expressContext.req.headers['user-agent'],
-        cookies: expressContext.req.cookies,
-    }),
+    // context: (expressContext) => ({
+    //     ip: expressContext.req.ip,
+    //     ua: expressContext.req.headers['user-agent'],
+    //     cookies: expressContext.req.cookies,
+    // }),
 });
 
 (async () => {
@@ -37,7 +49,8 @@ const apollo = new ApolloServer({
 bus.on('app/prepared', async () => {
     log('SYS', 'Server starting.');
     await apollo.start();
-    apollo.applyMiddleware({ app });
+    app.use('/graphql', cors<cors.CorsRequest>(), json(), expressMiddleware(apollo));
+    // apollo.applyMiddleware({ app });
     app.listen({ port }, () => {
         bus.emit('app/started');
     });
