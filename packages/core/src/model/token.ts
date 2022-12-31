@@ -64,9 +64,10 @@ class TokenModel {
         return res;
     }
 
-    static delete(tokenId: string, tokenType: TokenType) {
+    static async delete(tokenId: string, tokenType: TokenType) {
         bus.emit('token/delete', tokenId, tokenType);
-        return tokenModel.deleteOne({ uuid: tokenId, tokenType });
+        const ret = await tokenModel.deleteOne({ uuid: tokenId, tokenType });
+        return ret;
     }
 }
 bus.once('mongo/connected', () => {
