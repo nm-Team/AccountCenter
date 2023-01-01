@@ -1,18 +1,28 @@
 <template>
-    <h1>{{ $t("log.authorize_page.title", { app: oauth.name }) }}</h1>
-    <p class="h1then" v-if="oauth.client_name">{{ $t('log.authorize_page.continue', { app: oauth.client_name }) }}</p>
-    <p class="h1then">{{ user.nick ?? $t('unknown') }}</p>
+    <h1>{{ $t("log.authorize_page.title", { app: oauth.client_id }) }}</h1>
+    <p class="h1then" v-if="oauth.client_name"
+        v-html="$t('log.authorize_page.continue', { app: `**${oauth.client_name}**` }).replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')">
+    </p>
+    <RoundedUser :user="user" :showswitch="true" :style="{ 'marginTop': '-6px', 'marginBottom': '20px' }"
+        :title="$t('log.authorize_page.account_switch_button_title')" @click="goToPage('choose-account')">
+    </RoundedUser>
     <form class="form" method="post" :action="oauthJump">
         <div class="authorize" v-if="!isFatalError && oauth">
             <p class="h1then">{{ $t('log.authorize_page.app_permission_scope_title') }}</p>
-            <p class="h1then">{{ oauth.scope }}</p>
         </div>
         <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
-        <div style="visibility: hidden;">
+        <div style="visibility: hidden; height: 0;">
             <input name="client_id" :value="oauth.client_id" />
             <input name="redirect_uri" :value="oauth.redirect_uri" />
             <input name="scope" :value="oauth.scope" />
             <input name="session_id" :value="user.token" />
+        </div>
+        <div class="scopesDisplayBox">
+            <div class="scope" v-for="scope in oauth.scope" :key="scope">
+                <font-awesome-icon class="icon"
+                    :icon="[oauthAppScopes[scope].icon.split(' ')[0], oauthAppScopes[scope].icon.split(' ')[1]]" />
+                <div class="scopeName">{{ $t('authorize_scope.' + scope) }}</div>
+            </div>
         </div>
         <button :class="{ processing: processing }">{{ $t("log.authorize_page.submit") }}</button>
     </form>
@@ -50,6 +60,7 @@ export default {
             avaliableSession: [],
             user: {},
             oauthJump: `${config?.oauthBackEnd}/authorize`,
+            oauthAppScopes,
         };
     },
     mounted() {
@@ -70,7 +81,7 @@ export default {
         } else {
             this.oauth.scope = this.oauth.scope.split(' ');
             this.oauth.scope.forEach((scope) => {
-                if (!oauthAppScopes.includes(scope)) {
+                if (!oauthAppScopes[scope]) {
                     this.serviceMsg = this.$t('error.authorize_page_invalid_scope');
                     this.isFatalError = true;
                     this.oauth = {
@@ -141,6 +152,35 @@ export default {
                 });
             });
         },
+        goToPage(page) {
+            this.$router.push({ name: page, query: this.$route.query });
+        },
     },
 };
 </script>
+<style lang="scss" scoped>
+.scopesDisplayBox {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-bottom: 7px;
+
+    .scope {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 6px 0;
+
+        .icon {
+            font-size: 18px;
+            width: 23px;
+            margin-right: 5px;
+            flex-shrink: 0;
+        }
+
+        .scopeName {
+            font-size: 16px;
+        }
+    }
+}
+</style>

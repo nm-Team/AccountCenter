@@ -1,6 +1,10 @@
 {
     "app_name": "nmTeam 账号中心",
     "avatar_alt": "用户头像",
+    "authorize_scope": {
+        "profile": "获取你的账号信息",
+        "email": "获取你的邮箱"
+    },
     "cancel": "取消",
     "confirm": "确定",
     "deny": "拒绝",
@@ -139,7 +143,9 @@
         "authorize_page": {
             "title": "使用 nmTeam 账号",
             "continue": "登录 {app}",
-            "submit": "授权并继续"
+            "submit": "授权并继续",
+            "app_permission_scope_title": "此 App 需要以下权限以继续：",
+            "account_switch_button_title": "点击此处切换账号"
         }
     },
     "manage": {

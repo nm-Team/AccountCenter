@@ -1,1 +1,8 @@
-export default ['profile', 'email'];
+export default {
+    profile: {
+        icon: 'fas fa-user',
+    },
+    email: {
+        icon: 'fas fa-envelope',
+    },
+};

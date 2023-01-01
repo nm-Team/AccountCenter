@@ -140,7 +140,8 @@
             "continue": "With Your nmTeam Account",
             "title": "Continue Using {app}",
             "submit": "Authorize and Continue",
-            "app_permission_scope_title": "The app requires permissions below to continue:"
+            "app_permission_scope_title": "The app requires permissions below to continue:",
+            "account_switch_button_title": "Click here to switch account"
         }
     },
     "manage": {
@@ -473,5 +474,9 @@
             "second": "second ago|seconds ago"
         }
     },
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "authorize_scope": {
+        "email": "Get your email",
+        "profile": "Get your account information"
+    }
 }

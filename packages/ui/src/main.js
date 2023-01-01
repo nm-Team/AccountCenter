@@ -22,6 +22,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import FooterItems from './components/FooterItems.vue';
 import LabelInput from './components/LabelInput.vue';
 import LinkA from './components/LinkA.vue';
+import RoundedUser from './components/RoundedUser.vue';
 import SafetyChecker from './components/SafetyChecker.vue';
 import UserButton from './components/UserButton.vue';
 import config from './config';
@@ -100,6 +101,7 @@ app.use(i18n).use(router)
     .component('i18n', i18n)
     .component('Footer', FooterItems)
     .component('LinkA', LinkA)
+    .component('RoundedUser', RoundedUser)
     .component('LabelInput', LabelInput)
     .component('Footer', FooterItems)
     .component('UserButton', UserButton)
