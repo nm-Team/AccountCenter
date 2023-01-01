@@ -417,7 +417,8 @@
                 "logout_unrecognized": "If there is an unfamiliar session that you cannot identify, you should log out immediately, change your password, and set up other security measures (such as two-step verification) to ensure account security.",
                 "manage_here": "Here you can manage the currently logged in sessions of this account."
             },
-            "title": "Recent Sessions"
+            "title": "Recent Sessions",
+            "show_all": "Show All Sessions"
         },
         "setup_2fa": {
             "disable": {

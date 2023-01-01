@@ -46,7 +46,8 @@
             </table>
         </div>
         <div class="tinySessionList" v-else-if="onlineSessions && !sessionDetailMode">
-            <div class="tinySession" v-for="session in onlineSessions" :key="session">
+            <div class="tinySession" v-for="session, index in onlineSessions" :key="session"
+                v-show="showSessionsNum == 0 || index < showSessionsNum">
                 <svg v-if="deviceIcon[session.uaParsed.device]" viewBox="0 0 1024 1024" version="1.1"
                     xmlns="http://www.w3.org/2000/svg" v-html="deviceIcon[session.uaParsed.device]"></svg>
                 <font-awesome-icon v-else :icon="['fas', 'earth-asia']"></font-awesome-icon>
@@ -82,6 +83,11 @@
                 </div>
             </div>
         </div>
+        <p v-if="onlineSessions && showSessionsNum != 0 && onlineSessions.length > showSessionsNum && !sessionDetailMode">
+            <a href="javascript:" @click="showSessionsNum = 0">{{
+        $t('manage.recent_sessions.show_all')
+}}</a>
+        </p>
         <p v-if="onlineSessions.length == 0">{{ $t('loading') }}...</p>
         <p>{{ $t('manage.recent_sessions.tip.manage_here') }}</p>
         <p>{{ $t('manage.recent_sessions.tip.logout_unrecognized') }}</p>
@@ -115,6 +121,7 @@ export default {
                 iPod: '<path d="M654.4 63.9H371.1c-39.8-2.6-74.2 27.6-76.7 67.4-0.2 2.5-0.2 5.1-0.1 7.6v746.2c-1.6 39.9 29.3 73.5 69.2 75.1 2.5 0.1 5.1 0.1 7.6-0.1h283.2c39.7 1.9 73.4-28.8 75.3-68.5 0.1-2.2 0.1-4.4 0-6.6V138.9c1.9-39.6-28.6-73.2-68.2-75-2.3-0.2-4.7-0.2-7 0z m-141.9 845c-14.1 0-25.6-11.5-25.6-25.6s11.5-25.6 25.6-25.6c14.1 0 25.6 11.5 25.6 25.6s-11.5 25.6-25.6 25.6z m191.6-76.8H319.9V191.9H704v640.2z m-179.3-704c0 7.1-5.7 12.8-12.8 12.8-7.1 0-12.8-5.7-12.8-12.8 0-7.1 5.7-12.8 12.8-12.8 7.1 0 12.8 5.8 12.8 12.8z" p-id="1254"></path>',
                 'Apple Watch': '<path d="M757.3 469.3V362.7H736v-35.6c0-16.2-4.4-32.1-12.6-46.1-8.5-14.5-23.7-26.9-32.8-41.2-12.9-19.6-22.3-41.2-27.9-64-5.8-24.5-4.1-49.9-9-74.6-3.6-17-18.4-29.4-35.8-29.9-19.8-2.8-39.9-4.3-59.9-5.5-20-1.3-42-1.7-62.9-1.7-39.9-0.9-79.9 2.2-119.2 9.2-11.8 3-20.9 12.4-23.7 24.3-2.3 11.5-4.3 39.7-6.4 56.1-2.6 35.1-16.7 68.4-40.1 94.7l-9.8 10.9c-18.4 17.8-28.9 42.2-29 67.8v369.8c-0.5 26 10.3 51 29.6 68.5 27.6 21.3 45 53.1 48 87.9 3.8 24.7 1.1 49.7 6 73.8 3.9 12.3 14.2 21.4 26.9 23.7 42.8 7 86.1 10 129.4 9.2 39.9 0.9 79.9-2.2 119.2-9.2 12.2-2.7 21.8-12.1 24.7-24.3 2.3-11.5-3-67.6 16.8-101.5 7-11.9 37.1-56.9 37.1-56.9s3.4-4.7 4.3-5.5c17-17.6 26.7-41 27.1-65.5V469.3h21.3z m-42.7 227.6c1.5 37.1-26.9 68.6-64 71H352.1c-37.1-2.3-65.6-33.9-64-71V327.1c-1.5-37.1 26.9-68.6 64-71h298.6c37.1 2.4 65.4 33.9 64 71v369.8z" p-id="1393"></path>',
             },
+            showSessionsNum: 4,
         };
     },
     props: {
