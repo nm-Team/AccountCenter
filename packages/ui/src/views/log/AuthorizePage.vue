@@ -1,13 +1,19 @@
 <template>
     <h1>{{ $t("log.authorize_page.title", { app: oauth.name }) }}</h1>
     <p class="h1then" v-if="oauth.client_name">{{ $t('log.authorize_page.continue', { app: oauth.client_name }) }}</p>
-    <p class="h1then">{{ user.nick??$t('unknown') }}</p>
-    <form class="form" @submit.prevent="authorize">
+    <p class="h1then">{{ user.nick ?? $t('unknown') }}</p>
+    <form class="form" method="post" :action="oauthJump">
         <div class="authorize" v-if="!isFatalError && oauth">
             <p class="h1then">{{ $t('log.authorize_page.app_permission_scope_title') }}</p>
             <p class="h1then">{{ oauth.scope }}</p>
         </div>
         <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
+        <div style="visibility: hidden;">
+            <input name="client_id" :value="oauth.client_id" />
+            <input name="redirect_uri" :value="oauth.redirect_uri" />
+            <input name="scope" :value="oauth.scope" />
+            <input name="session_id" :value="user.token" />
+        </div>
         <button :class="{ processing: processing }">{{ $t("log.authorize_page.submit") }}</button>
     </form>
     <div class="related">
@@ -18,6 +24,7 @@
 <script>
 import { gql } from 'apollo-boost';
 
+import config from '../../config';
 // eslint-disable-next-line import/no-cycle
 import { apolloClient } from '../../main';
 import oauthAppScopes from '../../oauthAppScopes';
@@ -42,10 +49,11 @@ export default {
             sessions: [],
             avaliableSession: [],
             user: {},
+            oauthJump: `${config?.oauthBackEnd}/authorize`,
         };
     },
     mounted() {
-        this.sessions = getSessions();
+        this.trySessions();
         this.oauth = {
             client_id: this.$route.query.client_id,
             client_name: this.$route.query.client_name,
@@ -132,9 +140,6 @@ export default {
                     }
                 });
             });
-        },
-        authorize() {
-            this.processing = true;
         },
     },
 };
