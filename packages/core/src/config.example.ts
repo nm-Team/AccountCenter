@@ -1,9 +1,17 @@
+// mongodb settings
 const mongo = {
     url: 'mongodb://localhost:27017/',
     db: 'accountcenter',
 };
-const rabbitmq = {
-    url: 'amqp://localhost',
-};
+
+// backend server port
 const port = 4000;
-export { mongo, rabbitmq, port };
+
+// nmTeam AccountCenter url
+const centerUrl = 'http://localhost:5173';
+
+export {
+    mongo,
+    port,
+    centerUrl,
+};
