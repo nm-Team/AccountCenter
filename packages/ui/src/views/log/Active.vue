@@ -13,7 +13,7 @@
         <p class="h1then">{{ $t('log.active_account.error_code') }}{{ serviceMsg }}</p>
     </div>
     <div class="related">
-        <router-link v-for="item in related" :to="item.path" :key="item.name">{{ $t('log.link.' + item.name) }}
+        <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{ $t('log.link.' + item.name) }}
         </router-link>
     </div>
 </template>

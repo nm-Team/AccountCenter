@@ -1,22 +1,25 @@
 <template>
     <h1>{{ $t("log.choose_account_page.title") }}</h1>
     <p class="h1then" v-if="oauth.name">{{ $t('log.choose_account_page.tip', {
-            oauth: $t('log.login_page.continue', {
-                app: oauth.name
-            })
+        oauth: $t('log.login_page.continue', {
+            app: oauth.name
         })
-    }}</p>
+    })
+}}</p>
     <div class="uList">
         <div class="commonLoading" v-if="avaliableSession.length == 0"></div>
         <UserButton v-for="user, index in avaliableSession" :key="user.uuid" :user="user" force-border="true"
             @click="switchAccount(index)">
         </UserButton>
     </div>
-    <router-link class="useAnotherAccount" to="/">
+    <router-link class="useAnotherAccount" :to="{ name: 'login', query: $route.query }">
         <LinkA :text="$t('log.choose_account_page.new')"></LinkA>
     </router-link>
     <div class="related">
-        <router-link v-for="item in related" :to="item.path" :key="item.name">{{ $t('log.link.' + item.name) }}
+        <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{
+        $t('log.link.' + item.name)
+}} </router-link>
+        <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{ $t('log.link.' + item.name) }}
         </router-link>
     </div>
 </template>
@@ -116,10 +119,12 @@ export default {
         },
         switchAccount(index) {
             useSession(this.avaliableSession[index]);
-            // oauth in the near future
-            // go to manage page
-            this.$router.push('/manage');
-            this.$emit('getdata', 'inManagePage', true);
+            if (this.$route.query.client_id) {
+                this.$router.push({ name: 'authorize', query: this.$route.query });
+            } else {
+                this.$router.push('/manage');
+                this.$emit('getdata', 'inManagePage', true);
+            }
         },
     },
     components: {},

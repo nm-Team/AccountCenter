@@ -27,7 +27,7 @@
         <button :class="{ processing: processing }">{{ $t("log.authorize_page.submit") }}</button>
     </form>
     <div class="related">
-        <router-link v-for="item in related" :to="item.path" :key="item.name">{{ $t('log.link.' + item.name) }}
+        <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{ $t('log.link.' + item.name) }}
         </router-link>
     </div>
 </template>
@@ -143,7 +143,7 @@ export default {
                             }
                         }
                         if (this.avaliableSession.length === 0) {
-                            this.$router.push('/');
+                            this.$router.push({ name: 'login', query: this.$route.query });
                         } else {
                             // eslint-disable-next-line prefer-destructuring
                             this.user = this.avaliableSession[0];

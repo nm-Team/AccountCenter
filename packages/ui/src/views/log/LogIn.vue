@@ -17,11 +17,14 @@
         <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
         <button :class="{ processing: processing }">{{ $t("log.login_page.submit") }}</button>
     </form>
-    <router-link v-if="sessions.length > 0" class="useAnotherAccount" to="/choose-account">
+    <router-link v-if="sessions.length > 0" class="useAnotherAccount"
+        :to="{ path: '/choose-account', query: $route.query }">
         <LinkA :text="$t('log.login_page.logged_account')"></LinkA>
     </router-link>
     <div class="related">
-        <router-link v-for="item in related" :to="item.path" :key="item.name">{{ $t('log.link.' + item.name) }}
+        <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{
+        $t('log.link.' + item.name)
+            }}
         </router-link>
     </div>
 </template>
@@ -128,10 +131,12 @@ export default {
                     newSession.token = logToken;
                     addSession(newSession);
                     this.processing = false;
-                    // oauth in the near future
-                    // go to manage page
-                    this.$router.push('/manage');
-                    this.$emit('getdata', 'inManagePage', true);
+                    if (this.$route.query.client_id) {
+                        this.$router.push({ name: 'authorize', query: this.$route.query });
+                    } else {
+                        this.$router.push('/manage');
+                        this.$emit('getdata', 'inManagePage', true);
+                    }
                 }, (error) => {
                     console.log(error);
                     this.serviceMsg = this.$t('error.userinfo_get_failed')
