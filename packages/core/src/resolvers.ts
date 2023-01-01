@@ -185,7 +185,7 @@ const resolvers = {
             if (twoFactorAuth.verifyToken(args.secret, args.code) !== 0) {
                 throw new Error('tfa_invalid_code');
             }
-            await UserModel.setByUUID(token.data.uuid, { tfa: args.secret });
+            await UserModel.setByUUID(token.data.uuid, { _tfa: args.secret });
             return true;
         },
         async disable(parent: any, args: any): Promise<boolean> {
@@ -203,7 +203,7 @@ const resolvers = {
             if (twoFactorAuth.verifyToken(user._tfa, args.code) !== 0) {
                 throw new Error('tfa_invalid_code');
             }
-            await UserModel.setByUUID(token.data.uuid, { tfa: undefined });
+            await UserModel.setByUUID(token.data.uuid, { _tfa: undefined });
             return true;
         },
     },

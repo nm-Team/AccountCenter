@@ -67,6 +67,7 @@ export class UserModel {
         if (doc === null) {
             return UserModel.defaultUdoc;
         }
+        console.log(doc._tfa, doc._tfa !== undefined, doc._tfa !== null);
         return {
             uuid,
             _pass: doc.pass,
@@ -83,8 +84,8 @@ export class UserModel {
             loginat: doc.logat,
             loginip: doc.loginip,
 
-            tfa: doc.tfa !== undefined && doc.tfa !== null,
-            _tfa: doc.tfa,
+            tfa: doc._tfa !== undefined && doc._tfa !== null,
+            _tfa: doc._tfa,
         };
     }
 
