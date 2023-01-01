@@ -1,7 +1,7 @@
 <template>
-    <h1>{{ $t("log.authorize_page.title", { app: oauth.client_id }) }}</h1>
+    <h1>{{ $t("log.authorize_page.title", { app: oauth.client_name }) }}</h1>
     <p class="h1then" v-if="oauth.client_name"
-        v-html="$t('log.authorize_page.continue', { app: `**${oauth.client_name}**` }).replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')">
+        v-html="$t('log.authorize_page.continue', { app: `<b>${oauth.client_name}</b>` })">
     </p>
     <RoundedUser :user="user" :showswitch="true" :style="{ 'marginTop': '-6px', 'marginBottom': '20px' }"
         :title="$t('log.authorize_page.account_switch_button_title')" @click="goToPage('choose-account')">

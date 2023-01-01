@@ -1,6 +1,6 @@
 <template>
     <h1>{{ $t("log.login_page.title") }}</h1>
-    <p class="h1then" v-if="oauth.name">{{ $t('log.login_page.continue', { app: oauth.name }) }}</p>
+    <p class="h1then" v-if="$route.query.client_name">{{ $t('log.login_page.continue', { app: $route.query.client_name }) }}</p>
     <form class="form" @submit.prevent="login">
         <label-input model="username" type="text" label="log.username" enablescale="false" autofocus="true"
             @getdata="setData" @blur="check2FA()" @change="check2FA()">
@@ -50,9 +50,6 @@ export default {
                     path: '/forget-password',
                 },
             ],
-            oauth: {
-                name: '3rd Party',
-            },
             serviceMsg: '',
             processing: false,
             is2FA: false,

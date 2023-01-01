@@ -1,8 +1,8 @@
 <template>
     <h1>{{ $t("log.choose_account_page.title") }}</h1>
-    <p class="h1then" v-if="oauth.name">{{ $t('log.choose_account_page.tip', {
+    <p class="h1then" v-if="$route.query.client_name">{{ $t('log.choose_account_page.tip', {
         oauth: $t('log.login_page.continue', {
-            app: oauth.name
+            app: $route.query.client_name
         })
     })
 }}</p>
@@ -19,7 +19,9 @@
         <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{
         $t('log.link.' + item.name)
 }} </router-link>
-        <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{ $t('log.link.' + item.name) }}
+        <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{
+        $t('log.link.' + item.name)
+}}
         </router-link>
     </div>
 </template>
@@ -47,9 +49,6 @@ export default {
                     path: '/forget-password',
                 },
             ],
-            oauth: {
-                name: '3rd Party',
-            },
             serviceMsg: '',
             processing: false,
         };
