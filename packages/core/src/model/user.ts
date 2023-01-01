@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import userModel from '../schema/user';
 import {
     checkAvatar,
     checkNick,
@@ -15,7 +16,6 @@ import Mail from './mail';
 import { Permission } from './permission';
 import { SessionModel } from './session';
 import { TokenModel, TokenType } from './token';
-import userModel from '../schema/user';
 
 /* eslint-disable lines-between-class-members */
 
