@@ -28,6 +28,7 @@ import config from './config';
 import { i18n, languages } from './i18n';
 import Main from './Main.vue';
 import Active from './views/log/Active.vue';
+import AuthorizePage from './views/log/AuthorizePage.vue';
 import ChooseAccount from './views/log/ChooseAccount.vue';
 import ForgetPassword from './views/log/ForgetPassword.vue';
 import GetSupport from './views/log/GetSupport.vue';
@@ -58,6 +59,7 @@ const routes = [
     { path: '/reset-password', name: 'reset_password', component: ResetPassword },
     { path: '/support', name: 'support', component: GetSupport },
     { path: '/active', name: 'active', component: Active },
+    { path: '/authorize', name: 'authorize', component: AuthorizePage },
     {
         path: '/manage',
         name: 'manage',

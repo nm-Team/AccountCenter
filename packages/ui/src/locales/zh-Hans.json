@@ -11,6 +11,7 @@
     "error": {
         "2fa_empty": "请输入正确的双重验证代码。",
         "agree_terms": "请阅读并同意 nmTeam 服务协议和隐私政策。",
+        "authorize_page_invalid_request": "此请求的参数无效，请重试。",
         "captcha_empty": "请输入验证码。",
         "confirm_password_empty": "请输入确认密码。",
         "email_empty": "请输入电子邮箱。",
@@ -134,7 +135,12 @@
             "tip": "请设置您的新密码。如果你成功地进行了邮箱认证，我们会为你重置密码。",
             "title": "重置密码"
         },
-        "username": "用户名"
+        "username": "用户名",
+        "authorize_page": {
+            "title": "使用 nmTeam 账号",
+            "continue": "登录 {app}",
+            "submit": "授权并继续"
+        }
     },
     "manage": {
         "account_safety_block": {

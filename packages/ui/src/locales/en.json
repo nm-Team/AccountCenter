@@ -39,7 +39,8 @@
         "userinfo_get_failed": "Failed to get user information.",
         "username_empty": "please enter username.",
         "wrong_pass": "The password is error.",
-        "wrong_user": "Username error."
+        "wrong_user": "Username error.",
+        "authorize_page_invalid_request": "The parameters for this request are invalid, please try again."
     },
     "loading": "Loading",
     "log": {
@@ -134,7 +135,13 @@
             "tip": "Please set your new password. \nIf you have successfully authenticated your email address, we will reset your password for you.",
             "title": "Reset Password"
         },
-        "username": "Username"
+        "username": "Username",
+        "authorize_page": {
+            "continue": "With Your nmTeam Account",
+            "title": "Continue Using {app}",
+            "submit": "Authorize and Continue",
+            "app_permission_scope_title": "The app requires permissions below to continue:"
+        }
     },
     "manage": {
         "account_safety_block": {
