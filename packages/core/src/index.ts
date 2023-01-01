@@ -75,6 +75,7 @@ const init = async () => {
                 status: 'error',
                 info: 'Invalid client',
             });
+            return;
         }
 
         res.redirect(
