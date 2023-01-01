@@ -205,16 +205,16 @@ export class UserModel {
             throw new Error('invalid_token');
         }
 
-        token = token.data.data;
+        token = token.data;
 
         const time = new Date();
         const doc = await userModel.create({
-            uuid: token.data.uuid,
-            user: token.data.user,
-            pass: sha1(token.data.uuid + token.data.pass),
-            mail: token.data.mail,
-            nick: token.data.user,
-            avatar: `mail:${md5(token.data.mail)}`,
+            uuid: token.uuid,
+            user: token.user,
+            pass: sha1(token.uuid + token.pass),
+            mail: token.mail,
+            nick: token.user,
+            avatar: `mail:${md5(token.mail)}`,
             mood: 'Welcome to nmTeam',
             role: 'user',
             permBlack: [],
