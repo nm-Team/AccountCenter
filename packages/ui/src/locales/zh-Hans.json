@@ -44,7 +44,7 @@
     "loading": "加载中",
     "log": {
         "2fa": "双重验证代码",
-        "ActiveAccount": {
+        "active_account": {
             "error_code": "错误详情：",
             "error_tip": "很抱歉，出现错误，导致 nmTeam 账号激活失败。请联系 nmTeam 支持获取帮助。",
             "error_title": "激活 nmTeam 账号失败",

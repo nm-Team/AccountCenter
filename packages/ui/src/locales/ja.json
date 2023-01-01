@@ -44,7 +44,7 @@
     "loading": "読み込み中",
     "log": {
         "2fa": "二要素認証コード",
-        "ActiveAccount": {
+        "active_account": {
             "error_code": "エラーの詳細：",
             "error_tip": "申し訳ありませんが、エラーが発生し、 nmTeam アカウントのアクティブ化に失敗しました。 \n nmTeam サポートにお問い合わせください。",
             "error_title": "nmTeam アカウントのアクティブ化に失敗しました",

@@ -44,7 +44,7 @@
     "loading": "加載中",
     "log": {
         "2fa": "雙重驗證代碼",
-        "ActiveAccount": {
+        "active_account": {
             "error_code": "錯誤詳情：",
             "error_tip": "很抱歉，出現錯誤，導致 nmTeam 賬號激活失敗。請聯繫 nmTeam 支持獲取幫助。",
             "error_title": "激活 nmTeam 賬號失敗",

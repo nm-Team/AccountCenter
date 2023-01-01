@@ -1,16 +1,16 @@
 <template>
     <div v-if="regSuccess == undefined">
-        <h1>{{ $t("log.ActiveAccount.title") }}</h1>
-        <p class="h1then">{{ $t('log.ActiveAccount.tip') }}</p>
+        <h1>{{ $t("log.active_account.title") }}</h1>
+        <p class="h1then">{{ $t('log.active_account.tip') }}</p>
     </div>
     <div v-else-if="regSuccess == true">
-        <h1>{{ $t("log.ActiveAccount.success_title") }}</h1>
-        <p class="h1then">{{ $t('log.ActiveAccount.success_tip') }}</p>
+        <h1>{{ $t("log.active_account.success_title") }}</h1>
+        <p class="h1then">{{ $t('log.active_account.success_tip') }}</p>
     </div>
     <div v-else>
-        <h1>{{ $t("log.ActiveAccount.error_title") }}</h1>
-        <p class="h1then">{{ $t('log.ActiveAccount.error_tip') }}</p>
-        <p class="h1then">{{ $t('log.ActiveAccount.error_code') }}{{ serviceMsg }}</p>
+        <h1>{{ $t("log.active_account.error_title") }}</h1>
+        <p class="h1then">{{ $t('log.active_account.error_tip') }}</p>
+        <p class="h1then">{{ $t('log.active_account.error_code') }}{{ serviceMsg }}</p>
     </div>
     <div class="related">
         <router-link v-for="item in related" :to="item.path" :key="item.name">{{ $t('log.link.' + item.name) }}

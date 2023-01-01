@@ -44,7 +44,7 @@
     "loading": "Loading",
     "log": {
         "2fa": "Two-factor verification code",
-        "ActiveAccount": {
+        "active_account": {
             "error_code": "Error detail:",
             "error_tip": "Sorry, an error occurred and the activation of the nmTeam account failed. \nPlease contact nmTeam support for assistance.",
             "error_title": "Failed to activate nmTeam account",
