@@ -1,3 +1,4 @@
+import crypto_ from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
 
 import userModel from '../schema/user';
@@ -186,15 +187,21 @@ export class UserModel {
             throw new Error('used_user');
         }
 
-        const uuid = uuidv4();
+        const generateUUID = (username: string) => uuidv4({
+            random: crypto_.createHash('sha256').update(username).digest(),
+        });
+
+        const uuid = generateUUID(user);
         const tokenId = await TokenModel.add(TokenType.REGISTER, 1800, {
             uuid, user, pass, mail,
         });
+
         Mail.send(mail, 'register', language, {
             user,
             token: tokenId,
         });
         bus.emit('mail/send', mail, tokenId);
+
         return true;
     }
 
