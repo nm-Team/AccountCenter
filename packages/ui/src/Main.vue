@@ -4,10 +4,16 @@
             <i class="background" :style="{ backgroundImage: 'url(' + backgroundImage[theme] + ')' }"></i>
             <div class="frameContainer">
                 <div class="header">
-                    <div class="logo" alt="nmTeam Logo" :style="{ backgroundImage: exploded ? 'none' : null }"
+                    <div class="logo nmLogo" alt="nmTeam Logo"
+                        :style="{ backgroundImage: exploded ? 'none' : null, width: exploded ? '5em' : '' }"
                         @click="easterEgg">{{
-                                exploded ? "💥💦😢💦🧃" : ""
-                        }}</div>
+        exploded ? "💥💦😢💦🧃" : ""
+}}</div>
+                    <font-awesome-icon :class="{ connectIcon: true, show: oauthIconShow ? true : false }"
+                        icon="fa-solid fa-xmark" />
+                    <div :class="{ logo: true, hidden: oauthIconShow ? false : true }"
+                        :alt="$t('main.oauth_client_icon_alt')" :style="{ backgroundImage: `url(${oauthIconURL})` }">
+                    </div>
                 </div>
                 <router-view @getdata="setData"></router-view>
                 <div class="footer">
@@ -47,6 +53,8 @@ export default {
                     container: `theme-${window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'}`,
                 },
             }),
+            oauthIconURL: null,
+            oauthIconShow: false,
         };
     },
     provide() {
@@ -55,10 +63,10 @@ export default {
         };
     },
     mounted() {
-        window.matchMedia('(prefers-color-scheme: dark)')
-            .addEventListener('change', () => {
-                this.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            });
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            this.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        });
+        this.showOauthIcon();
     },
     methods: {
         easterEgg() {
@@ -80,6 +88,16 @@ export default {
         isInManagePage() {
             this.inManagePage = this.$router.currentRoute.path.indexOf('/manage') > -1;
         },
+        showOauthIcon() {
+            if (this.$route.query.client_id && this.$route.query.client_icon) {
+                this.oauthIconURL = this.$route.query.client_icon ?? null;
+                setTimeout(() => {
+                    this.oauthIconShow = true;
+                }, 200);
+            } else {
+                this.oauthIconShow = false;
+            }
+        },
     },
     watch: {
         $route(to, from) {
@@ -90,6 +108,7 @@ export default {
                 document.querySelector('.manageContainer .main').scrollTop = 0;
                 document.querySelector('.pageContent').scrollTop = 0;
             }
+            this.showOauthIcon();
         },
     },
 };

@@ -33,18 +33,59 @@ body [data-theme=dark] {
     background-color: var(--frame-background);
     line-height: 1.7;
 
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
     .logo {
-        width: 100%;
+        width: 45px;
         height: 45px;
-        background-image: var(--icon);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
         margin: 24px 0 10px 0;
         text-align: center;
         font-size: 30px;
+        border-radius: 50%;
+        opacity: 1;
+        position: relative;
+        z-index: 2;
+        flex-shrink: 0;
+        transition: all .8s ease-in-out;
+
+        &.nmLogo {
+            background-image: var(--icon);
+        }
+
+        &.hidden {
+            width: 0px;
+            height: 0px;
+            opacity: 0;
+            visibility: hidden;
+        }
     }
 
+    svg.connectIcon {
+        width: 2px;
+        height: 27px;
+        opacity: -2;
+        margin: 24px 0 10px 0;
+        transition: all 0.8s ease-in-out, height 1.4s ease-in-out, width 1.4s ease-in-out;
+        position: relative;
+        z-index: 1;
+        left: -38px;
+
+        &.show {
+            width: 27px;
+            height: 27px;
+            margin: 24px 10px 10px 10px;
+            opacity: 1;
+            left: 0;
+        }
+    }
 
     h1 {
         font-size: 24px;
@@ -129,7 +170,7 @@ body [data-theme=dark] {
         }
     }
 
-    .useAnotherAccount{
+    .useAnotherAccount {
         display: block;
         width: 100%;
         text-align: center;

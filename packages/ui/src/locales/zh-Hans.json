@@ -506,5 +506,8 @@
             "second": "秒前"
         }
     },
-    "unknown": "未知"
+    "unknown": "未知",
+    "main": {
+        "oauth_client_icon_alt": "授权 App 图片"
+    }
 }

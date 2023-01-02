@@ -506,5 +506,8 @@
     "authorize_scope": {
         "email": "メールを受け取る",
         "profile": "アカウント情報を取得する"
+    },
+    "main": {
+        "oauth_client_icon_alt": "アプリの画像を承認"
     }
 }

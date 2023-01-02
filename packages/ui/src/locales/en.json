@@ -506,5 +506,8 @@
     "authorize_scope": {
         "email": "Access your email",
         "profile": "Access your account information"
+    },
+    "main": {
+        "oauth_client_icon_alt": "Authorize App Image"
     }
 }

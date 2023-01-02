@@ -506,5 +506,8 @@
     "authorize_scope": {
         "email": "獲取你的郵箱",
         "profile": "獲取你的賬號信息"
+    },
+    "main": {
+        "oauth_client_icon_alt": "授權 App 圖片"
     }
 }
