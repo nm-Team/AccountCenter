@@ -1,6 +1,7 @@
 <template>
-    <h1>{{ $t("log.authorize_page.title", { app: oauth.client_name }) }}</h1>
-    <p class="h1then" v-if="oauth.client_name"
+    <h1 v-if="!isFatalError && oauth.client_name">{{ $t("log.authorize_page.title", { app: oauth.client_name }) }}</h1>
+    <h1 v-else>{{ $t('log.authorize_page.title_error') }}</h1>
+    <p class="h1then" v-if="oauth.client_name && !isFatalError"
         v-html="$t('log.authorize_page.continue', { app: `<b>${oauth.client_name}</b>` })">
     </p>
     <RoundedUser :user="user" :showswitch="true" :style="{ 'marginTop': '-6px', 'marginBottom': '20px' }"
@@ -24,7 +25,7 @@
                 <div class="scopeName">{{ $t('authorize_scope.' + scope) }}</div>
             </div>
         </div>
-        <button :class="{ processing: processing }">{{ $t("log.authorize_page.submit") }}</button>
+        <button :class="{ processing: processing }" v-if="!isFatalError">{{ $t("log.authorize_page.submit") }}</button>
     </form>
     <div class="related">
         <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{ $t('log.link.' + item.name) }}

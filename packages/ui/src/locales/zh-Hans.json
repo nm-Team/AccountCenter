@@ -145,7 +145,8 @@
             "continue": "登录 {app}",
             "submit": "授权并继续",
             "app_permission_scope_title": "此 App 需要以下权限以继续：",
-            "account_switch_button_title": "点击此处切换账号"
+            "account_switch_button_title": "点击此处切换账号",
+            "title_error": "授权时遇到了问题"
         }
     },
     "manage": {

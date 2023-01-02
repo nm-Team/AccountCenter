@@ -39,7 +39,8 @@
         "userinfo_get_failed": "獲取用戶信息失敗。",
         "username_empty": "請輸入用戶名。",
         "wrong_pass": "密碼錯誤。",
-        "wrong_user": "用戶名錯誤。"
+        "wrong_user": "用戶名錯誤。",
+        "authorize_page_invalid_request": "此請求的參數無效，請重試。"
     },
     "loading": "加載中",
     "log": {
@@ -134,7 +135,15 @@
             "tip": "請設置您的新密碼。\n如果你成功地進行了郵箱認證，我們會為你重置密碼。",
             "title": "重置密碼"
         },
-        "username": "用戶名"
+        "username": "用戶名",
+        "authorize_page": {
+            "app_permission_scope_title": "此 App 需要以下權限以繼續：",
+            "title": "使用 nmTeam 賬號",
+            "title_error": "授權時遇到了問題",
+            "continue": "登錄 {app}",
+            "submit": "授權並繼續",
+            "account_switch_button_title": "點擊此處切換賬號"
+        }
     },
     "manage": {
         "account_safety_block": {
@@ -466,5 +475,9 @@
             "second": "秒前"
         }
     },
-    "unknown": "未知"
+    "unknown": "未知",
+    "authorize_scope": {
+        "email": "獲取你的郵箱",
+        "profile": "獲取你的賬號信息"
+    }
 }
