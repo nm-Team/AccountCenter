@@ -383,7 +383,8 @@
         "pages": {
             "admin": {
                 "title": "nmTeam 账号管理员",
-                "users": "用户管理"
+                "users": "用户管理",
+                "oauth_manager": "OAuth App 管理"
             },
             "authorization": "授权的 App",
             "index": "首页",
@@ -464,6 +465,24 @@
             "submit": "验证",
             "tip": "您正在对账号做关键操作，因此我们需要验证您的身份。",
             "title": "进入 Sudo 模式"
+        },
+        "admin_oauth_manager": {
+            "title": "Oauth App 管理器",
+            "client_id": "ID",
+            "client_name": "App 名称",
+            "creator": "创建者",
+            "redirect_uri": "跳转 URL",
+            "client_secret": "密钥",
+            "scope": "权限",
+            "action": "操作",
+            "edit": "编辑",
+            "delete": "删除",
+            "create_new_client": "新建",
+            "filter_label": "过滤器",
+            "filter_all": "全部",
+            "filter_official": "官方",
+            "filter_unofficial": "非官方",
+            "search_label": "搜索"
         }
     },
     "next_step": "下一步",

@@ -41,6 +41,7 @@ import ChangeAvatar from './views/manage/ChangeAvatar.vue';
 import ChangePassword from './views/manage/ChangePassword.vue';
 import Manage from './views/manage/Manage.vue';
 import Manage2FA from './views/manage/Manage2FA.vue';
+import ManageAdminOauth from './views/manage/ManageAdminOauth.vue';
 import ManageAuthorization from './views/manage/ManageAuthorization.vue';
 import ManageIndex from './views/manage/ManageIndex.vue';
 import ManageInfos from './views/manage/ManageInfos.vue';
@@ -73,6 +74,14 @@ const routes = [
             { path: 'two-factor-authentication-setup', name: 'setup_2fa', component: Manage2FA },
             { path: 'change-password', name: 'change_password', component: ChangePassword },
             { path: 'change-avatar', name: 'change_avatar', component: ChangeAvatar },
+            {
+                path: 'admin',
+                name: 'admin',
+                children:
+                    [
+                        { path: 'oauth', name: 'oauth', component: ManageAdminOauth },
+                    ],
+            },
             { path: ':pathMatch(.*)*', name: 'manage_notfound', component: ManageNotFound },
         ],
     },

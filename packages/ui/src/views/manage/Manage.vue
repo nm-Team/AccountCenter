@@ -204,6 +204,11 @@ export default {
                                                 path: 'admin/users',
                                                 icon: 'user-gear',
                                             },
+                                            {
+                                                name: 'admin.oauth_manager',
+                                                path: 'admin/oauth',
+                                                icon: 'key',
+                                            },
                                         ],
                                     },
                                 );

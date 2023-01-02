@@ -379,7 +379,8 @@
         "pages": {
             "admin": {
                 "title": "nmTeam アカウント管理者",
-                "users": "ユーザー管理"
+                "users": "ユーザー管理",
+                "oauth_manager": "OAuth アプリ管理"
             },
             "authorization": "承認済みアプリ",
             "index": "表紙",
@@ -460,6 +461,24 @@
             "submit": "確認",
             "tip": "アカウントで重要なアクションを実行しているため、本人確認を行う必要があります。",
             "title": "sudoモードに入る"
+        },
+        "admin_oauth_manager": {
+            "action": "操作する",
+            "client_id": "ID",
+            "client_name": "アプリ名",
+            "client_secret": "鍵",
+            "create_new_client": "新築",
+            "creator": "クリエイター",
+            "delete": "消去",
+            "edit": "編集",
+            "filter_all": "全て",
+            "filter_label": "フィルター",
+            "filter_official": "正式",
+            "filter_unofficial": "非公式",
+            "redirect_uri": "リダイレクト URL",
+            "scope": "パーミッション",
+            "search_label": "探す",
+            "title": "Oauth アプリ マネージャー"
         }
     },
     "next_step": "次のステップ",

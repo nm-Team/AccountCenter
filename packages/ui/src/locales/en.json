@@ -379,7 +379,8 @@
         "pages": {
             "admin": {
                 "title": "nmTeam Account Administrator",
-                "users": "User Management"
+                "users": "User Management",
+                "oauth_manager": "OAuth App Management"
             },
             "authorization": "Authorized Apps",
             "index": "Index",
@@ -460,6 +461,24 @@
             "submit": "Verify",
             "tip": "You are performing critical action on your account, so we need to verify your identity.",
             "title": "Entering Sudo mode"
+        },
+        "admin_oauth_manager": {
+            "search_label": "Search",
+            "title": "Oauth App Manager",
+            "create_new_client": "Create",
+            "filter_label": "Filter",
+            "filter_all": "All",
+            "filter_official": "Official",
+            "filter_unofficial": "Unofficial",
+            "client_secret": "Client Secret",
+            "client_name": "Client Name",
+            "edit": "Edit",
+            "creator": "Creator",
+            "delete": "Delete",
+            "scope": "Scope",
+            "client_id": "ID",
+            "redirect_uri": "Redirect URI",
+            "action": "Actions"
         }
     },
     "next_step": "Next step",
