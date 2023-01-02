@@ -169,7 +169,7 @@ export default {
                 }
             }, (error) => {
                 console.log(error);
-                this.saveMessage = this.$t('error.userinfo_get_failed')
+                this.saveMessage = this.$t('manage.infos.change.error')
                     + this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'network_error'}`);
                 this.isError = true;
             });
