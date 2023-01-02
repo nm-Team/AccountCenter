@@ -9,7 +9,7 @@
     </RoundedUser>
     <form class="form" method="post" :action="oauthJump">
         <div class="authorize" v-if="!isFatalError && oauth">
-            <p class="h1then">{{ $tc('log.authorize_page.app_permission_scope_title',oauth.scope?.length) }}</p>
+            <p class="h1then">{{ $tc('log.authorize_page.app_permission_scope_title', oauth.scope?.length) }}</p>
         </div>
         <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
         <div style="visibility: hidden; height: 0;">
@@ -28,7 +28,9 @@
         <button :class="{ processing: processing }" v-if="!isFatalError">{{ $t("log.authorize_page.submit") }}</button>
     </form>
     <div class="related">
-        <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{ $t('log.link.' + item.name) }}
+        <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{
+        $t('log.link.' + item.name)
+}}
         </router-link>
     </div>
 </template>
@@ -163,24 +165,24 @@ export default {
 .scopesDisplayBox {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    padding-bottom: 7px;
+    margin: -9px auto;
+    padding-bottom: 13px;
 
     .scope {
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin: 6px 0;
+        margin: 4px 0;
 
         .icon {
-            font-size: 18px;
+            font-size: 16px;
             width: 23px;
             margin-right: 5px;
             flex-shrink: 0;
         }
 
         .scopeName {
-            font-size: 16px;
+            font-size: 15px;
         }
     }
 }
