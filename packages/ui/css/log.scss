@@ -73,10 +73,11 @@ body [data-theme=dark] {
         height: 27px;
         opacity: -2;
         margin: 24px 0 10px 0;
-        transition: all 0.8s ease-in-out, height 1.4s ease-in-out, width 1.4s ease-in-out;
+        transition: all 0.8s ease-in-out, height 1.6s ease-in-out, width 1.6s ease-in-out, transform 1.6s cubic-bezier(0, 0, 0.6, 1.28);
         position: relative;
         z-index: 1;
         left: -38px;
+        transform: rotate(-120deg);
 
         &.show {
             width: 27px;
@@ -84,6 +85,7 @@ body [data-theme=dark] {
             margin: 24px 10px 10px 10px;
             opacity: 1;
             left: 0;
+            transform: rotate(0deg);
         }
     }
 
