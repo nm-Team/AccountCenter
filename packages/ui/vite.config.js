@@ -5,6 +5,7 @@ export default defineConfig({
     plugins: [vue()],
     base: './',
     server: {
+        hmr: false,
         watch: {
             usePolling: true,
         },

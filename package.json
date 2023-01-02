@@ -7,6 +7,7 @@
     "core:watch": "yarn workspace core watch",
     "mail:dev": "yarn workspace mail dev",
     "ui:dev": "yarn workspace ui dev",
+    "ui:watch": "yarn workspace ui watch",
     "ui:build": "yarn workspace ui build"
   },
   "private": "true",

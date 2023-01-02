@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
+    "watch": "nodemon --watch src --ext * --exec vite",
     "build": "vite build"
   },
   "dependencies": {
@@ -36,5 +37,8 @@
     "vue-qr": "^4.0.9",
     "vue-router": "^4.1.0",
     "vue-sweetalert2": "^5.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
