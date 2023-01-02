@@ -54,6 +54,7 @@ export default {
     border-radius: 50px;
     margin: 10px auto;
     padding: 0;
+    max-width: 100%;
     height: 31.5px;
     border: 1px solid var(--user-border-color);
     cursor: pointer;
@@ -65,6 +66,7 @@ export default {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        flex-shrink: 0;
     }
 
     .nick {
@@ -83,6 +85,7 @@ export default {
         margin-right: 5px;
         font-size: 15px;
         fill: var(--user-switcher-color);
+        flex-shrink: 0;
     }
 }
 </style>
