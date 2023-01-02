@@ -290,6 +290,12 @@
                 "cut_description": "将您的图片裁剪为正方形。",
                 "title": "上传头像",
                 "upload_button": "从设备上选择图片"
+            },
+            "delete_confirm": {
+                "title": "删除头像",
+                "text": "你确定要清除当前的头像设置，并还原账号头像为默认值吗？",
+                "confirm": "确定",
+                "cancel": "取消"
             }
         },
         "change_password": {

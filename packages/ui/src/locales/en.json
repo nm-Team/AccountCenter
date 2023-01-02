@@ -286,6 +286,12 @@
                 "cut_description": "Crop your image to a square.",
                 "title": "upload avatar",
                 "upload_button": "Choose an image from your device"
+            },
+            "delete_confirm": {
+                "cancel": "Cancel",
+                "title": "Delete Avatar",
+                "text": "Are you sure you want to clear the current avatar settings and restore the account avatar to the default value?",
+                "confirm": "Confirm"
             }
         },
         "change_password": {

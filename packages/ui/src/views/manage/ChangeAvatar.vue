@@ -48,7 +48,7 @@
                     <p>{{ $t('manage.change_avatar.type.upload_description') }}</p>
                 </div>
             </button>
-            <button class="type" @click="avatarType = 'default'; setAvatar(); ">
+            <button class="type" @click="deleteAvatarConfirm()">
                 <font-awesome-icon :icon="['fas', 'ban']"></font-awesome-icon>
                 <div>
                     <b>{{ $t('manage.change_avatar.type.default') }}</b>
@@ -57,13 +57,13 @@
             </button>
             <br />
             <p><a href="https://gravatar.com" onclick="" target="_blank">{{
-                    $t('manage.change_avatar.type.gravatar_knowledge')
-            }}</a></p>
+        $t('manage.change_avatar.type.gravatar_knowledge')
+}}</a></p>
 
             <p>{{ $t('manage.change_avatar.public_warning') }}</p>
             <p>{{ $t('manage.change_avatar.legal_warning') }} <a href="javascript:" @click="showLegal = true">{{
-                    $t('manage.change_avatar.legal_more')
-            }}</a></p>
+        $t('manage.change_avatar.legal_more')
+}}</a></p>
         </div>
     </div>
     <div class="block" v-if="changeStep == 1 && avatarType == 'gravatar'">
@@ -286,6 +286,21 @@ export default {
                 console.log(error);
                 this.changeStep = 10;
                 this.errorMsg = this.$t(`error.${error.graphQLErrors && error.graphQLErrors[0] ? error.graphQLErrors[0].message : 'network_error'}`);
+            });
+        },
+        deleteAvatarConfirm() {
+            this.defaultSwal.fire({
+                title: this.$t('manage.change_avatar.delete_confirm.title'),
+                text: this.$t('manage.change_avatar.delete_confirm.text'),
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: this.$t('manage.change_avatar.delete_confirm.confirm'),
+                cancelButtonText: this.$t('manage.change_avatar.delete_confirm.cancel'),
+            }).then((result) => {
+                if (result.value) {
+                    this.avatarType = 'default';
+                    this.setAvatar();
+                }
             });
         },
         setData(name, data) {

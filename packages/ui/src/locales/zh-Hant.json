@@ -286,6 +286,12 @@
                 "cut_description": "將您的圖片裁剪為正方形。",
                 "title": "上傳頭像",
                 "upload_button": "從設備上選擇圖片"
+            },
+            "delete_confirm": {
+                "cancel": "取消",
+                "title": "刪除頭像",
+                "text": "你確定要清除當前的頭像設置，並還原賬號頭像為默認值嗎？",
+                "confirm": "確定"
             }
         },
         "change_password": {
