@@ -475,11 +475,11 @@
             "title": "进入 Sudo 模式"
         },
         "admin_oauth_manager": {
-            "title": "Oauth App 管理器",
+            "title": "OAuth App 管理器",
             "client_id": "ID",
             "client_name": "App 名称",
             "creator": "创建者",
-            "redirect_uri": "跳转 URL",
+            "redirect_uri": "Redirect Uri",
             "client_secret": "密钥",
             "scope": "权限",
             "action": "操作",

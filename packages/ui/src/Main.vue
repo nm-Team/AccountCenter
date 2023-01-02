@@ -66,7 +66,7 @@ export default {
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
             this.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         });
-        this.showOauthIcon();
+        this.showOAuthIcon();
     },
     methods: {
         easterEgg() {
@@ -88,7 +88,7 @@ export default {
         isInManagePage() {
             this.inManagePage = this.$router.currentRoute.path.indexOf('/manage') > -1;
         },
-        showOauthIcon() {
+        showOAuthIcon() {
             if (this.$route.query.client_id && this.$route.query.client_icon) {
                 this.oauthIconURL = this.$route.query.client_icon ?? null;
                 setTimeout(() => {
@@ -108,7 +108,7 @@ export default {
                 document.querySelector('.manageContainer .main').scrollTop = 0;
                 document.querySelector('.pageContent').scrollTop = 0;
             }
-            this.showOauthIcon();
+            this.showOAuthIcon();
         },
     },
 };

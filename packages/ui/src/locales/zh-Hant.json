@@ -483,10 +483,10 @@
             "filter_label": "過濾器",
             "filter_official": "官方",
             "filter_unofficial": "非官方",
-            "redirect_uri": "跳轉 URL",
+            "redirect_uri": "Redirect Uri",
             "scope": "權限",
             "search_label": "搜索",
-            "title": "Oauth App 管理器"
+            "title": "OAuth App 管理器"
         }
     },
     "next_step": "下一步",

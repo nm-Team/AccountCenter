@@ -52,7 +52,7 @@
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
-    name: 'ManageAdminOauth',
+    name: 'ManageAdminOAuth',
     data() {
         return {
             oauthAppList: [

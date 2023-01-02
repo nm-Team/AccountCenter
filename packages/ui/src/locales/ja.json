@@ -483,10 +483,10 @@
             "filter_label": "フィルター",
             "filter_official": "正式",
             "filter_unofficial": "非公式",
-            "redirect_uri": "リダイレクト URL",
+            "redirect_uri": "リダイレクト URI",
             "scope": "パーミッション",
             "search_label": "探す",
-            "title": "Oauth アプリ マネージャー"
+            "title": "OAuth アプリ マネージャー"
         }
     },
     "next_step": "次のステップ",

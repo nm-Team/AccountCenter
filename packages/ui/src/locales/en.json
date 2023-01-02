@@ -472,7 +472,7 @@
         },
         "admin_oauth_manager": {
             "search_label": "Search",
-            "title": "Oauth App Manager",
+            "title": "OAuth App Manager",
             "create_new_client": "Create",
             "filter_label": "Filter",
             "filter_all": "All",
@@ -485,7 +485,7 @@
             "delete": "Delete",
             "scope": "Scope",
             "client_id": "ID",
-            "redirect_uri": "Redirect URI",
+            "redirect_uri": "Redirect Uri",
             "action": "Actions"
         }
     },
