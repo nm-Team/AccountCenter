@@ -2,7 +2,7 @@
     <div :class="{ labelInput: true, autoSetWidth: autosetwidth }" :autofocus="autofocus" :readonly="readonly"
         :disabled="disabled">
         <label
-            :class="{ isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true, fitButton: fitbutton }">
+            :class="{ isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true, fitButton: fitbutton }" :type="type">
             {{ $t(label) }}</label>
         <div
             :class="{ innerInput: true, isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true, fitButton: fitbutton }">
@@ -178,6 +178,10 @@ export default {
 
         &.fitButton {
             top: 14px;
+        }
+
+        &[type=select]{
+            max-width: calc(99% - 30px);
         }
     }
 
