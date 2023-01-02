@@ -40,7 +40,8 @@
         "username_empty": "please enter username.",
         "wrong_pass": "The password is error.",
         "wrong_user": "Username error.",
-        "authorize_page_invalid_request": "The parameters for this request are invalid, please try again."
+        "authorize_page_invalid_request": "The parameters for this request are invalid, please try again or contact App Support.",
+        "authorize_page_invalid_scope": "This request requests an invalid scope, please try again or contact App Support."
     },
     "loading": "Loading",
     "log": {
@@ -140,9 +141,10 @@
             "continue": "With Your nmTeam Account",
             "title": "Continue Using {app}",
             "submit": "Authorize and Continue",
-            "app_permission_scope_title": "The app requires permissions below to continue:",
+            "app_permission_scope_title": "The app requires the permission below to continue:|The app requires permissions below to continue:",
             "account_switch_button_title": "Click here to switch account",
-            "title_error": "A problem happened"
+            "title_error": "A problem happened",
+            "unknown_app": "Unknown Client"
         }
     },
     "manage": {
@@ -502,7 +504,7 @@
     },
     "unknown": "Unknown",
     "authorize_scope": {
-        "email": "Get your email",
-        "profile": "Get your account information"
+        "email": "Access your email",
+        "profile": "Access your account information"
     }
 }

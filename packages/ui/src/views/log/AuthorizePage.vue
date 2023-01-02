@@ -9,7 +9,7 @@
     </RoundedUser>
     <form class="form" method="post" :action="oauthJump">
         <div class="authorize" v-if="!isFatalError && oauth">
-            <p class="h1then">{{ $t('log.authorize_page.app_permission_scope_title') }}</p>
+            <p class="h1then">{{ $tc('log.authorize_page.app_permission_scope_title',oauth.scope?.length) }}</p>
         </div>
         <p v-if="serviceMsg" :class="{ error: isError, serviceMsg }">{{ serviceMsg }}</p>
         <div style="visibility: hidden; height: 0;">

@@ -15,7 +15,7 @@
     "error": {
         "2fa_empty": "请输入正确的双重验证代码。",
         "agree_terms": "请阅读并同意 nmTeam 服务协议和隐私政策。",
-        "authorize_page_invalid_request": "此请求的参数无效，请重试。",
+        "authorize_page_invalid_request": "此请求的参数无效，请重试或联系 App 支持。",
         "captcha_empty": "请输入验证码。",
         "confirm_password_empty": "请输入确认密码。",
         "email_empty": "请输入电子邮箱。",
@@ -44,7 +44,8 @@
         "userinfo_get_failed": "获取用户信息失败。",
         "username_empty": "请输入用户名。",
         "wrong_pass": "密码错误。",
-        "wrong_user": "用户名错误。"
+        "wrong_user": "用户名错误。",
+        "authorize_page_invalid_scope": "此请求申请的权限无效，请重试或联系 App 支持。"
     },
     "loading": "加载中",
     "log": {
@@ -146,7 +147,8 @@
             "submit": "授权并继续",
             "app_permission_scope_title": "此 App 需要以下权限以继续：",
             "account_switch_button_title": "点击此处切换账号",
-            "title_error": "授权时遇到了问题"
+            "title_error": "授权时遇到了问题",
+            "unknown_app": "未知 App"
         }
     },
     "manage": {

@@ -40,7 +40,8 @@
         "username_empty": "請輸入用戶名。",
         "wrong_pass": "密碼錯誤。",
         "wrong_user": "用戶名錯誤。",
-        "authorize_page_invalid_request": "此請求的參數無效，請重試。"
+        "authorize_page_invalid_request": "此請求的參數無效，請重試。",
+        "authorize_page_invalid_scope": "此請求申請的權限無效，請重試或聯繫 App 支持。"
     },
     "loading": "加載中",
     "log": {
@@ -142,7 +143,8 @@
             "title_error": "授權時遇到了問題",
             "continue": "登錄 {app}",
             "submit": "授權並繼續",
-            "account_switch_button_title": "點擊此處切換賬號"
+            "account_switch_button_title": "點擊此處切換賬號",
+            "unknown_app": "未知 App"
         }
     },
     "manage": {

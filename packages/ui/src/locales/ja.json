@@ -40,7 +40,8 @@
         "username_empty": "ユーザー名を入力してください。",
         "wrong_pass": "間違ったパスワード。",
         "wrong_user": "ユーザー名エラー。",
-        "authorize_page_invalid_request": "このリクエストのパラメータが無効です。もう一度お試しください。"
+        "authorize_page_invalid_request": "このリクエストのパラメータが無効です。もう一度お試しください。",
+        "authorize_page_invalid_scope": "このリクエストは無効な権限を要求しています。もう一度お試しいただくか、アプリ サポートにお問い合わせください。"
     },
     "loading": "読み込み中",
     "log": {
@@ -142,7 +143,8 @@
             "title_error": "承認中に問題が発生しました",
             "continue": "{アプリ} にログイン",
             "submit": "承認して続行",
-            "account_switch_button_title": "アカウントの切り替えはこちら"
+            "account_switch_button_title": "アカウントの切り替えはこちら",
+            "unknown_app": "不明なアプリ"
         }
     },
     "manage": {
