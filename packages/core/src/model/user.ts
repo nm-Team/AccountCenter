@@ -64,10 +64,11 @@ export class UserModel {
         const doc = await userModel.findOne({
             uuid,
         });
+
         if (doc === null) {
             return UserModel.defaultUdoc;
         }
-        console.log(doc._tfa, doc._tfa !== undefined, doc._tfa !== null);
+
         return {
             uuid,
             _pass: doc.pass,

@@ -133,7 +133,7 @@ const resolvers = {
             if (parent.token === undefined) {
                 throw new Error('invalid_parameters');
             }
-            const ret: any = await SessionModel.getSesions(parent.token);
+            const ret: any = await SessionModel.getSessions(parent.token);
             return ret;
         },
         async logoutSession(parent: any, args: any): Promise<boolean> {

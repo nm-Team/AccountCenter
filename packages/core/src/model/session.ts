@@ -11,7 +11,7 @@ export interface SessionDoc extends Object {
 }
 
 export class SessionModel {
-    static async getSesions(tokenId: string) {
+    static async getSessions(tokenId: string) {
         const token: any = await TokenModel.get(tokenId, TokenType.SESSION);
         if (token === null) {
             throw new Error('invalid_token');
@@ -42,7 +42,7 @@ export class SessionModel {
     }
 
     static async deleteAll(tokenId: string) {
-        const sessionList = await SessionModel.getSesions(tokenId);
+        const sessionList = await SessionModel.getSessions(tokenId);
         // eslint-disable-next-line no-restricted-syntax
         for (const session of sessionList) {
             TokenModel.delete(session.uuid, TokenType.SESSION);
