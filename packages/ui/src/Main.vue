@@ -5,7 +5,7 @@
             <div class="frameContainer">
                 <div class="header">
                     <div class="logo nmLogo" alt="nmTeam Logo"
-                        :style="{ backgroundImage: exploded ? 'none' : null, width: exploded ? '5em' : '' }"
+                        :style="{ backgroundImage: exploded ? 'none' : null, width: exploded ? '7em' : '' }"
                         @click="easterEgg">{{
         exploded ? "💥💦😢💦🧃" : ""
 }}</div>

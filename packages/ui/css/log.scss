@@ -58,6 +58,7 @@ body [data-theme=dark] {
 
         &.nmLogo {
             background-image: var(--icon);
+            transition: all 0s;
         }
 
         &.hidden {
