@@ -165,7 +165,14 @@ const routes = [
                     title: 'manage.change_password.title',
                 },
             },
-            { path: 'change-avatar', name: 'change_avatar', component: ChangeAvatar },
+            {
+                path: 'change-avatar',
+                name: 'change_avatar',
+                component: ChangeAvatar,
+                meta: {
+                    title: 'manage.change_avatar.title',
+                },
+            },
             {
                 path: 'admin',
                 name: 'admin',
