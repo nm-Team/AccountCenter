@@ -41,7 +41,7 @@ import ChangeAvatar from './views/manage/ChangeAvatar.vue';
 import ChangePassword from './views/manage/ChangePassword.vue';
 import Manage from './views/manage/Manage.vue';
 import Manage2FA from './views/manage/Manage2FA.vue';
-import ManageAdminOAuth from './views/manage/ManageAdminOAuth.vue';
+// import ManageAdminOAuth from './views/manage/ManageAdminOAuth.vue';
 import ManageAuthorization from './views/manage/ManageAuthorization.vue';
 import ManageIndex from './views/manage/ManageIndex.vue';
 import ManageInfos from './views/manage/ManageInfos.vue';
@@ -79,7 +79,7 @@ const routes = [
                 name: 'admin',
                 children:
                     [
-                        { path: 'oauth', name: 'oauth', component: ManageAdminOAuth },
+                        // { path: 'oauth', name: 'oauth', component: ManageAdminOAuth },
                     ],
             },
             { path: ':pathMatch(.*)*', name: 'manage_notfound', component: ManageNotFound },
