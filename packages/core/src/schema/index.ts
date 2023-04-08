@@ -70,9 +70,9 @@ type twoFactorAuthResolvers {
 
 type oauthResolvers {
     "Create a OAuth client"
-    createClient(name: String, redirectUri: String): OAuthClient,
+    createClient(name: String, description: String, redirectUri: String): OAuthClient,
     "Update a OAuth client"
-    updateClient(id: String, name: String, redirectUri: String): Boolean,
+    updateClient(clientId: String, name: String, description: String, icon: String, redirectUri: String): Boolean,
     "Get client by ClientId"
     getClient(clientId: String, userId: String): [OAuthClient],
     "getClientList"
@@ -83,6 +83,8 @@ type OAuthClient {
     clientId: String,
     clientSecret: String,
     name: String,
+    description: String,
+    icon: String,
     redirectUris: [String],
     ownerId: String,
 }

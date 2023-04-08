@@ -8,6 +8,9 @@ import {
 
 export interface OAuthClient extends Document {
     name: string;
+    description: string;
+    icon: string;
+    regTime: Date;
     clientId: string;
     clientSecret: string;
     redirectUris: string[];
@@ -188,6 +191,7 @@ export default class OAuth {
 
     static createClient = async (
         name: string,
+        description: string,
         redirectUris: string[],
         ownerId: string,
     ) => {
@@ -199,6 +203,9 @@ export default class OAuth {
         const clientSecret = crypto_.createHash('sha256').update(uuidv4()).digest('hex');
         await OAuthClientModel.create({
             name,
+            description,
+            icon: '',
+            regTime: new Date(),
             clientId,
             clientSecret,
             redirectUris,
@@ -210,20 +217,29 @@ export default class OAuth {
 
     static updateClient = async (
         clientId: string,
-        name: string,
-        redirectUris: string[],
+        name: string | undefined,
+        description: string | undefined,
+        icon: string | undefined,
+        redirectUris: string[] | undefined,
     ) => {
         if (!clientId) {
             return false;
         }
 
-        if (!name && !redirectUris) {
+        const info = await OAuth.getClient(clientId);
+        if (!info) {
+            return false;
+        }
+
+        if (!name && !redirectUris && !description && !icon) {
             return false;
         }
 
         await OAuthClientModel.updateOne({ clientId }, {
-            name,
-            redirectUris,
+            name: name || info.name,
+            redirectUris: redirectUris || info.redirectUris,
+            description: description || info.description,
+            icon: icon || info.icon,
         });
 
         return true;

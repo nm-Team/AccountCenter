@@ -2,6 +2,9 @@ import db from '../model/mongo';
 
 const OAuthClientSchema = db.schema({
     name: String,
+    description: String,
+    icon: String,
+    regTime: Date,
     clientId: String,
     clientSecret: String,
     redirectUris: [String],

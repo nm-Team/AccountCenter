@@ -225,25 +225,32 @@ const resolvers = {
     oauthResolvers: {
         async createClient(parent: any, args: any): Promise<boolean | { clientId?: string, clientSecret?: string }> {
             console.log(parent, args);
-            if (args.name === undefined || args.redirectUri === undefined) {
+            if (args.name === undefined || args.redirectUri === undefined || args.description === undefined) {
                 throw new Error('invalid_parameters');
             }
             if (!args.redirectUri.startsWith('https://') && !args.redirectUri.startsWith('http://')) {
                 throw new Error('invalid_redirect_uri');
             }
 
-            const client = await OAuth.createClient(args.name, [args.redirectUri], parent.user.uuid);
+            const client = await OAuth.createClient(args.name, args.description, [args.redirectUri], parent.user.uuid);
             return client;
         },
         async updateClient(_: any, args: any): Promise<boolean> {
-            if (args.name === undefined || args.redirectUri === undefined) {
+            if (args.clientId === undefined
+                || (args.redirectUri === undefined
+                    && args.name === undefined
+                    && args.icon === undefined
+                    && args.description === undefined)) {
                 throw new Error('invalid_parameters');
             }
-            if (!args.redirectUri.startsWith('https://') && !args.redirectUri.startsWith('http://')) {
-                throw new Error('invalid_parameters');
+            if (args.redirectUri !== undefined && !args.redirectUri.startsWith('https://') && !args.redirectUri.startsWith('http://')) {
+                throw new Error('invalid_redirect_uri');
             }
-
-            const ret = await OAuth.updateClient(args.clientId, args.name, args.redirectUri);
+            let { redirectUri } = args;
+            if (redirectUri !== undefined) {
+                redirectUri = [args.redirectUri];
+            }
+            const ret = await OAuth.updateClient(args.clientId, args.name, args.description, args.icon, redirectUri);
             return ret;
         },
         async getClient(_: any, args: any): Promise<any> {
