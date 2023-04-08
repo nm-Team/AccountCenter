@@ -210,7 +210,11 @@
             "reg_at": "registered {time}",
             "report_abuse": "Report App Abuse",
             "search": "Search apps",
-            "title": "Authorized Apps"
+            "title": "Authorized Apps",
+            "create_a_new_app": "Create New App",
+            "manage_my_apps": "Manage My Oauth Apps",
+            "manage_my_apps_text": "Manage Apps Text",
+            "detail": "Detail"
         },
         "change_avatar": {
             "chosen": {
@@ -489,6 +493,21 @@
             "client_id": "ID",
             "redirect_uri": "Redirect Uri",
             "action": "Actions"
+        },
+        "create_oauth_app": {
+            "success": {
+                "content": "Your client ID: {clientId}\nYour client Secret: {clientSecret}",
+                "title": "New Oauth App created successfully"
+            },
+            "title": "Create Oauth App",
+            "description": "App Description",
+            "submit": "Create",
+            "name": "App Name",
+            "redirect_uri": "Redirect Uri",
+            "error_unknown": "Something went wrong. Check the data you provided and retry.",
+            "error_name_empty": "The App name is empty.",
+            "error_redirect_uri_invalid": "The redirect uri is invalid.",
+            "page_description": "Use the nmTeam account login for your own services to simplify the development process and achieve superior results."
         }
     },
     "next_step": "Next step",

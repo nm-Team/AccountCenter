@@ -210,7 +210,11 @@
             "reg_at": "註冊於 {time}",
             "report_abuse": "舉報 App 濫用",
             "search": "搜索 App",
-            "title": "授權的 App"
+            "title": "授權的 App",
+            "create_a_new_app": "創建新 App",
+            "detail": "詳細",
+            "manage_my_apps": "管理我的 Oauth App",
+            "manage_my_apps_text": "管理 App 文本。"
         },
         "change_avatar": {
             "chosen": {
@@ -489,6 +493,21 @@
             "scope": "權限",
             "search_label": "搜索",
             "title": "OAuth App 管理器"
+        },
+        "create_oauth_app": {
+            "error_unknown": "出了些問題。檢查您提供的數據並重試。",
+            "page_description": "使用 nmTeam 帳戶登錄您自己的服務，以簡化開發過程並獲得卓越的結果。",
+            "description": "App 描述",
+            "error_name_empty": "App 名稱為空。",
+            "name": "App 名稱",
+            "error_redirect_uri_invalid": "App 重定向 Uri 非法。",
+            "submit": "創建",
+            "redirect_uri": "重定向 Uri",
+            "title": "創建 Oauth App",
+            "success": {
+                "title": "新 Oauth App 創建成功",
+                "content": "你的 Client ID: {clientId}\n你的 Client 密鑰：{clientSecret}"
+            }
         }
     },
     "next_step": "下一步",

@@ -32,6 +32,28 @@
             autofocus="false" @getdata="setData" @keyup.enter="0">
         </label-input>
     </div>
+    <div class="block">
+        <p class="title">{{ $t('manage.authorization.manage_my_apps') }}
+            <button class="blockButton" style="float: right; margin-top: 0;" @click="goToPage('manage_create_oauth_app')">
+                {{ $t('manage.authorization.create_a_new_app') }}</button>
+        </p>
+        <p>{{ $t('manage.authorization.manage_my_apps_text') }}</p>
+        <label-input model="searchKeyword" type="text" label="manage.authorization.search" enablescale="false"
+            autofocus="false" @getdata="setData" @keyup.enter="0">
+        </label-input>
+        <div class="oAppView" v-for="app in myOauthAppsList" :key="app.clientId">
+            <div class="icon" :style="{ backgroundImage: `url(${app.icon})` }"></div>
+            <div class="infos">
+                <p class="appName">{{ app.name }}</p>
+                <p class="appDescription">{{ app.clientId }}</p>
+                <p class="appDescription" v-if="app.description">{{ app.description }}</p>
+                <p class="appDescription" v-else>{{ $t('manage.authorization.no_description') }}</p>
+                <a class="action" href="javascript:" target="_self" @click="openOauthDetailPage(app.clientId)">{{
+                    $t('manage.authorization.detail')
+                }}</a>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
 import { gql } from 'apollo-boost';
@@ -68,6 +90,7 @@ export default {
                     },
                 ],
             },
+            myOauthAppsList: [],
         };
     },
     props: {
@@ -76,16 +99,50 @@ export default {
             required: true,
         },
     },
+    inject: ['defaultSwal'],
     mounted() {
+        this.getMyOauthApps();
     },
     watch: {
         user: {
             handler() {
+                this.getMyOauthApps();
             },
             deep: true,
         },
     },
     methods: {
+        getMyOauthApps() {
+            apolloClient.query({
+                query: gql`query Oauth($token: String) {
+  oauth(token: $token) {
+    getClientList {
+      clientId
+      name
+      description
+      icon
+      redirectUris
+      ownerId
+    }
+  }
+}
+`,
+                variables: {
+                    token: this.user.token,
+                },
+            }).then(({ data }) => {
+                console.log(data);
+                this.myOauthAppsList = data.oauth.getClientList;
+            }, (error) => {
+                console.log(error);
+            });
+        },
+        goToPage(page) {
+            this.$router.push({ name: page, query: this.$route.query });
+        },
+        openOauthDetailPage(clientId) {
+            this.$router.push({ name: 'manage_oauth_detail', query: { clientId } });
+        },
     },
 };
 </script>

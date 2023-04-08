@@ -214,7 +214,11 @@
             "reg_at": "注册于 {time}",
             "report_abuse": "举报 App 滥用",
             "search": "搜索 App",
-            "title": "授权的 App"
+            "title": "授权的 App",
+            "create_a_new_app": "创建新 App",
+            "detail": "详细信息",
+            "manage_my_apps": "管理我的 Oauth App",
+            "manage_my_apps_text": "管理 App 文本。"
         },
         "change_avatar": {
             "chosen": {
@@ -493,6 +497,21 @@
             "filter_official": "官方",
             "filter_unofficial": "非官方",
             "search_label": "搜索"
+        },
+        "create_oauth_app": {
+            "error_unknown": "出现了一些错误。请确认你输入的数据正确并重试。",
+            "page_description": "使用 nmTeam 帐户登录您自己的服务，以简化开发过程并获得卓越的结果。",
+            "description": "App 描述",
+            "error_name_empty": "App 名称为空。",
+            "name": "App 名称",
+            "error_redirect_uri_invalid": "App 重定向 Uri 非法。",
+            "submit": "创建",
+            "redirect_uri": "重定向 Uri",
+            "title": "创建 Oauth App",
+            "success": {
+                "title": "新 Oauth App 创建成功",
+                "content": "你的 Client ID: {clientId}\n你的 Client 密钥：{clientSecret}"
+            }
         }
     },
     "next_step": "下一步",

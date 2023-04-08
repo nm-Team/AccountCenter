@@ -210,7 +210,11 @@
             "reg_at": "{time} に登録",
             "report_abuse": "アプリの不正使用を報告",
             "search": "アプリを検索",
-            "title": "承認済みアプリ"
+            "title": "承認済みアプリ",
+            "create_a_new_app": "新しいアプリを作成",
+            "detail": "詳細",
+            "manage_my_apps": "Oauth アプリを管理する",
+            "manage_my_apps_text": "アプリ テキストを管理します。"
         },
         "change_avatar": {
             "chosen": {
@@ -489,6 +493,21 @@
             "scope": "パーミッション",
             "search_label": "探す",
             "title": "OAuth アプリ マネージャー"
+        },
+        "create_oauth_app": {
+            "error_unknown": "エラーが発生しました。指定したデータを確認して、再試行してください。",
+            "page_description": "独自のサービスに nmTeam アカウント ログインを使用して、開発プロセスを簡素化し、優れた結果を達成します。",
+            "error_name_empty": "アプリ名が空です。",
+            "name": "アプリ名",
+            "error_redirect_uri_invalid": "アプリのリダイレクト URI が無効です。",
+            "submit": "作成",
+            "redirect_uri": "リダイレクト URI",
+            "title": "OAuth アプリを作成する",
+            "success": {
+                "title": "新しい Oauth アプリが正常に作成されました",
+                "content": "あなたのクライアント ID: {clientId}\nクライアント シークレット: {clientSecret}"
+            },
+            "description": "アプリの説明"
         }
     },
     "next_step": "次のステップ",
