@@ -75,7 +75,8 @@
             "step1": {
                 "tip": "Please check your email address that you registered nmTeam Account with, and get further instructions about resetting your password.",
                 "title": "Check Your Email"
-            }
+            },
+            "title": "Forget Password"
         },
         "get_support_page": {
             "button": "Contact nmTeam Support",
@@ -343,7 +344,8 @@
         "index": {
             "title": "Hello, {name}",
             "welcome_photo_alt": "nmTeam Account",
-            "welcome_text": "Welcome to the nmTeam account. \n<br>nmTeam account not only helps you log in to nmTeam services, but can also be used to verify your identity on third-party websites."
+            "welcome_text": "Welcome to the nmTeam account. \n<br>nmTeam account not only helps you log in to nmTeam services, but can also be used to verify your identity on third-party websites.",
+            "browser_title": "Manage"
         },
         "infos": {
             "change": {
@@ -509,5 +511,6 @@
     },
     "main": {
         "oauth_client_icon_alt": "Authorize App Image"
-    }
+    },
+    "page_title": "nmTeam Account Center"
 }

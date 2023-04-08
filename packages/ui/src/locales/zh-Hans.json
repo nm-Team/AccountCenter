@@ -79,7 +79,8 @@
             "step1": {
                 "tip": "请确认您注册 nmTeam 账号时使用的电子邮箱，那里有关于找回 nmTeam 账号的进一步措施。",
                 "title": "确认电子邮箱"
-            }
+            },
+            "title": "忘记密码"
         },
         "get_support_page": {
             "button": "联系 nmTeam 支持",
@@ -347,7 +348,8 @@
         "index": {
             "title": "{name}，你好",
             "welcome_photo_alt": "nmTeam 账号",
-            "welcome_text": "欢迎使用 nmTeam 账号。<br>nmTeam 账号不仅助您登录 nmTeam 服务，更可用于在第三方网站验证身份。"
+            "welcome_text": "欢迎使用 nmTeam 账号。<br>nmTeam 账号不仅助您登录 nmTeam 服务，更可用于在第三方网站验证身份。",
+            "browser_title": "管理"
         },
         "infos": {
             "change": {
@@ -509,5 +511,6 @@
     "unknown": "未知",
     "main": {
         "oauth_client_icon_alt": "授权 App 图片"
-    }
+    },
+    "page_title": "nmTeam 账号中心"
 }
