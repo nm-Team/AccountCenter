@@ -75,7 +75,8 @@
             "step1": {
                 "tip": "nmTeam アカウントの登録に使用したメールアドレスを確認してください。 nmTeam アカウントを復元するための追加の手順があります。",
                 "title": "Eメール確認"
-            }
+            },
+            "title": "パスワードを忘れた"
         },
         "get_support_page": {
             "button": "nmTeam サポートに連絡する",
@@ -343,7 +344,8 @@
         "index": {
             "title": "こんにちは, {name}",
             "welcome_photo_alt": "nmTeam アカウント",
-            "welcome_text": "nmTeam アカウントへようこそ。 \n<br>  nmTeam アカウントは、 nmTeam サービスへのログインに役立つだけでなく、サードパーティのWebサイトで本人確認を行うためにも使用できます。"
+            "welcome_text": "nmTeam アカウントへようこそ。 \n<br>  nmTeam アカウントは、 nmTeam サービスへのログインに役立つだけでなく、サードパーティのWebサイトで本人確認を行うためにも使用できます。",
+            "browser_title": "管理"
         },
         "infos": {
             "change": {
@@ -509,5 +511,6 @@
     },
     "main": {
         "oauth_client_icon_alt": "アプリの画像を承認"
-    }
+    },
+    "page_title": "nmTeam アカウント センター"
 }

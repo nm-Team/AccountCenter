@@ -75,7 +75,8 @@
             "step1": {
                 "tip": "請確認您註冊 nmTeam 賬號時使用的電子郵箱，那裡有關於找回 nmTeam 賬號的進一步措施。",
                 "title": "確認電子郵箱"
-            }
+            },
+            "title": "忘記密碼"
         },
         "get_support_page": {
             "button": "聯繫 nmTeam 支持",
@@ -343,7 +344,8 @@
         "index": {
             "title": "{name}，你好",
             "welcome_photo_alt": "nmTeam 賬號",
-            "welcome_text": "歡迎使用 nmTeam 賬號。 \n<br>nmTeam 賬號不僅助您登錄 nmTeam 服務，更可用於在第三方網站驗證身份。"
+            "welcome_text": "歡迎使用 nmTeam 賬號。 \n<br>nmTeam 賬號不僅助您登錄 nmTeam 服務，更可用於在第三方網站驗證身份。",
+            "browser_title": "管理"
         },
         "infos": {
             "change": {
@@ -509,5 +511,6 @@
     },
     "main": {
         "oauth_client_icon_alt": "授權 App 圖片"
-    }
+    },
+    "page_title": "nmTeam 賬戶中心"
 }

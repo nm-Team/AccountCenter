@@ -7,8 +7,8 @@
                     <div class="logo nmLogo" alt="nmTeam Logo"
                         :style="{ backgroundImage: exploded ? 'none' : null, width: exploded ? '7em' : '' }"
                         @click="easterEgg">{{
-        exploded ? "💥💦😢💦🧃" : ""
-}}</div>
+                            exploded ? "💥💦😢💦🧃" : ""
+                        }}</div>
                     <font-awesome-icon :class="{ connectIcon: true, show: oauthIconShow ? true : false }"
                         icon="fa-solid fa-xmark" />
                     <div :class="{ logo: true, hidden: oauthIconShow ? false : true }"
@@ -103,6 +103,9 @@ export default {
         $route(to, from) {
             // this.isInManagePage();
             console.log(to, from);
+            // Change page title
+            console.log(this.$t(to.meta?.title), to.meta?.title);
+            document.title = (this.$t(to.meta?.title) !== to.meta?.title ? `${this.$t(to.meta?.title)} - ` : '') + this.$t('page_title');
             this.inManagePage = to.path.indexOf('/manage') > -1;
             if (document.querySelector('.manageContainer')) {
                 document.querySelector('.manageContainer .main').scrollTop = 0;

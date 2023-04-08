@@ -54,38 +54,151 @@ library.add(fas);
 
 // import routes
 const routes = [
-    { path: '/', name: 'login', component: LogIn },
-    { path: '/choose-account', name: 'choose-account', component: ChooseAccount },
-    { path: '/register', name: 'register', component: Register },
-    { path: '/forget-password', name: 'forget_password', component: ForgetPassword },
-    { path: '/reset-password', name: 'reset_password', component: ResetPassword },
-    { path: '/support', name: 'support', component: GetSupport },
-    { path: '/active', name: 'active', component: Active },
+    {
+        path: '/',
+        name: 'login',
+        component: LogIn,
+        meta: {
+            title: 'log.login_page.title',
+        },
+    },
+    {
+        path: '/choose-account',
+        name: 'choose-account',
+        component: ChooseAccount,
+        meta: {
+            title: 'log.choose_account_page.title',
+        },
+    },
+    {
+        path: '/register',
+        name: 'register',
+        component: Register,
+        meta: {
+            title: 'log.register_page.title',
+        },
+    },
+    {
+        path: '/forget-password',
+        name: 'forget_password',
+        component: ForgetPassword,
+        meta: {
+            title: 'log.forget_password_page.title',
+        },
+    },
+    {
+        path: '/reset-password',
+        name: 'reset_password',
+        component: ResetPassword,
+        meta: {
+            title: 'log.reset_password_page.title',
+        },
+    },
+    {
+        path: '/support',
+        name: 'support',
+        component: GetSupport,
+        meta: {
+            title: 'log.get_support_page.title',
+        },
+    },
+    {
+        path: '/active',
+        name: 'active',
+        component: Active,
+        meta: {
+            title: 'log.active_account.title',
+        },
+    },
     { path: '/authorize', name: 'authorize', component: AuthorizePage },
     {
         path: '/manage',
         name: 'manage',
         component: Manage,
         children: [
-            { path: '', name: 'manage_index', component: ManageIndex },
-            { path: 'safety', name: 'manage_safety', component: ManageSafety },
-            { path: 'infos', name: 'manage_infos', component: ManageInfos },
-            { path: 'authorization', name: 'authorization', component: ManageAuthorization },
-            { path: 'two-factor-authentication-setup', name: 'setup_2fa', component: Manage2FA },
-            { path: 'change-password', name: 'change_password', component: ChangePassword },
+            {
+                path: '',
+                name: 'manage_index',
+                component: ManageIndex,
+                meta: {
+                    title: 'manage.index.browser_title',
+                },
+            },
+            {
+                path: 'safety',
+                name: 'manage_safety',
+                component: ManageSafety,
+                meta: {
+                    title: 'manage.account_safety_block.title',
+                },
+            },
+            {
+                path: 'infos',
+                name: 'manage_infos',
+                component: ManageInfos,
+                meta: {
+                    title: 'manage.infos.title',
+                },
+            },
+            {
+                path: 'authorization',
+                name: 'authorization',
+                component: ManageAuthorization,
+                meta: {
+                    title: 'manage.authorization.title',
+                },
+            },
+            {
+                path: 'two-factor-authentication-setup',
+                name: 'setup_2fa',
+                component: Manage2FA,
+                meta: {
+                    title: 'manage.setup_2fa.title',
+                },
+
+            },
+            {
+                path: 'change-password',
+                name: 'change_password',
+                component: ChangePassword,
+                meta: {
+                    title: 'manage.change_password.title',
+                },
+            },
             { path: 'change-avatar', name: 'change_avatar', component: ChangeAvatar },
             {
                 path: 'admin',
                 name: 'admin',
                 children:
                     [
-                        // { path: 'oauth', name: 'oauth', component: ManageAdminOAuth },
+                        // {
+                        //     path: 'oauth',
+                        //     name: 'oauth',
+                        //     component: ManageAdminOAuth,
+                        //     meta: {
+                        //         title: 'manage.admin_oauth_manager.title',
+                        //     },
+                        // },
                     ],
             },
-            { path: ':pathMatch(.*)*', name: 'manage_notfound', component: ManageNotFound },
+            {
+                path: ':pathMatch(.*)*',
+                name: 'manage_notfound',
+                component: ManageNotFound,
+                meta: {
+                    title: 'log.not_found_page.title',
+                },
+            },
         ],
     },
-    { path: '/:pathMatch(.*)*', name: 'not_found', component: NotFound },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'not_found',
+        component: NotFound,
+        meta: {
+            title: 'log.not_found_page.title',
+        },
+    },
 ];
 
 const router = createRouter({
