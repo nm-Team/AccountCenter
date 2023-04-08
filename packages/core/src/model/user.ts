@@ -191,7 +191,7 @@ export class UserModel {
 
         const generateUUID = (username: string) => uuidv4({
             random: crypto_.createHash('sha256').update(username).digest(),
-        });
+        }); // use username as seed
 
         const uuid = generateUUID(user);
         const tokenId = await TokenModel.add(TokenType.REGISTER, 1800, {

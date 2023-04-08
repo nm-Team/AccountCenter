@@ -1,4 +1,5 @@
 import twoFactorAuth from './model/2fa';
+import OAuth from './model/oauth';
 import { SessionDoc, SessionModel } from './model/session';
 import SudoModel from './model/sudo';
 import { TokenModel, TokenType } from './model/token';
@@ -11,6 +12,20 @@ const resolvers = {
         },
         twoFactorAuth(_: any, args: any): any {
             return args;
+        },
+        async oauth(_: any, args: any): Promise<any> {
+            if (args.token === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const token: any = await TokenModel.get(args.token, TokenType.SESSION);
+            if (token === null) {
+                throw new Error('invalid_token');
+            }
+            const user = await UserModel.getByUUID(token.data.uuid);
+            if (user.role !== 'admin') {
+                throw new Error('invalid_permissions');
+            }
+            return { user, ...args };
         },
         sudoMode(_any: any, args: any): any {
             return args;
@@ -205,6 +220,49 @@ const resolvers = {
             }
             await UserModel.setByUUID(token.data.uuid, { _tfa: undefined });
             return true;
+        },
+    },
+    oauthResolvers: {
+        async createClient(parent: any, args: any): Promise<boolean | { clientId?: string, clientSecret?: string }> {
+            console.log(parent, args);
+            if (args.name === undefined || args.redirectUri === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            if (!args.redirectUri.startsWith('https://') && !args.redirectUri.startsWith('http://')) {
+                throw new Error('invalid_redirect_uri');
+            }
+
+            const client = await OAuth.createClient(args.name, [args.redirectUri], parent.user.uuid);
+            return client;
+        },
+        async updateClient(_: any, args: any): Promise<boolean> {
+            if (args.name === undefined || args.redirectUri === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            if (!args.redirectUri.startsWith('https://') && !args.redirectUri.startsWith('http://')) {
+                throw new Error('invalid_parameters');
+            }
+
+            const ret = await OAuth.updateClient(args.clientId, args.name, args.redirectUri);
+            return ret;
+        },
+        async getClient(_: any, args: any): Promise<any> {
+            if (args.clientId === undefined && args.userId === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            if (args.clientId !== undefined) {
+                const ret = await OAuth.getClient(args.clientId);
+                return [ret];
+            }
+            if (args.userId !== undefined) {
+                const ret = await OAuth.getClientByUser(args.userId);
+                return ret;
+            }
+            return [];
+        },
+        async getClientList(): Promise<any> {
+            const ret = await OAuth.getClientList();
+            return ret;
         },
     },
     sudoModeResolvers: {

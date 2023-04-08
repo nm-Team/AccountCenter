@@ -68,6 +68,25 @@ type twoFactorAuthResolvers {
     disable(code: String): Boolean,
 }
 
+type oauthResolvers {
+    "Create a OAuth client"
+    createClient(name: String, redirectUri: String): OAuthClient,
+    "Update a OAuth client"
+    updateClient(id: String, name: String, redirectUri: String): Boolean,
+    "Get client by ClientId"
+    getClient(clientId: String, userId: String): [OAuthClient],
+    "getClientList"
+    getClientList: [OAuthClient],
+}
+
+type OAuthClient {
+    clientId: String,
+    clientSecret: String,
+    name: String,
+    redirectUris: [String],
+    ownerId: String,
+}
+
 type sudoModeInfo {
     uuid: String,
     sudo: Boolean,
@@ -85,6 +104,7 @@ type sudoModeResolvers {
 type Query {
     User(uuid: String, user: String, mail: String, token: String): UserResolvers,
     twoFactorAuth(token: String): twoFactorAuthResolvers,
+    oauth(token: String): oauthResolvers,
     sudoMode(token: String): sudoModeResolvers,
 }
 `;

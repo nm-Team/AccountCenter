@@ -9,13 +9,14 @@ import express from 'express';
 import { centerUrl, port } from './config';
 import bus from './model/bus';
 import log from './model/logger';
-import * as OAuth from './model/oauth';
+import OAuth from './model/oauth';
 import { TokenModel, TokenType } from './model/token';
 import resolvers from './resolvers';
 import typeDefs from './schema';
 import { isMail } from './utils';
 
 const app = express();
+let server: any;
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -246,8 +247,18 @@ const init = async () => {
         console.log(req.query, req.body);
     });
 
-    app.listen({ port }, () => {
+    server = app.listen({ port }, () => {
         bus.emit('app/started');
+    });
+};
+
+const shutdown = () => {
+    server.close(() => {
+        log('SYS', 'Server(express) stopped.');
+        apollo.stop().then(() => {
+            log('SYS', 'Server(Apollo) stopped.');
+            process.exit(0);
+        });
     });
 };
 
@@ -268,9 +279,11 @@ bus.on('mail/send', async (mail: string, context: string) => {
 });
 
 process.on('exit', (code) => {
+    shutdown();
     log('SYS', `Server exit with code ${code}`);
 });
 
 process.on('SIGINT', () => {
+    shutdown();
     log('SYS', 'Server exit with SIGINT');
 });
