@@ -104,8 +104,7 @@ export default {
             // this.isInManagePage();
             console.log(to, from);
             // Change page title
-            console.log(this.$t(to.meta?.title), to.meta?.title);
-            document.title = (this.$t(to.meta?.title) !== to.meta?.title ? `${this.$t(to.meta?.title)} - ` : '') + this.$t('page_title');
+            document.title = (to.meta?.title && this.$t(to.meta?.title) !== to.meta?.title ? `${this.$t(to.meta?.title)} - ` : '') + this.$t('page_title');
             this.inManagePage = to.path.indexOf('/manage') > -1;
             if (document.querySelector('.manageContainer')) {
                 document.querySelector('.manageContainer .main').scrollTop = 0;
