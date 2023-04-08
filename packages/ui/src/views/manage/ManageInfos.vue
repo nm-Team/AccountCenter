@@ -13,14 +13,13 @@
     </div>
     <div class="block">
         <p class="title">{{ $t('manage.infos.changeable.title') }}</p>
-        <label-input v-for="item in changeableForm" :key="item.id" :model="item.id" :type="item.type"
-            :value="item.value" :label="item.label" @getdata="infoOnEdit">
+        <label-input v-for="item in changeableForm" :key="item.id" :model="item.id" :type="item.type" :value="item.value"
+            :label="item.label" @getdata="infoOnEdit">
         </label-input>
         <p>{{ saveMessage }}</p>
         <div class="btns" v-if="inEdit">
             <div>
-                <button style="display: none;" class="blockButton"
-                    @click="this.inEdit = false; this.initializeUserInfo()">
+                <button style="display: none;" class="blockButton" @click="this.inEdit = false; this.initializeUserInfo()">
                     {{ $t('cancel') }}</button>
             </div>
             <div class="right">

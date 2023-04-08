@@ -30,9 +30,9 @@ export default {
     data() {
         return {
             form: [
-                { id: 'name', type: 'text', label: 'manage.create_oauth_app.name' },
-                { id: 'description', type: 'text', label: 'manage.create_oauth_app.description' },
-                { id: 'redirectUri', type: 'text', label: 'manage.create_oauth_app.redirect_uri' },
+                { id: 'name', type: 'text', label: 'manage.oauth_app.name' },
+                { id: 'description', type: 'text', label: 'manage.oauth_app.description' },
+                { id: 'redirectUri', type: 'text', label: 'manage.oauth_app.redirect_uri' },
             ],
             name: '',
             description: '',

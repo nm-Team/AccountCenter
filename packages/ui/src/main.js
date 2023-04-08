@@ -40,6 +40,7 @@ import ResetPassword from './views/log/ResetPassword.vue';
 import ChangeAvatar from './views/manage/ChangeAvatar.vue';
 import ChangePassword from './views/manage/ChangePassword.vue';
 import CreateAuthorization from './views/manage/CreateAuthorization.vue';
+import EditAuthorization from './views/manage/EditAuthorization.vue';
 import Manage from './views/manage/Manage.vue';
 import Manage2FA from './views/manage/Manage2FA.vue';
 // import ManageAdminOAuth from './views/manage/ManageAdminOAuth.vue';
@@ -155,6 +156,14 @@ const routes = [
                 component: CreateAuthorization,
                 meta: {
                     title: 'manage.create_oauth_app.title',
+                },
+            },
+            {
+                path: 'manage_oauth_detail',
+                name: 'manage_oauth_detail',
+                component: EditAuthorization,
+                meta: {
+                    title: 'manage.manage.oauth_app_detail_page.title',
                 },
             },
             {

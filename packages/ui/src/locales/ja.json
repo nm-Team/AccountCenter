@@ -498,16 +498,33 @@
             "error_unknown": "エラーが発生しました。指定したデータを確認して、再試行してください。",
             "page_description": "独自のサービスに nmTeam アカウント ログインを使用して、開発プロセスを簡素化し、優れた結果を達成します。",
             "error_name_empty": "アプリ名が空です。",
-            "name": "アプリ名",
             "error_redirect_uri_invalid": "アプリのリダイレクト URI が無効です。",
             "submit": "作成",
-            "redirect_uri": "リダイレクト URI",
             "title": "OAuth アプリを作成する",
             "success": {
                 "title": "新しい Oauth アプリが正常に作成されました",
                 "content": "あなたのクライアント ID: {clientId}\nクライアント シークレット: {clientSecret}"
+            }
+        },
+        "oauth_app": {
+            "description": "アプリの説明",
+            "name": "アプリ名",
+            "redirect_uri": "リダイレクト URI",
+            "client_id": "Client ID",
+            "icon": "アイコン",
+            "error_description_empty": "プロフィールの内容が空です。",
+            "client_secret": "クライアントキー"
+        },
+        "oauth_app_detail_page": {
+            "client_info": {
+                "revoke_secret": "失効キー",
+                "content": "Oauth クライアント ID とクライアント シークレットを使用してアプリ認証を完了します。",
+                "title": "Oauth パラメータ"
             },
-            "description": "アプリの説明"
+            "edit_success": "正常に編集されました",
+            "error": "Oauth アプリの詳細の読み込み中にエラーが発生しました。",
+            "loading": "読み込んでいます...",
+            "edit": "編集"
         }
     },
     "next_step": "次のステップ",

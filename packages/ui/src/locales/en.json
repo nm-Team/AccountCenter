@@ -500,14 +500,31 @@
                 "title": "New Oauth App created successfully"
             },
             "title": "Create Oauth App",
-            "description": "App Description",
             "submit": "Create",
-            "name": "App Name",
-            "redirect_uri": "Redirect Uri",
             "error_unknown": "Something went wrong. Check the data you provided and retry.",
             "error_name_empty": "The App name is empty.",
             "error_redirect_uri_invalid": "The redirect uri is invalid.",
             "page_description": "Use the nmTeam account login for your own services to simplify the development process and achieve superior results."
+        },
+        "oauth_app": {
+            "description": "App Description",
+            "name": "App Name",
+            "redirect_uri": "Redirect Uri",
+            "client_id": "Client ID",
+            "icon": "Icon",
+            "error_description_empty": "Description is empty.",
+            "client_secret": "Client Secret"
+        },
+        "oauth_app_detail_page": {
+            "client_info": {
+                "revoke_secret": "Revoke Secret",
+                "content": "Complete app authentication with your Oauth Client ID and Client Secret.",
+                "title": "Oauth Parameters"
+            },
+            "edit_success": "Edited successfully",
+            "error": "There was an error loading Oauth App details.",
+            "loading": "Loading...",
+            "edit": "Edit"
         }
     },
     "next_step": "Next step",
