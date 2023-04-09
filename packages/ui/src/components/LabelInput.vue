@@ -2,21 +2,25 @@
     <div :class="{ labelInput: true, autoSetWidth: autosetwidth }" :autofocus="autofocus" :readonly="readonly"
         :disabled="disabled">
         <label
-            :class="{ isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true, fitButton: fitbutton }" :type="type">
+            :class="{ isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true, fitButton: fitbutton, }"
+            :type="type">
             {{ $t(label) }}</label>
         <div
-            :class="{ innerInput: true, isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true, fitButton: fitbutton }">
-            <textarea v-if="type == 'textarea'" v-model="inputVal" :type="type" :autofocus="autofocus"
-                :readonly="readonly" :disabled="disabled" @focus="this.focus = true; this.$emit('focus')"
+            :class="{ innerInput: true, isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true, fitButton: fitbutton, hasInlineButton: button, }">
+            <textarea v-if="type == 'textarea'" v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly"
+                :disabled="disabled" @focus="this.focus = true; this.$emit('focus')"
                 @blur="this.focus = false; this.$emit('blur')" @change="push(); this.$emit('change')"></textarea>
-            <select v-else-if="type == 'select'" v-model="inputVal" :type="type" :autofocus="autofocus"
-                :readonly="readonly" :disabled="disabled" @focus="this.focus = true; this.$emit('focus')"
+            <select v-else-if="type == 'select'" v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly"
+                :disabled="disabled" @focus="this.focus = true; this.$emit('focus')"
                 @blur="this.focus = false; this.$emit('blur')" @change="push(); this.$emit('change')">
                 <option v-for="item in option" :value="item.value" :key="item.value">{{ item.label }}</option>
             </select>
-            <input v-else v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly"
-                :disabled="disabled" @focus="this.focus = true; this.$emit('focus')"
-                @blur="this.focus = false; this.$emit('blur')" @change="push(); this.$emit('change')" />
+            <input v-else v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly" :disabled="disabled"
+                @focus="this.focus = true; this.$emit('focus')" @blur="this.focus = false; this.$emit('blur')"
+                @change="push(); this.$emit('change')" />
+            <button class="button" @click="buttonOnClick" :title="buttontitle" v-if="button">
+                <font-awesome-icon :icon="button" />
+            </button>
         </div>
     </div>
 </template>
@@ -74,6 +78,14 @@ export default {
         option: {
             type: Array,
             default: () => [],
+        },
+        button: {
+            type: Array,
+            default: () => [],
+        },
+        buttontitle: {
+            type: String,
+            default: '',
         },
     },
     mounted() {
@@ -140,10 +152,25 @@ export default {
             },
             deep: true,
         },
+        button: {
+            handler() {
+                this.inputVal = this.value;
+            },
+            deep: true,
+        },
+        buttontitle: {
+            handler() {
+                this.inputVal = this.value;
+            },
+            deep: true,
+        },
     },
     methods: {
         push() {
             this.$emit('getdata', this.model, this.inputVal);
+        },
+        buttonOnClick() {
+            this.$emit('buttonOnClick');
         },
     },
 };
@@ -160,6 +187,7 @@ export default {
 
     label {
         position: absolute;
+        z-index: 3;
         top: 16px;
         left: 11px;
         font-size: 16px;
@@ -180,7 +208,7 @@ export default {
             top: 14px;
         }
 
-        &[type=select]{
+        &[type=select] {
             max-width: calc(99% - 30px);
         }
     }
@@ -207,6 +235,8 @@ export default {
     }
 
     .innerInput {
+        position: relative;
+        z-index: 2;
         width: 100%;
         padding: 5px 1px;
         margin: 10px 0;
@@ -223,7 +253,6 @@ export default {
             border-width: 2px;
             border-color: var(--input-border-focus);
             padding: 4px 0;
-
         }
 
         &.isFocus.fitButton {
@@ -242,6 +271,15 @@ export default {
         overflow-x: hidden;
         text-overflow: ellipsis;
         resize: vertical;
+    }
+
+    .hasInlineButton {
+
+        input[type=text],
+        input[type=password],
+        textarea {
+            width: calc(100% - 50px);
+        }
     }
 
     textarea {
@@ -268,6 +306,28 @@ export default {
         option {
             background-color: var(--frame-background);
             color: var(--text-color);
+        }
+    }
+
+    .button {
+        width: 29px;
+        height: 29px;
+        position: absolute;
+        z-index: 4;
+        bottom: 4.2px;
+        right: 4px;
+        border-radius: 2px;
+        background: none;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--block-button-focus-background);
+        }
+
+        svg {
+            width: 50%;
+            height: 50%;
+            fill: var(--block-button-icon);
         }
     }
 }
