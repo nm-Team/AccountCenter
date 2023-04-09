@@ -142,7 +142,7 @@
             "app_permission_scope_title": "このアプリを続行するには、次の権限が必要です:",
             "title": "nmTeam アカウントを使用する",
             "title_error": "承認中に問題が発生しました",
-            "continue": "{アプリ} にログイン",
+            "continue": "{app} にログイン",
             "submit": "承認して続行",
             "account_switch_button_title": "アカウントの切り替えはこちら",
             "unknown_app": "不明なアプリ"
