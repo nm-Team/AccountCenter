@@ -1,6 +1,7 @@
 <template>
     <h1>{{ $t("log.login_page.title") }}</h1>
-    <p class="h1then" v-if="$route.query.client_name">{{ $t('log.login_page.continue', { app: $route.query.client_name }) }}</p>
+    <p class="h1then" v-if="$route.query.client_name">{{ $t('log.login_page.continue', { app: $route.query.client_name }) }}
+    </p>
     <form class="form" @submit.prevent="login">
         <label-input model="username" type="text" label="log.username" enablescale="false" autofocus="true"
             @getdata="setData" @blur="check2FA()" @change="check2FA()">
@@ -23,8 +24,8 @@
     </router-link>
     <div class="related">
         <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{
-        $t('log.link.' + item.name)
-            }}
+            $t('log.link.' + item.name)
+        }}
         </router-link>
     </div>
 </template>

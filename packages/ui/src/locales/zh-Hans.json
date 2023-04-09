@@ -523,7 +523,8 @@
             "client_info": {
                 "title": "Oauth 参数",
                 "content": "使用你的 Oauth Client ID 和 Client 密钥完成 App 身份验证。",
-                "revoke_secret": "撤销密钥"
+                "revoke_secret": "撤销密钥",
+                "copy": "拷贝"
             },
             "title": "Oauth App 详情",
             "loading": "正在加载...",

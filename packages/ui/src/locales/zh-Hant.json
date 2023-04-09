@@ -519,7 +519,8 @@
             "client_info": {
                 "revoke_secret": "撤銷密鑰",
                 "content": "使用你的 Oauth Client ID 和 Client 密鑰完成 App 身份驗證。",
-                "title": "Oauth 參數"
+                "title": "Oauth 參數",
+                "copy": "拷貝"
             },
             "edit_success": "編輯成功",
             "error": "加載 Oauth App 詳情時出現了錯誤。",

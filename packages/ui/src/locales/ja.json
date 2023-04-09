@@ -519,7 +519,8 @@
             "client_info": {
                 "revoke_secret": "失効キー",
                 "content": "Oauth クライアント ID とクライアント シークレットを使用してアプリ認証を完了します。",
-                "title": "Oauth パラメータ"
+                "title": "Oauth パラメータ",
+                "copy": "コピー"
             },
             "edit_success": "正常に編集されました",
             "error": "Oauth アプリの詳細の読み込み中にエラーが発生しました。",

@@ -519,7 +519,8 @@
             "client_info": {
                 "revoke_secret": "Revoke Secret",
                 "content": "Complete app authentication with your Oauth Client ID and Client Secret.",
-                "title": "Oauth Parameters"
+                "title": "Oauth Parameters",
+                "copy": "Copy"
             },
             "edit_success": "Edited successfully",
             "error": "There was an error loading Oauth App details.",

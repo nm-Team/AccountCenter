@@ -10,7 +10,8 @@
         <p class="title">{{ $t('manage.oauth_app_detail_page.client_info.title') }}</p>
         <p>{{ $t('manage.oauth_app_detail_page.client_info.content') }}</p>
         <label-input v-for="item in clientConstForm" :key="item.id" :model="item.id" :type="item.type" :label="item.label"
-            readonly :autofocus="item.autofocus" :value="item.value">
+            readonly :autofocus="item.autofocus" :value="item.value" :button="['fas', 'copy']"
+            :buttontitle="copyButtonTitle" @buttonOnClick="copy(item.value)">
         </label-input>
         <div class="btns">
             <div class="right">
@@ -102,6 +103,9 @@ export default {
                 });
             });
             return redirectUrisForm;
+        },
+        copyButtonTitle() {
+            return this.$t('manage.oauth_app_detail_page.client_info.copy');
         },
     },
     methods: {
@@ -203,6 +207,14 @@ export default {
         },
         redirectUrisOnEdit(id, data) {
             this.oauthAppRedirectUrisEdited[id] = data;
+        },
+        copy(value) {
+            const el = document.createElement('textarea');
+            el.value = value;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
         },
     },
 };
