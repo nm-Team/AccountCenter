@@ -81,7 +81,7 @@ export default {
         },
         button: {
             type: Array,
-            default: () => [],
+            default: () => null,
         },
         buttontitle: {
             type: String,
