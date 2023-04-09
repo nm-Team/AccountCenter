@@ -274,6 +274,8 @@ export default class OAuth {
 
         const clientList = clients.map((e) => ({
             name: e.name,
+            description: e.description,
+            icon: e.icon,
             clientId: e.clientId,
             ownerId: e.ownerId,
             redirectUris: e.redirectUris,
