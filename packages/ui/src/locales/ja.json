@@ -524,7 +524,17 @@
             "edit_success": "正常に編集されました",
             "error": "Oauth アプリの詳細の読み込み中にエラーが発生しました。",
             "loading": "読み込んでいます...",
-            "edit": "編集"
+            "edit": "編集",
+            "update": "更新する",
+            "edit_block": {
+                "title": "Oauth アプリ情報の編集",
+                "content": "アプリの名前、説明を表示または変更し、アプリのアイコンを設定します。"
+            },
+            "edit_redirect_uris": {
+                "title": "リダイレクト URI の編集",
+                "content": "Oauth 検証が完了した後にリダイレクトされる検証 Uri を設定します。"
+            },
+            "add_redirect_uri": "リダイレクト URI を追加"
         }
     },
     "next_step": "次のステップ",

@@ -529,7 +529,17 @@
             "loading": "正在加载...",
             "error": "加载 Oauth App 详情时出现了错误。",
             "edit": "编辑",
-            "edit_success": "编辑成功"
+            "edit_success": "编辑成功",
+            "update": "更新",
+            "edit_block": {
+                "title": "编辑 Oauth App 信息",
+                "content": "查看或修改此 App 的名称、描述，并为 App 设置图标。"
+            },
+            "edit_redirect_uris": {
+                "title": "编辑重定向 Uri",
+                "content": "设置 Oauth 验证完成后跳转的验证 Uri。"
+            },
+            "add_redirect_uri": "添加重定向 Uri"
         }
     },
     "next_step": "下一步",

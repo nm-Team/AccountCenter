@@ -20,6 +20,8 @@
         </div>
     </div>
     <div class="block" v-if="!detailLoading && oauthAppDetail">
+        <p class="title">{{ $t('manage.oauth_app_detail_page.edit_block.title') }}</p>
+        <p>{{ $t('manage.oauth_app_detail_page.edit_block.content') }}</p>
         <label-input v-for="item in appInfoForm" :key="item.id" :model="item.id" :type="item.type" :label="item.label"
             :autofocus="item.autofocus" @getdata="detailOnEdit" :value="item.value">
         </label-input>
@@ -28,6 +30,24 @@
             <div class="right">
                 <button class="blockButton" @click="this.editOauthApp()">
                     {{ $t('manage.oauth_app_detail_page.edit') }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="block" v-if="!detailLoading && oauthAppDetail">
+        <p class="title">{{ $t('manage.oauth_app_detail_page.edit_redirect_uris.title') }}</p>
+        <p>{{ $t('manage.oauth_app_detail_page.edit_redirect_uris.content') }}</p>
+        <label-input v-for="item in redirectUrisForm" :key="item.id" :model="item.id" :type="item.type" :label="item.label"
+            :autofocus="item.autofocus" @getdata="redirectUrisOnEdit" :value="item.value">
+        </label-input>
+        <p>{{ this.redirectUrisServiceMsg }}</p>
+        <div class="btns">
+            <div class="left">
+                <button class="blockButton" @click="this.oauthAppRedirectUrisEdited.push('')">
+                    {{ $t('manage.oauth_app_detail_page.add_redirect_uri') }}</button>
+            </div>
+            <div class="right">
+                <button class="blockButton" @click="this.editOauthAppRedirectUris()">
+                    {{ $t('manage.oauth_app_detail_page.update') }}</button>
             </div>
         </div>
     </div>
@@ -50,6 +70,8 @@ export default {
             ],
             oauthAppDetail: false,
             oauthAppDetailEdited: false,
+            oauthAppRedirectUris: [],
+            oauthAppRedirectUrisEdited: [],
             serviceMsg: '',
         };
     },
@@ -69,6 +91,17 @@ export default {
                 this.getOauthAppDetail();
             },
             deep: true,
+        },
+    },
+    computed: {
+        redirectUrisForm() {
+            const redirectUrisForm = [];
+            this.oauthAppRedirectUrisEdited.forEach((item, index) => {
+                redirectUrisForm.push({
+                    id: `${index}`, type: 'text', label: 'manage.oauth_app.redirect_uri', value: item,
+                });
+            });
+            return redirectUrisForm;
         },
     },
     methods: {
@@ -119,6 +152,8 @@ export default {
                         id: 'icon', type: 'text', label: 'manage.oauth_app.icon', value: this.oauthAppDetail.icon,
                     },
                 ];
+                this.oauthAppRedirectUris = this.oauthAppDetail.redirectUris;
+                this.oauthAppRedirectUrisEdited = this.oauthAppRedirectUris;
                 this.detailLoading = false;
             }, (error) => {
                 console.log(error);
@@ -135,9 +170,9 @@ export default {
                 return;
             }
             apolloClient.query({
-                query: gql`query Oauth($clientId: String, $name: String, $description: String, $icon: String, $redirectUri: String, $token: String) {
+                query: gql`query Oauth($clientId: String, $name: String, $description: String, $icon: String, $token: String) {
   oauth(token: $token) {
-    updateClient(clientId: $clientId, name: $name, description: $description, icon: $icon, redirectUri: $redirectUri)
+    updateClient(clientId: $clientId, name: $name, description: $description, icon: $icon)
   }
 }
 `,
@@ -147,7 +182,6 @@ export default {
                     name: this.oauthAppDetailEdited.name,
                     description: this.oauthAppDetailEdited.description,
                     icon: this.oauthAppDetailEdited.icon,
-                    redirectUri: this.oauthAppDetailEdited.redirectUri,
                 },
             }).then(({ data }) => {
                 console.log(data);
@@ -166,6 +200,9 @@ export default {
         },
         detailOnEdit(name, data) {
             this.oauthAppDetailEdited[name] = data;
+        },
+        redirectUrisOnEdit(id, data) {
+            this.oauthAppRedirectUrisEdited[id] = data;
         },
     },
 };

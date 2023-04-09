@@ -524,7 +524,17 @@
             "edit_success": "Edited successfully",
             "error": "There was an error loading Oauth App details.",
             "loading": "Loading...",
-            "edit": "Edit"
+            "edit": "Edit",
+            "update": "Update",
+            "edit_block": {
+                "title": "Edit Oauth App Information",
+                "content": "View or modify the app's name, description, and set an icon for the app."
+            },
+            "edit_redirect_uris": {
+                "title": "Edit Redirect Uri",
+                "content": "Set the verification Uri redirected after Oauth verification is completed."
+            },
+            "add_redirect_uri": "Add redirect Uri"
         }
     },
     "next_step": "Next step",
