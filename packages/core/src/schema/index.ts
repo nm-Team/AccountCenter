@@ -103,11 +103,19 @@ type sudoModeResolvers {
     info: sudoModeInfo,
 }
 
+type adminResolvers {
+    "Get user list (uuid, user, nick, avatar, mail, role, regat, loginat, tfa)"
+    getUserList: [User],
+    "Reset password"
+    resetPass(uuid: String, pass: String): Boolean,
+}
+
 type Query {
     User(uuid: String, user: String, mail: String, token: String): UserResolvers,
     twoFactorAuth(token: String): twoFactorAuthResolvers,
     oauth(token: String): oauthResolvers,
     sudoMode(token: String): sudoModeResolvers,
+    admin(token: String): adminResolvers,
 }
 `;
 

@@ -14,6 +14,8 @@ import { TokenModel, TokenType } from './model/token';
 import resolvers from './resolvers';
 import typeDefs from './schema';
 import { isMail } from './utils';
+import { UserModel } from './model/user';
+import Admin from './model/admin';
 
 const app = express();
 let server: any;
@@ -243,9 +245,11 @@ const init = async () => {
         }
     });
 
-    app.post('/cb', async (req) => {
+    app.post('/callback', async (req) => {
         console.log(req.query, req.body);
     });
+
+    Admin.getUserList();
 
     server = app.listen({ port }, () => {
         bus.emit('app/started');

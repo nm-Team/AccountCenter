@@ -1,4 +1,5 @@
 import twoFactorAuth from './model/2fa';
+import Admin from './model/admin';
 import OAuth from './model/oauth';
 import { SessionDoc, SessionModel } from './model/session';
 import SudoModel from './model/sudo';
@@ -29,6 +30,20 @@ const resolvers = {
         },
         sudoMode(_any: any, args: any): any {
             return args;
+        },
+        async admin(_: any, args: any): Promise<any> {
+            if (args.token === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const token: any = await TokenModel.get(args.token, TokenType.SESSION);
+            if (token === null) {
+                throw new Error('invalid_token');
+            }
+            const user = await UserModel.getByUUID(token.data.uuid);
+            if (user.role !== 'admin') {
+                throw new Error('invalid_permissions');
+            }
+            return { user, ...args };
         },
     },
     UserResolvers: {
@@ -306,6 +321,22 @@ const resolvers = {
                 pass,
                 code,
             };
+        },
+    },
+    adminResolvers: {
+        async getUserList(parent: any): Promise<any> {
+            if (parent.token === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const ret = await Admin.getUserList();
+            return ret;
+        },
+        async resetPass(parent: any, args: any): Promise<boolean> {
+            if (parent.token === undefined || args.uuid === undefined || args.pass === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const ret = await Admin.resetPass(args.uuid, args.pass);
+            return ret;
         },
     },
 };
