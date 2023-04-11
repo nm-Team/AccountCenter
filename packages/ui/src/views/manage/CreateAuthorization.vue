@@ -8,7 +8,7 @@
         <p>{{ this.serviceMsg }}</p>
         <div class="btns">
             <div class="right">
-                <button class="blockButton" @click="this.createOauthApp()">
+                <button class="blockButton" @click="this.createOAuthApp()">
                     {{ $t('manage.create_oauth_app.submit') }}</button>
             </div>
         </div>
@@ -57,7 +57,7 @@ export default {
         },
     },
     methods: {
-        createOauthApp() {
+        createOAuthApp() {
             if (this.name === '') {
                 this.serviceMsg = this.$t('manage.create_oauth_app.error_name_empty');
                 return;

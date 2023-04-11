@@ -213,7 +213,7 @@
             "title": "承認済みアプリ",
             "create_a_new_app": "新しいアプリを作成",
             "detail": "詳細",
-            "manage_my_apps": "Oauth アプリを管理する",
+            "manage_my_apps": "OAuth アプリを管理する",
             "manage_my_apps_text": "アプリ テキストを管理します。"
         },
         "change_avatar": {
@@ -502,7 +502,7 @@
             "submit": "作成",
             "title": "OAuth アプリを作成する",
             "success": {
-                "title": "新しい Oauth アプリが正常に作成されました",
+                "title": "新しい OAuth アプリが正常に作成されました",
                 "content": "あなたのクライアント ID: {clientId}\nクライアント シークレット: {clientSecret}"
             }
         },
@@ -518,22 +518,22 @@
         "oauth_app_detail_page": {
             "client_info": {
                 "revoke_secret": "失効キー",
-                "content": "Oauth クライアント ID とクライアント シークレットを使用してアプリ認証を完了します。",
-                "title": "Oauth パラメータ",
+                "content": "OAuth クライアント ID とクライアント シークレットを使用してアプリ認証を完了します。",
+                "title": "OAuth パラメータ",
                 "copy": "コピー"
             },
             "edit_success": "正常に編集されました",
-            "error": "Oauth アプリの詳細の読み込み中にエラーが発生しました。",
+            "error": "OAuth アプリの詳細の読み込み中にエラーが発生しました。",
             "loading": "読み込んでいます...",
             "edit": "編集",
             "update": "更新する",
             "edit_block": {
-                "title": "Oauth アプリ情報の編集",
+                "title": "OAuth アプリ情報の編集",
                 "content": "アプリの名前、説明を表示または変更し、アプリのアイコンを設定します。"
             },
             "edit_redirect_uris": {
                 "title": "リダイレクト URI の編集",
-                "content": "Oauth 検証が完了した後にリダイレクトされる検証 Uri を設定します。"
+                "content": "OAuth 検証が完了した後にリダイレクトされる検証 Uri を設定します。"
             },
             "add_redirect_uri": "リダイレクト URI を追加"
         }

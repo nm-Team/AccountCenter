@@ -41,14 +41,14 @@
         <label-input model="searchKeyword" type="text" label="manage.authorization.search" enablescale="false"
             autofocus="false" @getdata="setData" @keyup.enter="0">
         </label-input>
-        <div class="oAppView" v-for="app in myOauthAppsList" :key="app.clientId">
+        <div class="oAppView" v-for="app in myOAuthAppsList" :key="app.clientId">
             <div class="icon" :style="{ backgroundImage: `url(${app.icon})` }"></div>
             <div class="infos">
                 <p class="appName">{{ app.name }}</p>
                 <p class="appDescription">{{ app.clientId }}</p>
                 <p class="appDescription" v-if="app.description">{{ app.description }}</p>
                 <p class="appDescription" v-else>{{ $t('manage.authorization.no_description') }}</p>
-                <a class="action" href="javascript:" target="_self" @click="openOauthDetailPage(app.clientId)">{{
+                <a class="action" href="javascript:" target="_self" @click="openOAuthDetailPage(app.clientId)">{{
                     $t('manage.authorization.detail')
                 }}</a>
             </div>
@@ -90,7 +90,7 @@ export default {
                     },
                 ],
             },
-            myOauthAppsList: [],
+            myOAuthAppsList: [],
         };
     },
     props: {
@@ -101,20 +101,20 @@ export default {
     },
     inject: ['defaultSwal'],
     mounted() {
-        this.getMyOauthApps();
+        this.getMyOAuthApps();
     },
     watch: {
         user: {
             handler() {
-                this.getMyOauthApps();
+                this.getMyOAuthApps();
             },
             deep: true,
         },
     },
     methods: {
-        getMyOauthApps() {
+        getMyOAuthApps() {
             apolloClient.query({
-                query: gql`query Oauth($token: String) {
+                query: gql`query OAuth($token: String) {
   oauth(token: $token) {
     getClientList {
       clientId
@@ -132,7 +132,7 @@ export default {
                 },
             }).then(({ data }) => {
                 console.log(data);
-                this.myOauthAppsList = data.oauth.getClientList;
+                this.myOAuthAppsList = data.oauth.getClientList;
             }, (error) => {
                 console.log(error);
             });
@@ -140,7 +140,7 @@ export default {
         goToPage(page) {
             this.$router.push({ name: page, query: this.$route.query });
         },
-        openOauthDetailPage(clientId) {
+        openOAuthDetailPage(clientId) {
             this.$router.push({ name: 'manage_oauth_detail', query: { clientId } });
         },
     },

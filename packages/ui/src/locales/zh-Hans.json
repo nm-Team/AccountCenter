@@ -217,7 +217,7 @@
             "title": "授权的 App",
             "create_a_new_app": "创建新 App",
             "detail": "详细信息",
-            "manage_my_apps": "管理我的 Oauth App",
+            "manage_my_apps": "管理我的 OAuth App",
             "manage_my_apps_text": "管理 App 文本。"
         },
         "change_avatar": {
@@ -504,9 +504,9 @@
             "error_name_empty": "App 名称为空。",
             "error_redirect_uri_invalid": "App 重定向 Uri 非法。",
             "submit": "创建",
-            "title": "创建 Oauth App",
+            "title": "创建 OAuth App",
             "success": {
-                "title": "新 Oauth App 创建成功",
+                "title": "新 OAuth App 创建成功",
                 "content": "你的 Client ID: {clientId}\n你的 Client 密钥：{clientSecret}"
             }
         },
@@ -521,24 +521,24 @@
         },
         "oauth_app_detail_page": {
             "client_info": {
-                "title": "Oauth 参数",
-                "content": "使用你的 Oauth Client ID 和 Client 密钥完成 App 身份验证。",
+                "title": "OAuth 参数",
+                "content": "使用你的 OAuth Client ID 和 Client 密钥完成 App 身份验证。",
                 "revoke_secret": "撤销密钥",
                 "copy": "拷贝"
             },
-            "title": "Oauth App 详情",
+            "title": "OAuth App 详情",
             "loading": "正在加载...",
-            "error": "加载 Oauth App 详情时出现了错误。",
+            "error": "加载 OAuth App 详情时出现了错误。",
             "edit": "编辑",
             "edit_success": "编辑成功",
             "update": "更新",
             "edit_block": {
-                "title": "编辑 Oauth App 信息",
+                "title": "编辑 OAuth App 信息",
                 "content": "查看或修改此 App 的名称、描述，并为 App 设置图标。"
             },
             "edit_redirect_uris": {
                 "title": "编辑重定向 Uri",
-                "content": "设置 Oauth 验证完成后跳转的验证 Uri。"
+                "content": "设置 OAuth 验证完成后跳转的验证 Uri。"
             },
             "add_redirect_uri": "添加重定向 Uri"
         }

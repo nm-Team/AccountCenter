@@ -29,7 +29,7 @@
         <p>{{ this.serviceMsg }}</p>
         <div class="btns">
             <div class="right">
-                <button class="blockButton" @click="this.editOauthApp()">
+                <button class="blockButton" @click="this.editOAuthApp()">
                     {{ $t('manage.oauth_app_detail_page.edit') }}</button>
             </div>
         </div>
@@ -47,7 +47,7 @@
                     {{ $t('manage.oauth_app_detail_page.add_redirect_uri') }}</button>
             </div>
             <div class="right">
-                <button class="blockButton" @click="this.editOauthAppRedirectUris()">
+                <button class="blockButton" @click="this.editOAuthAppRedirectUris()">
                     {{ $t('manage.oauth_app_detail_page.update') }}</button>
             </div>
         </div>
@@ -84,12 +84,12 @@ export default {
     },
     inject: ['defaultSwal'],
     mounted() {
-        this.getOauthAppDetail();
+        this.getOAuthAppDetail();
     },
     watch: {
         user: {
             handler() {
-                this.getOauthAppDetail();
+                this.getOAuthAppDetail();
             },
             deep: true,
         },
@@ -109,13 +109,13 @@ export default {
         },
     },
     methods: {
-        getOauthAppDetail() {
+        getOAuthAppDetail() {
             if (!this.$route.query.clientId) {
                 this.loading = false;
                 return;
             }
             apolloClient.query({
-                query: gql`query Oauth($token: String, $clientId: String, $userId: String) {
+                query: gql`query OAuth($token: String, $clientId: String, $userId: String) {
   oauth(token: $token) {
     getClient(clientId: $clientId, userId: $userId) {
       clientId
@@ -164,7 +164,7 @@ export default {
                 this.detailLoading = false;
             });
         },
-        editOauthApp() {
+        editOAuthApp() {
             if (!this.oauthAppDetailEdited.name) {
                 this.serviceMsg = this.$t('manage.create_oauth_app.error_name_empty');
                 return;
@@ -174,7 +174,7 @@ export default {
                 return;
             }
             apolloClient.query({
-                query: gql`query Oauth($clientId: String, $name: String, $description: String, $icon: String, $token: String) {
+                query: gql`query OAuth($clientId: String, $name: String, $description: String, $icon: String, $token: String) {
   oauth(token: $token) {
     updateClient(clientId: $clientId, name: $name, description: $description, icon: $icon)
   }

@@ -212,7 +212,7 @@
             "search": "Search apps",
             "title": "Authorized Apps",
             "create_a_new_app": "Create New App",
-            "manage_my_apps": "Manage My Oauth Apps",
+            "manage_my_apps": "Manage My OAuth Apps",
             "manage_my_apps_text": "Manage Apps Text",
             "detail": "Detail"
         },
@@ -497,9 +497,9 @@
         "create_oauth_app": {
             "success": {
                 "content": "Your client ID: {clientId}\nYour client Secret: {clientSecret}",
-                "title": "New Oauth App created successfully"
+                "title": "New OAuth App created successfully"
             },
-            "title": "Create Oauth App",
+            "title": "Create OAuth App",
             "submit": "Create",
             "error_unknown": "Something went wrong. Check the data you provided and retry.",
             "error_name_empty": "The App name is empty.",
@@ -518,22 +518,22 @@
         "oauth_app_detail_page": {
             "client_info": {
                 "revoke_secret": "Revoke Secret",
-                "content": "Complete app authentication with your Oauth Client ID and Client Secret.",
-                "title": "Oauth Parameters",
+                "content": "Complete app authentication with your OAuth Client ID and Client Secret.",
+                "title": "OAuth Parameters",
                 "copy": "Copy"
             },
             "edit_success": "Edited successfully",
-            "error": "There was an error loading Oauth App details.",
+            "error": "There was an error loading OAuth App details.",
             "loading": "Loading...",
             "edit": "Edit",
             "update": "Update",
             "edit_block": {
-                "title": "Edit Oauth App Information",
+                "title": "Edit OAuth App Information",
                 "content": "View or modify the app's name, description, and set an icon for the app."
             },
             "edit_redirect_uris": {
                 "title": "Edit Redirect Uri",
-                "content": "Set the verification Uri redirected after Oauth verification is completed."
+                "content": "Set the verification Uri redirected after OAuth verification is completed."
             },
             "add_redirect_uri": "Add redirect Uri"
         }
