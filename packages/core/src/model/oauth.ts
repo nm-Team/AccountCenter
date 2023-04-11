@@ -283,4 +283,14 @@ export default class OAuth {
 
         return clientList;
     };
+
+    static deleteClient = async (clientId: string) => {
+        if (!OAuth.getClient(clientId)) {
+            return false;
+        }
+
+        await OAuthClientModel.deleteOne({ clientId }).exec();
+
+        return true;
+    };
 }

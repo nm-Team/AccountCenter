@@ -286,6 +286,13 @@ const resolvers = {
             const ret = await OAuth.getClientList();
             return ret;
         },
+        async deleteClient(_: any, args: any): Promise<boolean> {
+            if (args.clientId === undefined) {
+                throw new Error('invalid_parameters');
+            }
+            const ret = await OAuth.deleteClient(args.clientId);
+            return ret;
+        },
     },
     sudoModeResolvers: {
         async enable(parent: any, args: any): Promise<boolean> {

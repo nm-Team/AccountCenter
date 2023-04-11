@@ -77,6 +77,8 @@ type oauthResolvers {
     getClient(clientId: String, userId: String): [OAuthClient],
     "getClientList"
     getClientList: [OAuthClient],
+    "Delete a OAuth client"
+    deleteClient(clientId: String): Boolean,
 }
 
 type OAuthClient {
