@@ -541,6 +541,27 @@
                 "content": "设置 OAuth 验证完成后跳转的验证 Uri。"
             },
             "add_redirect_uri": "添加重定向 Uri"
+        },
+        "admin_users_list": {
+            "title": "用户管理",
+            "users_list_title": "用户列表",
+            "add_user": "添加用户",
+            "search_keyword": "搜索...",
+            "table": {
+                "uuid": "UUID",
+                "user": "用户名",
+                "nick": "昵称",
+                "avatar": "头像",
+                "mail": "邮箱",
+                "mood": "Mood",
+                "regat": "注册日期",
+                "loginat": "登录时间",
+                "loginip": "登录 IP",
+                "tfa": "两步验证",
+                "role": "用户组",
+                "action": "操作"
+            },
+            "column_filter_button": "打开列筛选器"
         }
     },
     "next_step": "下一步",

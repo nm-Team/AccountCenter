@@ -37,6 +37,7 @@ import LogIn from './views/log/LogIn.vue';
 import NotFound from './views/log/NotFound.vue';
 import Register from './views/log/Register.vue';
 import ResetPassword from './views/log/ResetPassword.vue';
+import AdminUsers from './views/manage/AdminUsers.vue';
 import ChangeAvatar from './views/manage/ChangeAvatar.vue';
 import ChangePassword from './views/manage/ChangePassword.vue';
 import CreateAuthorization from './views/manage/CreateAuthorization.vue';
@@ -204,6 +205,14 @@ const routes = [
                         //         title: 'manage.admin_oauth_manager.title',
                         //     },
                         // },
+                        {
+                            path: 'users',
+                            name: 'users',
+                            component: AdminUsers,
+                            meta: {
+                                title: 'manage.admin_users_list.title',
+                            },
+                        },
                     ],
             },
             {
