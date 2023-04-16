@@ -32,7 +32,7 @@
         <p><b>{{ $t('manage.setup_2fa.setup.app.enter_code_title') }}</b></p>
         <p>{{ $t('manage.setup_2fa.setup.app.enter_code') }}</p>
         <p>{{ $t('manage.setup_2fa.setup.app.code_not_expire') }}</p>
-        <label-input model="appUserCode" type="text" :label="$t('manage.setup_2fa.setup.app.enter_code_placeholder')"
+        <label-input model="appUserCode" type="number" :label="$t('manage.setup_2fa.setup.app.enter_code_placeholder')"
             @getdata="setData" @keyup.enter="appCheckCode()" :value="appUserCode"></label-input>
         <div class="btns">
             <div class="left">
