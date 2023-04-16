@@ -559,5 +559,6 @@
     "main": {
         "oauth_client_icon_alt": "Authorize App Image"
     },
-    "page_title": "nmTeam Account Center"
+    "page_title": "nmTeam Account Center",
+    "copy": "Copy"
 }

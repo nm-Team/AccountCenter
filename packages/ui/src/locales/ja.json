@@ -559,5 +559,6 @@
     "main": {
         "oauth_client_icon_alt": "アプリの画像を承認"
     },
-    "page_title": "nmTeam アカウント センター"
+    "page_title": "nmTeam アカウント センター",
+    "copy": "コピー"
 }

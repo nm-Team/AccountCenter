@@ -1,11 +1,11 @@
 <template>
     <h1>{{ $t('manage.setup_2fa.title') }}</h1>
     <p v-if="(tfaEnabled == false && enableStep == 0) || (tfaEnabled && disableStep == 0)">{{
-            $t('manage.setup_2fa.tip_a')
+        $t('manage.setup_2fa.tip_a')
     }}
     </p>
     <p v-if="(tfaEnabled == false && enableStep == 0) || (tfaEnabled && disableStep == 0)">{{
-            $t('manage.setup_2fa.tip_b')
+        $t('manage.setup_2fa.tip_b')
     }}
     </p>
     <div class="block" v-if="tfaEnabled == false && enableStep == 0">
@@ -26,7 +26,8 @@
         <p>{{ $t('manage.setup_2fa.setup.app.scan_qrcode') }}
         </p>
         <label-input type="text" :label="$t('manage.setup_2fa.setup.app.secret_box_placeholder')"
-            :value="appSecure !== '' ? appSecure : this.$t('loading')" :readonly="true"></label-input>
+            :value="appSecure !== '' ? appSecure : this.$t('loading')" :readonly="true" :button="['fas', 'copy']"
+            :buttontitle="$t('copy')" @buttonOnClick="copy(appSecure)"></label-input>
         <vue-qr class="tfaQrCode" v-if="appQr != ''" :text="appQr" :size="600"></vue-qr>
         <p><b>{{ $t('manage.setup_2fa.setup.app.enter_code_title') }}</b></p>
         <p>{{ $t('manage.setup_2fa.setup.app.enter_code') }}</p>
@@ -195,6 +196,14 @@ export default {
         },
         setData(name, data) {
             this[name] = data;
+        },
+        copy(value) {
+            const el = document.createElement('textarea');
+            el.value = value;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
         },
     },
     components: {},

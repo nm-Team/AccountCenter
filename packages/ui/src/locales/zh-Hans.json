@@ -581,5 +581,6 @@
     "main": {
         "oauth_client_icon_alt": "授权 App 图片"
     },
-    "page_title": "nmTeam 账号中心"
+    "page_title": "nmTeam 账号中心",
+    "copy": "拷贝"
 }

@@ -559,5 +559,6 @@
     "main": {
         "oauth_client_icon_alt": "授權 App 圖片"
     },
-    "page_title": "nmTeam 賬戶中心"
+    "page_title": "nmTeam 賬戶中心",
+    "copy": "拷貝"
 }
