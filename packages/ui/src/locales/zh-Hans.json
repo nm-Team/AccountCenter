@@ -561,7 +561,16 @@
                 "role": "用户组",
                 "action": "操作"
             },
-            "column_filter_button": "打开列筛选器"
+            "column_filter_button": "打开列筛选器",
+            "reset_password_prompt": {
+                "title": "重置密码",
+                "text": "将用户 {user_nick} ({user_uuid}) 的密码重置为",
+                "input_placeholder": "密码",
+                "success_title": "重置成功",
+                "success_text": "已成功将 {user_nick} ({user_uuid}) 的密码重置为 {password}。",
+                "error_title": "重置失败",
+                "error_text": "出现了一些问题，重置密码失败。"
+            }
         }
     },
     "next_step": "下一步",

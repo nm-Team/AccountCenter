@@ -59,7 +59,7 @@
                         <td v-if="usersListColumnFilterItems.loginip.show">{{ user.loginip }} </td>
                         <td v-if="usersListColumnFilterItems.tfa.show">{{ user.tfa }} </td>
                         <td v-if="usersListColumnFilterItems.action.show" class="action">
-                            <a href="javascript:void(0)" @click="0">{{
+                            <a href="javascript:void(0)" @click="resetPasswordPrompt(user)">{{
                                 $t('manage.admin_users_list.table.action.reset_password')
                             }}</a>
                         </td>
@@ -195,6 +195,60 @@ export default {
                 this.usersList = result.data.admin.getUserList;
             }).catch((error) => {
                 console.log(error);
+            });
+        },
+        resetPasswordPrompt(user) {
+            this.defaultSwal.fire({
+                title: this.$t('manage.admin_users_list.reset_password_prompt.title'),
+                text: this.$t('manage.admin_users_list.reset_password_prompt.text', { user_nick: user.nick, user_uuid: user.uuid }),
+                input: 'text',
+                inputValue: this.randomPassword(),
+                inputPlaceholder: this.$t('manage.admin_users_list.reset_password_prompt.input_placeholder'),
+                showCancelButton: true,
+                confirmButtonText: this.$t('confirm'),
+                cancelButtonText: this.$t('cancel'),
+            }).then((result) => {
+                if (result.value) {
+                    this.resetPassword(user, result.value);
+                }
+            });
+        },
+        randomPassword() {
+            let password = '';
+            const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_&%$#@!';
+            for (let i = 0; i < 16; i += 1) {
+                password += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            return password;
+        },
+        resetPassword(user, password) {
+            apolloClient.query({
+                query: gql`query Admin($token: String, $uuid: String, $pass: String) {
+  admin(token: $token) {
+    resetPass(uuid: $uuid, pass: $pass)
+  }
+}
+`,
+                variables: {
+                    token: this.user.token,
+                    uuid: user.uuid,
+                    pass: password,
+                },
+            }).then(() => {
+                this.defaultSwal.fire({
+                    title: this.$t('manage.admin_users_list.reset_password_prompt.success_title'),
+                    text: this.$t('manage.admin_users_list.reset_password_prompt.success_text', { user_nick: user.nick, user_uuid: user.uuid, password }),
+                    icon: 'success',
+                    confirmButtonText: this.$t('confirm'),
+                });
+            }).catch((error) => {
+                console.log(error);
+                this.defaultSwal.fire({
+                    title: this.$t('manage.admin_users_list.reset_password_prompt.error_title'),
+                    text: this.$t('manage.admin_users_list.reset_password_prompt.error_text', { user_nick: user.nick, user_uuid: user.uuid }),
+                    icon: 'error',
+                    confirmButtonText: this.$t('confirm'),
+                });
             });
         },
         changeColumnFilter(item) {
