@@ -7,21 +7,22 @@ import cors from 'cors';
 import express from 'express';
 
 import { centerUrl, port } from './config';
+import Admin from './model/admin';
 import bus from './model/bus';
 import log from './model/logger';
 import OAuth from './model/oauth';
 import { TokenModel, TokenType } from './model/token';
+import { UserModel } from './model/user';
 import resolvers from './resolvers';
 import typeDefs from './schema';
 import { isMail } from './utils';
-import { UserModel } from './model/user';
-import Admin from './model/admin';
 
 const app = express();
 let server: any;
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const apollo = new ApolloServer({
     typeDefs,
@@ -140,6 +141,7 @@ const init = async () => {
     });
 
     app.post('/oauth/token', async (req, res) => {
+        console.log(req.body);
         let {
             client_id, client_secret,
         } = req.body;
@@ -243,6 +245,37 @@ const init = async () => {
                 info: e,
             });
         }
+    });
+
+    app.post('/oauth/test', async (req, res) => {
+        console.log(req.headers.authorization);
+        const access_token = req.body.access_token || (req.headers.authorization && req.headers.authorization.split(' ')[1]) || undefined;
+
+        if (!access_token) {
+            res.status(400).json({
+                status: 'error',
+                info: 'Invalid request',
+            });
+            return;
+        }
+
+        const info = await OAuth.queryAccessToken(access_token);
+        if (!info) {
+            res.status(400).json({
+                status: 'error',
+                info: 'Invalid access token',
+            });
+            return;
+        }
+
+        const user = await UserModel.getByUUID(info.userId);
+        res.json({
+            status: 'success',
+            info: `Hello, ${user.nick}.`,
+            data: {
+                ...info,
+            },
+        });
     });
 
     app.post('/callback', async (req) => {
