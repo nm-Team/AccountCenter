@@ -117,6 +117,20 @@ export default class OAuth {
         return !!token && token.ttl.getTime() > Date.now();
     };
 
+    static queryAccessToken = async (accessToken: string) => {
+        const token = await OAuthAccessTokenModel.findOne({ accessToken }).exec();
+
+        if (!(!!token && token.ttl.getTime() > Date.now())) {
+            return false;
+        }
+
+        return {
+            clientId: token.clientId,
+            userId: token.userId,
+            scope: token.scope,
+        };
+    };
+
     static refreshAccessToken = async (refreshToken: string) => {
         const token = await OAuthRefreshTokenModel.findOne({ refreshToken }).exec();
 
