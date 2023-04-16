@@ -262,6 +262,7 @@ export default {
 
     input[type=text],
     input[type=password],
+    input[type=number],
     textarea {
         width: calc(100% - 20px);
         padding: 2px 4px;
@@ -277,6 +278,7 @@ export default {
 
         input[type=text],
         input[type=password],
+        input[type=number],
         textarea {
             width: calc(100% - 50px);
         }
@@ -288,6 +290,7 @@ export default {
 
     input[type=text]:focus,
     input[type=password]:focus,
+    input[type=number],
     textarea:focus {
         outline: none;
     }
