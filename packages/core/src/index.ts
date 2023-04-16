@@ -141,7 +141,6 @@ const init = async () => {
     });
 
     app.post('/oauth/token', async (req, res) => {
-        console.log(req.body);
         let {
             client_id, client_secret,
         } = req.body;
@@ -248,7 +247,6 @@ const init = async () => {
     });
 
     app.post('/oauth/test', async (req, res) => {
-        console.log(req.headers.authorization);
         const access_token = req.body.access_token || (req.headers.authorization && req.headers.authorization.split(' ')[1]) || undefined;
 
         if (!access_token) {
