@@ -3,20 +3,20 @@
         :disabled="disabled">
         <label
             :class="{ isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true, fitButton: fitbutton, }"
-            :type="type">
+            :type="type" :for="itemId">
             {{ $t(label) }}</label>
         <div
             :class="{ innerInput: true, isFocus: focus, isEmpty: inputVal == '', enableScale: enablescale == 'false' ? false : true, fitButton: fitbutton, hasInlineButton: button, }">
             <textarea v-if="type == 'textarea'" v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly"
-                :disabled="disabled" @focus="this.focus = true; this.$emit('focus')"
+                :disabled="disabled" :id="itemId" @focus="this.focus = true; this.$emit('focus')"
                 @blur="this.focus = false; this.$emit('blur')" @change="push(); this.$emit('change')"></textarea>
             <select v-else-if="type == 'select'" v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly"
-                :disabled="disabled" @focus="this.focus = true; this.$emit('focus')"
+                :disabled="disabled" :id="itemId" @focus="this.focus = true; this.$emit('focus')"
                 @blur="this.focus = false; this.$emit('blur')" @change="push(); this.$emit('change')">
                 <option v-for="item in option" :value="item.value" :key="item.value">{{ item.label }}</option>
             </select>
             <input v-else v-model="inputVal" :type="type" :autofocus="autofocus" :readonly="readonly" :disabled="disabled"
-                @focus="this.focus = true; this.$emit('focus')" @blur="this.focus = false; this.$emit('blur')"
+                :id="itemId" @focus="this.focus = true; this.$emit('focus')" @blur="this.focus = false; this.$emit('blur')"
                 @change="push(); this.$emit('change')" />
             <button class="button" @click="buttonOnClick" :title="buttontitle" v-if="button">
                 <font-awesome-icon :icon="button" />
@@ -32,6 +32,7 @@ export default {
         return {
             focus: false,
             inputVal: '',
+            itemId: '',
         };
     },
     props: {
@@ -90,6 +91,7 @@ export default {
     },
     mounted() {
         this.inputVal = this.value;
+        this.itemId = Math.random().toString(36).substring(2, 15);
     },
     watch: {
         value: {
