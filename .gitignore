@@ -3,6 +3,5 @@ config.ts
 dist
 .vscode
 yarn-error.log
-config.js
 yarn.lock
 .tmp
