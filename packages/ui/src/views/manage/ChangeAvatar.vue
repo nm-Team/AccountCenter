@@ -140,9 +140,9 @@
     </div>
     <div class="block" v-if="changeStep == 1 && avatarType == 'upload'">
         <p class="title">{{ $t('manage.change_avatar.upload.title') }}</p>
-        <input type="file" @change="goCut($event)" />
+        <input ref="avatarFileInput" hidden type="file" @change="goCut($event)" />
         <div class="btns">
-            <button class="blockButton" @click="0">
+            <button class="blockButton" @click="$refs.avatarFileInput.click()">
                 {{ $t('manage.change_avatar.upload.upload_button') }}</button>
         </div>
         <div class="cropper">
@@ -349,5 +349,6 @@ export default {
 <style lang="scss" scoped>
 .cropper {
     height: 300px;
+    margin-top: 10px;
 }
 </style>
