@@ -5,6 +5,8 @@ const isMail = (mail: string) => {
 
 const isMD5 = (text: string) => /^[0-9a-f]{32}$/.test(text);
 
+const isBase = (text: string) => /^[0-9a-zA-Z+/=]+$/.test(text);
+
 // eslint-disable-next-line no-control-regex
 const seeable = (text: string) => /^[^\x00-\x1f\x7f]+$/.test(text);
 
@@ -18,6 +20,8 @@ const checkAvatar = (avatar: string) => {
             return /^[1-9]\d{4,}$/.test(attr);
         case 'github':
             return /^[a-zA-Z0-9-_]+$/.test(attr);
+        case 'base':
+            return isBase(attr);
         default:
             return false;
     }
