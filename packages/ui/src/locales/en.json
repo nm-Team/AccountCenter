@@ -292,7 +292,8 @@
                 "cut": "Crop the picture",
                 "cut_description": "Crop your image to a square.",
                 "title": "upload avatar",
-                "upload_button": "Choose an image from your device"
+                "upload_button": "Choose an image from your device",
+                "error_invalid": "You have not selected an image file."
             },
             "delete_confirm": {
                 "cancel": "Cancel",

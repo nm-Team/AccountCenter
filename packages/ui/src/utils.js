@@ -11,6 +11,8 @@ function getAvatar(text, size = 100) {
             return `https://q1.qlogo.cn/g?b=qq&nk=${attr}&s=${size}`;
         case 'github':
             return `https://avatars.githubusercontent.com/${attr}?s=${size}`;
+        case 'base':
+            return `data:image/png;base64,${attr}`;
         default:
             return `${encodeURI(gravatarAPI)}${gravatarDefaultHash}?s=${size}`;
     }

@@ -292,7 +292,8 @@
                 "cut": "裁剪圖片",
                 "cut_description": "將您的圖片裁剪為正方形。",
                 "title": "上傳頭像",
-                "upload_button": "從設備上選擇圖片"
+                "upload_button": "從設備上選擇圖片",
+                "error_invalid": "您選擇的不是圖片文件。"
             },
             "delete_confirm": {
                 "cancel": "取消",

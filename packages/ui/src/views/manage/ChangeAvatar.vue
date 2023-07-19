@@ -140,20 +140,24 @@
     </div>
     <div class="block" v-if="changeStep == 1 && avatarType == 'upload'">
         <p class="title">{{ $t('manage.change_avatar.upload.title') }}</p>
-        <input type="file" :model="uploadAvatarOrigin" @change="goCut()" />
+        <input type="file" @change="goCut($event)" />
         <div class="btns">
             <button class="blockButton" @click="0">
                 {{ $t('manage.change_avatar.upload.upload_button') }}</button>
         </div>
-        <vueCropper ref="cropper" :img="uploadAvatarOrigin" :outputSize="1" :outputType="png">
-        </vueCropper>
+        <div class="cropper">
+            <vueCropper ref="cropper" :img="uploadAvatarOriginal" :outputSize="1" :outputType="png" :autoCrop="true"
+                :limitMinSize="300" :enlarge="1 / 3" :info="false" :canMoveBox="false" :centerBox="true"
+                :fillColor="'#ffffff'" :fixed="true">
+            </vueCropper>
+        </div>
         <div class="btns">
             <div class="left">
                 <button class="blockButton" @click="this.changeStep = 0">
                     {{ $t('manage.change_avatar.type.choose_another') }}</button>
             </div>
             <div class="right">
-                <button class="blockButton" @click="0">
+                <button class="blockButton" @click="this.cropAvatar()">
                     {{ $t('next_step') }}</button>
             </div>
         </div>
@@ -212,7 +216,7 @@ export default {
             showLegal: false,
             customValue: '',
             avatarError: '',
-            uploadAvatarOrigin: '',
+            uploadAvatarOriginal: '',
             newUser: {},
         };
     },
@@ -255,6 +259,9 @@ export default {
                         return;
                     }
                     this.newAvatarCode = `github:${this.customValue}`;
+                    break;
+                case 'upload':
+                    this.newAvatarCode = `base:${this.uploadAvatarCut}`;
                     break;
                 case 'default':
                     this.newAvatarCode = 'mail:00000000000000000000000000000000';
@@ -303,6 +310,34 @@ export default {
                 }
             });
         },
+        goCut($event) {
+            // get file and verify if it's picture
+            const file = $event.target.files[0];
+            if (!/image\/\w+/.test(file.type)) {
+                this.defaultSwal.fire(this.$t('manage.change_avatar.upload.error_invalid'));
+                return false;
+            }
+            // get file and show cropper
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                this.uploadAvatarOriginal = reader.result;
+                this.changeStep = 1;
+            };
+            return '';
+        },
+        cropAvatar() {
+            this.$refs.cropper.startCrop();
+            this.$refs.cropper.getCropData((data) => {
+                // do something
+                if (data) {
+                    this.uploadAvatarCut = data;
+                    // remove ...base64,
+                    this.uploadAvatarCut = this.uploadAvatarCut.replace(/^data:image\/\w+;base64,/, '');
+                    this.setAvatar();
+                }
+            });
+        },
         setData(name, data) {
             this[name] = data;
         },
@@ -310,3 +345,9 @@ export default {
     components: {},
 };
 </script>
+
+<style lang="scss" scoped>
+.cropper {
+    height: 300px;
+}
+</style>

@@ -292,7 +292,8 @@
                 "cut": "画像をトリミングする",
                 "cut_description": "画像を正方形にトリミングします。",
                 "title": "アバターをアップロード",
-                "upload_button": "デバイスから画像を選択してください"
+                "upload_button": "デバイスから画像を選択してください",
+                "error_invalid": "画像ファイルが選択されていません。"
             },
             "delete_confirm": {
                 "cancel": "キャンセル",

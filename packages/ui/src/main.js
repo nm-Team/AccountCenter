@@ -3,6 +3,7 @@ import '../css/log.scss';
 import '../css/manage.scss';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import '../css/sweetalert2.scss';
+import 'vue-cropper/dist/index.css';
 
 // import '@sweetalert2/themes/dark/dark.css';
 // import 'vue-cropper/dist/index.css';

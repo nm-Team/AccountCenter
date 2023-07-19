@@ -296,7 +296,8 @@
                 "cut": "裁剪图片",
                 "cut_description": "将您的图片裁剪为正方形。",
                 "title": "上传头像",
-                "upload_button": "从设备上选择图片"
+                "upload_button": "从设备上选择图片",
+                "error_invalid": "您选择的不是图片文件。"
             },
             "delete_confirm": {
                 "title": "删除头像",
