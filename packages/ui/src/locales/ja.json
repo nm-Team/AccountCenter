@@ -336,7 +336,9 @@
                 "products": {
                     "more": "その他の nmTeam 製品",
                     "nmBrowser_startPage": "nmBrowserスタートページ",
-                    "nmFun": "nmFun"
+                    "nmFun": "nmFun",
+                    "nmbot_panel": "nmBot パネル",
+                    "nmbot": "nmBot"
                 },
                 "title": "nmServicesをお楽しみください"
             }

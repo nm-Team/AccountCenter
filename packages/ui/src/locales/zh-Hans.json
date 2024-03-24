@@ -340,7 +340,9 @@
                 "products": {
                     "more": "更多 nmTeam 产品",
                     "nmBrowser_startPage": "nmBrowser 启动页",
-                    "nmFun": "nmFun"
+                    "nmFun": "nmFun",
+                    "nmbot_panel": "nmBot 面板",
+                    "nmbot": "nmBot"
                 },
                 "title": "畅享 nmServices"
             }

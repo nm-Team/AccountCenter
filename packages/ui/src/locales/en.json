@@ -336,7 +336,9 @@
                 "products": {
                     "more": "More nmTeam products",
                     "nmBrowser_startPage": "nmBrowser StartPage",
-                    "nmFun": "nmFun"
+                    "nmFun": "nmFun",
+                    "nmbot_panel": "nmBot Panel",
+                    "nmbot": "nmBot"
                 },
                 "title": "Enjoy nmServices"
             }

@@ -336,7 +336,9 @@
                 "products": {
                     "more": "更多 nmTeam 產品",
                     "nmBrowser_startPage": "nmBrowser 啟動頁",
-                    "nmFun": "nmFun"
+                    "nmFun": "nmFun",
+                    "nmbot_panel": "nmBot 面板",
+                    "nmbot": "nmBot"
                 },
                 "title": "暢享 nmServices"
             }

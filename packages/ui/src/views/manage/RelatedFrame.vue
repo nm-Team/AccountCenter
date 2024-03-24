@@ -8,18 +8,18 @@
                     <div class="bgImg"
                         :style="{ backgroundImage: `url(${item.backgroundImage})`, margin: item.margin }"></div>
                     <p :style="{ color: item.color }">{{ $t('manage.explore.use_nmservices.products.' +
-                            item.name)
-                    }}</p>
+                item.name)
+                        }}</p>
                 </a>
             </div>
         </div>
-        <div class="block">
+        <!-- <div class="block">
             <p class="title">{{ $t('manage.explore.developers_will_love_nmteam_account.title') }}</p>
             <p>{{ $t('manage.explore.developers_will_love_nmteam_account.description') }}</p>
             <p><a href="https://nmteam.xyz/developers" target="_blank">
                     <LinkA :text="$t('manage.explore.developers_will_love_nmteam_account.a_text')"></LinkA>
                 </a></p>
-        </div>
+        </div> -->
         <div class="block">
             <p class="title">{{ $t('manage.explore.help.title') }}</p>
             <p>{{ $t('manage.explore.help.description') }}</p>
@@ -49,11 +49,19 @@ export default {
         return {
             nmServices: [
                 {
-                    name: 'nmFun',
-                    url: 'https://fun.nmteam.xyz',
+                    name: 'nmbot_panel',
+                    url: 'https://nmnmfunbot.t.me',
                     color: '#000',
                     backgroundColor: 'linear-gradient(90deg, rgba(255,250,58,1) 0%, rgba(255,206,0,1) 91%)',
-                    backgroundImage: 'https://websiteres.nmteam.xyz/producticon/nmFun/logo.svg',
+                    backgroundImage: 'https://nmbot.nmnm.fun/favicon.ico',
+                    margin: '10px 21px',
+                },
+                {
+                    name: 'nmbot',
+                    url: 'https://nmbot.nmnm.fun',
+                    color: '#fff',
+                    backgroundColor: 'linear-gradient(90deg, #444444 0%, #222222 91%)',
+                    backgroundImage: 'https://nmbot.nmnm.fun/favicon.ico',
                     margin: '10px 21px',
                 },
                 {
@@ -107,8 +115,8 @@ export default {
         transition: width .2s;
 
         .block {
-            padding: 0px 0!important;
-            border: none!important;
+            padding: 0px 0 !important;
+            border: none !important;
         }
     }
 
