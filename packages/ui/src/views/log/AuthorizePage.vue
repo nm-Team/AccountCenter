@@ -30,7 +30,7 @@
     <div class="related">
         <router-link v-for="item in related" :to="{ path: item.path, query: $route.query }" :key="item.name">{{
         $t('log.link.' + item.name)
-}}
+    }}
         </router-link>
     </div>
 </template>
@@ -100,7 +100,10 @@ export default {
             // eslint-disable-next-line prefer-const
             let sessions = getSessions();
             if (sessions.length === 0) {
-                this.$router.push('/');
+                this.$router.push({
+                    path: '/',
+                    query: this.$route.query,
+                });
             }
             let sessionsCheckedCount = 0;
             sessions.forEach((session, index) => {
