@@ -32,6 +32,9 @@ body [data-theme=dark] {
     padding: 0 30px 20px 30px;
     background-color: var(--frame-background);
     line-height: 1.7;
+    overflow: auto;
+    overflow: overlay;
+    max-height: 100vh;
 
     .header {
         display: flex;
